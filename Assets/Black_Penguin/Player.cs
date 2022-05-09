@@ -7,7 +7,8 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerStat
 {
-    public float speed;
+    public float maxSpeed;
+    public float speed; // velocity
     public float crit;
     public float def;
     public float dashCooldown;
@@ -31,15 +32,22 @@ public enum PlayerState
     Die
 }
 
+public enum PlayerPosiontion
+{
+    Up,
+    Down
+}
+
 public class Player : Entity
 {
     public static Player Instance;
-    
-    public Vector2 maxSpeed;
+
     Rigidbody2D rigid;
+    PlayerPosiontion posiontion;
     PlayerWeaponType weaponType;
     PlayerState state;
     public PlayerStat stat;
+    public float JumpPower;
     public override float _Hp
     {
         get => base._Hp;
@@ -163,16 +171,23 @@ public class Player : Entity
     }
     void Attack()
     {
-
+        if (state == PlayerState.Dash) return;
     }
     void Jump()
     {
+        if (state == PlayerState.Dash || state == PlayerState.Attack || state == PlayerState.JumpAttack) return;
 
+        RaycastHit2D[] raycasts = Physics2D.RaycastAll(transform.position, Vector2.down);
+        if (raycasts != null)
+            foreach (RaycastHit2D ray in raycasts)
+            {
+
+            }
     }
     private void Move()
     {
         float vertical = Input.GetAxis("Vertical");
-        if (Mathf.Abs(rigid.velocity.x + vertical) > maxSpeed.x)
+        if (Mathf.Abs(rigid.velocity.x + vertical) > stat.maxSpeed)
             vertical = 0;
 
         Vector2 dir = new Vector2(0, vertical) * speed * Time.deltaTime;
