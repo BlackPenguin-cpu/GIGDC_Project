@@ -42,6 +42,7 @@ public class Player : Entity
 {
     public static Player Instance;
 
+    Animator animator;
     Rigidbody2D rigid;
     PlayerPosiontion posiontion;
     PlayerWeaponType weaponType;
@@ -68,6 +69,7 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
+        animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
     }
     private void Update()
@@ -80,6 +82,8 @@ public class Player : Entity
     }
     void AnimationController()
     {
+        animator.SetInteger("State", (int)state);
+        animator.SetInteger("Weapon", (int)weaponType);
         switch (weaponType)
         {
             case PlayerWeaponType.Sword:
@@ -177,12 +181,20 @@ public class Player : Entity
     {
         if (state == PlayerState.Dash || state == PlayerState.Attack || state == PlayerState.JumpAttack) return;
 
-        RaycastHit2D[] raycasts = Physics2D.RaycastAll(transform.position, Vector2.down);
+    }
+    void JumpCheck()
+    {
+        RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position + Vector3.down, Vector2.one, 0, Vector2.down);
         if (raycasts != null)
             foreach (RaycastHit2D ray in raycasts)
             {
+                if (ray.transform.gameObject.tag.Contains("Platform"))
+                {
 
+                }
             }
+        rigid.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
+
     }
     private void Move()
     {
