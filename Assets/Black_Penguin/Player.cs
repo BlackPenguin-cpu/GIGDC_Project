@@ -193,7 +193,7 @@ public class Player : Entity
 
                 }
             }
-        rigid.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
+        rigid.AddForce(transform.forward * Vector2.up  * JumpPower, ForceMode2D.Impulse);
 
     }
     private void Move()
