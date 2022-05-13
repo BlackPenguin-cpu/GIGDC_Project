@@ -50,6 +50,8 @@ public class Player : Entity
     public PlayerStat stat;
     public float JumpPower;
 
+    float curDashCooltime = 0;
+
     bool canJump;
     public override float _Hp
     {
@@ -58,6 +60,7 @@ public class Player : Entity
         {
             if (value < Hp)
             {
+                if (state == PlayerState.Dash) return;
                 value -= stat.def;
                 value = Mathf.Clamp(value, 0, Hp);
             }
@@ -77,11 +80,8 @@ public class Player : Entity
     private void Update()
     {
         InputManager();
-    }
-    private void FixedUpdate()
-    {
-        Move();
         JumpCheck();
+        curDashCooltime += Time.deltaTime;
     }
     void AnimationController()
     {
@@ -170,10 +170,30 @@ public class Player : Entity
         {
             Jump();
         }
+        Move();
     }
-    //�÷��̾� �ൿ
+    //플레이어 인풋
     void Dash()
     {
+        if (stat.dashCooldown < curDashCooltime)
+        {
+            curDashCooltime = 0;
+            StartCoroutine(DashAction());
+        }
+    }
+    IEnumerator DashAction()
+    {
+        state = PlayerState.Dash;
+        rigid.velocity = Vector2.zero;
+
+        float horizontal = Input.GetAxisRaw("Horizontal") / 2;
+        Vector3 dir = new Vector3(horizontal, 0);
+        for (int i = 0; i < 10; i++)
+        {
+            transform.position += dir;
+            yield return new WaitForSeconds(0.002f);
+        }
+        state = PlayerState.Idle;
 
     }
     void Attack()
@@ -182,16 +202,20 @@ public class Player : Entity
     }
     void Jump()
     {
-        if (state != PlayerState.Dash || state != PlayerState.Attack || state != PlayerState.JumpAttack) return;
+
+        if (state == PlayerState.Dash || state == PlayerState.Attack || state == PlayerState.JumpAttack) return;
         if (canJump)
         {
             canJump = false;
-            rigid.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
+            rigid.AddForce( Vector2.up * JumpPower, ForceMode2D.Impulse);
+            Debug.Log("dd");
         }
     }
     void JumpCheck()
     {
-        RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position + Vector3.down, Vector2.one, 0, Vector2.down);
+        Vector2 size = new Vector2(100, 100);
+
+        RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position, transform.lossyScale, 0, Vector2.down);
         if (raycasts != null)
             foreach (RaycastHit2D ray in raycasts)
             {
@@ -200,16 +224,15 @@ public class Player : Entity
                     canJump = true;
                 }
             }
-        rigid.AddForce(transform.forward * Vector2.up  * JumpPower, ForceMode2D.Impulse);
-
     }
     private void Move()
     {
-        float vertical = Input.GetAxis("Vertical");
-        if (Mathf.Abs(rigid.velocity.x + vertical) > stat.maxSpeed)
-            vertical = 0;
+        if (state == PlayerState.Dash) return;
+        float horizontal = Input.GetAxis("Horizontal");
+        if (Mathf.Abs(rigid.velocity.x + horizontal) > stat.maxSpeed)
+            return;
 
-        Vector2 dir = new Vector2(0, vertical) * speed * Time.deltaTime;
+        Vector2 dir = new Vector2(horizontal, 0) * stat.speed * Time.deltaTime;
         rigid.AddForce(dir);
     }
     public override void Die()
