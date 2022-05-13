@@ -49,6 +49,8 @@ public class Player : Entity
     PlayerState state;
     public PlayerStat stat;
     public float JumpPower;
+
+    bool canJump;
     public override float _Hp
     {
         get => base._Hp;
@@ -79,11 +81,12 @@ public class Player : Entity
     private void FixedUpdate()
     {
         Move();
+        JumpCheck();
     }
     void AnimationController()
     {
-        animator.SetInteger("State", (int)state);
-        animator.SetInteger("Weapon", (int)weaponType);
+        //animator.SetInteger("State", (int)state);
+        //animator.SetInteger("Weapon", (int)weaponType);
         switch (weaponType)
         {
             case PlayerWeaponType.Sword:
@@ -168,7 +171,7 @@ public class Player : Entity
             Jump();
         }
     }
-    //ÇÃ·¹ÀÌ¾î Çàµ¿
+    //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½àµ¿
     void Dash()
     {
 
@@ -179,8 +182,12 @@ public class Player : Entity
     }
     void Jump()
     {
-        if (state == PlayerState.Dash || state == PlayerState.Attack || state == PlayerState.JumpAttack) return;
-
+        if (state != PlayerState.Dash || state != PlayerState.Attack || state != PlayerState.JumpAttack) return;
+        if (canJump)
+        {
+            canJump = false;
+            rigid.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
+        }
     }
     void JumpCheck()
     {
@@ -190,7 +197,7 @@ public class Player : Entity
             {
                 if (ray.transform.gameObject.tag.Contains("Platform"))
                 {
-
+                    canJump = true;
                 }
             }
         rigid.AddForce(transform.forward * Vector2.up  * JumpPower, ForceMode2D.Impulse);
