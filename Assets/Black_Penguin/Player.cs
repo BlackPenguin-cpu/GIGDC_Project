@@ -208,7 +208,6 @@ public class Player : Entity
         {
             canJump = false;
             rigid.AddForce( Vector2.up * JumpPower, ForceMode2D.Impulse);
-            Debug.Log("dd");
         }
     }
     void JumpCheck()
@@ -228,7 +227,7 @@ public class Player : Entity
     private void Move()
     {
         if (state == PlayerState.Dash) return;
-        float horizontal = Input.GetAxis("Horizontal");
+        float horizontal = Input.GetAxisRaw("Horizontal");
         if (Mathf.Abs(rigid.velocity.x + horizontal) > stat.maxSpeed)
             return;
 
