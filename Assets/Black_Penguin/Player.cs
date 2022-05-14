@@ -184,12 +184,12 @@ public class Player : Entity
     IEnumerator DashAction()
     {
         state = PlayerState.Dash;
-        rigid.velocity = Vector2.zero;
 
         float horizontal = Input.GetAxisRaw("Horizontal") / 2;
         Vector3 dir = new Vector3(horizontal, 0);
         for (int i = 0; i < 10; i++)
         {
+            rigid.velocity = Vector2.zero;
             transform.position += dir;
             yield return new WaitForSeconds(0.002f);
         }
@@ -207,7 +207,7 @@ public class Player : Entity
         if (canJump)
         {
             canJump = false;
-            rigid.AddForce( Vector2.up * JumpPower, ForceMode2D.Impulse);
+            rigid.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
         }
     }
     void JumpCheck()
