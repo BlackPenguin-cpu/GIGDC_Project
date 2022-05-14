@@ -212,14 +212,13 @@ public class Player : Entity
     }
     void JumpCheck()
     {
-        Vector2 size = new Vector2(100, 100);
-
         RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position, transform.lossyScale, 0, Vector2.down);
-        if (raycasts != null)
+        if (raycasts != null && rigid.velocity.y <= 0)
             foreach (RaycastHit2D ray in raycasts)
             {
-                if (ray.transform.gameObject.tag.Contains("Platform"))
+                if (ray.transform.gameObject.tag.Contains("Platform") && ray.distance < 0.1f)
                 {
+
                     canJump = true;
                 }
             }
