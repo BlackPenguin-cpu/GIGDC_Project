@@ -158,6 +158,7 @@ public class Player : Entity
     }
     void InputManager()
     {
+        Move();
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Dash();
@@ -170,7 +171,6 @@ public class Player : Entity
         {
             Jump();
         }
-        Move();
     }
     //플레이어 인풋
     void Dash()
@@ -185,9 +185,9 @@ public class Player : Entity
     {
         state = PlayerState.Dash;
 
-        float horizontal = Input.GetAxisRaw("Horizontal") / 2;
+        float horizontal = Input.GetAxisRaw("Horizontal") / 5;
         Vector3 dir = new Vector3(horizontal, 0);
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 20; i++)
         {
             rigid.velocity = Vector2.zero;
             transform.position += dir;
