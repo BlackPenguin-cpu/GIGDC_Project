@@ -32,10 +32,10 @@ public enum PlayerState
     Die
 }
 
-public enum PlayerPosiontion
+public enum PlayerType
 {
-    Up,
-    Down
+    Down = -1,
+    Up = 1
 }
 
 public class Player : Entity
@@ -44,7 +44,6 @@ public class Player : Entity
 
     Animator animator;
     Rigidbody2D rigid;
-    PlayerPosiontion posiontion;
     PlayerWeaponType weaponType;
     PlayerState state;
     public PlayerStat stat;
@@ -184,17 +183,16 @@ public class Player : Entity
     IEnumerator DashAction()
     {
         state = PlayerState.Dash;
-        rigid.velocity = Vector2.zero;
 
-        float horizontal = Input.GetAxisRaw("Horizontal") / 5;
-        Vector3 dir = new Vector3(horizontal, 0);
-        for (int i = 0; i < 20; i++)
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        Vector3 dir = new Vector3(horizontal, 0) / 2;
+        for (int i = 0; i < 10; i++)
         {
+            rigid.velocity = Vector2.zero;
             transform.position += dir;
-            yield return new WaitForSeconds(0.002f);
+            yield return new WaitForSeconds(0.001f);
         }
         state = PlayerState.Idle;
-
     }
     void Attack()
     {
@@ -202,24 +200,22 @@ public class Player : Entity
     }
     void Jump()
     {
-
         if (state == PlayerState.Dash || state == PlayerState.Attack || state == PlayerState.JumpAttack) return;
         if (canJump)
         {
             canJump = false;
-            rigid.AddForce( Vector2.up * JumpPower, ForceMode2D.Impulse);
+            rigid.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
         }
     }
     void JumpCheck()
     {
-        Vector2 size = new Vector2(100, 100);
-
         RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position, transform.lossyScale, 0, Vector2.down);
-        if (raycasts != null)
+        if (raycasts != null && rigid.velocity.y <= 0)
             foreach (RaycastHit2D ray in raycasts)
             {
-                if (ray.transform.gameObject.tag.Contains("Platform"))
+                if (ray.transform.gameObject.tag.Contains("Platform") && ray.distance < 0.1f)
                 {
+
                     canJump = true;
                 }
             }

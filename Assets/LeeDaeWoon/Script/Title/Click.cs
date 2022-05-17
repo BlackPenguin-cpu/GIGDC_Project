@@ -31,7 +31,7 @@ public class Click : MonoBehaviour
 
     public void TeamLogo_Click()
     {
-        transform.GetChild(3).gameObject.SetActive(true);
+        transform.GetChild(2).gameObject.SetActive(true);
         Pole_01.transform.DOLocalMoveY(270f, 0.5f);
         Pole_02.transform.DOLocalMoveY(-330f, 0.5f);
         Window.transform.DOScaleY(30, 0.5f);
