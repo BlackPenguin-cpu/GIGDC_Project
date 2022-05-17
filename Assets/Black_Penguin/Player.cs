@@ -32,10 +32,10 @@ public enum PlayerState
     Die
 }
 
-public enum PlayerPosiontion
+public enum PlayerType
 {
-    Up,
-    Down
+    Down = -1,
+    Up = 1
 }
 
 public class Player : Entity
@@ -44,7 +44,6 @@ public class Player : Entity
 
     Animator animator;
     Rigidbody2D rigid;
-    PlayerPosiontion posiontion;
     PlayerWeaponType weaponType;
     PlayerState state;
     public PlayerStat stat;
@@ -185,16 +184,15 @@ public class Player : Entity
     {
         state = PlayerState.Dash;
 
-        float horizontal = Input.GetAxisRaw("Horizontal") / 5;
-        Vector3 dir = new Vector3(horizontal, 0);
-        for (int i = 0; i < 20; i++)
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        Vector3 dir = new Vector3(horizontal, 0) / 2;
+        for (int i = 0; i < 10; i++)
         {
             rigid.velocity = Vector2.zero;
             transform.position += dir;
-            yield return new WaitForSeconds(0.002f);
+            yield return new WaitForSeconds(0.001f);
         }
         state = PlayerState.Idle;
-
     }
     void Attack()
     {
@@ -202,7 +200,6 @@ public class Player : Entity
     }
     void Jump()
     {
-
         if (state == PlayerState.Dash || state == PlayerState.Attack || state == PlayerState.JumpAttack) return;
         if (canJump)
         {
