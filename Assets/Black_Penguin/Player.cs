@@ -40,7 +40,7 @@ public enum PlayerType
 
 public class Player : Entity
 {
-    public static Player Instance;
+    public static Player Instance = null;
 
     Animator animator;
     Rigidbody2D rigid;
@@ -51,7 +51,7 @@ public class Player : Entity
 
     float curDashCooltime = 0;
 
-    bool canJump;
+    bool canJump = false;
     public override float _Hp
     {
         get => base._Hp;
@@ -106,6 +106,7 @@ public class Player : Entity
                     case PlayerState.Die:
                         break;
                     default:
+                        Debug.Assert(false);
                         break;
                 }
                 break;
@@ -190,7 +191,7 @@ public class Player : Entity
         {
             rigid.velocity = Vector2.zero;
             transform.position += dir;
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(0.01f);
         }
         state = PlayerState.Idle;
     }
@@ -215,17 +216,23 @@ public class Player : Entity
             {
                 if (ray.transform.gameObject.tag.Contains("Platform") && ray.distance < 0.1f)
                 {
-
                     canJump = true;
                 }
             }
     }
     private void Move()
     {
-        if (state == PlayerState.Dash) return;
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        if (Mathf.Abs(rigid.velocity.x + horizontal) > stat.maxSpeed)
+        if (state == PlayerState.Dash)
+        {
             return;
+        }
+
+        float horizontal = Input.GetAxisRaw("Horizontal");
+
+        if (Mathf.Abs(rigid.velocity.x + horizontal) > stat.maxSpeed)
+        {
+            return;
+        }
 
         Vector2 dir = new Vector2(horizontal, 0) * stat.speed * Time.deltaTime;
         rigid.AddForce(dir);
