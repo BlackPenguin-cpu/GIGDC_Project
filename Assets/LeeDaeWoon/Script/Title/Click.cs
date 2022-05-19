@@ -54,7 +54,6 @@ public class Click : MonoBehaviour
     #region ÆÀ·Î°í ´Ý±â
     public void TeamLogo_Close()
     {
-        transform.GetChild(2).gameObject.SetActive(false);
         Pole_01.transform.DOLocalMoveY(-14f, 0.5f);
         Pole_02.transform.DOLocalMoveY(-55f, 0.5f);
 
@@ -63,12 +62,14 @@ public class Click : MonoBehaviour
 
     private IEnumerator TeamLogoClose_Coroutine()
     {
+        timer = 0;
         while (timer < 1)
         {
             Window.sizeDelta = new Vector2(1200, Mathf.Lerp(600, 20, timer));
             timer += Time.deltaTime * 3f;
             yield return null;
         }
+        transform.GetChild(2).gameObject.SetActive(false);  
     }
     #endregion
 }
