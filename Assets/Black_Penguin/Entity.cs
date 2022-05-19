@@ -17,7 +17,6 @@ public abstract class Entity : MonoBehaviour
             if (value > maxHp)
             {
                 value = maxHp;
-                return;
             }
             if (value < Hp)
             {
@@ -33,7 +32,7 @@ public abstract class Entity : MonoBehaviour
     protected virtual void Start()
     {
         Hp = maxHp;
-    }  
-    abstract public void Die();
-    abstract public void OnHit();
+    }
+    public abstract void Die();
+    public abstract void OnHit();
 }

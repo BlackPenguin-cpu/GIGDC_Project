@@ -168,7 +168,8 @@ public class Player : Entity
 
         float horizontal = Input.GetAxisRaw("Horizontal");
 
-        sprite.flipX = horizontal == -1 ? true : false;
+        if (horizontal == 1) sprite.flipX = false;
+        if (horizontal == -1) sprite.flipX = true;
 
         if (Mathf.Abs(rigid.velocity.x + horizontal) > stat.maxSpeed)
         {

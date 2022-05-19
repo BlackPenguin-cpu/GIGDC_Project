@@ -479,12 +479,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   maxHp: 100
+  sprite: {fileID: 0}
   stat:
     maxSpeed: 7
     speed: 1000
     crit: 0
     def: 0
-    dashCooldown: 0
+    dashCooldown: 1
     attackDamage: 0
     attackSpeed: 0
   JumpPower: 7
