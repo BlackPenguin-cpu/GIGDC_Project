@@ -137,6 +137,8 @@ public class Player : Entity
     void Attack()
     {
         if (state == PlayerState.Dash) return;
+        state = PlayerState.Attack;
+        
     }
     void Jump()
     {
