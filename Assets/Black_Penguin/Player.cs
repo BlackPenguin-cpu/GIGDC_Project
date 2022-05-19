@@ -17,6 +17,7 @@ public class PlayerStat
 }
 public enum PlayerWeaponType
 {
+    NONE,
     Sword,
     Dagger,
     Axe
@@ -44,6 +45,9 @@ public class Player : Entity
 
     Animator animator;
     Rigidbody2D rigid;
+    BoxCollider2D collider;
+    public SpriteRenderer sprite;
+
     PlayerWeaponType weaponType;
     PlayerState state;
     public PlayerStat stat;
@@ -73,6 +77,8 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
+        sprite = GetComponent<SpriteRenderer>();
+        collider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
     }
@@ -86,75 +92,6 @@ public class Player : Entity
     {
         //animator.SetInteger("State", (int)state);
         //animator.SetInteger("Weapon", (int)weaponType);
-        switch (weaponType)
-        {
-            case PlayerWeaponType.Sword:
-                switch (state)
-                {
-                    case PlayerState.Idle:
-                        break;
-                    case PlayerState.Walk:
-                        break;
-                    case PlayerState.Dash:
-                        break;
-                    case PlayerState.Attack:
-                        break;
-                    case PlayerState.Jump:
-                        break;
-                    case PlayerState.JumpAttack:
-                        break;
-                    case PlayerState.Die:
-                        break;
-                    default:
-                        Debug.Assert(false);
-                        break;
-                }
-                break;
-            case PlayerWeaponType.Dagger:
-                switch (state)
-                {
-                    case PlayerState.Idle:
-                        break;
-                    case PlayerState.Walk:
-                        break;
-                    case PlayerState.Dash:
-                        break;
-                    case PlayerState.Attack:
-                        break;
-                    case PlayerState.Jump:
-                        break;
-                    case PlayerState.JumpAttack:
-                        break;
-                    case PlayerState.Die:
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case PlayerWeaponType.Axe:
-                switch (state)
-                {
-                    case PlayerState.Idle:
-                        break;
-                    case PlayerState.Walk:
-                        break;
-                    case PlayerState.Dash:
-                        break;
-                    case PlayerState.Attack:
-                        break;
-                    case PlayerState.Jump:
-                        break;
-                    case PlayerState.JumpAttack:
-                        break;
-                    case PlayerState.Die:
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                break;
-        }
     }
     void InputManager()
     {
@@ -185,14 +122,16 @@ public class Player : Entity
     {
         state = PlayerState.Dash;
 
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        Vector3 dir = new Vector3(horizontal, 0) / 2;
+        float originGravity = rigid.gravityScale;
+        rigid.gravityScale = 0;
+        Vector3 dir = new Vector3(sprite.flipX == false ? 1 : -1, 0) / 2;
         for (int i = 0; i < 10; i++)
         {
             rigid.velocity = Vector2.zero;
             transform.position += dir;
             yield return new WaitForSeconds(0.01f);
         }
+        rigid.gravityScale = originGravity;
         state = PlayerState.Idle;
     }
     void Attack()
@@ -214,7 +153,7 @@ public class Player : Entity
         if (raycasts != null && rigid.velocity.y <= 0)
             foreach (RaycastHit2D ray in raycasts)
             {
-                if (ray.transform.gameObject.tag.Contains("Platform") && ray.distance < 0.1f)
+                if (ray.transform.gameObject.tag.Contains("Platform") && ray.distance < collider.size.y / 2 + 0.1f)
                 {
                     canJump = true;
                 }
@@ -228,6 +167,8 @@ public class Player : Entity
         }
 
         float horizontal = Input.GetAxisRaw("Horizontal");
+
+        sprite.flipX = horizontal == -1 ? true : false;
 
         if (Mathf.Abs(rigid.velocity.x + horizontal) > stat.maxSpeed)
         {

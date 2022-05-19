@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class DarkPlayer : MonoBehaviour
 {
+    SpriteRenderer sprite;
+    private void Start()
+    {
+        sprite = GetComponent<SpriteRenderer>();
+    }
     void Update()
     {
         transform.position = new Vector3(Player.Instance.transform.position.x, -Player.Instance.transform.position.y);
+        sprite.flipX = Player.Instance.sprite.flipX;
     }
 }
