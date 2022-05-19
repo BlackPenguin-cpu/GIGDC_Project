@@ -7,6 +7,8 @@ public class Text_Blink : MonoBehaviour
 {
     private Text Fade_Text;
 
+
+
     private void Awake()
     {
         Fade_Text = GetComponent<Text>();
@@ -19,6 +21,7 @@ public class Text_Blink : MonoBehaviour
     /// <returns></returns>
     public IEnumerator FadeText_Full()
     {
+        Debug.Log("ตส");
         Fade_Text.color = new Color(Fade_Text.color.r, Fade_Text.color.g, Fade_Text.color.b, 0);
         while (Fade_Text.color.a < 1.0f)
         {
@@ -33,11 +36,12 @@ public class Text_Blink : MonoBehaviour
     /// <returns></returns>
     public IEnumerator FadeText_Zero()
     {
+        Debug.Log("ตส123");
         Fade_Text.color = new Color(Fade_Text.color.r, Fade_Text.color.g, Fade_Text.color.b, 1);
         Color color = new Color(0, 0, 0, 0.1f);
         while (Fade_Text.color.a > 0.0f)
         {
-            Fade_Text.color -= new Color(Fade_Text.color.r, Fade_Text.color.g, Fade_Text.color.b, Fade_Text.color.a - (Time.deltaTime / 2.0f));
+            Fade_Text.color = new Color(Fade_Text.color.r, Fade_Text.color.g, Fade_Text.color.b, Fade_Text.color.a - (Time.deltaTime / 2.0f));
             yield return null;
         }
         StartCoroutine(FadeText_Full());
