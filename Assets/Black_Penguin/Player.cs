@@ -138,7 +138,15 @@ public class Player : Entity
     {
         if (state == PlayerState.Dash) return;
         state = PlayerState.Attack;
-        
+        StartCoroutine(AttackAction());
+    }
+
+    IEnumerator AttackAction()
+    {
+
+        yield return new WaitForSeconds(stat.attackSpeed);
+        yield return new WaitForSeconds(0.5f);
+        state = PlayerState.Idle;
     }
     void Jump()
     {
