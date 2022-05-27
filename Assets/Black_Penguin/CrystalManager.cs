@@ -27,7 +27,6 @@ public enum CrystalsType
 public class CrystalManager : MonoBehaviour
 {
     public Crystals Crystals;
-    [SerializeField]
     public Dictionary<CrystalsType, GameObject> crystalObjs;
     void CreateCrystals(Vector3 pos)
     {
