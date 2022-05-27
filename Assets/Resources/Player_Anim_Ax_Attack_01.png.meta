@@ -137,7 +137,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -151,7 +151,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -225,7 +225,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -244,9 +244,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_1
       rect:
         serializedVersion: 2
-        x: 90
+        x: 94
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -265,9 +265,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_2
       rect:
         serializedVersion: 2
-        x: 180
+        x: 188
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -286,9 +286,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_3
       rect:
         serializedVersion: 2
-        x: 270
+        x: 282
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -307,9 +307,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_4
       rect:
         serializedVersion: 2
-        x: 360
+        x: 376
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -328,9 +328,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_5
       rect:
         serializedVersion: 2
-        x: 450
+        x: 470
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -349,9 +349,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_6
       rect:
         serializedVersion: 2
-        x: 540
+        x: 564
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -370,9 +370,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_7
       rect:
         serializedVersion: 2
-        x: 630
+        x: 658
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -391,9 +391,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_8
       rect:
         serializedVersion: 2
-        x: 754
+        x: 752
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -412,9 +412,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_9
       rect:
         serializedVersion: 2
-        x: 810
+        x: 846
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -433,9 +433,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_10
       rect:
         serializedVersion: 2
-        x: 900
+        x: 940
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -454,9 +454,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_11
       rect:
         serializedVersion: 2
-        x: 990
+        x: 1034
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -475,9 +475,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_12
       rect:
         serializedVersion: 2
-        x: 1080
+        x: 1128
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -496,9 +496,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_13
       rect:
         serializedVersion: 2
-        x: 1170
+        x: 1222
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -517,9 +517,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_14
       rect:
         serializedVersion: 2
-        x: 1260
+        x: 1316
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -538,9 +538,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_15
       rect:
         serializedVersion: 2
-        x: 1350
+        x: 1410
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -559,9 +559,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_16
       rect:
         serializedVersion: 2
-        x: 1440
+        x: 1504
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -580,9 +580,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_17
       rect:
         serializedVersion: 2
-        x: 1530
+        x: 1598
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -601,9 +601,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_18
       rect:
         serializedVersion: 2
-        x: 1620
+        x: 1692
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -622,9 +622,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_19
       rect:
         serializedVersion: 2
-        x: 1710
+        x: 1786
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -643,9 +643,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_20
       rect:
         serializedVersion: 2
-        x: 1800
+        x: 1880
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -664,9 +664,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_21
       rect:
         serializedVersion: 2
-        x: 1890
+        x: 1974
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -685,9 +685,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_22
       rect:
         serializedVersion: 2
-        x: 1980
+        x: 2068
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -706,9 +706,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_23
       rect:
         serializedVersion: 2
-        x: 2070
+        x: 2162
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -727,9 +727,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_24
       rect:
         serializedVersion: 2
-        x: 2160
+        x: 2256
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -748,9 +748,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_25
       rect:
         serializedVersion: 2
-        x: 2250
+        x: 2350
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -769,9 +769,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_26
       rect:
         serializedVersion: 2
-        x: 2340
+        x: 2444
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -790,9 +790,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_27
       rect:
         serializedVersion: 2
-        x: 2430
+        x: 2538
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -811,9 +811,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_28
       rect:
         serializedVersion: 2
-        x: 2520
+        x: 2632
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -832,9 +832,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_29
       rect:
         serializedVersion: 2
-        x: 2610
+        x: 2726
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -853,9 +853,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_30
       rect:
         serializedVersion: 2
-        x: 2700
+        x: 2820
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -874,9 +874,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_31
       rect:
         serializedVersion: 2
-        x: 2790
+        x: 2914
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -895,9 +895,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_32
       rect:
         serializedVersion: 2
-        x: 2880
+        x: 3008
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -916,9 +916,9 @@ TextureImporter:
       name: Player_Anim_Ax_Attack_01_33
       rect:
         serializedVersion: 2
-        x: 2970
+        x: 3102
         y: 0
-        width: 90
+        width: 94
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -929,27 +929,6 @@ TextureImporter:
       bones: []
       spriteID: 2ce7116ca728b34a0800000000000000
       internalID: -6612548164042785086
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_Anim_Ax_Attack_01_34
-      rect:
-        serializedVersion: 2
-        x: 3060
-        y: 0
-        width: 90
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bb3549cf4279ea0c0800000000000000
-      internalID: -4562543187367537733
       vertices: []
       indices: 
       edges: []
