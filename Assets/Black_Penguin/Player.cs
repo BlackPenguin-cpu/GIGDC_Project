@@ -43,10 +43,10 @@ public class Player : Entity
 {
     public static Player Instance = null;
 
-    Animator animator;
-    Rigidbody2D rigid;
-    BoxCollider2D collider;
-    public SpriteRenderer sprite;
+    Animator animator => GetComponent<Animator>();
+    Rigidbody2D rigid => GetComponent<Rigidbody2D>();
+    public new BoxCollider2D collider => GetComponent<BoxCollider2D>();
+    public SpriteRenderer sprite => GetComponent<SpriteRenderer>();
 
     PlayerWeaponType weaponType;
     PlayerState state;
@@ -77,10 +77,6 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
-        sprite = GetComponent<SpriteRenderer>();
-        collider = GetComponent<BoxCollider2D>();
-        animator = GetComponent<Animator>();
-        rigid = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
@@ -138,14 +134,40 @@ public class Player : Entity
     {
         if (state == PlayerState.Dash) return;
         state = PlayerState.Attack;
-        
+        StartCoroutine(AttackAction());
     }
+
+    IEnumerator AttackAction()
+    {
+
+        yield return new WaitForSeconds(stat.attackSpeed);
+        yield return new WaitForSeconds(0.5f);
+        state = PlayerState.Idle;
+    }
+
+    //공격 관련 함수
+    IEnumerator TestAttack()
+    {
+        RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position, transform.lossyScale, 0, sprite.flipX ? Vector2.left : Vector2.right);
+
+        foreach (RaycastHit2D ray in raycasts)
+        {
+            if (ray.distance <= collider.size.x + 1 && ray.transform.TryGetComponent(out BaseEnemy enemy))
+            {
+                enemy._Hp -= stat.attackDamage;
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+        state = PlayerState.Idle;
+    }
+
     void Jump()
     {
         if (state == PlayerState.Dash || state == PlayerState.Attack || state == PlayerState.JumpAttack) return;
         if (canJump)
         {
             canJump = false;
+            rigid.velocity = new Vector3(rigid.velocity.x, 0);
             rigid.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
         }
     }
@@ -155,7 +177,7 @@ public class Player : Entity
         if (raycasts != null && rigid.velocity.y <= 0)
             foreach (RaycastHit2D ray in raycasts)
             {
-                if (ray.transform.gameObject.tag.Contains("Platform") && ray.distance < collider.size.y / 2 + 0.1f)
+                if (ray.transform.gameObject.tag.Contains("Platform") && ray.distance < collider.size.y / 2)
                 {
                     canJump = true;
                 }

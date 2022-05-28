@@ -14,7 +14,11 @@ public class Text_Blink : MonoBehaviour
         Fade_Text = GetComponent<Text>();
         StartCoroutine(FadeText_Full());
     }
-
+    private void Update()
+    {
+        //Fade_Text.color = new Color(Fade_Text.color.r, Fade_Text.color.g, Fade_Text.color.b, Mathf.Cos(Time.time));
+        //님 이거 한줄로 됨
+    }
     /// <summary>
     /// 알파값 0에서 1로 전환
     /// </summary>
