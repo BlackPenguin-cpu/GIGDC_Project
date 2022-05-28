@@ -36,7 +36,6 @@ public class Text_Blink : MonoBehaviour
     /// <returns></returns>
     public IEnumerator FadeText_Zero()
     {
-        Debug.Log("ตส123");
         Fade_Text.color = new Color(Fade_Text.color.r, Fade_Text.color.g, Fade_Text.color.b, 1);
         Color color = new Color(0, 0, 0, 0.1f);
         while (Fade_Text.color.a > 0.0f)

@@ -18,7 +18,7 @@ public class HP_Bar : MonoBehaviour
 
     public void Test()
     {
-        Debug.Log("0.5 감소");
+        //Debug.Log("0.5 감소");
         Bar.transform.localScale += new Vector3(0, -0.1f, 0);
     }
 }

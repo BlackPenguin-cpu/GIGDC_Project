@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c514a77712245da478cd1bc9de892243, type: 3}
+  m_Name: ItemSo
+  m_EditorClassIdentifier: 
+  Items:
+  - Itme_Name: "\uD798\uC758 \uB9C8\uC815\uC11D"
+    Item_Explanation: "\uACF5\uACA9\uB825\uC774 10 % \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    Item_Icon: {fileID: 0}
+    Item_Percent: 20
+  - Itme_Name: "\uC2E0\uC18D\uC758 \uB9C8\uC815\uC11D"
+    Item_Explanation: "\uC774\uB3D9\uC18D\uB3C4\uAC00 10% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    Item_Icon: {fileID: 0}
+    Item_Percent: 20
+  - Itme_Name: "\uC5F0\uC758 \uB9C8\uC815\uC11D"
+    Item_Explanation: "\uACF5\uACA9 \uC18D\uB3C4\uAC00 0.1\uCD08 \uAC10\uC18C\uD569\uB2C8\uB2E4."
+    Item_Icon: {fileID: 0}
+    Item_Percent: 15
+  - Itme_Name: "\uCCB4\uB825\uC758 \uB9C8\uC815\uC11D"
+    Item_Explanation: "\uCD5C\uB300 \uCCB4\uB825\uC774 10 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    Item_Icon: {fileID: 0}
+    Item_Percent: 15
+  - Itme_Name: "\uC2DC\uAC04\uC758 \uB9C8\uC815\uC11D"
+    Item_Explanation: "\uCFE8\uD0C0\uC784\uC774 \uAC10\uC18C\uD569\uB2C8\uB2E4."
+    Item_Icon: {fileID: 0}
+    Item_Percent: 15
+  - Itme_Name: "\uBC29\uC5B4\uC758 \uB9C8\uC815\uC11D"
+    Item_Explanation: "\uBC29\uC5B4\uB825\uC774 2 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    Item_Icon: {fileID: 0}
+    Item_Percent: 15
+  DA:
+  - Itme_Name: "\uBC14\uB78C\uC758 \uADC0\uAC78\uC774"
+    Item_Explanation: "\uB300\uC26C \uD69F\uC218\uAC00 \uCD94\uAC00\uB41C\uB2E4."
+    Item_Icon: {fileID: 0}
+    Item_Percent: 20
+  - Itme_Name: "\uAC00\uC2DC\uACAC\uAC11"
+    Item_Explanation: "10%\uC758 \uD655\uB960\uB85C \uC790\uC2E0\uC744 \uD53C\uACA9\uD55C
+      \uC801\uC5D0\uAC8C \uB370\uBBF8\uC9C0\uB97C \uC900\uB2E4."
+    Item_Icon: {fileID: 0}
+    Item_Percent: 15
+  - Itme_Name: "\uCE7C\uB0A0\uB9DD\uD1A0"
+    Item_Explanation: "\uB300\uC26C\uACF5\uACA9\uC774 \uAC00\uB2A5\uD574\uC9C4\uB2E4."
+    Item_Icon: {fileID: 0}
+    Item_Percent: 20
+  - Itme_Name: "\uC800\uC8FC\uBC1B\uC740 \uB2E8\uAC80"
+    Item_Explanation: "(\uCFE8\uD0C0\uC784)\uB9C8\uB2E4 \uAC00\uC7A5 \uAC00\uAE4C\uC6B4
+      \uC801\uC774 \uACF5\uACA9\uC744 \uBC1B\uB294\uB2E4."
+    Item_Icon: {fileID: 0}
+    Item_Percent: 15
+  - Itme_Name: "\uD53C\uC758 \uC7A5\uAC11"
+    Item_Explanation: "\uC801 \uCC98\uCE58 \uC2DC 5\uCD08\uB3D9\uC548 \uACF5\uACA9\uC18D\uB3C4\uAC00
+      \uC0C1\uC2B9\uD55C\uB2E4."
+    Item_Icon: {fileID: 0}
+    Item_Percent: 15
+  - Itme_Name: "\uC218\uC815\uAD6C"
+    Item_Explanation: "40\uCD08\uB9C8\uB2E4 \uAC70\uB300\uD55C \uD3ED\uBC1C\uC744
+      \uC77C\uC73C\uD0A4\uB294 \uC544\uD3EC\uCE7C\uB9BD\uC2A4\uAC00 \uBC1C\uB3D9\uD569\uB2C8\uB2E4."
+    Item_Icon: {fileID: 0}
+    Item_Percent: 10
+  - Itme_Name: "\uC808\uB300\uBC18\uC9C0"
+    Item_Explanation: "\uACF5\uACA9\uB825 60% \uC99D\uAC00, \uAE30\uBCF8 \uACF5\uACA8
+      \uBC0F \uB300\uC26C \uC2DC \uCC38\uACA9\uC774 \uBC1C\uC0DD\uD55C\uB2E4."
+    Item_Icon: {fileID: 0}
+    Item_Percent: 5
