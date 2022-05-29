@@ -73,7 +73,7 @@ public class Card_Manager : MonoBehaviour
         int itemIndex = 0;
         List<Item> item = new List<Item>();
         // 아이템 카드 소환
-        var cardObject = Instantiate(CardPrefab, this.transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+        var cardObject = Instantiate(CardPrefab, this.transform.position, Quaternion.identity, GameObject.Find("Item_Canvas").transform);
         var card = cardObject.GetComponent<Item_CardList>();
         for (int i = 0; i < 3; i++)
         {

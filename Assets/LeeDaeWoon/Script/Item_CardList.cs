@@ -43,21 +43,21 @@ public class Item_CardList : MonoBehaviour
 
                 Left_Name.text = this.Left_Item.Itme_Name;
                 Left_Explanation.text = this.Left_Item.Item_Explanation;
-                //Left_Card_Icon.sprite = this.Left_Item.Item_Icon;
+                Left_Card_Icon.sprite = this.Left_Item.Item_Icon;
                 break;
             case 1:
                 this.Among_Item = item;
 
                 Among_Name.text = this.Among_Item.Itme_Name;
                 Among_Explanation.text = this.Among_Item.Item_Explanation;
-                //Among_Card_Icon.sprite = this.Among_Item.Item_Icon;
+                Among_Card_Icon.sprite = this.Among_Item.Item_Icon;
                 break;
             case 2:
                 this.Right_Item = item;
 
                 Right_Name.text = this.Right_Item.Itme_Name;
                 Right_Explanation.text = this.Right_Item.Item_Explanation;
-                //Right_Card_Icon.sprite = this.Right_Item.Item_Icon;
+                Right_Card_Icon.sprite = this.Right_Item.Item_Icon;
                 break;
 
         }
