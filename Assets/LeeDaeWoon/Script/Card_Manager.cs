@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Card_Manager : MonoBehaviour
 {
-    //public static Card_Manager Inst { get; private set; }
-    //void Awake() => Inst = this;
+    public static Card_Manager Inst { get; private set; }
+    void Awake() => Inst = this;
 
     private int RandomMix;
 
@@ -119,64 +119,9 @@ public class Card_Manager : MonoBehaviour
                 }
                 item.Add(DABuffer[RandomTest]);
                 card.Test_ItemCard(DABuffer[RandomTest], itemIndex++);
+                // 아이템 클릭 시 if문 달아주기
                 DABuffer.RemoveAt(RandomTest);
             }
         }
     }
-    #region PopItem
-    //// ㅠ
-    //public Item PopItem()
-    //{
-
-    //    for (int i = 0; i < 3; i++)
-    //    {
-    //        if (ItemBuffer.Count == 0)
-    //        {
-
-    //        }
-
-    //        Item item = ItemBuffer[i];
-    //        ItemBuffer.RemoveAt(i);
-    //        return item;
-    //    }
-    //    return null;
-    //}
-
-    //public Item Left_PopItem()
-    //{
-
-    //    // ItemBuffer의 지정한 인덱스를 가져온다.
-    //    if (ItemBuffer.Count == 0)
-    //    {
-    //    }
-
-    //    Item item = ItemBuffer[2];
-    //    ItemBuffer.RemoveAt(2);
-    //    return item;
-    //}
-
-    //public Item Among_PopItem()
-    //{
-    //    // ItemBuffer의 지정한 인덱스를 가져온다.
-    //    if (ItemBuffer.Count == 0)
-    //    {
-    //    }
-
-    //    Item item = ItemBuffer[1];
-    //    ItemBuffer.RemoveAt(1);
-    //    return item;
-    //}
-
-    //public Item Right_PopItem()
-    //{
-    //    // ItemBuffer의 지정한 인덱스를 가져온다.
-    //    if (ItemBuffer.Count == 0)
-    //    {
-    //    }
-
-    //    Item item = ItemBuffer[0];
-    //    ItemBuffer.RemoveAt(0);
-    //    return item;
-    //}
-    #endregion
 }

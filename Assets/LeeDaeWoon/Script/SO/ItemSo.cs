@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//근데 개같이날아감
+
 [System.Serializable]
 public class Item
 {

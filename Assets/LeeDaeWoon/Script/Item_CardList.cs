@@ -23,7 +23,6 @@ public class Item_CardList : MonoBehaviour
     public Item Left_Item;
     public Item Among_Item;
     public Item Right_Item;
-    public Item PopItem;
 
     void Start()
     {
@@ -62,33 +61,5 @@ public class Item_CardList : MonoBehaviour
                 break;
 
         }
-    }
-
-    public void Left_ItemCard(Item Left_item)
-    {
-        
-        this.Left_Item = Left_item;
-
-        Left_Name.text = this.Left_Item.Itme_Name;
-        Left_Explanation.text = this.Left_Item.Item_Explanation;
-        //Left_Card_Icon.sprite = this.Left_Item.Item_Icon;
-    }
-    
-    public void Among_ItemCard(Item Among_item)
-    {
-        this.Among_Item = Among_item;
-
-        Among_Name.text = this.Among_Item.Itme_Name;
-        Among_Explanation.text = this.Among_Item.Item_Explanation;
-        //Among_Card_Icon.sprite = this.Among_Item.Item_Icon;
-    }
-
-    public void Right_ItemCard(Item Right_item)
-    {
-        this.Right_Item = Right_item;
-
-        Right_Name.text = this.Right_Item.Itme_Name;
-        Right_Explanation.text = this.Right_Item.Item_Explanation;
-        //Right_Card_Icon.sprite = this.Right_Item.Item_Icon;
     }
 }
