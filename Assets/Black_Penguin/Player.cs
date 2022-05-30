@@ -38,7 +38,6 @@ public enum PlayerType
     Down = -1,
     Up = 1
 }
-
 public class Player : Entity
 {
     public static Player Instance = null;
@@ -78,6 +77,13 @@ public class Player : Entity
     {
         base.Start();
     }
+    public void CrystalCheck(int[] crystals)
+    {
+        for (int i = 0; i < (int)CrystalsType.END; i++)
+        {
+            //현재 보낸 배열을 마정석에 맞게 스텟 반영
+        }
+    }
     private void Update()
     {
         InputManager();
@@ -106,6 +112,7 @@ public class Player : Entity
             Jump();
         }
     }
+    #region 플레이어 인풋
     //플레이어 인풋
     void Dash()
     {
@@ -132,6 +139,7 @@ public class Player : Entity
         rigid.gravityScale = originGravity;
         state = PlayerState.Idle;
     }
+    #region 공격관련함수
     void Attack()
     {
         if (state == PlayerState.Dash) return;
@@ -162,7 +170,7 @@ public class Player : Entity
         yield return new WaitForSeconds(0.5f);
         state = PlayerState.Idle;
     }
-
+    #endregion
     void Jump()
     {
         if (state == PlayerState.Dash || state == PlayerState.Attack || state == PlayerState.JumpAttack) return;
@@ -213,4 +221,5 @@ public class Player : Entity
     {
         throw new System.NotImplementedException();
     }
+    #endregion
 }
