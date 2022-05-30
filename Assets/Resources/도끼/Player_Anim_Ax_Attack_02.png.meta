@@ -1,0 +1,540 @@
+fileFormatVersion: 2
+guid: 115a02678534ae74c8a3eabe3c3eee9d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 258751541522393967
+    second: Player_Anim_Ax_Attack_02_0
+  - first:
+      213: -317209121016073904
+    second: Player_Anim_Ax_Attack_02_1
+  - first:
+      213: 1686894296137972378
+    second: Player_Anim_Ax_Attack_02_2
+  - first:
+      213: -8872314899461318026
+    second: Player_Anim_Ax_Attack_02_3
+  - first:
+      213: -3795957999526172028
+    second: Player_Anim_Ax_Attack_02_4
+  - first:
+      213: -1151716642311692546
+    second: Player_Anim_Ax_Attack_02_5
+  - first:
+      213: 2158619265793280716
+    second: Player_Anim_Ax_Attack_02_6
+  - first:
+      213: 9136133849622994548
+    second: Player_Anim_Ax_Attack_02_7
+  - first:
+      213: 6288643657492627139
+    second: Player_Anim_Ax_Attack_02_8
+  - first:
+      213: 8566632049118675153
+    second: Player_Anim_Ax_Attack_02_9
+  - first:
+      213: -8592940795671165945
+    second: Player_Anim_Ax_Attack_02_10
+  - first:
+      213: 4368079954224529097
+    second: Player_Anim_Ax_Attack_02_11
+  - first:
+      213: -7154555235557718614
+    second: Player_Anim_Ax_Attack_02_12
+  - first:
+      213: 8055817660215057757
+    second: Player_Anim_Ax_Attack_02_13
+  - first:
+      213: 8353283480576252810
+    second: Player_Anim_Ax_Attack_02_14
+  - first:
+      213: 5494105240429068104
+    second: Player_Anim_Ax_Attack_02_15
+  - first:
+      213: 8879321979841837153
+    second: Player_Anim_Ax_Attack_02_16
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6be685f725479300800000000000000
+      internalID: 258751541522393967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_1
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 051b25e2cfb099bf0800000000000000
+      internalID: -317209121016073904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_2
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9abfeebc6d096710800000000000000
+      internalID: 1686894296137972378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_3
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67ad3324b943fd480800000000000000
+      internalID: -8872314899461318026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_4
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48aa0ffaf4c025bc0800000000000000
+      internalID: -3795957999526172028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_5
+      rect:
+        serializedVersion: 2
+        x: 2350
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efe1b1dd0d74400f0800000000000000
+      internalID: -1151716642311692546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_6
+      rect:
+        serializedVersion: 2
+        x: 2820
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca4cee09c4f4fd10800000000000000
+      internalID: 2158619265793280716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_7
+      rect:
+        serializedVersion: 2
+        x: 3290
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47e5337b4511ace70800000000000000
+      internalID: 9136133849622994548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_8
+      rect:
+        serializedVersion: 2
+        x: 3760
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ce7cdb7610c54750800000000000000
+      internalID: 6288643657492627139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_9
+      rect:
+        serializedVersion: 2
+        x: 4230
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d00231f57ac2e670800000000000000
+      internalID: 8566632049118675153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_10
+      rect:
+        serializedVersion: 2
+        x: 4700
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 704ce0aafddbfb880800000000000000
+      internalID: -8592940795671165945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_11
+      rect:
+        serializedVersion: 2
+        x: 5170
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cebe0643998e9c30800000000000000
+      internalID: 4368079954224529097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_12
+      rect:
+        serializedVersion: 2
+        x: 5640
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa5cba27be9e5bc90800000000000000
+      internalID: -7154555235557718614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_13
+      rect:
+        serializedVersion: 2
+        x: 6110
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ddf6cfa730ccf60800000000000000
+      internalID: 8055817660215057757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_14
+      rect:
+        serializedVersion: 2
+        x: 6580
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8bd2e76113dce370800000000000000
+      internalID: 8353283480576252810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_15
+      rect:
+        serializedVersion: 2
+        x: 7050
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84ff26e6b9bfe3c40800000000000000
+      internalID: 5494105240429068104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Attack_02_16
+      rect:
+        serializedVersion: 2
+        x: 7516
+        y: 0
+        width: 470
+        height: 420
+      alignment: 9
+      pivot: {x: 0.41, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1687ac6cb40b93b70800000000000000
+      internalID: 8879321979841837153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

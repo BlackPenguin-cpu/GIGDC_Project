@@ -82,12 +82,13 @@ public class Player : Entity
     {
         InputManager();
         JumpCheck();
+        AnimationController();
         curDashCooltime += Time.deltaTime;
     }
     void AnimationController()
     {
-        //animator.SetInteger("State", (int)state);
-        //animator.SetInteger("Weapon", (int)weaponType);
+        animator.SetInteger("State", (int)state);
+        animator.SetInteger("Weapon", (int)weaponType);
     }
     void InputManager()
     {
@@ -121,11 +122,12 @@ public class Player : Entity
         float originGravity = rigid.gravityScale;
         rigid.gravityScale = 0;
         Vector3 dir = new Vector3(sprite.flipX == false ? 1 : -1, 0) / 2;
+        var waitSec = new WaitForSeconds(0.01f);
         for (int i = 0; i < 10; i++)
         {
             rigid.velocity = Vector2.zero;
             transform.position += dir;
-            yield return new WaitForSeconds(0.01f);
+            yield return waitSec;
         }
         rigid.gravityScale = originGravity;
         state = PlayerState.Idle;
@@ -185,7 +187,7 @@ public class Player : Entity
     }
     private void Move()
     {
-        if (state == PlayerState.Dash)
+        if (state == PlayerState.Dash || state == PlayerState.Attack)
         {
             return;
         }

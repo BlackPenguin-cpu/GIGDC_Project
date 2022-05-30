@@ -2,16 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Crystals
-{
-    int powerCount = 0;
-    int speedCount = 0;
-    int attackSpeedCount = 0;
-    int healthCount = 0;
-    int timeCount = 0;
-    int deffenceCount = 0;
-}
 
 [System.Serializable]
 public enum CrystalsType
@@ -21,16 +11,34 @@ public enum CrystalsType
     ATTACKSPEED,
     HEALTH,
     TIME,
-    DEFFENCE
+    DEFFENCE,
+    END
 }
 
 public class CrystalManager : MonoBehaviour
 {
-    public Crystals Crystals;
-    public Dictionary<CrystalsType, GameObject> crystalObjs;
-    void CreateCrystals(Vector3 pos)
+    public int[] crystals = new int[(int)CrystalsType.END];
+    public CrystalsType CrtstalReturn()
     {
-
-        Instantiate(crystalObjs[CrystalsType.POWER], pos, Quaternion.identity);
+        CrystalsType index;
+        do
+        {
+            index = (CrystalsType)Random.Range(0, (int)CrystalsType.END);
+        }
+        while (!CrystalCreateRule(index));
+        return index;
     }
+    bool CrystalCreateRule(CrystalsType type)
+    {
+        if (type == CrystalsType.TIME && crystals[(int)CrystalsType.TIME] >= 3)
+        {
+            return false;
+        }
+        if (type == CrystalsType.ATTACKSPEED && Player.Instance.stat.attackSpeed <= 0.1f)
+        {
+            return false;
+        }
+        return true;
+    }
+
 }

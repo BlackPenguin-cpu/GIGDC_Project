@@ -1,0 +1,444 @@
+fileFormatVersion: 2
+guid: d43813d2f67c62345bad3ead4199f058
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1671479036146965142
+    second: Player_Anim_Dagger_Attack_01_0
+  - first:
+      213: 1608805322460641656
+    second: Player_Anim_Dagger_Attack_01_1
+  - first:
+      213: -1614875395111543315
+    second: Player_Anim_Dagger_Attack_01_2
+  - first:
+      213: 7753944243721408003
+    second: Player_Anim_Dagger_Attack_01_3
+  - first:
+      213: -6956108844760166933
+    second: Player_Anim_Dagger_Attack_01_4
+  - first:
+      213: 8959397200220813658
+    second: Player_Anim_Dagger_Attack_01_5
+  - first:
+      213: -8258564159905607409
+    second: Player_Anim_Dagger_Attack_01_6
+  - first:
+      213: 3624687701221698414
+    second: Player_Anim_Dagger_Attack_01_7
+  - first:
+      213: -1155179214463349521
+    second: Player_Anim_Dagger_Attack_01_8
+  - first:
+      213: -307015264828001062
+    second: Player_Anim_Dagger_Attack_01_9
+  - first:
+      213: -7827955431157547021
+    second: Player_Anim_Dagger_Attack_01_10
+  - first:
+      213: -1490723852904125849
+    second: Player_Anim_Dagger_Attack_01_11
+  - first:
+      213: 2944134069115102861
+    second: Player_Anim_Dagger_Attack_01_12
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_Anim_Dagger_Attack_01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 410
+        height: 325
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a65a2f82ca6bdc8e0800000000000000
+      internalID: -1671479036146965142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Dagger_Attack_01_1
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 0
+        width: 410
+        height: 325
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 879360ebaef935610800000000000000
+      internalID: 1608805322460641656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Dagger_Attack_01_2
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 0
+        width: 410
+        height: 325
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ded9bd5526fc699e0800000000000000
+      internalID: -1614875395111543315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Dagger_Attack_01_3
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 0
+        width: 410
+        height: 325
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30e033f153b8b9b60800000000000000
+      internalID: 7753944243721408003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Dagger_Attack_01_4
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 0
+        width: 410
+        height: 325
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bed0e195cdfe67f90800000000000000
+      internalID: -6956108844760166933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Dagger_Attack_01_5
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 0
+        width: 410
+        height: 325
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a597ac0e84c265c70800000000000000
+      internalID: 8959397200220813658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Dagger_Attack_01_6
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 0
+        width: 410
+        height: 325
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f01dd0ef6afa36d80800000000000000
+      internalID: -8258564159905607409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Dagger_Attack_01_7
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 0
+        width: 410
+        height: 325
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6beb05824a7d4230800000000000000
+      internalID: 3624687701221698414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Dagger_Attack_01_8
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 0
+        width: 410
+        height: 325
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fec4ff5ff9af7ffe0800000000000000
+      internalID: -1155179214463349521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Dagger_Attack_01_9
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 0
+        width: 410
+        height: 325
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad4fd474e334dbbf0800000000000000
+      internalID: -307015264828001062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Dagger_Attack_01_10
+      rect:
+        serializedVersion: 2
+        x: 4100
+        y: 0
+        width: 410
+        height: 325
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ffb34872048d5390800000000000000
+      internalID: -7827955431157547021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Dagger_Attack_01_11
+      rect:
+        serializedVersion: 2
+        x: 4510
+        y: 0
+        width: 410
+        height: 325
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76aa271dd82ef4be0800000000000000
+      internalID: -1490723852904125849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Dagger_Attack_01_12
+      rect:
+        serializedVersion: 2
+        x: 4920
+        y: 0
+        width: 410
+        height: 325
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d862bb0565aabd820800000000000000
+      internalID: 2944134069115102861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
