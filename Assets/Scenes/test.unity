@@ -296,7 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63422edfcd5e8fd4db777f07e1d8b641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystals: 000000000000000000000000000000000000000000000000
 --- !u!4 &318592110
 Transform:
   m_ObjectHideFlags: 0
@@ -502,7 +501,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -525,14 +524,25 @@ MonoBehaviour:
   speed: 0
   maxHp: 100
   stat:
+    level: 0
+    weaponType: 1
     maxSpeed: 7
     speed: 1000
     crit: 0
     def: 0
     dashCooldown: 1
-    attackDamage: 0
-    attackSpeed: 0
+    attackSpeed: 2
+    PlayerDATypeList:
+      WindEarRing: 0
+      NeedleArmour: 0
+      KnifeCape: 0
+      CurseKnife: 0
+      BloodGauntlet: 0
+      CrystalOrb: 0
+      TheOneRing: 0
   JumpPower: 7
+  cursedKnifeCoolodwn: 10
+  crystalOrbCoolodwn: 40
 --- !u!212 &1778768263
 SpriteRenderer:
   m_ObjectHideFlags: 0

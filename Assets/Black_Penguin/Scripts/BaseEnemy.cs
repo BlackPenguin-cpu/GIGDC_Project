@@ -9,6 +9,4 @@ public abstract class BaseEnemy : Entity
     public float attackDamage;
 
     public override abstract void Die();
-    public override abstract void OnHit();
-    public abstract void Attack();
 }

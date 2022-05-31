@@ -5,15 +5,31 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [System.Serializable]
-public class PlayerStat
+public class PlayerInfo
 {
+    public int level;
+    public PlayerWeaponType weaponType;
+
     public float maxSpeed;
     public float speed; // velocity
     public float crit;
     public float def;
     public float dashCooldown;
-    public float attackDamage;
+    private float attackDamage;
+    public float _attackDamage
+    {
+        get
+        {
+            if (PlayerDATypeList.TheOneRing)
+                return _attackDamage * 1.6f;
+            else
+                return _attackDamage;
+        }
+        set { _attackDamage = value; }
+    }
     public float attackSpeed;
+    public PlayerDAType PlayerDATypeList;
+
 }
 [System.Serializable]
 public class PlayerDAType
@@ -58,10 +74,8 @@ public class Player : Entity
     public new BoxCollider2D collider => GetComponent<BoxCollider2D>();
     public SpriteRenderer sprite => GetComponent<SpriteRenderer>();
 
-    PlayerDAType PlayerDATypeList;
-    PlayerWeaponType weaponType;
     PlayerState state;
-    public PlayerStat stat;
+    public PlayerInfo stat;
     public float JumpPower;
 
     float curDashCooltime = 0;
@@ -101,14 +115,38 @@ public class Player : Entity
         InputManager();
         JumpCheck();
         AnimationController();
-        curWindEarRingDashCooldown += Time.deltaTime;
+        PlayerItemContoroller();
+
         curDashCooltime += Time.deltaTime;
+    }
+    void PlayerItemContoroller()
+    {
+        if (stat.PlayerDATypeList.CurseKnife && cursedKnifeCoolodwn < curCursedKnifeCoolodwn)
+        {
+            cursedKnifeAction();
+            curCursedKnifeCoolodwn = 0;
+        }
+        curCursedKnifeCoolodwn += Time.deltaTime;
+        curWindEarRingDashCooldown += Time.deltaTime;
     }
     void AnimationController()
     {
         animator.SetInteger("State", (int)state);
-        animator.SetInteger("Weapon", (int)weaponType);
+        animator.SetInteger("Weapon", (int)stat.weaponType);
+        animator.SetBool("isAttack", isAttack);
+        animator.SetFloat("AttackSpeed", stat.attackSpeed);
     }
+
+    public override void Die()
+    {
+        throw new System.NotImplementedException();
+    }
+    public override void OnHit(Entity entity, float Damage = 0)
+    {
+        if (stat.PlayerDATypeList.NeedleArmour && Random.Range(0, 10) == 0) needleArmourAction(entity);
+    }
+    #region 플레이어 인풋
+    //플레이어 인풋
     void InputManager()
     {
         Move();
@@ -125,16 +163,15 @@ public class Player : Entity
             Jump();
         }
     }
-    #region 플레이어 인풋
-    //플레이어 인풋
     void Dash()
     {
+        if (state != PlayerState.Walk && state != PlayerState.Idle) return;
         if (stat.dashCooldown < curDashCooltime)
         {
             curDashCooltime = 0;
             StartCoroutine(DashAction());
         }
-        else if (PlayerDATypeList.WindEarRing)
+        else if (stat.PlayerDATypeList.WindEarRing)
         {
             windEarRingAction();
         }
@@ -151,7 +188,7 @@ public class Player : Entity
         var enemies = new List<BaseEnemy>();
         for (int i = 0; i < 10; i++)
         {
-            if (PlayerDATypeList.KnifeCape)
+            if (stat.PlayerDATypeList.KnifeCape)
             {
                 knifeCapeAction(enemies);
             }
@@ -164,16 +201,21 @@ public class Player : Entity
         state = PlayerState.Idle;
     }
     #region 공격관련함수
-    void Attack()
+    bool isAttack;
+    Coroutine nowAttackAction;
+    public override void Attack()
     {
-        if (state == PlayerState.Dash) return;
+        if (state != PlayerState.Idle && state != PlayerState.Walk && state != PlayerState.Attack) return;
         state = PlayerState.Attack;
-        switch (weaponType)
+        switch (stat.weaponType)
         {
             case PlayerWeaponType.NONE:
-                StartCoroutine(AttackAction());
+                nowAttackAction = StartCoroutine(AttackAction());
                 break;
             case PlayerWeaponType.Sword:
+                if (nowAttackAction != null)
+                    StopCoroutine(nowAttackAction);
+                nowAttackAction = StartCoroutine(AttackAction());
                 break;
             case PlayerWeaponType.Dagger:
                 break;
@@ -186,10 +228,11 @@ public class Player : Entity
 
     IEnumerator AttackAction()
     {
-
-        yield return new WaitForSeconds(stat.attackSpeed);
-        yield return new WaitForSeconds(0.5f);
+        yield return null;
+        isAttack = true;
+        yield return new WaitForSeconds(1 / stat.attackSpeed);
         state = PlayerState.Idle;
+        isAttack = false;
     }
 
     //공격 관련 함수
@@ -201,7 +244,7 @@ public class Player : Entity
         {
             if (ray.distance <= collider.size.x + 1 && ray.transform.TryGetComponent(out BaseEnemy enemy))
             {
-                enemy._Hp -= stat.attackDamage;
+                enemy._Hp -= stat._attackDamage;
             }
         }
         yield return new WaitForSeconds(0.5f);
@@ -236,6 +279,7 @@ public class Player : Entity
         {
             return;
         }
+        state = PlayerState.Walk;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -249,16 +293,11 @@ public class Player : Entity
 
         Vector2 dir = new Vector2(horizontal, 0) * stat.speed * Time.deltaTime;
         rigid.AddForce(dir);
+
+        if (dir == Vector2.zero && state == PlayerState.Walk)
+            state = PlayerState.Idle;
     }
     #endregion
-    public override void Die()
-    {
-        throw new System.NotImplementedException();
-    }
-    public override void OnHit(Entity entity, float Damage = 0)
-    {
-        if (PlayerDATypeList.NeedleArmour && Random.Range(0, 10) == 0) needleArmourAction(entity);
-    }
     #region 플레이어 아이템
 
     float windEarRingDashCooldown => curDashCooltime;
@@ -273,7 +312,7 @@ public class Player : Entity
     }
     void needleArmourAction(Entity entity)
     {
-        entity._Hp -= stat.attackDamage / 5;
+        entity._Hp -= stat._attackDamage / 5;
     }
     void knifeCapeAction(List<BaseEnemy> enemies)
     {
@@ -290,10 +329,12 @@ public class Player : Entity
             }
         }
     }
+    public float cursedKnifeCoolodwn = 10;
+    float curCursedKnifeCoolodwn = 0;
     void cursedKnifeAction()
     {
         BaseEnemy[] enemies = FindObjectsOfType<BaseEnemy>();
-        BaseEnemy target;
+        BaseEnemy target = null;
         float maxDistance = 0;
 
         foreach (BaseEnemy enemy in enemies)
@@ -305,11 +346,29 @@ public class Player : Entity
                 target = enemy;
             }
         }
-        //단검을 소환하여 타겟을 쫒아가 때려야함
+
+        CursedKnife obj = Instantiate(Resources.Load<CursedKnife>(""), transform.position, Quaternion.identity);
+        obj.damage = stat._attackDamage * 2;
+        obj.speed = stat.speed * 2;
+        obj.rotatePower = 5;
+        obj.target = target.gameObject;
     }
     void BloodGauntletAction()
     {
-        PlayerDATypeList.BloodGauntlet
+        if (stat.PlayerDATypeList.BloodGauntlet)
+        {
+            //적 처치마다 공속증가인데... 중첩이 증가가 되는거야 마는거야
+        }
+    }
+    public float crystalOrbCoolodwn = 40;
+    float curCrystalOrbCoolodwn = 0;
+    void CrystalOrbAction()
+    {
+        //겁나 큰 폭*발 (리소스 주면 함 ㄹㅇㅋㅋ)
+    }
+    void TheOneRing()
+    {
+        //참격도 리소스 주면 함 ㄹㅇㅋㅋ
     }
     #endregion
 }

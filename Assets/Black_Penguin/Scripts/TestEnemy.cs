@@ -15,8 +15,7 @@ public class TestEnemy : BaseEnemy
     {
     }
 
-    public override void OnHit()
+    public override void OnHit(Entity entity, float Damage = 0)
     {
-        Debug.Log("아이고난");
     }
 }
