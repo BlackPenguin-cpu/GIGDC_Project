@@ -17,7 +17,16 @@ public enum CrystalsType
 
 public class CrystalManager : MonoBehaviour
 {
-    public int[] crystals = new int[(int)CrystalsType.END];
+    private int[] crystals = new int[(int)CrystalsType.END];
+    public int[] _crystals
+    {
+        get { return crystals; }
+        set
+        {
+            Player.Instance.CrystalCheck(value);
+            crystals = value;
+        }
+    }
     public CrystalsType CrtstalReturn()
     {
         CrystalsType index;
