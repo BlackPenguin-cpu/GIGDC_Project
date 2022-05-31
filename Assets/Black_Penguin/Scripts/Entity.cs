@@ -4,7 +4,8 @@ using UnityEngine;
 
 
 
-public abstract class Entity : MonoBehaviour { 
+public abstract class Entity : MonoBehaviour
+{
     public float speed;
     public int maxHp;
     protected float Hp;
@@ -17,10 +18,6 @@ public abstract class Entity : MonoBehaviour {
             {
                 value = maxHp;
             }
-            if (value < Hp)
-            {
-                OnHit();
-            }
             else if (value <= 0)
             {
                 Die();
@@ -32,6 +29,10 @@ public abstract class Entity : MonoBehaviour {
     {
         Hp = maxHp;
     }
+    public virtual void Attack()
+    {
+        OnHit(this);
+    }
     public abstract void Die();
-    public abstract void OnHit();
+    public abstract void OnHit(Entity entity,float Damage = 0);
 }
