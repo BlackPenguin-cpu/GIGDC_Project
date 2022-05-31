@@ -207,6 +207,24 @@ public class Player : Entity
     }
     public override void Die()
     {
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
+        print("깜펭바보");
         throw new System.NotImplementedException();
     }
     public override void OnHit()

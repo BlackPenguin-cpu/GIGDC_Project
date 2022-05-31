@@ -4,8 +4,7 @@ using UnityEngine;
 
 
 
-public abstract class Entity : MonoBehaviour
-{
+public abstract class Entity : MonoBehaviour { 
     public float speed;
     public int maxHp;
     protected float Hp;
