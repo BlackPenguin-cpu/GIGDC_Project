@@ -85,15 +85,9 @@ public class Card_Manager : MonoBehaviour
                 int RandomTest = Card_Percent(ItemBuffer);
                 for (int j = 0; j < item.Count; j++)
                 {
-                    while (true)
+                    while (item[j] == ItemBuffer[RandomTest])
                     {
-
-                        if (item[j] == ItemBuffer[RandomTest])
-                        {
-                            RandomTest = Card_Percent(ItemBuffer);
-                        }
-                        else
-                            break;
+                        RandomTest = Card_Percent(ItemBuffer);
                     }
                 }
                 item.Add(ItemBuffer[RandomTest]);
@@ -106,15 +100,9 @@ public class Card_Manager : MonoBehaviour
                 int RandomTest = Card_Percent(DABuffer);
                 for (int j = 0; j < item.Count; j++)
                 {
-                    while (true)
+                    while (item[j] == DABuffer[RandomTest])
                     {
-                        if (item[j] == DABuffer[RandomTest])
-                        {
-                            RandomTest = Card_Percent(DABuffer);
-                        }
-                        else
-                            break;
-
+                        RandomTest = Card_Percent(DABuffer);
                     }
                 }
                 item.Add(DABuffer[RandomTest]);
