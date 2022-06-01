@@ -526,12 +526,15 @@ MonoBehaviour:
   stat:
     level: 0
     weaponType: 1
-    maxSpeed: 7
-    speed: 1000
+    maxHp: 0
+    hp: 0
+    speed: 25
     crit: 0
     def: 0
+    cooldown: 0
     dashCooldown: 1
     attackSpeed: 2
+    bloodGauntletDuration: 0
     PlayerDATypeList:
       WindEarRing: 0
       NeedleArmour: 0
@@ -540,6 +543,7 @@ MonoBehaviour:
       BloodGauntlet: 0
       CrystalOrb: 0
       TheOneRing: 0
+    Crystals: 000000000000000000000000000000000000000000000000
   JumpPower: 7
   cursedKnifeCoolodwn: 10
   crystalOrbCoolodwn: 40
