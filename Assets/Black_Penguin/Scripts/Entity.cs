@@ -7,7 +7,8 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
     public float speed;
-    public int maxHp;
+    public float maxHp;
+
     protected float Hp;
     public virtual float _Hp
     {
@@ -34,5 +35,5 @@ public abstract class Entity : MonoBehaviour
         OnHit(this);
     }
     public abstract void Die();
-    public abstract void OnHit(Entity entity,float Damage = 0);
+    public abstract void OnHit(Entity entity, float Damage = 0);
 }

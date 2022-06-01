@@ -10,26 +10,50 @@ public class PlayerInfo
     public int level;
     public PlayerWeaponType weaponType;
 
-    public float maxSpeed;
+    public float maxHp;
+    public float hp;
+    public float _hp
+    {
+        get { return _hp; }
+        set { _hp = value; }
+    }
     public float speed; // velocity
     public float crit;
     public float def;
+    public float cooldown;
     public float dashCooldown;
     private float attackDamage;
     public float _attackDamage
     {
         get
         {
+            float returnValue = attackDamage;
+            returnValue += returnValue * Crystals[(int)CrystalsType.POWER];
+
             if (PlayerDATypeList.TheOneRing)
-                return _attackDamage * 1.6f;
+                return returnValue * 1.6f;
             else
-                return _attackDamage;
+                return returnValue;
         }
         set { _attackDamage = value; }
     }
     public float attackSpeed;
+    public float _attackSpeed
+    {
+        get
+        {
+            float returnValue = attackSpeed;
+            returnValue += returnValue * Crystals[(int)CrystalsType.ATTACKSPEED];
+            if (bloodGauntletDuration > 0)
+                return returnValue * 1.5f;
+            else
+                return returnValue;
+        }
+        set { attackSpeed = value; }
+    }
+    public float bloodGauntletDuration;
     public PlayerDAType PlayerDATypeList;
-
+    public int[] Crystals = new int[(int)CrystalsType.END];
 }
 [System.Serializable]
 public class PlayerDAType
@@ -80,7 +104,14 @@ public class Player : Entity
 
     float curDashCooltime = 0;
 
+    new protected float maxHp;
+    public float _maxHp
+    {
+        get => _maxHp + stat.Crystals[(int)CrystalsType.HEALTH] * 10;
+        set => _maxHp = value;
+    }
     bool canJump = false;
+
     public override float _Hp
     {
         get => base._Hp;
@@ -103,13 +134,6 @@ public class Player : Entity
     {
         base.Start();
     }
-    public void CrystalCheck(int[] crystals)
-    {
-        for (int i = 0; i < (int)CrystalsType.END; i++)
-        {
-            //현재 보낸 배열을 마정석에 맞게 스텟 반영
-        }
-    }
     private void Update()
     {
         InputManager();
@@ -128,6 +152,7 @@ public class Player : Entity
         }
         curCursedKnifeCoolodwn += Time.deltaTime;
         curWindEarRingDashCooldown += Time.deltaTime;
+        stat.bloodGauntletDuration -= Time.deltaTime;
     }
     void AnimationController()
     {
@@ -235,7 +260,6 @@ public class Player : Entity
         isAttack = false;
     }
 
-    //공격 관련 함수
     IEnumerator TestAttack()
     {
         RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position, transform.lossyScale, 0, sprite.flipX ? Vector2.left : Vector2.right);
@@ -249,6 +273,13 @@ public class Player : Entity
         }
         yield return new WaitForSeconds(0.5f);
         state = PlayerState.Idle;
+    }
+    void onAttackHit(Entity entity)
+    {
+        if (stat.PlayerDATypeList.BloodGauntlet)
+        {
+            BloodGauntletAction(entity);
+        }
     }
     #endregion
     void Jump()
@@ -286,13 +317,8 @@ public class Player : Entity
         if (horizontal == 1) sprite.flipX = false;
         if (horizontal == -1) sprite.flipX = true;
 
-        if (Mathf.Abs(rigid.velocity.x + horizontal) > stat.maxSpeed)
-        {
-            return;
-        }
-
         Vector2 dir = new Vector2(horizontal, 0) * stat.speed * Time.deltaTime;
-        rigid.AddForce(dir);
+        rigid.velocity += dir;
 
         if (dir == Vector2.zero && state == PlayerState.Walk)
             state = PlayerState.Idle;
@@ -353,12 +379,9 @@ public class Player : Entity
         obj.rotatePower = 5;
         obj.target = target.gameObject;
     }
-    void BloodGauntletAction()
+    void BloodGauntletAction(Entity entity)
     {
-        if (stat.PlayerDATypeList.BloodGauntlet)
-        {
-            //적 처치마다 공속증가인데... 중첩이 증가가 되는거야 마는거야
-        }
+        stat.bloodGauntletDuration = 3;
     }
     public float crystalOrbCoolodwn = 40;
     float curCrystalOrbCoolodwn = 0;

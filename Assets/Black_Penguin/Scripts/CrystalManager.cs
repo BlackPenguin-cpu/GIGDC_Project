@@ -23,7 +23,7 @@ public class CrystalManager : MonoBehaviour
         get { return crystals; }
         set
         {
-            Player.Instance.CrystalCheck(value);
+            Player.Instance.stat.Crystals = value;
             crystals = value;
         }
     }
