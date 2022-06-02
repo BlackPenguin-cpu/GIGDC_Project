@@ -12,6 +12,7 @@ public class DarkPlayer : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(Player.Instance.transform.position.x, -Player.Instance.transform.position.y);
+        sprite.sprite = Player.Instance.sprite.sprite;
         sprite.flipX = Player.Instance.sprite.flipX;
     }
 }

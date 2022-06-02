@@ -206,8 +206,14 @@ public class Player : Entity
                 nowAttackAction = StartCoroutine(AttackAction());
                 break;
             case PlayerWeaponType.Dagger:
+                if (nowAttackAction != null)
+                    StopCoroutine(nowAttackAction);
+                nowAttackAction = StartCoroutine(AttackAction());
                 break;
             case PlayerWeaponType.Axe:
+                if (nowAttackAction != null)
+                    StopCoroutine(nowAttackAction);
+                nowAttackAction = StartCoroutine(AttackAction());
                 break;
             default:
                 break;

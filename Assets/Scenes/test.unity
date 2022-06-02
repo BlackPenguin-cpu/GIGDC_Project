@@ -525,7 +525,7 @@ MonoBehaviour:
   maxHp: 100
   stat:
     level: 0
-    weaponType: 1
+    weaponType: 3
     maxHp: 0
     hp: 0
     speed: 25
