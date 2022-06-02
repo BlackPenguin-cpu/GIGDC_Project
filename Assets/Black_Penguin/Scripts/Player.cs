@@ -95,7 +95,7 @@ public class Player : Entity
 
     Animator animator => GetComponent<Animator>();
     Rigidbody2D rigid => GetComponent<Rigidbody2D>();
-    public new BoxCollider2D collider => GetComponent<BoxCollider2D>();
+    new BoxCollider2D collider => GetComponent<BoxCollider2D>();
     public SpriteRenderer sprite => GetComponent<SpriteRenderer>();
 
     PlayerState state;
@@ -188,43 +188,6 @@ public class Player : Entity
             Jump();
         }
     }
-    void Dash()
-    {
-        if (state != PlayerState.Walk && state != PlayerState.Idle) return;
-        if (stat.dashCooldown < curDashCooltime)
-        {
-            curDashCooltime = 0;
-            StartCoroutine(DashAction());
-        }
-        else if (stat.PlayerDATypeList.WindEarRing)
-        {
-            windEarRingAction();
-        }
-    }
-    IEnumerator DashAction()
-    {
-        state = PlayerState.Dash;
-
-        float originGravity = rigid.gravityScale;
-        rigid.gravityScale = 0;
-        Vector3 dir = new Vector3(sprite.flipX == false ? 1 : -1, 0) / 2;
-        var waitSec = new WaitForSeconds(0.01f);
-
-        var enemies = new List<BaseEnemy>();
-        for (int i = 0; i < 10; i++)
-        {
-            if (stat.PlayerDATypeList.KnifeCape)
-            {
-                knifeCapeAction(enemies);
-            }
-
-            rigid.velocity = Vector2.zero;
-            transform.position += dir;
-            yield return waitSec;
-        }
-        rigid.gravityScale = originGravity;
-        state = PlayerState.Idle;
-    }
     #region 공격관련함수
     bool isAttack;
     Coroutine nowAttackAction;
@@ -282,6 +245,43 @@ public class Player : Entity
         }
     }
     #endregion
+    void Dash()
+    {
+        if (state != PlayerState.Walk && state != PlayerState.Idle) return;
+        if (stat.dashCooldown < curDashCooltime)
+        {
+            curDashCooltime = 0;
+            StartCoroutine(DashAction());
+        }
+        else if (stat.PlayerDATypeList.WindEarRing)
+        {
+            windEarRingAction();
+        }
+    }
+    IEnumerator DashAction()
+    {
+        state = PlayerState.Dash;
+
+        float originGravity = rigid.gravityScale;
+        rigid.gravityScale = 0;
+        Vector3 dir = new Vector3(sprite.flipX == false ? 1 : -1, 0) / 2;
+        var waitSec = new WaitForSeconds(0.01f);
+
+        var enemies = new List<BaseEnemy>();
+        for (int i = 0; i < 10; i++)
+        {
+            if (stat.PlayerDATypeList.KnifeCape)
+            {
+                knifeCapeAction(enemies);
+            }
+
+            rigid.velocity = Vector2.zero;
+            transform.position += dir;
+            yield return waitSec;
+        }
+        rigid.gravityScale = originGravity;
+        state = PlayerState.Idle;
+    }
     void Jump()
     {
         if (state == PlayerState.Dash || state == PlayerState.Attack || state == PlayerState.JumpAttack) return;
@@ -342,6 +342,7 @@ public class Player : Entity
     }
     void knifeCapeAction(List<BaseEnemy> enemies)
     {
+
         RaycastHit2D[] rays = Physics2D.BoxCastAll(transform.position, collider.size, 0, Vector2.zero);
         foreach (RaycastHit2D raycast in rays)
         {
