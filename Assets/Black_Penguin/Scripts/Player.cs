@@ -11,16 +11,59 @@ public class PlayerInfo
     public PlayerWeaponType weaponType;
 
     public float maxHp;
+    public float _maxHp
+    {
+        get
+        {
+            float returnValue = maxHp;
+            returnValue += Crystals[(int)CrystalsType.HEALTH] * 10;
+            return returnValue;
+        }
+    }
     public float hp;
     public float _hp
     {
         get { return _hp; }
-        set { _hp = value; }
+        set 
+        {
+
+            _hp = value; 
+        }
     }
     public float speed; // velocity
+    public float _speed
+    {
+        get
+        {
+            float retrunValue = speed;
+            retrunValue += speed * Crystals[(int)CrystalsType.SPEED] / 10;
+            return retrunValue;
+        }
+        set => speed = value;
+    }
     public float crit;
     public float def;
+    public float _def
+    {
+        get
+        {
+            float returnValue = def;
+            returnValue += cooldown + Crystals[(int)CrystalsType.DEFFENCE] * 2;
+            return returnValue;
+        }
+        set { def = value; }
+    }
     public float cooldown;
+    public float _cooldown
+    {
+        get
+        {
+            float returnValue = cooldown;
+            returnValue += (cooldown * Crystals[(int)CrystalsType.TIME]) / 10;
+            return returnValue;
+        }
+        set { cooldown = value; }
+    }
     public float dashCooldown;
     private float attackDamage;
     public float _attackDamage
@@ -28,7 +71,7 @@ public class PlayerInfo
         get
         {
             float returnValue = attackDamage;
-            returnValue += returnValue * Crystals[(int)CrystalsType.POWER];
+            returnValue += (returnValue * Crystals[(int)CrystalsType.POWER]) / 10;
 
             if (PlayerDATypeList.TheOneRing)
                 return returnValue * 1.6f;
@@ -60,8 +103,7 @@ public class PlayerDAType
 {
     public bool WindEarRing;
     public bool NeedleArmour;
-    public bool KnifeCape;
-    public bool CurseKnife;
+    public bool KnifeCape; public bool CurseKnife;
     public bool BloodGauntlet;
     public bool CrystalOrb;
     public bool TheOneRing;
