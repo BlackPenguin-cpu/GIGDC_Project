@@ -3,14 +3,78 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(Rigidbody2D))]
+public class StartStat
+{
+    public readonly float maxHp = 100;
+    public readonly float speed = 20;
+    public readonly float crit = 5;
+    public readonly float def = 10;
+    public readonly float cooldown = 0;
+    public readonly float attackDamage = 10;
+    public readonly float dashCooldown = 0.7f;
+    public readonly int dashCount = 1;
+}
 [System.Serializable]
 public class PlayerInfo
 {
+    StartStat startStat;
     public int level;
+    public int _level
+    {
+        get { return _level; }
+        set
+        {
+            switch (weaponType)
+            {
+                case PlayerWeaponType.Sword:
+                    attackDamage = (10 * value) + 10 + startStat.attackDamage;
+                    maxHp = (10 * value) + 10 + startStat.maxHp;
+                    break;
+                case PlayerWeaponType.Dagger:
+                    attackDamage = (8 * value) + 8 + startStat.attackDamage;
+                    crit = (value * 2) + startStat.crit;
+                    break;
+                case PlayerWeaponType.Axe:
+                    attackDamage = (15 * value) + 20 + startStat.attackDamage;
+                    def = (value * 5) + 5 + startStat.def;
+                    break;
+            }
+            _level = value;
+        }
+    }
+
     public PlayerWeaponType weaponType;
 
-    public float maxHp;
+    private float maxHp = 100;
+    public float hp;
+    private float speed = 20; // velocity
+    private float crit = 5;
+    private float def = 10;
+    private float cooldown = 0;
+    private float attackDamage = 10;
+    public float dashCooldown = 0.7f;
+    public float attackSpeed = 1;
+    private int dashCount = 1;
+    private int curDashCount;
+    public int _dashCount
+    {
+        get
+        {
+            if (weaponType == PlayerWeaponType.Dagger)
+                return dashCount + 1;
+            else return dashCount;
+        }
+        set => dashCount = value;
+    }
+    public int _curDashCount
+    {
+        get { return curDashCount; }
+        set
+        {
+            value = Mathf.Max(value, dashCount);
+            curDashCount = value;
+        }
+    }
     public float _maxHp
     {
         get
@@ -19,18 +83,17 @@ public class PlayerInfo
             returnValue += Crystals[(int)CrystalsType.HEALTH] * 10;
             return returnValue;
         }
+        set => maxHp = value;
     }
-    public float hp;
     public float _hp
     {
         get { return _hp; }
-        set 
+        set
         {
 
-            _hp = value; 
+            _hp = value;
         }
     }
-    public float speed; // velocity
     public float _speed
     {
         get
@@ -41,8 +104,15 @@ public class PlayerInfo
         }
         set => speed = value;
     }
-    public float crit;
-    public float def;
+    public float _crit
+    {
+        get
+        {
+            float returnValue = crit;
+            return _crit;
+        }
+        set => crit = value;
+    }
     public float _def
     {
         get
@@ -53,7 +123,6 @@ public class PlayerInfo
         }
         set { def = value; }
     }
-    public float cooldown;
     public float _cooldown
     {
         get
@@ -64,8 +133,6 @@ public class PlayerInfo
         }
         set { cooldown = value; }
     }
-    public float dashCooldown;
-    private float attackDamage;
     public float _attackDamage
     {
         get
@@ -74,13 +141,11 @@ public class PlayerInfo
             returnValue += (returnValue * Crystals[(int)CrystalsType.POWER]) / 10;
 
             if (PlayerDATypeList.TheOneRing)
-                return returnValue * 1.6f;
-            else
-                return returnValue;
+                returnValue *= 1.6f;
+            return returnValue;
         }
-        set { _attackDamage = value; }
+        set { attackDamage = value; }
     }
-    public float attackSpeed;
     public float _attackSpeed
     {
         get
@@ -103,7 +168,8 @@ public class PlayerDAType
 {
     public bool WindEarRing;
     public bool NeedleArmour;
-    public bool KnifeCape; public bool CurseKnife;
+    public bool KnifeCape;
+    public bool CurseKnife;
     public bool BloodGauntlet;
     public bool CrystalOrb;
     public bool TheOneRing;
@@ -131,6 +197,8 @@ public enum PlayerType
     Down = -1,
     Up = 1
 }
+[RequireComponent(typeof(Rigidbody2D))]
+
 public class Player : Entity
 {
     public static Player Instance = null;
@@ -162,7 +230,7 @@ public class Player : Entity
             if (value < Hp)
             {
                 if (state == PlayerState.Dash) return;
-                value -= stat.def;
+                value -= stat._def;
                 value = Mathf.Clamp(value, 0, Hp);
             }
             base._Hp = value;
@@ -184,6 +252,11 @@ public class Player : Entity
         PlayerItemContoroller();
 
         curDashCooltime += Time.deltaTime;
+        if (curDashCooltime > stat.dashCooldown && stat._dashCount > stat._curDashCount)
+        {
+            curDashCooltime = 0;
+            stat._curDashCount++;
+        }
     }
     void PlayerItemContoroller()
     {
@@ -296,9 +369,9 @@ public class Player : Entity
     void Dash()
     {
         if (state != PlayerState.Walk && state != PlayerState.Idle) return;
-        if (stat.dashCooldown < curDashCooltime)
+        if (stat._curDashCount > 0)
         {
-            curDashCooltime = 0;
+            stat._dashCount--;
             StartCoroutine(DashAction());
         }
         else if (stat.PlayerDATypeList.WindEarRing)
@@ -365,7 +438,7 @@ public class Player : Entity
         if (horizontal == 1) sprite.flipX = false;
         if (horizontal == -1) sprite.flipX = true;
 
-        Vector2 dir = new Vector2(horizontal, 0) * stat.speed * Time.deltaTime;
+        Vector2 dir = new Vector2(horizontal, 0) * stat._speed * Time.deltaTime;
         rigid.velocity += dir;
 
         if (dir == Vector2.zero && state == PlayerState.Walk)
@@ -424,7 +497,7 @@ public class Player : Entity
 
         CursedKnife obj = Instantiate(Resources.Load<CursedKnife>(""), transform.position, Quaternion.identity);
         obj.damage = stat._attackDamage * 2;
-        obj.speed = stat.speed * 2;
+        obj.speed = stat._speed * 2;
         obj.rotatePower = 5;
         obj.target = target.gameObject;
     }
@@ -442,5 +515,25 @@ public class Player : Entity
     {
         //참격도 리소스 주면 함 ㄹㅇㅋㅋ
     }
+    #endregion
+    #region 플레이어 장비 스킬
+    #region 검
+    void SwordSkill1()
+    {
+
+    }
+    #endregion
+    #region 단검
+    void DaggerSkill1()
+    {
+
+    }
+    #endregion
+    #region 도끼
+    void AxeSkill1()
+    {
+
+    }
+    #endregion
     #endregion
 }
