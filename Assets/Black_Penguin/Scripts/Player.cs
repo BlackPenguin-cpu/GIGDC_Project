@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
 public class StartStat
 {
     public readonly float maxHp = 100;
@@ -91,6 +89,18 @@ public class PlayerInfo
         set
         {
 
+            if (value < hp && weaponType == PlayerWeaponType.Sword)
+            {
+                value = Mathf.Min(value + 5, hp);
+            }
+            if (value <= 0)
+            {
+                if (weaponType == PlayerWeaponType.Sword && level >= 5 && swordSkill3Boolean == false)
+                {
+                    value = 1;
+                    swordSkill3Boolean = true;
+                }
+            }
             _hp = value;
         }
     }
@@ -98,9 +108,24 @@ public class PlayerInfo
     {
         get
         {
-            float retrunValue = speed;
-            retrunValue += speed * Crystals[(int)CrystalsType.SPEED] / 10;
-            return retrunValue;
+            float returnValue = speed;
+            returnValue += returnValue * Crystals[(int)CrystalsType.SPEED] / 10;
+            if (weaponType == PlayerWeaponType.Axe)
+                returnValue *= 0.8f;
+            if (weaponType == PlayerWeaponType.Dagger)
+            {
+                returnValue *= 1.1f;
+                if (level >= 1)
+                {
+                    returnValue *= 1.1f;
+                }
+            }
+
+            if (weaponType == PlayerWeaponType.Dagger && level >= 3)
+            {
+                returnValue += returnValue * ((daggerSkill2Count * 5) * 0.01f);
+            }
+            return returnValue;
         }
         set => speed = value;
     }
@@ -118,7 +143,15 @@ public class PlayerInfo
         get
         {
             float returnValue = def;
-            returnValue += cooldown + Crystals[(int)CrystalsType.DEFFENCE] * 2;
+            returnValue += Crystals[(int)CrystalsType.DEFFENCE] * 2;
+            if (weaponType == PlayerWeaponType.Sword && level >= 1)
+            {
+                returnValue *= 1.15f;
+                if (hp / maxHp <= 0.3f && level >= 3)
+                {
+                    returnValue *= 1.3f;
+                }
+            }
             return returnValue;
         }
         set { def = value; }
@@ -140,6 +173,9 @@ public class PlayerInfo
             float returnValue = attackDamage;
             returnValue += (returnValue * Crystals[(int)CrystalsType.POWER]) / 10;
 
+            if (weaponType == PlayerWeaponType.Sword && hp / maxHp <= 0.3f && level >= 3)
+                returnValue *= 1.3f;
+
             if (PlayerDATypeList.TheOneRing)
                 returnValue *= 1.6f;
             return returnValue;
@@ -151,7 +187,17 @@ public class PlayerInfo
         get
         {
             float returnValue = attackSpeed;
+            if (weaponType == PlayerWeaponType.Axe)
+                returnValue *= 0.8f;
+            if (weaponType == PlayerWeaponType.Dagger)
+                returnValue *= 1.1f;
             returnValue += returnValue * Crystals[(int)CrystalsType.ATTACKSPEED];
+
+            if (weaponType == PlayerWeaponType.Dagger && level >= 3)
+            {
+                returnValue *= (daggerSkill2Count * 5) * 0.01f;
+            }
+
             if (bloodGauntletDuration > 0)
                 return returnValue * 1.5f;
             else
@@ -159,9 +205,23 @@ public class PlayerInfo
         }
         set { attackSpeed = value; }
     }
+
+    readonly float ConDefValue = 40;
+    public float ReturnDefValue()
+    {
+        return def - (def / ConDefValue);
+    }
     public float bloodGauntletDuration;
     public PlayerDAType PlayerDATypeList;
     public int[] Crystals = new int[(int)CrystalsType.END];
+
+    //무기 관련 인덱스
+
+    //죽으면 초기화..
+    public bool swordSkill3Boolean = false;
+
+    public int daggerSkill2Count = 0;
+    public float daggerSkill2PassedTime = 0;
 }
 [System.Serializable]
 public class PlayerDAType
@@ -191,7 +251,6 @@ public enum PlayerState
     JumpAttack,
     Die
 }
-
 public enum PlayerType
 {
     Down = -1,
@@ -265,9 +324,14 @@ public class Player : Entity
             cursedKnifeAction();
             curCursedKnifeCoolodwn = 0;
         }
+        if (stat.daggerSkill2PassedTime < 0)
+        {
+            stat.daggerSkill2Count = 0;
+        }
         curCursedKnifeCoolodwn += Time.deltaTime;
         curWindEarRingDashCooldown += Time.deltaTime;
         stat.bloodGauntletDuration -= Time.deltaTime;
+        stat.daggerSkill2PassedTime -= Time.deltaTime;
     }
     void AnimationController()
     {
@@ -296,76 +360,13 @@ public class Player : Entity
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Attack();
+            OnAttack();
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
             Jump();
         }
     }
-    #region 공격관련함수
-    bool isAttack;
-    Coroutine nowAttackAction;
-    public override void Attack()
-    {
-        if (state != PlayerState.Idle && state != PlayerState.Walk && state != PlayerState.Attack) return;
-        state = PlayerState.Attack;
-        switch (stat.weaponType)
-        {
-            case PlayerWeaponType.NONE:
-                nowAttackAction = StartCoroutine(AttackAction());
-                break;
-            case PlayerWeaponType.Sword:
-                if (nowAttackAction != null)
-                    StopCoroutine(nowAttackAction);
-                nowAttackAction = StartCoroutine(AttackAction());
-                break;
-            case PlayerWeaponType.Dagger:
-                if (nowAttackAction != null)
-                    StopCoroutine(nowAttackAction);
-                nowAttackAction = StartCoroutine(AttackAction());
-                break;
-            case PlayerWeaponType.Axe:
-                if (nowAttackAction != null)
-                    StopCoroutine(nowAttackAction);
-                nowAttackAction = StartCoroutine(AttackAction());
-                break;
-            default:
-                break;
-        }
-    }
-
-    IEnumerator AttackAction()
-    {
-        yield return null;
-        isAttack = true;
-        yield return new WaitForSeconds(1 / stat.attackSpeed);
-        state = PlayerState.Idle;
-        isAttack = false;
-    }
-
-    IEnumerator TestAttack()
-    {
-        RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position, transform.lossyScale, 0, sprite.flipX ? Vector2.left : Vector2.right);
-
-        foreach (RaycastHit2D ray in raycasts)
-        {
-            if (ray.distance <= collider.size.x + 1 && ray.transform.TryGetComponent(out BaseEnemy enemy))
-            {
-                enemy._Hp -= stat._attackDamage;
-            }
-        }
-        yield return new WaitForSeconds(0.5f);
-        state = PlayerState.Idle;
-    }
-    void onAttackHit(Entity entity)
-    {
-        if (stat.PlayerDATypeList.BloodGauntlet)
-        {
-            BloodGauntletAction(entity);
-        }
-    }
-    #endregion
     void Dash()
     {
         if (state != PlayerState.Walk && state != PlayerState.Idle) return;
@@ -394,6 +395,10 @@ public class Player : Entity
             if (stat.PlayerDATypeList.KnifeCape)
             {
                 knifeCapeAction(enemies);
+            }
+            if (stat.weaponType == PlayerWeaponType.Axe && stat.level >= 1)
+            {
+                AxeSkill1(enemies);
             }
 
             rigid.velocity = Vector2.zero;
@@ -444,6 +449,74 @@ public class Player : Entity
         if (dir == Vector2.zero && state == PlayerState.Walk)
             state = PlayerState.Idle;
     }
+    #region 공격관련함수
+    bool isAttack;
+    Coroutine nowAttackAction;
+    public void OnAttack()
+    {
+        if (state != PlayerState.Idle && state != PlayerState.Walk && state != PlayerState.Attack) return;
+        state = PlayerState.Attack;
+        switch (stat.weaponType)
+        {
+            case PlayerWeaponType.NONE:
+                nowAttackAction = StartCoroutine(AttackAction());
+                break;
+            case PlayerWeaponType.Sword:
+                if (nowAttackAction != null)
+                    StopCoroutine(nowAttackAction);
+                nowAttackAction = StartCoroutine(AttackAction());
+                break;
+            case PlayerWeaponType.Dagger:
+                if (nowAttackAction != null)
+                    StopCoroutine(nowAttackAction);
+                nowAttackAction = StartCoroutine(AttackAction());
+                break;
+            case PlayerWeaponType.Axe:
+                if (nowAttackAction != null)
+                    StopCoroutine(nowAttackAction);
+                nowAttackAction = StartCoroutine(AttackAction());
+                break;
+            default:
+                break;
+        }
+    }
+    public override void Attack(Entity target, float atkDmg)
+    {
+        base.Attack(target, atkDmg);
+    }
+
+    IEnumerator AttackAction()
+    {
+        yield return null;
+        isAttack = true;
+        yield return new WaitForSeconds(1 / stat.attackSpeed);
+        state = PlayerState.Idle;
+        isAttack = false;
+    }
+
+    IEnumerator TestAttack()
+    {
+        RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position, transform.lossyScale, 0, sprite.flipX ? Vector2.left : Vector2.right);
+
+        foreach (RaycastHit2D ray in raycasts)
+        {
+            if (ray.distance <= collider.size.x + 1 && ray.transform.TryGetComponent(out BaseEnemy enemy))
+            {
+                enemy._Hp -= stat._attackDamage;
+            }
+        }
+        yield return new WaitForSeconds(0.5f);
+        state = PlayerState.Idle;
+    }
+    void onAttackHit(Entity entity)
+    {
+        if (stat.PlayerDATypeList.BloodGauntlet)
+        {
+            BloodGauntletAction(entity);
+        }
+    }
+    #endregion
+
     #endregion
     #region 플레이어 아이템
 
@@ -459,11 +532,11 @@ public class Player : Entity
     }
     void needleArmourAction(Entity entity)
     {
+        Attack(entity, stat._attackDamage / 5);
         entity._Hp -= stat._attackDamage / 5;
     }
     void knifeCapeAction(List<BaseEnemy> enemies)
     {
-
         RaycastHit2D[] rays = Physics2D.BoxCastAll(transform.position, collider.size, 0, Vector2.zero);
         foreach (RaycastHit2D raycast in rays)
         {
@@ -517,23 +590,60 @@ public class Player : Entity
     }
     #endregion
     #region 플레이어 장비 스킬
-    #region 검
-    void SwordSkill1()
-    {
-
-    }
-    #endregion
     #region 단검
-    void DaggerSkill1()
+    //Enemy에서 발동시킴
+    public void DaggerSkill2()
     {
-
+        if (stat.level >= 3 && stat.weaponType == PlayerWeaponType.Dagger)
+        {
+            stat.daggerSkill2Count++;
+            stat.daggerSkill2PassedTime = 5;
+            stat.daggerSkill2Count = Mathf.Max(stat.daggerSkill2Count, 5);
+        }
+    }
+    //Animator에서 발동시킴
+    void DaggerSkill3()
+    {
+        if (stat.level >= 5 && stat.weaponType == PlayerWeaponType.Dagger)
+        {
+            DaggerSkillObj obj = Instantiate(Resources.Load<DaggerSkillObj>(""), transform.position, Quaternion.identity);
+            obj.GetComponent<SpriteRenderer>().flipX = sprite.flipX;
+            obj.damage = stat._attackDamage / 3;
+        }
     }
     #endregion
     #region 도끼
-    void AxeSkill1()
+    void AxeSkill1(List<BaseEnemy> enemies)
     {
+        float forcePower = 30;
 
+        RaycastHit2D[] rays = Physics2D.BoxCastAll(transform.position, collider.size, 0, Vector2.zero);
+        foreach (RaycastHit2D raycast in rays)
+        {
+            if (raycast.collider.TryGetComponent(out BaseEnemy enemy))
+            {
+                if (!enemies.Find(x => x == enemy))
+                {
+                    enemy._Hp -= stat._attackDamage / 4;
+                    enemy.GetComponent<Rigidbody2D>().AddForce(sprite.flipX ? Vector2.left : Vector2.right * forcePower);
+                    enemies.Add(enemy);
+                }
+            }
+        }
     }
+    void AxeSkill2(List<BaseEnemy> enemies)
+    {
+        foreach (BaseEnemy enemy in enemies)
+        {
+            enemy.buffList.stun = 2;
+        }
+    }
+    void AxeSkill3()
+    {
+        //리소스 들어오면 제작 시작
+    }
+
     #endregion
     #endregion
+
 }

@@ -30,10 +30,10 @@ public abstract class Entity : MonoBehaviour
     {
         Hp = maxHp;
     }
-    public virtual void Attack()
+    public virtual void Attack(Entity target, float atkDmg)
     {
-        OnHit(this);
+        target.OnHit(this, atkDmg);
     }
     public abstract void Die();
-    public abstract void OnHit(Entity entity, float Damage = 0);
+    public abstract void OnHit(Entity atkEntity, float Damage = 0);
 }
