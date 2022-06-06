@@ -34,7 +34,7 @@ public class Item_CardList : MonoBehaviour
 
     }
 
-    public void Test_ItemCard(Item item, int itemIndex)
+    public void ItemCard(Item item, int itemIndex)
     {
         switch (itemIndex)
         {

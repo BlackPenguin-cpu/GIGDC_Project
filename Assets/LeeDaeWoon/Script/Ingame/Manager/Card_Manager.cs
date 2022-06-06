@@ -32,7 +32,7 @@ public class Card_Manager : MonoBehaviour
     {
         for (int i = 0; i < itemSo.Items.Count; i++)
         {
-            Debug.Log(itemSo.Items[i].Itme_Name);
+            //Debug.Log(itemSo.Items[i].Itme_Name);
             ItemBuffer.Add(itemSo.Items[i]);
         }
 
@@ -91,7 +91,7 @@ public class Card_Manager : MonoBehaviour
                     }
                 }
                 item.Add(ItemBuffer[RandomTest]);
-                card.Test_ItemCard(ItemBuffer[RandomTest], itemIndex++);
+                card.ItemCard(ItemBuffer[RandomTest], itemIndex++);
             }
 
             // 방어구 및 장신구
@@ -106,7 +106,7 @@ public class Card_Manager : MonoBehaviour
                     }
                 }
                 item.Add(DABuffer[RandomTest]);
-                card.Test_ItemCard(DABuffer[RandomTest], itemIndex++);
+                card.ItemCard(DABuffer[RandomTest], itemIndex++);
                 // 아이템 클릭 시 if문 달아주기
                 DABuffer.RemoveAt(RandomTest);
             }
