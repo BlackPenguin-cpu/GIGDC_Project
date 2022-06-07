@@ -143,7 +143,7 @@ public class PlayerInfo
         get
         {
             float returnValue = def;
-            returnValue += Crystals[(int)CrystalsType.DEFFENCE] * 2;
+            returnValue += Crystals[(int)CrystalsType.DEFFENCE] * 5;
             if (weaponType == PlayerWeaponType.Sword && level >= 1)
             {
                 returnValue *= 1.15f;
@@ -612,7 +612,7 @@ public class Player : Entity
         }
     }
     //Animator에서 발동시킴
-    void DaggerSkill3()
+    public void DaggerSkill3()
     {
         if (stat.level >= 5 && stat.weaponType == PlayerWeaponType.Dagger)
         {
@@ -641,7 +641,7 @@ public class Player : Entity
             }
         }
     }
-    void AxeSkill2(List<BaseEnemy> enemies)
+    public void AxeSkill2(List<BaseEnemy> enemies)
     {
         foreach (BaseEnemy enemy in enemies)
         {
