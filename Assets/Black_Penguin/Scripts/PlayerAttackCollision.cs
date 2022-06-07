@@ -10,10 +10,10 @@ public class PlayerAttackCollision : MonoBehaviour
     BoxCollider2D collider2D => GetComponent<BoxCollider2D>();
     public void OnAttack()
     {
-        RaycastHit2D[] raycastHits = Physics2D.BoxCastAll(transform.parent.position, collider2D.size, 0, spriteRenderer.flipX ? Vector2.left : Vector2.right);
+        RaycastHit2D[] raycastHits = Physics2D.BoxCastAll(transform.parent.position + (Vector3)collider2D.offset, collider2D.size, 0, spriteRenderer.flipX ? Vector2.left : Vector2.right);
         foreach (RaycastHit2D raycast in raycastHits)
         {
-            if (raycast.collider.TryGetComponent(out BaseEnemy enemy) && raycast.distance < collider2D.size.x)
+            if (raycast.collider.TryGetComponent(out BaseEnemy enemy) && raycast.distance < collider2D.size.x / 2 - collider2D.offset.x)
             {
                 Debug.Log(enemy);
                 Player.Instance.Attack(enemy, Player.Instance.stat._attackDamage);
