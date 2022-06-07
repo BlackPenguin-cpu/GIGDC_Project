@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class EnemyBuffList
 {
-    public float stun;
+    public float stun = 0;
 }
 
 public class BaseEnemy : Entity
 {
-    public EnemyBuffList buffList;
+    public EnemyBuffList buffList = new EnemyBuffList();
     public float attackSpeed;
     public float attackDamage;
 

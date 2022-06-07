@@ -261,11 +261,11 @@ public enum PlayerType
 public class Player : Entity
 {
     public static Player Instance = null;
-
     Animator animator => GetComponent<Animator>();
     Rigidbody2D rigid => GetComponent<Rigidbody2D>();
     new BoxCollider2D collider => GetComponent<BoxCollider2D>();
     public SpriteRenderer sprite => GetComponent<SpriteRenderer>();
+    public PlayerAttackCollision[] attackCollisions => GetComponentsInChildren<PlayerAttackCollision>();
 
     PlayerState state;
     public PlayerInfo stat;
@@ -484,6 +484,16 @@ public class Player : Entity
     {
         base.Attack(target, atkDmg);
     }
+    public void AnimAttackFunc(int index)
+    {
+        foreach (PlayerAttackCollision attackCollision in attackCollisions)
+        {
+            if (attackCollision.index == index && attackCollision.weaponType == stat.weaponType)
+            {
+                attackCollision.OnAttack();
+            }
+        }
+    }
 
     IEnumerator AttackAction()
     {
@@ -645,5 +655,4 @@ public class Player : Entity
 
     #endregion
     #endregion
-
 }
