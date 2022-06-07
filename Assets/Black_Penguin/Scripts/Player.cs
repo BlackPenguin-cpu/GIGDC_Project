@@ -1,6 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public struct TagName
+{
+    public const string Platform = "Platform";
+}
+
 public class StartStat
 {
     public readonly float maxHp = 100;
@@ -15,8 +20,8 @@ public class StartStat
 [System.Serializable]
 public class PlayerInfo
 {
-    StartStat startStat;
     public int level;
+    private StartStat startStat;
     public int _level
     {
         get { return _level; }
@@ -111,20 +116,22 @@ public class PlayerInfo
             float returnValue = speed;
             returnValue += returnValue * Crystals[(int)CrystalsType.SPEED] / 10;
             if (weaponType == PlayerWeaponType.Axe)
+            {
                 returnValue *= 0.8f;
-            if (weaponType == PlayerWeaponType.Dagger)
+            }
+            else if (weaponType == PlayerWeaponType.Dagger)
             {
                 returnValue *= 1.1f;
                 if (level >= 1)
                 {
                     returnValue *= 1.1f;
                 }
+                if (level >= 3)
+                {
+                    returnValue += returnValue * ((daggerSkill2Count * 5) * 0.01f);
+                }
             }
 
-            if (weaponType == PlayerWeaponType.Dagger && level >= 3)
-            {
-                returnValue += returnValue * ((daggerSkill2Count * 5) * 0.01f);
-            }
             return returnValue;
         }
         set => speed = value;
@@ -319,16 +326,16 @@ public class Player : Entity
     }
     void PlayerItemContoroller()
     {
-        if (stat.PlayerDATypeList.CurseKnife && cursedKnifeCoolodwn < curCursedKnifeCoolodwn)
+        if (stat.PlayerDATypeList.CurseKnife && cursedKnifeCooldown < curCursedKnifeCooldown)
         {
             cursedKnifeAction();
-            curCursedKnifeCoolodwn = 0;
+            curCursedKnifeCooldown = 0;
         }
         if (stat.daggerSkill2PassedTime < 0)
         {
             stat.daggerSkill2Count = 0;
         }
-        curCursedKnifeCoolodwn += Time.deltaTime;
+        curCursedKnifeCooldown += Time.deltaTime;
         curWindEarRingDashCooldown += Time.deltaTime;
         stat.bloodGauntletDuration -= Time.deltaTime;
         stat.daggerSkill2PassedTime -= Time.deltaTime;
@@ -367,7 +374,7 @@ public class Player : Entity
             Jump();
         }
     }
-    void Dash()
+    private void Dash()
     {
         if (state != PlayerState.Walk && state != PlayerState.Idle) return;
         if (stat._curDashCount > 0)
@@ -380,7 +387,7 @@ public class Player : Entity
             windEarRingAction();
         }
     }
-    IEnumerator DashAction()
+    private IEnumerator DashAction()
     {
         state = PlayerState.Dash;
 
@@ -408,20 +415,20 @@ public class Player : Entity
         rigid.gravityScale = originGravity;
         state = PlayerState.Idle;
     }
-    void Jump()
+    private void Jump()
     {
         if (state == PlayerState.Dash || state == PlayerState.Attack || state == PlayerState.JumpAttack) return;
-        if (canJump)
-        {
-            canJump = false;
-            rigid.velocity = new Vector3(rigid.velocity.x, 0);
-            rigid.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
-        }
+        if (canJump == false) return;
+
+        canJump = false;
+        rigid.velocity = new Vector3(rigid.velocity.x, 0);
+        rigid.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
     }
-    void JumpCheck()
+    private void JumpCheck()
     {
         RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position, transform.lossyScale, 0, Vector2.down);
         if (raycasts != null && rigid.velocity.y <= 0)
+        {
             foreach (RaycastHit2D ray in raycasts)
             {
                 if (ray.transform.gameObject.tag.Contains("Platform") && ray.distance < collider.size.y / 2)
@@ -429,6 +436,7 @@ public class Player : Entity
                     canJump = true;
                 }
             }
+        }
     }
     private void Move()
     {
@@ -560,8 +568,8 @@ public class Player : Entity
             }
         }
     }
-    public float cursedKnifeCoolodwn = 10;
-    float curCursedKnifeCoolodwn = 0;
+    public float cursedKnifeCooldown = 10;
+    float curCursedKnifeCooldown = 0;
     void cursedKnifeAction()
     {
         BaseEnemy[] enemies = FindObjectsOfType<BaseEnemy>();
