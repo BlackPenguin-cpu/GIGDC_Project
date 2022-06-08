@@ -7,10 +7,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class TestEnemy : BaseEnemy
 {
-    public override void Attack()
+    public override void Attack(Entity target, float atkDmg)
     {
+        base.Attack(target, atkDmg);
     }
-
     public override void Die()
     {
     }

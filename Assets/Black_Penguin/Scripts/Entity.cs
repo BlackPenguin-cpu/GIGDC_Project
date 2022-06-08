@@ -9,7 +9,7 @@ public abstract class Entity : MonoBehaviour
     public float speed;
     public float maxHp;
 
-    protected float Hp;
+    [SerializeField] protected float Hp;
     public virtual float _Hp
     {
         get { return Hp; }
@@ -30,10 +30,11 @@ public abstract class Entity : MonoBehaviour
     {
         Hp = maxHp;
     }
-    public virtual void Attack()
+    public virtual void Attack(Entity target, float atkDmg)
     {
-        OnHit(this);
+        target.OnHit(this, atkDmg);
+        target._Hp -= atkDmg;
     }
     public abstract void Die();
-    public abstract void OnHit(Entity entity, float Damage = 0);
+    public abstract void OnHit(Entity atkEntity, float Damage = 0);
 }
