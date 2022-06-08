@@ -8,6 +8,7 @@ public class Skill_Manager : MonoBehaviour
     void Awake() => Inst = this;
 
     public int RandomTest;
+    private int SumPer = 0;
 
     [SerializeField] SkillSo SkillSo;
     [SerializeField] GameObject SkillPrefab;
@@ -25,7 +26,7 @@ public class Skill_Manager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.P))
         {
             AddSkill();
         }
@@ -41,8 +42,9 @@ public class Skill_Manager : MonoBehaviour
 
     public int Skill_Percent(List<Skill> Percent_Skill)
     {
-        int SumPer = 0;
-        foreach(Skill addper in Percent_Skill)
+        //if(Wave가 5일 경우)
+        //{
+        foreach (Skill addper in Percent_Skill)
         {
             SumPer += addper.Percent_01;
         }
@@ -56,6 +58,17 @@ public class Skill_Manager : MonoBehaviour
             percent -= Percent_Skill[i].Percent_01;
         }
         return 0;
+        //}
+
+        //if(Wave가 10일 경우)
+        //{
+        // 퍼센트만 바꿔주면 된다.
+        //}        
+
+        //if(Wave가 15일 경우)
+        //{
+        // 퍼센트만 바꿔주면 된다.
+        //}
     }
 
     public void AddSkill()
@@ -73,6 +86,6 @@ public class Skill_Manager : MonoBehaviour
             card.SkillCard(Skill[i], SkillIndex++);
             SkillBuffer.RemoveAt(RandomTest);
         }
-        
+
     }
 }

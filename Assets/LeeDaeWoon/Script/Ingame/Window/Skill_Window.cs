@@ -134,14 +134,31 @@ public class Skill_Window : MonoBehaviour
     {
         if (UpDown == true && UpDown_Limit == true)
         {
+            //if (Wave가 5 이상 일 경우)
+            //{
+            //    Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill_Up[0]);
+            //    Skill_Manager.Inst.Skill_Up.RemoveAt(0);
+            //}
+            Skill_Manager.Inst.Skill_Up.Add(Skill_Manager.Inst.Skill_Have[0]);
+            Skill_Manager.Inst.Skill_Have.RemoveAt(0);
             UpDown_Limit = false;
             AfterPurchase_Skill.DOAnchorPos(new Vector3(-779.92f, 60.7f, 0f), 1f).SetEase(Ease.InBack);
             yield return new WaitForSeconds(1f);
+
+
             AfterPurchase_Skill.SetParent(GameObject.Find("SkillShop_Canvas").transform.GetChild(0).transform);
         }
 
         else if (UpDown == false && UpDown_Limit == true)
         {
+            //if (Wave가 10 이상 일 경우)
+            //{
+            //    Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill_Down[0]);
+            //    Skill_Manager.Inst.Skill_Down.RemoveAt(0);
+            //}
+
+            Skill_Manager.Inst.Skill_Down.Add(Skill_Manager.Inst.Skill_Have[0]);
+            Skill_Manager.Inst.Skill_Have.RemoveAt(0);
             UpDown_Limit = false;
             AfterPurchase_Skill.DOAnchorPos(new Vector3(-779.92f, 76.3f, 0f), 1f).SetEase(Ease.InBack);
             yield return new WaitForSeconds(1f);

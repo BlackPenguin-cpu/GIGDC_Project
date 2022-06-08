@@ -75,9 +75,15 @@ public class Skill_List : MonoBehaviour
                 Left_Explanation.text = this.Left_Skill.Explanation;
                 Left_CoolTime.text = this.Left_Skill.CoolTime;
                 Left_Gold_01.text = this.Left_Skill.Gold_01;
-                //Left_Gold_02.text = this.Left_Skill.Gold_02;
-                //Left_Gold_03.text = this.Left_Skill.Gold_03;
                 Left_Skill_Icon.sprite = this.Left_Skill.Icon;
+                //if (Wave啊 10老 版快)
+                //{
+                //    Left_Gold_02.text = this.Left_Skill.Gold_02;
+                //}
+                //if (Wave啊 15老 版快)
+                //{
+                //Left_Gold_03.text = this.Left_Skill.Gold_03;
+                //}
                 break;
             case 1:
                 this.Among_Skill = skill;
