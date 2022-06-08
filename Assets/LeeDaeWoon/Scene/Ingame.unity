@@ -1867,8 +1867,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0bb23624ca9ad84eadf0343c668f397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RandomTest: 0
   SkillSo: {fileID: 11400000, guid: 8d468ff0d005a91428acefcbdfc86778, type: 2}
   SkillPrefab: {fileID: 2583938370413519097, guid: 548ccebbac879ad449874255e02c2f91, type: 3}
+  Skill_Have: []
+  Skill: []
+  SkillBuffer: []
 --- !u!4 &1940699497
 Transform:
   m_ObjectHideFlags: 0

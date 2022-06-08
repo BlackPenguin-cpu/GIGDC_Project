@@ -21,12 +21,15 @@ public class Skill_Window : MonoBehaviour
     public RectTransform AfterPurchase_LeftDirection;
     public Image AfterPurchase_Top_Light;
     public Image AfterPurchase_Bottom_Light;
-    private int UpDown_Num = 0;
+    public RectTransform AfterPurchase_Skill;
+    public bool UpDown = true;
+    public bool UpDown_Limit = true;
 
     private bool SkillWindow = true;
-    private bool Purchase = true;
-    public float LeftRight_KeyNum = 0;
-
+    public bool Purchase = true;
+    public int LeftRight_KeyNum = 0;
+    public int RandomTest;
+    Skill SeletSkill;
     void Start()
     {
         AfterPurchase_Left();
@@ -40,8 +43,10 @@ public class Skill_Window : MonoBehaviour
 
     void Update()
     {
+
         Skill_Dot();
         Skill_Purchase();
+        AfterPurchase_UpDown();
     }
 
 
@@ -86,30 +91,64 @@ public class Skill_Window : MonoBehaviour
 
     public void Skill_Purchase()
     {
-        if (Input.GetKeyDown(KeyCode.F) && Purchase == true)
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            Purchase = false;
-            SkillClose_Dot();
-            if (LeftRight_KeyNum == 0)
+            if (Purchase == true)
             {
-                this.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
-                this.gameObject.transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
+                SeletSkill = Skill_Manager.Inst.Skill[LeftRight_KeyNum];
+                AfterPurchase_Skill.GetComponent<Image>().sprite = SeletSkill.Icon;
+
+                Skill_Manager.Inst.Skill_Have.Add(Skill_Manager.Inst.Skill[LeftRight_KeyNum]);
+                Skill_Manager.Inst.Skill.RemoveAt(LeftRight_KeyNum);
+
+
+                for (int i = 0; i < 2; i++)
+                {
+                    Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill[0]);
+                    Skill_Manager.Inst.Skill.RemoveAt(0);
+                }
+
+
+                Purchase = false;
+                SkillClose_Dot();
+                this.gameObject.transform.GetChild(LeftRight_KeyNum).GetChild(3).gameObject.SetActive(false);
+                this.gameObject.transform.GetChild(LeftRight_KeyNum).GetChild(2).gameObject.SetActive(true);
             }
 
-            else if (LeftRight_KeyNum == 1)
+            else if (Purchase == false)
             {
-                this.gameObject.transform.GetChild(1).GetChild(3).gameObject.SetActive(false);
-                this.gameObject.transform.GetChild(1).GetChild(2).gameObject.SetActive(true);
-            }
+                this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
+                AfterPurchase_Window.transform.GetChild(0).gameObject.SetActive(false);
+                AfterPurchase_Window.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
 
-            else if (LeftRight_KeyNum == 2)
-            {
-                this.gameObject.transform.GetChild(2).GetChild(3).gameObject.SetActive(false);
-                this.gameObject.transform.GetChild(2).GetChild(2).gameObject.SetActive(true);
-            }
+                StartCoroutine(SkillHave());
 
+            }
         }
     }
+
+    #region 구매 후 스킬 적용
+    public IEnumerator SkillHave()
+    {
+        if (UpDown == true && UpDown_Limit == true)
+        {
+            UpDown_Limit = false;
+            AfterPurchase_Skill.DOAnchorPos(new Vector3(-779.92f, 60.7f, 0f), 1f).SetEase(Ease.InBack);
+            yield return new WaitForSeconds(1f);
+            AfterPurchase_Skill.SetParent(GameObject.Find("SkillShop_Canvas").transform.GetChild(0).transform);
+        }
+
+        else if (UpDown == false && UpDown_Limit == true)
+        {
+            UpDown_Limit = false;
+            AfterPurchase_Skill.DOAnchorPos(new Vector3(-779.92f, 76.3f, 0f), 1f).SetEase(Ease.InBack);
+            yield return new WaitForSeconds(1f);
+            AfterPurchase_Skill.SetParent(GameObject.Find("SkillShop_Canvas").transform.GetChild(0).transform);
+        }
+    }
+    #endregion
 
     #region 스킬 구매 후 왼쪽방향 화살표
     public void AfterPurchase_Left()
@@ -119,56 +158,35 @@ public class Skill_Window : MonoBehaviour
 
     public IEnumerator AfterPurchase_Left_forward()
     {
-        AfterPurchase_LeftDirection.DOAnchorPosX(-670, 1f).SetEase(Ease.InOutBack);
+        AfterPurchase_LeftDirection.DOAnchorPosX(-570, 1f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(AfterPurchase_Left_Back());
     }
 
     public IEnumerator AfterPurchase_Left_Back()
     {
-        AfterPurchase_LeftDirection.DOAnchorPosX(-658, 1f).SetEase(Ease.InOutBack);
+        AfterPurchase_LeftDirection.DOAnchorPosX(-550, 1f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(AfterPurchase_Left_forward());
     }
     #endregion
 
-    #region 스킬구매 후 윗방향 화살표
-    public void AfterPurchase_Top()
+    #region 스킬구매 후 위,아랫 방향 화살표
+    public void AfterPurchase_UpDown()
     {
-        if (Purchase == false)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Purchase == false && UpDown == false && UpDown_Limit == true)
         {
+            UpDown = true;
             AfterPurchase_Window.DOAnchorPosY(5f, 1f).SetEase(Ease.OutBack);
+
         }
-    }
 
-    public void AfterPurchase_Enter_Top()
-    {
-        AfterPurchase_Top_Light.DOFade(1f, 1f);
-    }
-
-    public void AfterPurchase_Exit_Top()
-    {
-        AfterPurchase_Top_Light.DOFade(0f, 1f);
-    }
-    #endregion
-
-    #region 스킬구매 후 아랫방향 화살표
-    public void AfterPurchase_Bottom()
-    {
-        if (Purchase == false)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && Purchase == false && UpDown == true && UpDown_Limit == true)
         {
-            AfterPurchase_Window.DOAnchorPosY(-146f, 1f).SetEase(Ease.OutBack);
+            UpDown = false;
+            AfterPurchase_Window.DOAnchorPosY(-145f, 1f).SetEase(Ease.OutBack);
         }
-    }
 
-    public void AfterPurchase_Enter_Bottom()
-    {
-        AfterPurchase_Bottom_Light.DOFade(1f, 1f);
-    }
-
-    public void AfterPurchase_Exit_Bottom()
-    {
-        AfterPurchase_Bottom_Light.DOFade(0f, 1f);
     }
     #endregion
 

@@ -34,7 +34,7 @@ MonoBehaviour:
     Item_Icon: {fileID: 21300000, guid: eb0dff5eb0d3ed940a9371ab3158e506, type: 3}
     Item_Percent: 15
   - Itme_Name: "\uBC29\uC5B4\uC758 \uB9C8\uC815\uC11D"
-    Item_Explanation: "\uBC29\uC5B4\uB825\uC774 2 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    Item_Explanation: "\uBC29\uC5B4\uB825\uC774 5 \uC99D\uAC00\uD569\uB2C8\uB2E4."
     Item_Icon: {fileID: 21300000, guid: a665febf528c92c49961b57e1a7b6fbc, type: 3}
     Item_Percent: 15
   DA:
