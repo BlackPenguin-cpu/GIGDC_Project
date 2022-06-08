@@ -75,9 +75,15 @@ public class Skill_List : MonoBehaviour
                 Left_Explanation.text = this.Left_Skill.Explanation;
                 Left_CoolTime.text = this.Left_Skill.CoolTime;
                 Left_Gold_01.text = this.Left_Skill.Gold_01;
-                //Left_Gold_02.text = this.Left_Skill.Gold_02;
+                Left_Skill_Icon.sprite = this.Left_Skill.Icon;
+                //if (Wave啊 10老 版快)
+                //{
+                //    Left_Gold_02.text = this.Left_Skill.Gold_02;
+                //}
+                //if (Wave啊 15老 版快)
+                //{
                 //Left_Gold_03.text = this.Left_Skill.Gold_03;
-                //Left_Skill_Icon.sprite = this.Left_Skill.Icon;
+                //}
                 break;
             case 1:
                 this.Among_Skill = skill;
@@ -88,7 +94,7 @@ public class Skill_List : MonoBehaviour
                 Among_Gold_01.text = this.Among_Skill.Gold_01;
                 //Among_Gold_02.text = this.Among_Skill.Gold_02;
                 //Among_Gold_03.text = this.Among_Skill.Gold_03;
-                //Among_Skill_Icon.sprite = this.Among_Skill.Icon;
+                Among_Skill_Icon.sprite = this.Among_Skill.Icon;
                 break;
             case 2:
                 this.Right_Skill = skill;
@@ -98,7 +104,7 @@ public class Skill_List : MonoBehaviour
                 Right_Gold_01.text = this.Right_Skill.Gold_01;
                 //Right_Gold_02.text = this.Right_Skill.Gold_02;
                 //Right_Gold_03.text = this.Right_Skill.Gold_03;
-                //Right_Skill_Icon.sprite = this.Right_Skill.Icon;
+                Right_Skill_Icon.sprite = this.Right_Skill.Icon;
                 break;
 
         }

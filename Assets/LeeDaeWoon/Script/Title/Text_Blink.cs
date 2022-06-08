@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Text_Blink : MonoBehaviour
 {
@@ -18,35 +19,19 @@ public class Text_Blink : MonoBehaviour
     {
         //Fade_Text.color = new Color(Fade_Text.color.r, Fade_Text.color.g, Fade_Text.color.b, Mathf.Cos(Time.time));
         //님 이거 한줄로 됨
+        //저걸로 하면은 어색해서 닷트윈으로 변경했숨다
     }
-    /// <summary>
-    /// 알파값 0에서 1로 전환
-    /// </summary>
-    /// <returns></returns>
     public IEnumerator FadeText_Full()
     {
-        Debug.Log("됨");
-        Fade_Text.color = new Color(Fade_Text.color.r, Fade_Text.color.g, Fade_Text.color.b, 0);
-        while (Fade_Text.color.a < 1.0f)
-        {
-            Fade_Text.color = new Color(Fade_Text.color.r, Fade_Text.color.g, Fade_Text.color.b, Fade_Text.color.a + (Time.deltaTime / 2.0f));
-            yield return null;
-        }
+        Fade_Text.DOFade(0f, 1.5f);
+        yield return new WaitForSeconds(1.5f);
         StartCoroutine(FadeText_Zero());
     }
-    /// <summary>
-    /// 알파값 1에서 0로 전환
-    /// </summary>
-    /// <returns></returns>
+
     public IEnumerator FadeText_Zero()
     {
-        Fade_Text.color = new Color(Fade_Text.color.r, Fade_Text.color.g, Fade_Text.color.b, 1);
-        Color color = new Color(0, 0, 0, 0.1f);
-        while (Fade_Text.color.a > 0.0f)
-        {
-            Fade_Text.color = new Color(Fade_Text.color.r, Fade_Text.color.g, Fade_Text.color.b, Fade_Text.color.a - (Time.deltaTime / 2.0f));
-            yield return null;
-        }
+        Fade_Text.DOFade(1f, 1.5f);
+        yield return new WaitForSeconds(1.5f);
         StartCoroutine(FadeText_Full());
     }
 
