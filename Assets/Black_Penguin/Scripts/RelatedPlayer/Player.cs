@@ -50,7 +50,7 @@ public class PlayerInfo
 
     private float maxHp = 100;
     public float hp;
-    private float speed = 20; // velocity
+    public float speed = 20; // velocity
     private float crit = 5;
     private float def = 10;
     private float cooldown = 0;
@@ -452,7 +452,7 @@ public class Player : Entity
         if (horizontal == -1) sprite.flipX = true;
 
         Vector2 dir = new Vector2(horizontal, 0) * stat._speed * Time.deltaTime;
-        rigid.velocity += dir;
+        transform.Translate(dir);
 
         if (dir == Vector2.zero && state == PlayerState.Walk)
             state = PlayerState.Idle;
