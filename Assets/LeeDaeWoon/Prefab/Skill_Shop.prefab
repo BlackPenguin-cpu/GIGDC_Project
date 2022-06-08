@@ -2976,10 +2976,10 @@ MonoBehaviour:
   Pole_02: {fileID: 2583938369596527669}
   AfterPurchase_Window: {fileID: 7608388749939264510}
   AfterPurchase_LeftDirection: {fileID: 2673121510566580280}
-  AfterPurchase_Top_Light: {fileID: 4946211377175446938}
-  AfterPurchase_Bottom_Light: {fileID: 1573919641195721524}
   AfterPurchase_Skill: {fileID: 9068825397590289340}
+  AfterPurchase_Skill_Box: {fileID: 6619356178559100769}
   UpDown: 1
+  UpDown_Limit: 1
   Purchase: 1
   LeftRight_KeyNum: 0
   RandomTest: 0

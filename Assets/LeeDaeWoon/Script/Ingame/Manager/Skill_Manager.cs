@@ -1,11 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class Skill_Manager : MonoBehaviour
 {
     public static Skill_Manager Inst { get; private set; }
     void Awake() => Inst = this;
+
+    [Header("A스킬, S스킬")]
+    public RectTransform A_Skill;
+    public RectTransform S_Skill;
+
+    [Header("A스킬 쿨타임")]
+    bool isCoolDown_01 = false;
+    public float A_Skill_CoolTime = 0;
+    public Image FillAmount_Skill_A;
+
+    [Header("S스킬 쿨타임")]
+    bool isCoolDown_02 = false;
+    public float S_Skill_CoolTime = 0;
+    public Image FillAmount_Skill_S;
+
+    public bool AS_Limit = true;
+
 
     public int RandomTest;
     private int SumPer = 0;
@@ -21,14 +40,58 @@ public class Skill_Manager : MonoBehaviour
 
     void Start()
     {
+        FillAmount_Skill_A.fillAmount = 0f;
         AddList();
     }
 
     private void Update()
     {
+        Skill_CoolTime_A();
+        Skill_CoolTime_S();
+
+        AS_Location();
+
         if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.P))
         {
             AddSkill();
+        }
+    }
+
+    public void Skill_CoolTime_A()
+    {
+        if (Input.GetKeyDown(KeyCode.A) && isCoolDown_01 == false)
+        {
+            isCoolDown_01 = true;
+            FillAmount_Skill_A.fillAmount = 1f;
+        }
+
+        if (isCoolDown_01)
+        {
+            FillAmount_Skill_A.fillAmount -= 1 / A_Skill_CoolTime * Time.deltaTime;
+            if (FillAmount_Skill_A.fillAmount <= 0)
+            {
+                FillAmount_Skill_A.fillAmount = 0;
+                isCoolDown_01 = false;
+            }
+        }
+    }
+
+    public void Skill_CoolTime_S()
+    {
+        if (Input.GetKeyDown(KeyCode.S) && isCoolDown_02 == false)
+        {
+            isCoolDown_02 = true;
+            FillAmount_Skill_S.fillAmount = 1f;
+        }
+
+        if (isCoolDown_02)
+        {
+            FillAmount_Skill_S.fillAmount -= 1 / S_Skill_CoolTime * Time.deltaTime;
+            if (FillAmount_Skill_A.fillAmount <= 0)
+            {
+                FillAmount_Skill_A.fillAmount = 0;
+                isCoolDown_02 = false;
+            }
         }
     }
 
@@ -88,4 +151,26 @@ public class Skill_Manager : MonoBehaviour
         }
 
     }
+
+    #region 스킬 A, S키 위치 설정
+    public void AS_Location()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (AS_Limit == true)
+            {
+                AS_Limit = false;
+                A_Skill.DOAnchorPos3DY(-133.78f, 1f).SetEase(Ease.InOutBack);
+                S_Skill.DOAnchorPos3DY(134.3f, 1f).SetEase(Ease.InOutBack);
+            }
+
+            else if (AS_Limit == false)
+            {
+                AS_Limit = true;
+                A_Skill.DOAnchorPos3DY(0, 1f).SetEase(Ease.InOutBack);
+                S_Skill.DOAnchorPos3DY(0f, 1f).SetEase(Ease.InOutBack);
+            }
+        }
+    }
+    #endregion
 }
