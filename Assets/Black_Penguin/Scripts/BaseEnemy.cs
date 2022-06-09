@@ -93,7 +93,7 @@ public class BaseEnemy : Entity
     {
         hpShowDuration = 3;
         StartCoroutine(HitEffectCoroutine());
-        HealthBarObj.transform.GetChild(0).GetComponent<SpriteRenderer>().size = new Vector2(Hp - Damage / maxHp, 1);
+        HealthBarObj.transform.GetChild(0).GetComponent<SpriteRenderer>().size = new Vector2(Hp / maxHp, 1);
     }
 
     IEnumerator HitEffectCoroutine()
