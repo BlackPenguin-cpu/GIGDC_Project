@@ -779,7 +779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 259038973711664496, guid: 019d3c36a78132c44aecc53c1dc577cf, type: 3}
       propertyPath: stat.weaponType
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 259038973711664501, guid: 019d3c36a78132c44aecc53c1dc577cf, type: 3}
       propertyPath: m_Name
