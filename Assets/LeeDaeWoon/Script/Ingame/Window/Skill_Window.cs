@@ -186,7 +186,7 @@ public class Skill_Window : MonoBehaviour
             AfterPurchase_Skill_Box.SetParent(GameObject.Find("Down").transform);
             AfterPurchase_Skill.SetParent(GameObject.Find("Down").transform);
 
-            if (Skill_Manager.Inst.AS_Limit == false)
+            if (Skill_Manager.Inst.AS_Limit_02 == true)
             {
                 Basics_Skill_S.sprite = SeletSkill.Icon;
             }
