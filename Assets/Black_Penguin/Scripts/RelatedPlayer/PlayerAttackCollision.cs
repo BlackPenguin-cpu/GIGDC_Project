@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAttackCollision : MonoBehaviour
 {
     private SpriteRenderer parentSpriteRenderer;
-    private BoxCollider2D collider2D;
+    private new BoxCollider2D collider2D;
     public PlayerWeaponType weaponType;
     public int index;
     Player player;
@@ -24,7 +24,6 @@ public class PlayerAttackCollision : MonoBehaviour
             if (raycast.collider.TryGetComponent(out BaseEnemy enemy)
                 && Mathf.Abs(player.transform.position.x - enemy.transform.position.x) < (collider2D.offset.x + collider2D.size.x / 2))
             {
-                Debug.Log(enemy);
                 player.Attack(enemy, Player.Instance.stat._attackDamage);
             }
         }
