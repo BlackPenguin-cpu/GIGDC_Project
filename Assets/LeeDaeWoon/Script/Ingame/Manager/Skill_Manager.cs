@@ -16,14 +16,19 @@ public class Skill_Manager : MonoBehaviour
     [Header("A스킬 쿨타임")]
     bool isCoolDown_01 = false;
     public float A_Skill_CoolTime = 0;
+    public float EX_A_Skill_CoolTime;
     public Image FillAmount_Skill_A;
+    public Text A_Skill_Text;
 
     [Header("S스킬 쿨타임")]
     bool isCoolDown_02 = false;
     public float S_Skill_CoolTime = 0;
     public Image FillAmount_Skill_S;
+    public Text S_Skill_Text;
 
     public bool AS_Limit = true;
+    public bool AS_Limit_02 = true;
+    public bool Limit = true;
 
 
     public int RandomTest;
@@ -59,7 +64,13 @@ public class Skill_Manager : MonoBehaviour
 
     public void Skill_CoolTime_A()
     {
-        if (Input.GetKeyDown(KeyCode.A) && isCoolDown_01 == false)
+        if (Input.GetKeyDown(KeyCode.A) && isCoolDown_01 == false && AS_Limit == true)
+        {
+            isCoolDown_01 = true;
+            FillAmount_Skill_A.fillAmount = 1f;
+        }
+
+        else if (Input.GetKeyDown(KeyCode.S) && isCoolDown_01 == false && AS_Limit == false)
         {
             isCoolDown_01 = true;
             FillAmount_Skill_A.fillAmount = 1f;
@@ -78,7 +89,13 @@ public class Skill_Manager : MonoBehaviour
 
     public void Skill_CoolTime_S()
     {
-        if (Input.GetKeyDown(KeyCode.S) && isCoolDown_02 == false)
+        if (Input.GetKeyDown(KeyCode.S) && isCoolDown_02 == false && AS_Limit_02 == true)
+        {
+            isCoolDown_02 = true;
+            FillAmount_Skill_S.fillAmount = 1f;
+        }
+
+        else if (Input.GetKeyDown(KeyCode.A) && isCoolDown_02 == false && AS_Limit_02 == false)
         {
             isCoolDown_02 = true;
             FillAmount_Skill_S.fillAmount = 1f;
@@ -87,9 +104,9 @@ public class Skill_Manager : MonoBehaviour
         if (isCoolDown_02)
         {
             FillAmount_Skill_S.fillAmount -= 1 / S_Skill_CoolTime * Time.deltaTime;
-            if (FillAmount_Skill_A.fillAmount <= 0)
+            if (FillAmount_Skill_S.fillAmount <= 0)
             {
-                FillAmount_Skill_A.fillAmount = 0;
+                FillAmount_Skill_S.fillAmount = 0;
                 isCoolDown_02 = false;
             }
         }
@@ -134,6 +151,7 @@ public class Skill_Manager : MonoBehaviour
         //}
     }
 
+    #region 스킬 소환
     public void AddSkill()
     {
         int SkillIndex = 0;
@@ -151,25 +169,37 @@ public class Skill_Manager : MonoBehaviour
         }
 
     }
+    #endregion
 
     #region 스킬 A, S키 위치 설정
     public void AS_Location()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            if (AS_Limit == true)
-            {
-                AS_Limit = false;
-                A_Skill.DOAnchorPos3DY(-133.78f, 1f).SetEase(Ease.InOutBack);
-                S_Skill.DOAnchorPos3DY(134.3f, 1f).SetEase(Ease.InOutBack);
-            }
+            StartCoroutine(Skill_Change());
+        }
+    }
 
-            else if (AS_Limit == false)
-            {
-                AS_Limit = true;
-                A_Skill.DOAnchorPos3DY(0, 1f).SetEase(Ease.InOutBack);
-                S_Skill.DOAnchorPos3DY(0f, 1f).SetEase(Ease.InOutBack);
-            }
+    public IEnumerator Skill_Change()
+    {
+        if (AS_Limit == true && Limit == true)
+        {
+            Limit = false;
+            A_Skill.DOAnchorPos3DY(-133.78f, 1f).SetEase(Ease.InOutBack);
+            S_Skill.DOAnchorPos3DY(134.3f, 1f).SetEase(Ease.InOutBack);
+            yield return new WaitForSeconds(1f);
+            AS_Limit_02 = false;
+            AS_Limit = false;
+        }
+
+        else if (AS_Limit == false && Limit == false)
+        {
+            Limit = true;
+            A_Skill.DOAnchorPos3DY(0, 1f).SetEase(Ease.InOutBack);
+            S_Skill.DOAnchorPos3DY(0f, 1f).SetEase(Ease.InOutBack);
+            yield return new WaitForSeconds(1f);
+            AS_Limit_02 = true;
+            AS_Limit = true;
         }
     }
     #endregion
