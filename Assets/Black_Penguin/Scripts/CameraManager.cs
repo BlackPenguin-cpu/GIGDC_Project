@@ -11,10 +11,12 @@ public class CameraManager : MonoBehaviour
 {
     static public CameraManager instance;
 
+    private Vector3 startPos;
     public CameraState state;
     private void Awake()
     {
         instance = this;
+        startPos = transform.position;
     }
 
     private void Update()
@@ -28,7 +30,7 @@ public class CameraManager : MonoBehaviour
             case CameraState.NONE:
                 break;
             case CameraState.ONPLAYER:
-                transform.position = Vector2.Lerp(transform.position, Player.Instance.transform.position, Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, Player.Instance.transform.position + new Vector3(0,0,-10), Time.deltaTime);
                 break;
             default:
                 break;
@@ -40,6 +42,17 @@ public class CameraManager : MonoBehaviour
     }
     IEnumerator CameraShakeCoroutine(float duration, float Scale, float delay)
     {
-        yield return new WaitForSeconds(delay);
+        Vector3 pos = transform.position;
+
+        float nowTime = Time.time;
+        duration += nowTime;
+        while (nowTime < duration)
+        {
+            transform.position += (Vector3)(Vector2.one * (Random.insideUnitCircle * Random.Range(-Scale, Scale)));
+
+            nowTime = Time.time;
+            yield return new WaitForSeconds(delay);
+            transform.position = pos;
+        }
     }
 }

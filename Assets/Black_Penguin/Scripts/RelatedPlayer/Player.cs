@@ -498,6 +498,10 @@ public class Player : Entity
         {
             if (attackCollision.index == index && attackCollision.weaponType == stat.weaponType)
             {
+                if (stat.weaponType == PlayerWeaponType.Axe)
+                {
+                    CameraManager.instance.CameraShake(0.1f, 0.1f, 0.05f);
+                }
                 attackCollision.OnAttack();
             }
         }
@@ -511,23 +515,9 @@ public class Player : Entity
         state = PlayerState.Idle;
         isAttack = false;
     }
-
-    IEnumerator TestAttack()
+    public void onAttackHit(Entity entity)
     {
-        RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position, transform.lossyScale, 0, sprite.flipX ? Vector2.left : Vector2.right);
-
-        foreach (RaycastHit2D ray in raycasts)
-        {
-            if (ray.distance <= collider.size.x + 1 && ray.transform.TryGetComponent(out BaseEnemy enemy))
-            {
-                enemy._Hp -= stat._attackDamage;
-            }
-        }
-        yield return new WaitForSeconds(0.5f);
-        state = PlayerState.Idle;
-    }
-    void onAttackHit(Entity entity)
-    {
+        entity.GetComponent<Rigidbody2D>().AddForce(new Vector3(sprite.flipX ? -50 : 50, 30, 0));
         if (stat.PlayerDATypeList.BloodGauntlet)
         {
             BloodGauntletAction(entity);
