@@ -648,6 +648,7 @@ MonoBehaviour:
   Hp: 0
   buffList:
     stun: 0
+  state: 0
   attackSpeed: 0
   attackDamage: 0
 --- !u!61 &2001194930
@@ -774,6 +775,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 259038973711664496, guid: 019d3c36a78132c44aecc53c1dc577cf, type: 3}
+      propertyPath: JumpPower
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 259038973711664496, guid: 019d3c36a78132c44aecc53c1dc577cf, type: 3}
       propertyPath: stat.speed
       value: 10
       objectReference: {fileID: 0}
@@ -892,6 +897,22 @@ PrefabInstance:
     - target: {fileID: 7943655486521056903, guid: 019d3c36a78132c44aecc53c1dc577cf, type: 3}
       propertyPath: weaponType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972651936882143248, guid: 019d3c36a78132c44aecc53c1dc577cf, type: 3}
+      propertyPath: m_Size.x
+      value: 4.7616205
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972651936882143248, guid: 019d3c36a78132c44aecc53c1dc577cf, type: 3}
+      propertyPath: m_Size.y
+      value: 2.5522563
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972651936882143248, guid: 019d3c36a78132c44aecc53c1dc577cf, type: 3}
+      propertyPath: m_Offset.x
+      value: 1.8808098
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972651936882143248, guid: 019d3c36a78132c44aecc53c1dc577cf, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0096901655
       objectReference: {fileID: 0}
     - target: {fileID: 8173581916014019486, guid: 019d3c36a78132c44aecc53c1dc577cf, type: 3}
       propertyPath: m_BodyType

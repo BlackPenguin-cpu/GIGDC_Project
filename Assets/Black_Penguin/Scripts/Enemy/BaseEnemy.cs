@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum  EnemyState
+public enum EnemyState
 {
     MOVE,
     IDLE,
@@ -17,17 +17,33 @@ public class EnemyBuffList
 {
     public float stun = 0;
 }
+[System.Serializable]
+public class Range
+{
+    public float Min;
+    public float Max;
+    public float randomRangeFloatReturn()
+    {
+        return Random.Range(Min, Max);
+    }
+    public int randomRangeIntReturn()
+    {
+        return (int)Random.Range(Min, Max);
+    }
+}
 public class BaseEnemy : Entity
 {
     //HealthBar
     private GameObject HealthBarObj;
     private float hpShowDuration;
 
-    private new BoxCollider2D collider;
-    private SpriteRenderer sprite;
-    private Rigidbody2D rigid;
-    private Player player;
+    protected new BoxCollider2D collider;
+    protected SpriteRenderer sprite;
+    protected Rigidbody2D rigid;
+    protected Player player;
 
+    public Range coinDropValue;
+    public Range crystalDropValue;
     public EnemyBuffList buffList = new EnemyBuffList();
     public EnemyState state;
     public float attackSpeed;
@@ -57,14 +73,14 @@ public class BaseEnemy : Entity
         HealthBarObj.transform.localScale = new Vector3(collider.size.x, 1, 1);
         HealthBarObj.transform.localPosition = new Vector3(0, collider.size.y, 0);
     }
-    private void Update()
+    protected virtual void Update()
     {
         HealthBarObj.SetActive(hpShowDuration > 0);
 
         buffList.stun -= Time.deltaTime;
         hpShowDuration -= Time.deltaTime;
     }
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         Move();
     }
@@ -94,6 +110,9 @@ public class BaseEnemy : Entity
     /// </summary>
     public override void Die()
     {
+        GameManager.Instance.crystal += crystalDropValue.randomRangeIntReturn();
+        GameManager.Instance.coin += coinDropValue.randomRangeIntReturn();
+
         Player.Instance.DaggerSkill2();
         Destroy(gameObject);
     }
