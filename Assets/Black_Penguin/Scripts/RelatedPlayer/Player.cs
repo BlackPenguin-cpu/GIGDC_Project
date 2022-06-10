@@ -5,7 +5,7 @@ public struct TagName
 {
     public const string Platform = "Platform";
 }
-
+[System.Serializable]
 public class StartStat
 {
     public readonly float maxHp = 100;
@@ -274,6 +274,7 @@ public class Player : Entity
     public SpriteRenderer sprite => GetComponent<SpriteRenderer>();
     public PlayerAttackCollision[] attackCollisions => GetComponentsInChildren<PlayerAttackCollision>();
 
+    [SerializeField]
     PlayerState state;
     public PlayerInfo stat;
     public float JumpPower;
@@ -498,6 +499,10 @@ public class Player : Entity
         {
             if (attackCollision.index == index && attackCollision.weaponType == stat.weaponType)
             {
+                if (stat.weaponType == PlayerWeaponType.Dagger && Input.GetAxisRaw("Horizontal") == (sprite.flipX ? -1 : 1))
+                {
+                    rigid.AddForce(new Vector2((sprite.flipX ? -1 : 1) * stat.speed / 2, 0), ForceMode2D.Impulse);
+                }
                 if (stat.weaponType == PlayerWeaponType.Axe)
                 {
                     CameraManager.instance.CameraShake(0.1f, 0.1f, 0.05f);
