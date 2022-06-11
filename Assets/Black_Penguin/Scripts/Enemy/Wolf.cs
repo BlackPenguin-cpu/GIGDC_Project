@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Wolf : BaseEnemy
 {
+    public float attackDelay;
     protected override void Update()
     {
         base.Update();
+        onAttack();
 
 
     }
