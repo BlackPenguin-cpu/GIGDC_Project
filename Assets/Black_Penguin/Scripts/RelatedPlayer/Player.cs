@@ -5,17 +5,17 @@ public struct TagName
 {
     public const string Platform = "Platform";
 }
-
+[System.Serializable]
 public class StartStat
 {
-    public readonly float maxHp = 100;
-    public readonly float speed = 20;
-    public readonly float crit = 5;
-    public readonly float def = 10;
-    public readonly float cooldown = 0;
-    public readonly float attackDamage = 10;
-    public readonly float dashCooldown = 0.7f;
-    public readonly int dashCount = 1;
+    public readonly float originalMaxHp = 100;
+    public readonly float originalSpeed = 20;
+    public readonly float originalCrit = 5;
+    public readonly float originalDef = 10;
+    public readonly float originalCooldown = 0;
+    public readonly float originalDashCooldown = 0.7f;
+    public readonly int originalDashCount = 1;
+    public readonly float originalAttackDamage = 10;
 }
 [System.Serializable]
 public class PlayerInfo
@@ -30,16 +30,16 @@ public class PlayerInfo
             switch (weaponType)
             {
                 case PlayerWeaponType.Sword:
-                    attackDamage = (10 * value) + 10 + startStat.attackDamage;
-                    maxHp = (10 * value) + 10 + startStat.maxHp;
+                    attackDamage = (10 * value) + 10 + startStat.originalAttackDamage;
+                    maxHp = (10 * value) + 10 + startStat.originalMaxHp;
                     break;
                 case PlayerWeaponType.Dagger:
-                    attackDamage = (8 * value) + 8 + startStat.attackDamage;
-                    crit = (value * 2) + startStat.crit;
+                    attackDamage = (8 * value) + 8 + startStat.originalAttackDamage;
+                    crit = (value * 2) + startStat.originalCrit;
                     break;
                 case PlayerWeaponType.Axe:
-                    attackDamage = (15 * value) + 20 + startStat.attackDamage;
-                    def = (value * 5) + 5 + startStat.def;
+                    attackDamage = (15 * value) + 20 + startStat.originalAttackDamage;
+                    def = (value * 5) + 5 + startStat.originalDef;
                     break;
             }
             _level = value;
@@ -268,29 +268,23 @@ public enum PlayerType
 public class Player : Entity
 {
     public static Player Instance = null;
-    Animator animator => GetComponent<Animator>();
-    Rigidbody2D rigid => GetComponent<Rigidbody2D>();
-    new BoxCollider2D collider => GetComponent<BoxCollider2D>();
-    public SpriteRenderer sprite => GetComponent<SpriteRenderer>();
-    public PlayerAttackCollision[] attackCollisions => GetComponentsInChildren<PlayerAttackCollision>();
+    Animator animator;
+    Rigidbody2D rigid;
+    new BoxCollider2D collider;
+    public SpriteRenderer sprite;
+    public PlayerAttackCollision[] attackCollisions;
 
-    PlayerState state;
+    [SerializeField] PlayerState state;
     public PlayerInfo stat;
     public float JumpPower;
 
     float curDashCooltime = 0;
 
-    new protected float maxHp;
-    public float _maxHp
-    {
-        get => _maxHp + stat.Crystals[(int)CrystalsType.HEALTH] * 10;
-        set => _maxHp = value;
-    }
     bool canJump = false;
 
     public override float _Hp
     {
-        get => base._Hp;
+        get => stat._hp;
         set
         {
             if (value < Hp)
@@ -299,7 +293,7 @@ public class Player : Entity
                 value -= stat._def;
                 value = Mathf.Clamp(value, 0, Hp);
             }
-            base._Hp = value;
+            stat._hp = base._Hp = value;
         }
     }
     private void Awake()
@@ -309,6 +303,11 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
+        animator = GetComponent<Animator>();
+        rigid = GetComponent<Rigidbody2D>();
+        collider = GetComponent<BoxCollider2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        attackCollisions = GetComponentsInChildren<PlayerAttackCollision>();
     }
     private void Update()
     {
@@ -498,6 +497,14 @@ public class Player : Entity
         {
             if (attackCollision.index == index && attackCollision.weaponType == stat.weaponType)
             {
+                if (stat.weaponType == PlayerWeaponType.Dagger && Input.GetAxisRaw("Horizontal") == (sprite.flipX ? -1 : 1))
+                {
+                    rigid.AddForce(new Vector2((sprite.flipX ? -1 : 1) * 5, 0), ForceMode2D.Impulse);
+                }
+                if (stat.weaponType == PlayerWeaponType.Axe)
+                {
+                    CameraManager.instance.CameraShake(0.1f, 0.1f, 0.05f);
+                }
                 attackCollision.OnAttack();
             }
         }
@@ -511,23 +518,9 @@ public class Player : Entity
         state = PlayerState.Idle;
         isAttack = false;
     }
-
-    IEnumerator TestAttack()
+    public void onAttackHit(Entity entity)
     {
-        RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position, transform.lossyScale, 0, sprite.flipX ? Vector2.left : Vector2.right);
-
-        foreach (RaycastHit2D ray in raycasts)
-        {
-            if (ray.distance <= collider.size.x + 1 && ray.transform.TryGetComponent(out BaseEnemy enemy))
-            {
-                enemy._Hp -= stat._attackDamage;
-            }
-        }
-        yield return new WaitForSeconds(0.5f);
-        state = PlayerState.Idle;
-    }
-    void onAttackHit(Entity entity)
-    {
+        entity.GetComponent<Rigidbody2D>().AddForce(new Vector3(sprite.flipX ? -50 : 50, 30, 0));
         if (stat.PlayerDATypeList.BloodGauntlet)
         {
             BloodGauntletAction(entity);

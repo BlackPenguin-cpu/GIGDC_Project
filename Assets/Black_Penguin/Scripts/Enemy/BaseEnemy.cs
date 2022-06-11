@@ -3,10 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyState
+{
+    MOVE,
+    IDLE,
+    HIT,
+    DIE,
+    ATTACK
+}
+
 [System.Serializable]
 public class EnemyBuffList
 {
     public float stun = 0;
+}
+[System.Serializable]
+public class Range
+{
+    public float Min;
+    public float Max;
+    public float randomRangeFloatReturn()
+    {
+        return Random.Range(Min, Max);
+    }
+    public int randomRangeIntReturn()
+    {
+        return (int)Random.Range(Min, Max);
+    }
 }
 public class BaseEnemy : Entity
 {
@@ -14,11 +37,15 @@ public class BaseEnemy : Entity
     private GameObject HealthBarObj;
     private float hpShowDuration;
 
-    public EnemyBuffList buffList = new EnemyBuffList();
-    private new BoxCollider2D collider;
-    private SpriteRenderer sprite;
-    private Rigidbody2D rigid;
+    protected new BoxCollider2D collider;
+    protected SpriteRenderer sprite;
+    protected Rigidbody2D rigid;
+    protected Player player;
 
+    public Range coinDropValue;
+    public Range crystalDropValue;
+    public EnemyBuffList buffList = new EnemyBuffList();
+    public EnemyState state;
     public float attackSpeed;
     public float attackDamage;
 
@@ -37,6 +64,7 @@ public class BaseEnemy : Entity
     protected override void Start()
     {
         base.Start();
+        player = Player.Instance;
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -45,14 +73,14 @@ public class BaseEnemy : Entity
         HealthBarObj.transform.localScale = new Vector3(collider.size.x, 1, 1);
         HealthBarObj.transform.localPosition = new Vector3(0, collider.size.y, 0);
     }
-    private void Update()
+    protected virtual void Update()
     {
         HealthBarObj.SetActive(hpShowDuration > 0);
 
         buffList.stun -= Time.deltaTime;
         hpShowDuration -= Time.deltaTime;
     }
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         Move();
     }
@@ -61,9 +89,10 @@ public class BaseEnemy : Entity
     /// </summary>
     public virtual void Move()
     {
+        if (state == EnemyState.HIT) return;
         float dir;
 
-        if (Player.Instance.transform.position.x > transform.position.x)
+        if (player.transform.position.x > transform.position.x)
         {
             sprite.flipX = false;
             dir = 1;
@@ -81,6 +110,9 @@ public class BaseEnemy : Entity
     /// </summary>
     public override void Die()
     {
+        GameManager.Instance.crystal += crystalDropValue.randomRangeIntReturn();
+        GameManager.Instance.coin += coinDropValue.randomRangeIntReturn();
+
         Player.Instance.DaggerSkill2();
         Destroy(gameObject);
     }
@@ -92,14 +124,17 @@ public class BaseEnemy : Entity
     public override void OnHit(Entity atkEntity, float Damage)
     {
         hpShowDuration = 3;
+        player.onAttackHit(this);
         StartCoroutine(HitEffectCoroutine());
         HealthBarObj.transform.GetChild(0).GetComponent<SpriteRenderer>().size = new Vector2(Hp / maxHp, 1);
     }
 
     IEnumerator HitEffectCoroutine()
     {
+        state = EnemyState.HIT;
         sprite.color = Color.red;
         yield return new WaitForSeconds(0.2f);
+        state = EnemyState.MOVE;
         sprite.color = Color.white;
     }
 }
