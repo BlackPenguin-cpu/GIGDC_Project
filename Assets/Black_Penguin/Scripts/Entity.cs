@@ -4,6 +4,8 @@ using UnityEngine;
 
 
 
+[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class Entity : MonoBehaviour
 {
     public float speed;
@@ -35,6 +37,7 @@ public abstract class Entity : MonoBehaviour
         target.OnHit(this, atkDmg);
         target._Hp -= atkDmg;
     }
+
     public abstract void Die();
     public abstract void OnHit(Entity atkEntity, float Damage = 0);
 }

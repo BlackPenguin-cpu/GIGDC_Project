@@ -31,6 +31,7 @@ public class Range
         return (int)Random.Range(Min, Max);
     }
 }
+[RequireComponent(typeof(Animator))]
 public class BaseEnemy : Entity
 {
     //HealthBar
@@ -41,12 +42,15 @@ public class BaseEnemy : Entity
     protected SpriteRenderer sprite;
     protected Rigidbody2D rigid;
     protected Player player;
+    protected Animator animator;
 
-    public Range coinDropValue;
-    public Range crystalDropValue;
+    public Range coinDropValueRange;
+    public Range crystalDropValueRange;
     public EnemyBuffList buffList = new EnemyBuffList();
     public EnemyState state;
     public float attackSpeed;
+    public float attackDelay;
+    protected float curAttackDelay;
     public float attackDamage;
 
     public override float _Hp
@@ -65,6 +69,7 @@ public class BaseEnemy : Entity
     {
         base.Start();
         player = Player.Instance;
+        animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -76,7 +81,11 @@ public class BaseEnemy : Entity
     protected virtual void Update()
     {
         HealthBarObj.SetActive(hpShowDuration > 0);
+        AnimController();
+        if (state == EnemyState.HIT)
+            curAttackDelay = 0;
 
+        curAttackDelay += Time.deltaTime;
         buffList.stun -= Time.deltaTime;
         hpShowDuration -= Time.deltaTime;
     }
@@ -84,12 +93,17 @@ public class BaseEnemy : Entity
     {
         Move();
     }
+    protected virtual void AnimController()
+    {
+        animator.SetInteger("State", (int)state);
+        animator.SetFloat("AttackSpeed", attackSpeed);
+    }
     /// <summary>
     /// Move
     /// </summary>
     public virtual void Move()
     {
-        if (state == EnemyState.HIT) return;
+        if (state != EnemyState.MOVE) return;
         float dir;
 
         if (player.transform.position.x > transform.position.x)
@@ -110,9 +124,24 @@ public class BaseEnemy : Entity
     /// </summary>
     public override void Die()
     {
-        GameManager.Instance.crystal += crystalDropValue.randomRangeIntReturn();
-        GameManager.Instance.coin += coinDropValue.randomRangeIntReturn();
+        int crystalDropValue = crystalDropValueRange.randomRangeIntReturn();
+        int coinDropValue = crystalDropValueRange.randomRangeIntReturn();
+        for (int i = 0; i < crystalDropValue / 10; i++)
+        {
+            Rigidbody2D crystalObj = Instantiate(Resources.Load<Rigidbody2D>("CrystalObj"), transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+            crystalObj.AddTorque(Random.Range(-100, 100));
+            crystalObj.AddForce(new Vector2(Random.Range(-100, 100), Random.Range(-100, 100)));
+        }
+        for (int i = 0; i < coinDropValue / 10; i++)
+        {
+            Rigidbody2D goldObj = Instantiate(Resources.Load<Rigidbody2D>("CoinObj"), transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+            goldObj.AddTorque(Random.Range(-100, 100));
+            goldObj.AddForce(new Vector2(Random.Range(-10, 10), Random.Range(10, 15)));
+        }
+        GameManager.Instance.crystal += crystalDropValue;
+        GameManager.Instance.coin += coinDropValue;
 
+        state = EnemyState.DIE;
         Player.Instance.DaggerSkill2();
         Destroy(gameObject);
     }
