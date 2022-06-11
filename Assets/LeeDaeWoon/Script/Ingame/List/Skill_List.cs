@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Skill_List : MonoBehaviour
 {
+    public static Skill_List Inst { get; private set; }
+    void Awake() => Inst = this;
+
     [Header("¿ÞÂÊ ½ºÅ³")]
     public Image Left_Skill_Icon;
     public Text Left_Name;
@@ -35,34 +38,59 @@ public class Skill_List : MonoBehaviour
     public Skill Left_Skill;
     public Skill Among_Skill;
     public Skill Right_Skill;
-
     void Start()
     {
 
     }
 
-    void Update()
+    public void Skill_Num(int i)
     {
-        if (Skill_Window.Inst.LeftRight_KeyNum == 0)
+        if (i == 0)
         {
             Left_Name.text = this.Left_Skill.Name;
             Left_Explanation.text = this.Left_Skill.Explanation;
             Left_CoolTime.text = this.Left_Skill.CoolTime;
         }
 
-        else if (Skill_Window.Inst.LeftRight_KeyNum == 1)
+        else if (i== 1)
         {
             Among_Name.text = this.Among_Skill.Name;
             Among_Explanation.text = this.Among_Skill.Explanation;
             Among_CoolTime.text = this.Among_Skill.CoolTime;
         }
 
-        else if (Skill_Window.Inst.LeftRight_KeyNum == 2)
+        else if (i== 2)
         {
             Right_Name.text = this.Right_Skill.Name;
             Right_Explanation.text = this.Right_Skill.Explanation;
             Right_CoolTime.text = this.Right_Skill.CoolTime;
         }
+
+        return;
+    }
+    void Update()
+    {
+/*
+        if (Skill_Collision.Inst.LeftRight_Nun == 0)
+        {
+            Left_Name.text = this.Left_Skill.Name;
+            Left_Explanation.text = this.Left_Skill.Explanation;
+            Left_CoolTime.text = this.Left_Skill.CoolTime;
+        }
+
+        else if (Skill_Collision.Inst.LeftRight_Nun == 1)
+        {
+            Among_Name.text = this.Among_Skill.Name;
+            Among_Explanation.text = this.Among_Skill.Explanation;
+            Among_CoolTime.text = this.Among_Skill.CoolTime;
+        }
+
+        else if (Skill_Collision.Inst.LeftRight_Nun == 2)
+        {
+            Right_Name.text = this.Right_Skill.Name;
+            Right_Explanation.text = this.Right_Skill.Explanation;
+            Right_CoolTime.text = this.Right_Skill.CoolTime;
+        }*/
     }
 
     public void SkillCard(Skill skill, int skillIndex)

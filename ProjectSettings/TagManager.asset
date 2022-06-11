@@ -7,6 +7,9 @@ TagManager:
   - Title
   - Team_Logo
   - Platform
+  - Skill_01
+  - Skill_02
+  - Skill_03
   layers:
   - Default
   - TransparentFX

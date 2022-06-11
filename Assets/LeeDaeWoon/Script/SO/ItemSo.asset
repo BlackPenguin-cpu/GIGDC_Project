@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Items:
   - Itme_Name: "\uD798\uC758 \uB9C8\uC815\uC11D"
-    Item_Explanation: "\uACF5\uACA9\uB825\uC774 10 % \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    Item_Explanation: "\uACF5\uACA9\uB825\uC774 10% \uC99D\uAC00\uD569\uB2C8\uB2E4."
     Item_Icon: {fileID: 21300000, guid: f60a77a8af8abc84aa0e8d311e9146cc, type: 3}
     Item_Percent: 20
   - Itme_Name: "\uC2E0\uC18D\uC758 \uB9C8\uC815\uC11D"
@@ -22,7 +22,7 @@ MonoBehaviour:
     Item_Icon: {fileID: 21300000, guid: 9b6a6ffdd450e2b42bb105b1bf27c3d6, type: 3}
     Item_Percent: 20
   - Itme_Name: "\uC5F0\uC18D\uC758 \uB9C8\uC815\uC11D"
-    Item_Explanation: "\uACF5\uACA9 \uC18D\uB3C4\uAC00 0.1\uCD08 \uAC10\uC18C\uD569\uB2C8\uB2E4."
+    Item_Explanation: "\uACF5\uACA9 \uC18D\uB3C4\uAC00 10% \uC99D\uAC00\uD569\uB2C8\uB2E4."
     Item_Icon: {fileID: 21300000, guid: 398ead93bd1b6134ab8b6e32c161e2a6, type: 3}
     Item_Percent: 15
   - Itme_Name: "\uCCB4\uB825\uC758 \uB9C8\uC815\uC11D"
@@ -34,7 +34,7 @@ MonoBehaviour:
     Item_Icon: {fileID: 21300000, guid: eb0dff5eb0d3ed940a9371ab3158e506, type: 3}
     Item_Percent: 15
   - Itme_Name: "\uBC29\uC5B4\uC758 \uB9C8\uC815\uC11D"
-    Item_Explanation: "\uBC29\uC5B4\uB825\uC774 5% \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    Item_Explanation: "\uBC29\uC5B4\uB825\uC774 5 \uC99D\uAC00\uD569\uB2C8\uB2E4."
     Item_Icon: {fileID: 21300000, guid: a665febf528c92c49961b57e1a7b6fbc, type: 3}
     Item_Percent: 15
   DA:

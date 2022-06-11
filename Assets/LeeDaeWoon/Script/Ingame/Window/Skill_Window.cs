@@ -15,6 +15,12 @@ public class Skill_Window : MonoBehaviour
     [Header("스킬 창")]
     public RectTransform Skill_RectTransform;
     public RectTransform Pole_02;
+    public GameObject Skill_window;
+
+    [Header("상점에 있는 스킬")]
+    public GameObject Skill_01;
+    public GameObject Skill_02;
+    public GameObject Skill_03;
 
     [Header("기본 스킬 이미지")]
     public Image Basics_Skill_A;
@@ -31,65 +37,34 @@ public class Skill_Window : MonoBehaviour
     public bool UpDown = true; // 현재 위 인지 아래 인지 확인
     public bool UpDown_Limit = true; // 위아래 제한
 
-    private bool SkillWindow = true;
+    public bool SkillWindow = true;
     public bool Purchase = true;
-    public int LeftRight_KeyNum = 0;
+    //public int LeftRight_KeyNum = 0;
     public int RandomTest;
     Skill SeletSkill;
 
+    public int SkillNum;
+
     void Start()
     {
+        this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+
         Basics_Skill_A = GameObject.Find("Basic_Skill01").GetComponent<Image>();
         Basics_Skill_S = GameObject.Find("Basic_Skill02").GetComponent<Image>();
 
         AfterPurchase_Left();
 
-        if (SkillWindow == true)
-        {
-            SkillWindow = false;
-            StartCoroutine(SkillWindow_Coroutine());
-        }
     }
 
     void Update()
     {
-
-        Skill_Dot();
         Skill_Purchase();
         AfterPurchase_UpDown();
     }
 
-
-
-    public void Skill_Dot()
+    public void Skill_Window_Active()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && Purchase == true)
-        {
-            if (1 <= LeftRight_KeyNum && LeftRight_KeyNum <= 2)
-            {
-                SkillWindow = true;
-                LeftRight_KeyNum -= 1;
-                if (SkillWindow == true)
-                {
-                    SkillWindow = false;
-                    StartCoroutine(SkillWindow_Coroutine());
-                }
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow) && Purchase == true)
-        {
-            if (0 <= LeftRight_KeyNum && LeftRight_KeyNum <= 1)
-            {
-                SkillWindow = true;
-                LeftRight_KeyNum += 1;
-                if (SkillWindow == true)
-                {
-                    SkillWindow = false;
-                    StartCoroutine(SkillWindow_Coroutine());
-                }
-            }
-        }
+        this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
     }
 
     public void SkillClose_Dot()
@@ -98,18 +73,18 @@ public class Skill_Window : MonoBehaviour
         Pole_02.DOAnchorPosY(202.92f, 0.5f);
         StartCoroutine(SkillWindowClose_Coroutine());
     }
-
+    
     public void Skill_Purchase()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (Purchase == true)
             {
-                SeletSkill = Skill_Manager.Inst.Skill[LeftRight_KeyNum];
+                SeletSkill = Skill_Manager.Inst.Skill[SkillNum];
                 AfterPurchase_Skill.GetComponent<Image>().sprite = SeletSkill.Icon;
 
-                Skill_Manager.Inst.Skill_Have.Add(Skill_Manager.Inst.Skill[LeftRight_KeyNum]);
-                Skill_Manager.Inst.Skill.RemoveAt(LeftRight_KeyNum);
+                Skill_Manager.Inst.Skill_Have.Add(Skill_Manager.Inst.Skill[SkillNum]);
+                Skill_Manager.Inst.Skill.RemoveAt(SkillNum);
 
 
                 for (int i = 0; i < 2; i++)
@@ -121,8 +96,8 @@ public class Skill_Window : MonoBehaviour
 
                 Purchase = false;
                 SkillClose_Dot();
-                this.gameObject.transform.GetChild(LeftRight_KeyNum).GetChild(3).gameObject.SetActive(false);
-                this.gameObject.transform.GetChild(LeftRight_KeyNum).GetChild(2).gameObject.SetActive(true);
+                this.gameObject.transform.GetChild(SkillNum).GetChild(3).gameObject.SetActive(false);
+                this.gameObject.transform.GetChild(SkillNum).GetChild(2).gameObject.SetActive(true);
             }
 
             else if (Purchase == false)
@@ -131,7 +106,6 @@ public class Skill_Window : MonoBehaviour
                 this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
                 AfterPurchase_Window.transform.GetChild(0).gameObject.SetActive(false);
-                //AfterPurchase_Window.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
 
                 StartCoroutine(SkillHave());
 
@@ -153,9 +127,9 @@ public class Skill_Window : MonoBehaviour
             Skill_Manager.Inst.Skill_Up.Add(Skill_Manager.Inst.Skill_Have[0]);
             Skill_Manager.Inst.Skill_Have.RemoveAt(0);
             UpDown_Limit = false;
-            AfterPurchase_Skill.DOAnchorPos(new Vector3(-779.92f, 60.7f, 0f), 1f).SetEase(Ease.InBack);
-            AfterPurchase_Skill_Box.DOAnchorPos(new Vector3(-779.92f, 60.7f, 0f), 1f).SetEase(Ease.InBack);
-            yield return new WaitForSeconds(1f);
+            AfterPurchase_Skill.DOAnchorPos(new Vector3(-779.92f, 60.7f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+            AfterPurchase_Skill_Box.DOAnchorPos(new Vector3(-779.92f, 60.7f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+            yield return new WaitForSeconds(0.5f);
             AfterPurchase_Skill_Box.SetParent(GameObject.Find("Up").transform);
             AfterPurchase_Skill.SetParent(GameObject.Find("Up").transform);
 
@@ -180,9 +154,9 @@ public class Skill_Window : MonoBehaviour
             Skill_Manager.Inst.Skill_Down.Add(Skill_Manager.Inst.Skill_Have[0]);
             Skill_Manager.Inst.Skill_Have.RemoveAt(0);
             UpDown_Limit = false;
-            AfterPurchase_Skill.DOAnchorPos(new Vector3(-779.92f, 76.3f, 0f), 1f).SetEase(Ease.InBack);
-            AfterPurchase_Skill_Box.DOAnchorPos(new Vector3(-779.92f, 76.3f, 0f), 1f).SetEase(Ease.InBack);
-            yield return new WaitForSeconds(1f);
+            AfterPurchase_Skill.DOAnchorPos(new Vector3(-779.92f, 76.3f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+            AfterPurchase_Skill_Box.DOAnchorPos(new Vector3(-779.92f, 76.3f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+            yield return new WaitForSeconds(0.5f);
             AfterPurchase_Skill_Box.SetParent(GameObject.Find("Down").transform);
             AfterPurchase_Skill.SetParent(GameObject.Find("Down").transform);
 
@@ -238,8 +212,10 @@ public class Skill_Window : MonoBehaviour
     #endregion
 
     #region 스킬 창
-    private IEnumerator SkillWindow_Coroutine()
+    public IEnumerator SkillWindow_Coroutine()
     {
+        SkillWindow = false;
+
         Timer = 0;
         while (Timer < 1)
         {
@@ -249,9 +225,11 @@ public class Skill_Window : MonoBehaviour
             Timer += Time.deltaTime * 3f;
             yield return null;
         }
+
+
     }
 
-    private IEnumerator SkillWindowClose_Coroutine()
+    public IEnumerator SkillWindowClose_Coroutine()
     {
         Timer = 0;
         while (Timer < 1)
@@ -261,8 +239,14 @@ public class Skill_Window : MonoBehaviour
             Timer += Time.deltaTime * 3f;
             yield return null;
         }
+
         this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
-        this.gameObject.transform.GetChild(4).gameObject.SetActive(true);
+        SkillWindow = true;
+
+        if (Purchase == false)
+        {
+            this.gameObject.transform.GetChild(4).gameObject.SetActive(true);
+        }
     }
 
     #endregion
