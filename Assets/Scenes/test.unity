@@ -519,6 +519,7 @@ GameObject:
   - component: {fileID: 1958597109}
   - component: {fileID: 1958597108}
   - component: {fileID: 1958597111}
+  - component: {fileID: 1958597112}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -611,6 +612,19 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
+--- !u!114 &1958597112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958597107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b255c7e405a20fc4ab15bcd4bff64128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 1
 --- !u!1 &2001194928
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,10 +660,17 @@ MonoBehaviour:
   speed: 1
   maxHp: 100
   Hp: 0
+  coinDropValueRange:
+    Min: 0
+    Max: 0
+  crystalDropValueRange:
+    Min: 0
+    Max: 0
   buffList:
     stun: 0
   state: 0
   attackSpeed: 0
+  attackDelay: 0
   attackDamage: 0
 --- !u!61 &2001194930
 BoxCollider2D:
@@ -784,7 +805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 259038973711664496, guid: 019d3c36a78132c44aecc53c1dc577cf, type: 3}
       propertyPath: stat.weaponType
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 259038973711664501, guid: 019d3c36a78132c44aecc53c1dc577cf, type: 3}
       propertyPath: m_Name

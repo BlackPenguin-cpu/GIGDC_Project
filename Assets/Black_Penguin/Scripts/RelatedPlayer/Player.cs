@@ -272,7 +272,7 @@ public class Player : Entity
     Rigidbody2D rigid;
     new BoxCollider2D collider;
     public SpriteRenderer sprite;
-    public PlayerAttackCollision[] attackCollisions;
+    public AttackCollision[] attackCollisions;
 
     [SerializeField] PlayerState state;
     public PlayerInfo stat;
@@ -307,7 +307,7 @@ public class Player : Entity
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
-        attackCollisions = GetComponentsInChildren<PlayerAttackCollision>();
+        attackCollisions = GetComponentsInChildren<AttackCollision>();
     }
     private void Update()
     {
@@ -493,7 +493,7 @@ public class Player : Entity
     }
     public void AnimAttackFunc(int index)
     {
-        foreach (PlayerAttackCollision attackCollision in attackCollisions)
+        foreach (AttackCollision attackCollision in attackCollisions)
         {
             if (attackCollision.index == index && attackCollision.weaponType == stat.weaponType)
             {
@@ -505,7 +505,7 @@ public class Player : Entity
                 {
                     CameraManager.instance.CameraShake(0.1f, 0.1f, 0.05f);
                 }
-                attackCollision.OnAttack();
+                attackCollision.OnAttack(this);
             }
         }
     }
