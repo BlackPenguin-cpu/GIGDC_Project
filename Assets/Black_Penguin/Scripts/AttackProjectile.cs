@@ -2,24 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ProjectileType
+{
+    Basic,
+    Target,
+    Homing
+}
 public class AttackProjectile : MonoBehaviour
 {
     public Entity shootSelf;
     public GameObject target;
     public float damage;
     public float speed;
-    public AttackProjectile(Entity shootSelf, float damage, float speed, GameObject target = null)
+    public ProjectileType projectileType;
+    public AttackProjectile(Entity shootSelf, float damage, float speed, ProjectileType projectileType, GameObject target = null)
     {
         this.shootSelf = shootSelf;
         this.damage = damage;
         this.speed = speed;
         this.target = target;
+        this.projectileType = projectileType;
+    }
+    private void Start()
+    {
+        if (projectileType == ProjectileType.Target)
+            transform.LookAt(target.transform);
     }
     private void Update()
     {
-        if (target != null)
+        if (projectileType == ProjectileType.Target)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * speed);
+            transform.position += transform.forward * speed * Time.deltaTime;
         }
     }
 

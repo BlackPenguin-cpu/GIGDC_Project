@@ -66,6 +66,6 @@ public class Shaman : BaseEnemy
     public void OnAttack()
     {
         AttackProjectile projectile = Instantiate(Resources.Load<AttackProjectile>("Enemy/FireBall"), transform.position, Quaternion.identity);
-        projectile = new AttackProjectile(this, attackDamage, 5, player.gameObject);
+        projectile = new AttackProjectile(this, attackDamage, 5, ProjectileType.Target, player.gameObject);
     }
 }
