@@ -17,10 +17,23 @@ public class StartStat
     public readonly int originalDashCount = 1;
     public readonly float originalAttackDamage = 10;
 }
+public class PlayerWeaponSkillInfo
+{
+    public bool swordIronHeart;
+    public bool swordTenacity;
+    public bool swordGodBless;
+    public bool daggerSwift;
+    public bool daggerComboAttack;
+    public bool daggerHiddenCard;
+    public bool axeTakle;
+    public bool axeEarthQuake;
+    public bool axeEruption;
+}
 [System.Serializable]
 public class PlayerInfo
 {
     public int level;
+    public PlayerWeaponSkillInfo skillInfo;
     private StartStat startStat;
     public int _level
     {
@@ -32,14 +45,50 @@ public class PlayerInfo
                 case PlayerWeaponType.Sword:
                     attackDamage = (10 * value) + 10 + startStat.originalAttackDamage;
                     maxHp = (10 * value) + 10 + startStat.originalMaxHp;
+                    if (value >= 5)
+                    {
+                        skillInfo.swordIronHeart = true;
+                    }
+                    else if (value >= 3)
+                    {
+                        skillInfo.swordTenacity = true;
+                    }
+                    else if (value >= 1)
+                    {
+                        skillInfo.swordGodBless = true;
+                    }
                     break;
                 case PlayerWeaponType.Dagger:
                     attackDamage = (8 * value) + 8 + startStat.originalAttackDamage;
                     crit = (value * 2) + startStat.originalCrit;
+                    if (value >= 5)
+                    {
+                        skillInfo.daggerSwift = true;
+                    }
+                    else if (value >= 3)
+                    {
+                        skillInfo.daggerComboAttack = true;
+                    }
+                    else if (value >= 1)
+                    {
+                        skillInfo.daggerHiddenCard = true;
+                    }
                     break;
                 case PlayerWeaponType.Axe:
                     attackDamage = (15 * value) + 20 + startStat.originalAttackDamage;
                     def = (value * 5) + 5 + startStat.originalDef;
+                    if (value >= 5)
+                    {
+                        skillInfo.axeEruption = true;
+                    }
+                    else if (value >= 3)
+                    {
+                        skillInfo.axeEarthQuake = true;
+                    }
+                    else if (value >= 1)
+                    {
+                        skillInfo.axeTakle = true;
+                    }
                     break;
             }
             _level = value;
@@ -100,7 +149,7 @@ public class PlayerInfo
             }
             if (value <= 0)
             {
-                if (weaponType == PlayerWeaponType.Sword && level >= 5 && swordSkill3Boolean == false)
+                if (skillInfo.swordGodBless && swordSkill3Boolean == false)
                 {
                     value = 1;
                     swordSkill3Boolean = true;
@@ -122,11 +171,11 @@ public class PlayerInfo
             else if (weaponType == PlayerWeaponType.Dagger)
             {
                 returnValue *= 1.1f;
-                if (level >= 1)
+                if (skillInfo.daggerSwift)
                 {
                     returnValue *= 1.1f;
                 }
-                if (level >= 3)
+                if (skillInfo.daggerComboAttack)
                 {
                     returnValue += returnValue * ((daggerSkill2Count * 5) * 0.01f);
                 }
@@ -151,13 +200,13 @@ public class PlayerInfo
         {
             float returnValue = def;
             returnValue += Crystals[(int)CrystalsType.DEFFENCE] * 5;
-            if (weaponType == PlayerWeaponType.Sword && level >= 1)
+            if (skillInfo.swordIronHeart)
             {
                 returnValue *= 1.15f;
-                if (hp / maxHp <= 0.3f && level >= 3)
-                {
-                    returnValue *= 1.3f;
-                }
+            }
+            if (hp / maxHp <= 0.3f && skillInfo.swordTenacity)
+            {
+                returnValue *= 1.3f;
             }
             return returnValue;
         }
@@ -180,7 +229,7 @@ public class PlayerInfo
             float returnValue = attackDamage;
             returnValue += (returnValue * Crystals[(int)CrystalsType.POWER]) / 10;
 
-            if (weaponType == PlayerWeaponType.Sword && hp / maxHp <= 0.3f && level >= 3)
+            if (skillInfo.swordTenacity && hp / maxHp <= 0.3f)
                 returnValue *= 1.3f;
 
             if (PlayerDATypeList.TheOneRing)
@@ -200,7 +249,7 @@ public class PlayerInfo
                 returnValue *= 1.1f;
             returnValue += returnValue * Crystals[(int)CrystalsType.ATTACKSPEED];
 
-            if (weaponType == PlayerWeaponType.Dagger && level >= 3)
+            if (skillInfo.daggerComboAttack)
             {
                 returnValue *= (daggerSkill2Count * 5) * 0.01f;
             }
@@ -402,7 +451,7 @@ public class Player : Entity
             {
                 knifeCapeAction(enemies);
             }
-            if (stat.weaponType == PlayerWeaponType.Axe && stat.level >= 1)
+            if (stat.skillInfo.axeTakle)
             {
                 AxeSkill1(enemies);
             }
@@ -605,7 +654,7 @@ public class Player : Entity
     //Enemy에서 발동시킴
     public void DaggerSkill2()
     {
-        if (stat.level >= 3 && stat.weaponType == PlayerWeaponType.Dagger)
+        if (stat.skillInfo.daggerComboAttack)
         {
             stat.daggerSkill2Count++;
             stat.daggerSkill2PassedTime = 5;
@@ -615,7 +664,7 @@ public class Player : Entity
     //Animator에서 발동시킴
     public void DaggerSkill3()
     {
-        if (stat.level >= 5 && stat.weaponType == PlayerWeaponType.Dagger)
+        if (stat.skillInfo.daggerHiddenCard)
         {
             DaggerSkillObj obj = Instantiate(Resources.Load<DaggerSkillObj>(""), transform.position, Quaternion.identity);
             obj.GetComponent<SpriteRenderer>().flipX = sprite.flipX;

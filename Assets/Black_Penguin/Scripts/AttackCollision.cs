@@ -14,7 +14,7 @@ public class AttackCollision : MonoBehaviour
 
     private void Start()
     {
-        collider2D = GetComponent<BoxCollider2D>(); ;
+        collider2D = GetComponent<BoxCollider2D>();
         parentSpriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
     }
     /// <summary>
