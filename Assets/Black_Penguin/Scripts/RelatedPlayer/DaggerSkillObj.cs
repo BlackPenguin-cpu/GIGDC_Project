@@ -23,7 +23,7 @@ public class DaggerSkillObj : MonoBehaviour
     {
         if (collision.TryGetComponent(out BaseEnemy enemy))
         {
-            enemy._Hp -= damage;
+            enemy._hp -= damage;
         }
     }
 }

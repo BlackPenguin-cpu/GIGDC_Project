@@ -14,7 +14,7 @@ public class Skeleton : BaseEnemy
         crystalDropValueRange.Max = 10;
         coinDropValueRange.Min = 5;
         coinDropValueRange.Max = 10;
-        maxHp = 180;
+        _maxHp = 180;
         attackDamage = 11;
         attackSpeed = 1;
         attackDelay = 2;

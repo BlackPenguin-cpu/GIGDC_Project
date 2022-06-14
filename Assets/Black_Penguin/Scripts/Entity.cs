@@ -9,33 +9,38 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
     public float speed;
-    public float maxHp;
-
-    [SerializeField] protected float Hp;
-    public virtual float _Hp
+    [SerializeField] protected float maxHp;
+    public virtual float _maxHp
     {
-        get { return Hp; }
+        get { return maxHp; }
+        set { maxHp = value; }
+    }
+
+    [SerializeField] protected float hp;
+    public virtual float _hp
+    {
+        get { return hp; }
         set
         {
-            if (value > maxHp)
+            if (value > _maxHp)
             {
-                value = maxHp;
+                value = _maxHp;
             }
             else if (value <= 0)
             {
                 Die();
             }
-            Hp = value;
+            hp = value;
         }
     }
     protected virtual void Start()
     {
-        Hp = maxHp;
+        hp = _maxHp;
     }
     public virtual void Attack(Entity target, float atkDmg)
     {
         target.OnHit(this, atkDmg);
-        target._Hp -= atkDmg;
+        target._hp -= atkDmg;
     }
 
     public abstract void Die();

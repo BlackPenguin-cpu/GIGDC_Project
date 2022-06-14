@@ -14,7 +14,7 @@ public class Knight : BaseEnemy
         crystalDropValueRange.Max = 15;
         coinDropValueRange.Min = 10;
         coinDropValueRange.Max = 20;
-        maxHp = 180;
+        _maxHp = 180;
         attackDamage = 20;
         attackSpeed = 1;
         attackDelay = 2;

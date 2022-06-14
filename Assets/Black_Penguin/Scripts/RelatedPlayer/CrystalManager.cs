@@ -43,7 +43,8 @@ public class CrystalManager : MonoBehaviour
         {
             return false;
         }
-        if (type == CrystalsType.ATTACKSPEED && Player.Instance.stat.attackSpeed <= 0.1f)
+        //이쪽 수정 필요 ㅎㅎ
+        if (type == CrystalsType.ATTACKSPEED && Player.Instance.stat._attackSpeed <= 0.1f)
         {
             return false;
         }
