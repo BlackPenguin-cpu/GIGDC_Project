@@ -33,7 +33,7 @@ public class PlayerWeaponSkillInfo
 public class PlayerInfo
 {
     public int level;
-    public PlayerWeaponSkillInfo skillInfo;
+    public PlayerWeaponSkillInfo skillInfo = new PlayerWeaponSkillInfo();
     private StartStat startStat;
     public int _level
     {
