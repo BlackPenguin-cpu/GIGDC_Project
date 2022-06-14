@@ -18,7 +18,7 @@ public class CursedKnife : MonoBehaviour
     {
         if (collision.TryGetComponent(out BaseEnemy enemy))
         {
-            enemy._Hp -= damage;
+            enemy._hp -= damage;
             Destroy(gameObject);
         }
     }

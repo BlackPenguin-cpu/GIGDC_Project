@@ -32,12 +32,12 @@ public class PlayerWeaponSkillInfo
 [System.Serializable]
 public class PlayerInfo
 {
-    public int level;
-    public PlayerWeaponSkillInfo skillInfo;
-    private StartStat startStat;
+    private int level;
+    public PlayerWeaponSkillInfo skillInfo = new PlayerWeaponSkillInfo();
+    private StartStat startStat = new StartStat();
     public int _level
     {
-        get { return _level; }
+        get { return level; }
         set
         {
             switch (weaponType)
@@ -91,23 +91,23 @@ public class PlayerInfo
                     }
                     break;
             }
-            _level = value;
+            level = value;
         }
     }
 
     public PlayerWeaponType weaponType;
 
-    private float maxHp = 100;
-    public float hp;
-    public float speed = 20; // velocity
-    private float crit = 5;
-    private float def = 10;
-    private float cooldown = 0;
-    private float attackDamage = 10;
-    public float dashCooldown = 0.7f;
-    public float attackSpeed = 1;
-    private int dashCount = 1;
+    [SerializeField] private float maxHp = 100;
+    [SerializeField] private float hp = 100;
+    [SerializeField] private float speed = 20; // velocity
+    [SerializeField] private float crit = 5;
+    [SerializeField] private float def = 10;
+    [SerializeField] private float cooldown = 0;
+    [SerializeField] private float attackDamage = 10;
+    [SerializeField] private float attackSpeed = 1;
+    [SerializeField] private int dashCount = 1;
     private int curDashCount;
+    public float dashCooldown = 0.7f;
     public int _dashCount
     {
         get
@@ -142,7 +142,6 @@ public class PlayerInfo
         get { return _hp; }
         set
         {
-
             if (value < hp && weaponType == PlayerWeaponType.Sword)
             {
                 value = Mathf.Min(value + 5, hp);
@@ -251,7 +250,7 @@ public class PlayerInfo
 
             if (skillInfo.daggerComboAttack)
             {
-                returnValue *= (daggerSkill2Count * 5) * 0.01f;
+                returnValue += (daggerSkill2Count * 5) * 0.01f;
             }
 
             if (bloodGauntletDuration > 0)
@@ -317,10 +316,11 @@ public enum PlayerType
 public class Player : Entity
 {
     public static Player Instance = null;
-    Animator animator;
-    Rigidbody2D rigid;
-    new BoxCollider2D collider;
-    public SpriteRenderer sprite;
+
+    private Animator animator;
+    private Rigidbody2D rigid;
+    private new BoxCollider2D collider;
+    [HideInInspector] public SpriteRenderer sprite;
     public AttackCollision[] attackCollisions;
 
     [SerializeField] PlayerState state;
@@ -330,19 +330,20 @@ public class Player : Entity
     float curDashCooltime = 0;
 
     bool canJump = false;
-
-    public override float _Hp
+    public override float _maxHp
+    { get => stat._maxHp; set => stat._maxHp = value; }
+    public override float _hp
     {
         get => stat._hp;
         set
         {
-            if (value < Hp)
+            if (value < hp)
             {
                 if (state == PlayerState.Dash) return;
                 value -= stat._def;
-                value = Mathf.Clamp(value, 0, Hp);
+                value = Mathf.Clamp(value, 0, hp);
             }
-            stat._hp = base._Hp = value;
+            stat._hp = base._hp = value;
         }
     }
     private void Awake()
@@ -352,6 +353,7 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
+        stat._hp = stat._maxHp;
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
@@ -393,7 +395,7 @@ public class Player : Entity
         animator.SetInteger("State", (int)state);
         animator.SetInteger("Weapon", (int)stat.weaponType);
         animator.SetBool("isAttack", isAttack);
-        animator.SetFloat("AttackSpeed", stat.attackSpeed);
+        animator.SetFloat("AttackSpeed", stat._attackSpeed);
     }
 
     public override void Die()
@@ -563,7 +565,7 @@ public class Player : Entity
     {
         yield return null;
         isAttack = true;
-        yield return new WaitForSeconds(1 / stat.attackSpeed);
+        yield return new WaitForSeconds(1 / stat._attackSpeed);
         state = PlayerState.Idle;
         isAttack = false;
     }
@@ -593,7 +595,7 @@ public class Player : Entity
     void needleArmourAction(Entity entity)
     {
         Attack(entity, stat._attackDamage / 5);
-        entity._Hp -= stat._attackDamage / 5;
+        entity._hp -= stat._attackDamage / 5;
     }
     void knifeCapeAction(List<BaseEnemy> enemies)
     {
@@ -604,7 +606,7 @@ public class Player : Entity
             {
                 if (!enemies.Find(x => x == enemy))
                 {
-                    enemy._Hp -= 10;
+                    enemy._hp -= 10;
                     enemies.Add(enemy);
                 }
             }
@@ -684,7 +686,7 @@ public class Player : Entity
             {
                 if (!enemies.Find(x => x == enemy))
                 {
-                    enemy._Hp -= stat._attackDamage / 4;
+                    enemy._hp -= stat._attackDamage / 4;
                     enemy.GetComponent<Rigidbody2D>().AddForce(sprite.flipX ? Vector2.left : Vector2.right * forcePower);
                     enemies.Add(enemy);
                 }

@@ -21,7 +21,7 @@ public class Shaman : BaseEnemy
         crystalDropValueRange.Max = 37;
         coinDropValueRange.Min = 30;
         coinDropValueRange.Max = 37;
-        maxHp = 280;
+        _maxHp = 280;
         attackDamage = 60;
         attackSpeed = 1;
         attackDelay = 4;

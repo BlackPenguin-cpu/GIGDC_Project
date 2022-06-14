@@ -12,7 +12,7 @@ public class Wolf : BaseEnemy
         crystalDropValueRange.Max = 30;
         coinDropValueRange.Min = 20;
         coinDropValueRange.Max = 30;
-        maxHp = 130;
+        _maxHp = 130;
         attackDamage = 20;
         attackSpeed = 1;
         attackDelay = 2;

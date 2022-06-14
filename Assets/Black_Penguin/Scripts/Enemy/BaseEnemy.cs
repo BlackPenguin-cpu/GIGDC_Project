@@ -53,16 +53,16 @@ public class BaseEnemy : Entity
     protected float curAttackDelay;
     public float attackDamage;
 
-    public override float _Hp
+    public override float _hp
     {
-        get => base._Hp;
+        get => base._hp;
         set
         {
-            if (value < Hp)
+            if (value < hp)
             {
-                OnHit(Player.Instance, Hp - value);
+                OnHit(Player.Instance, hp - value);
             }
-            base._Hp = value;
+            base._hp = value;
         }
     }
     protected override void Start()
@@ -155,7 +155,7 @@ public class BaseEnemy : Entity
         hpShowDuration = 3;
         player.onAttackHit(this);
         StartCoroutine(HitEffectCoroutine());
-        HealthBarObj.transform.GetChild(0).GetComponent<SpriteRenderer>().size = new Vector2(Hp / maxHp, 1);
+        HealthBarObj.transform.GetChild(0).GetComponent<SpriteRenderer>().size = new Vector2(hp / _maxHp, 1);
     }
 
     IEnumerator HitEffectCoroutine()
