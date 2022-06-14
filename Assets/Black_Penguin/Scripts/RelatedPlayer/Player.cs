@@ -97,8 +97,8 @@ public class PlayerInfo
 
     public PlayerWeaponType weaponType;
 
-    private float maxHp = 100;
-    public float hp;
+    public float maxHp = 100;
+    public float hp = 100;
     public float speed = 20; // velocity
     private float crit = 5;
     private float def = 10;
@@ -142,7 +142,6 @@ public class PlayerInfo
         get { return _hp; }
         set
         {
-
             if (value < hp && weaponType == PlayerWeaponType.Sword)
             {
                 value = Mathf.Min(value + 5, hp);
@@ -330,7 +329,6 @@ public class Player : Entity
     float curDashCooltime = 0;
 
     bool canJump = false;
-
     public override float _Hp
     {
         get => stat._hp;
@@ -352,6 +350,7 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
+        stat.hp = Hp;
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
