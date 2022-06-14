@@ -1,0 +1,870 @@
+fileFormatVersion: 2
+guid: 049b61549abe48745928f4d8598ad616
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4355587751614298193
+    second: NPC_05_Anim_Healling 1_0
+  - first:
+      213: 6688715142153933183
+    second: NPC_05_Anim_Healling 1_1
+  - first:
+      213: 1980526358799160414
+    second: NPC_05_Anim_Healling 1_2
+  - first:
+      213: -4964712387254426764
+    second: NPC_05_Anim_Healling 1_3
+  - first:
+      213: 3815332921565739788
+    second: NPC_05_Anim_Healling 1_4
+  - first:
+      213: 3179329621502993755
+    second: NPC_05_Anim_Healling 1_5
+  - first:
+      213: -4575756224211862437
+    second: NPC_05_Anim_Healling 1_6
+  - first:
+      213: 1356568490959452582
+    second: NPC_05_Anim_Healling 1_7
+  - first:
+      213: -8511781082044963279
+    second: NPC_05_Anim_Healling 1_8
+  - first:
+      213: -414814630098151006
+    second: NPC_05_Anim_Healling 1_9
+  - first:
+      213: -2001355451956779656
+    second: NPC_05_Anim_Healling 1_10
+  - first:
+      213: 299227211736664233
+    second: NPC_05_Anim_Healling 1_11
+  - first:
+      213: -210048760259351598
+    second: NPC_05_Anim_Healling 1_12
+  - first:
+      213: 6838118554389643377
+    second: NPC_05_Anim_Healling 1_13
+  - first:
+      213: 3145928901111561402
+    second: NPC_05_Anim_Healling 1_14
+  - first:
+      213: -1966664803729085294
+    second: NPC_05_Anim_Healling 1_15
+  - first:
+      213: 939671638858271890
+    second: NPC_05_Anim_Healling 1_16
+  - first:
+      213: 1531252677983602636
+    second: NPC_05_Anim_Healling 1_17
+  - first:
+      213: -2358986579904563906
+    second: NPC_05_Anim_Healling 1_18
+  - first:
+      213: -2916797843805658107
+    second: NPC_05_Anim_Healling 1_19
+  - first:
+      213: -7541006812623365064
+    second: NPC_05_Anim_Healling 1_20
+  - first:
+      213: -4169624477909545927
+    second: NPC_05_Anim_Healling 1_21
+  - first:
+      213: -645453908294121524
+    second: NPC_05_Anim_Healling 1_22
+  - first:
+      213: 6169048710471714886
+    second: NPC_05_Anim_Healling 1_23
+  - first:
+      213: -7867310045127645563
+    second: NPC_05_Anim_Healling 1_24
+  - first:
+      213: -584577294580823495
+    second: NPC_05_Anim_Healling 1_25
+  - first:
+      213: 5813117784144562171
+    second: NPC_05_Anim_Healling 1_26
+  - first:
+      213: 8453819222544659177
+    second: NPC_05_Anim_Healling 1_27
+  - first:
+      213: -7112252408666849083
+    second: NPC_05_Anim_Healling 1_28
+  - first:
+      213: 3024579102617547951
+    second: NPC_05_Anim_Healling 1_29
+  - first:
+      213: 5120156204148219850
+    second: NPC_05_Anim_Healling 1_30
+  - first:
+      213: 3063822265051295982
+    second: NPC_05_Anim_Healling 1_31
+  - first:
+      213: 7997585652042746956
+    second: NPC_05_Anim_Healling 1_32
+  - first:
+      213: -2955369852844481978
+    second: NPC_05_Anim_Healling 1_33
+  - first:
+      213: 1869298579250513053
+    second: NPC_05_Anim_Healling 1_34
+  - first:
+      213: -4153702849484265705
+    second: NPC_05_Anim_Healling 1_35
+  - first:
+      213: 5352524330086009330
+    second: NPC_05_Anim_Healling 1_36
+  - first:
+      213: 5630123291923584269
+    second: NPC_05_Anim_Healling 1_37
+  - first:
+      213: 5805236642807024225
+    second: NPC_05_Anim_Healling 1_38
+  - first:
+      213: -4224371966565339573
+    second: NPC_05_Anim_Healling 1_39
+  - first:
+      213: -3574188588028353109
+    second: NPC_05_Anim_Healling 1_40
+  - first:
+      213: 9016484357989937733
+    second: NPC_05_Anim_Healling 1_41
+  - first:
+      213: 6545759112939790136
+    second: NPC_05_Anim_Healling 1_42
+  - first:
+      213: -752579487098347826
+    second: NPC_05_Anim_Healling 1_43
+  - first:
+      213: -5895969501124649202
+    second: NPC_05_Anim_Healling 1_44
+  - first:
+      213: 6548078147213804926
+    second: NPC_05_Anim_Healling 1_45
+  - first:
+      213: 4809629680884336886
+    second: NPC_05_Anim_Healling 1_46
+  - first:
+      213: 224762851657031388
+    second: NPC_05_Anim_Healling 1_47
+  - first:
+      213: 3399690223855096415
+    second: NPC_05_Anim_Healling 1_48
+  - first:
+      213: -8744677509585090361
+    second: NPC_05_Anim_Healling 1_49
+  - first:
+      213: 4312806250806496711
+    second: NPC_05_Anim_Healling 1_50
+  - first:
+      213: -7874367296129572248
+    second: NPC_05_Anim_Healling 1_51
+  - first:
+      213: 6773996005560908907
+    second: NPC_05_Anim_Healling 1_52
+  - first:
+      213: 6294223478109243854
+    second: NPC_05_Anim_Healling 1_53
+  - first:
+      213: -3785580796641059360
+    second: NPC_05_Anim_Healling 1_54
+  - first:
+      213: 3836675131712547790
+    second: NPC_05_Anim_Healling 1_55
+  - first:
+      213: 5072799665354606873
+    second: NPC_05_Anim_Healling 1_56
+  - first:
+      213: 1014249759634266568
+    second: NPC_05_Anim_Healling 1_57
+  - first:
+      213: -4053941506532780118
+    second: NPC_05_Anim_Healling 1_58
+  - first:
+      213: -3716815257502440382
+    second: NPC_05_Anim_Healling 1_59
+  - first:
+      213: 9001937439975934482
+    second: NPC_05_Anim_Healling 1_60
+  - first:
+      213: 736940026328963711
+    second: NPC_05_Anim_Healling 1_61
+  - first:
+      213: -3414547828708839090
+    second: NPC_05_Anim_Healling 1_62
+  - first:
+      213: 820437441472955119
+    second: NPC_05_Anim_Healling 1_63
+  - first:
+      213: 8804845218982867456
+    second: NPC_05_Anim_Healling 1_64
+  - first:
+      213: -7966608143898555653
+    second: NPC_05_Anim_Healling 1_65
+  - first:
+      213: -3449579905969492381
+    second: NPC_05_Anim_Healling 1_66
+  - first:
+      213: -3279220077467187690
+    second: NPC_05_Anim_Healling 1_67
+  - first:
+      213: -3405495412841760086
+    second: NPC_05_Anim_Healling 1_68
+  - first:
+      213: 7547889022076621324
+    second: NPC_05_Anim_Healling 1_69
+  - first:
+      213: -8928521459425509934
+    second: NPC_05_Anim_Healling 1_70
+  - first:
+      213: 9021307108786752539
+    second: NPC_05_Anim_Healling 1_71
+  - first:
+      213: 7267061700395816971
+    second: NPC_05_Anim_Healling 1_72
+  - first:
+      213: -8019318654513005915
+    second: NPC_05_Anim_Healling 1_73
+  - first:
+      213: -8198977915762663406
+    second: NPC_05_Anim_Healling 1_74
+  - first:
+      213: 6195599538499949775
+    second: NPC_05_Anim_Healling 1_75
+  - first:
+      213: -3813760278265192201
+    second: NPC_05_Anim_Healling 1_76
+  - first:
+      213: -1833387287023132418
+    second: NPC_05_Anim_Healling 1_77
+  - first:
+      213: -6842686522058980843
+    second: NPC_05_Anim_Healling 1_78
+  - first:
+      213: 5596923922192484461
+    second: NPC_05_Anim_Healling 1_79
+  - first:
+      213: 5479228590004903811
+    second: NPC_05_Anim_Healling 1_80
+  - first:
+      213: 3682917770659242219
+    second: NPC_05_Anim_Healling 1_81
+  - first:
+      213: -8634651403755192010
+    second: NPC_05_Anim_Healling 1_82
+  - first:
+      213: -8620192049485655907
+    second: NPC_05_Anim_Healling 1_83
+  - first:
+      213: 7054647783580616666
+    second: NPC_05_Anim_Healling 1_84
+  - first:
+      213: 3679015311548253081
+    second: NPC_05_Anim_Healling 1_85
+  - first:
+      213: -8107080987764093945
+    second: NPC_05_Anim_Healling 1_86
+  - first:
+      213: 5071274531121894241
+    second: NPC_05_Anim_Healling 1_87
+  - first:
+      213: -8797589105309017263
+    second: NPC_05_Anim_Healling 1_88
+  - first:
+      213: -4046049011725304353
+    second: NPC_05_Anim_Healling 1_89
+  - first:
+      213: 7917761256547775545
+    second: NPC_05_Anim_Healling 1_90
+  - first:
+      213: 1980151463808233327
+    second: NPC_05_Anim_Healling 1_91
+  - first:
+      213: -6816800956563106551
+    second: NPC_05_Anim_Healling 1_92
+  - first:
+      213: -60843327528860422
+    second: NPC_05_Anim_Healling 1_93
+  - first:
+      213: 6200893465854195094
+    second: NPC_05_Anim_Healling 1_94
+  - first:
+      213: -3373269701386896497
+    second: NPC_05_Anim_Healling 1_95
+  - first:
+      213: 9083001183530448129
+    second: NPC_05_Anim_Healling 1_96
+  - first:
+      213: 4402692483543659759
+    second: NPC_05_Anim_Healling 1_97
+  - first:
+      213: 2902404228772761834
+    second: NPC_05_Anim_Healling 1_98
+  - first:
+      213: 2705127476529748783
+    second: NPC_05_Anim_Healling 1_99
+  - first:
+      213: -3038511076256598363
+    second: NPC_05_Anim_Healling 1_100
+  - first:
+      213: -5323042051538161106
+    second: NPC_05_Anim_Healling 1_101
+  - first:
+      213: 4846539335075962815
+    second: NPC_05_Anim_Healling 1_102
+  - first:
+      213: -6487947523393160361
+    second: NPC_05_Anim_Healling 1_103
+  - first:
+      213: 1989381551557703284
+    second: NPC_05_Anim_Healling 1_104
+  - first:
+      213: -7162567973899015766
+    second: NPC_05_Anim_Healling 1_105
+  - first:
+      213: 537759282558767594
+    second: NPC_05_Anim_Healling 1_106
+  - first:
+      213: -3714879891198816681
+    second: NPC_05_Anim_Healling 1_107
+  - first:
+      213: -654106753105367792
+    second: NPC_05_Anim_Healling 1_108
+  - first:
+      213: 1994465948880203936
+    second: NPC_05_Anim_Healling 1_109
+  - first:
+      213: -2770466697195574796
+    second: NPC_05_Anim_Healling 1_110
+  - first:
+      213: -4292812534908666589
+    second: NPC_05_Anim_Healling 1_111
+  - first:
+      213: -6683253622468893596
+    second: NPC_05_Anim_Healling 1_112
+  - first:
+      213: 8514313171094774405
+    second: NPC_05_Anim_Healling 1_113
+  - first:
+      213: 6952637570280960190
+    second: NPC_05_Anim_Healling 1_114
+  - first:
+      213: -448629807004905390
+    second: NPC_05_Anim_Healling 1_115
+  - first:
+      213: -724734905701083047
+    second: NPC_05_Anim_Healling 1_116
+  - first:
+      213: 8311725497201138477
+    second: NPC_05_Anim_Healling 1_117
+  - first:
+      213: -3401395323045129528
+    second: NPC_05_Anim_Healling 1_118
+  - first:
+      213: -7998329731110151058
+    second: NPC_05_Anim_Healling 1_119
+  - first:
+      213: -5956036961320233212
+    second: NPC_05_Anim_Healling 1_120
+  - first:
+      213: -8035942970516587010
+    second: NPC_05_Anim_Healling 1_121
+  - first:
+      213: 6739005952157891271
+    second: NPC_05_Anim_Healling 1_122
+  - first:
+      213: 7082868392603266576
+    second: NPC_05_Anim_Healling 1_123
+  - first:
+      213: 7877082684986803919
+    second: NPC_05_Anim_Healling 1_124
+  - first:
+      213: -8719235172918635163
+    second: NPC_05_Anim_Healling 1_125
+  - first:
+      213: -370186115608734753
+    second: NPC_05_Anim_Healling 1_126
+  - first:
+      213: -3843331638885971549
+    second: NPC_05_Anim_Healling 1_127
+  - first:
+      213: 4701173557630882115
+    second: NPC_05_Anim_Healling 1_128
+  - first:
+      213: -3604083317381880553
+    second: NPC_05_Anim_Healling 1_129
+  - first:
+      213: -904902283087965387
+    second: NPC_05_Anim_Healling 1_130
+  - first:
+      213: 4336177377641957742
+    second: NPC_05_Anim_Healling 1_131
+  - first:
+      213: 6510542793900304613
+    second: NPC_05_Anim_Healling 1_132
+  - first:
+      213: -2226208608852012107
+    second: NPC_05_Anim_Healling 1_133
+  - first:
+      213: 4622663837097863241
+    second: NPC_05_Anim_Healling 1_134
+  - first:
+      213: -6515012940342143525
+    second: NPC_05_Anim_Healling 1_135
+  - first:
+      213: -6080831228262780906
+    second: NPC_05_Anim_Healling 1_136
+  - first:
+      213: 8785103099676542563
+    second: NPC_05_Anim_Healling 1_137
+  - first:
+      213: -1939141711132193740
+    second: NPC_05_Anim_Healling 1_138
+  - first:
+      213: -4073147331516558414
+    second: NPC_05_Anim_Healling 1_139
+  - first:
+      213: 4251665980484145307
+    second: NPC_05_Anim_Healling 1_140
+  - first:
+      213: 5464927945761214480
+    second: NPC_05_Anim_Healling 1_141
+  - first:
+      213: 3515885665834045686
+    second: NPC_05_Anim_Healling 1_142
+  - first:
+      213: -7448300935806122372
+    second: NPC_05_Anim_Healling 1_143
+  - first:
+      213: -8687590214023261511
+    second: NPC_05_Anim_Healling 1_144
+  - first:
+      213: 3058709176935526435
+    second: NPC_05_Anim_Healling 1_145
+  - first:
+      213: 4807962300143943658
+    second: NPC_05_Anim_Healling 1_146
+  - first:
+      213: -4204360986753564206
+    second: NPC_05_Anim_Healling 1_147
+  - first:
+      213: 3605447433882985135
+    second: NPC_05_Anim_Healling 1_148
+  - first:
+      213: -8567450581075429506
+    second: NPC_05_Anim_Healling 1_149
+  - first:
+      213: -587297148693715885
+    second: NPC_05_Anim_Healling 1_150
+  - first:
+      213: 2560793184507055536
+    second: NPC_05_Anim_Healling 1_151
+  - first:
+      213: 8650354827317005285
+    second: NPC_05_Anim_Healling 1_152
+  - first:
+      213: -3244477153307623180
+    second: NPC_05_Anim_Healling 1_153
+  - first:
+      213: -3921663669848760491
+    second: NPC_05_Anim_Healling 1_154
+  - first:
+      213: 842807885181775155
+    second: NPC_05_Anim_Healling 1_155
+  - first:
+      213: 8598035798373351407
+    second: NPC_05_Anim_Healling 1_156
+  - first:
+      213: -5196727522630691824
+    second: NPC_05_Anim_Healling 1_157
+  - first:
+      213: 3025592948444673105
+    second: NPC_05_Anim_Healling 1_158
+  - first:
+      213: 7884541020323860753
+    second: NPC_05_Anim_Healling 1_159
+  - first:
+      213: -794247474015567697
+    second: NPC_05_Anim_Healling 1_160
+  - first:
+      213: -1293273602710095416
+    second: NPC_05_Anim_Healling 1_161
+  - first:
+      213: 5323220683910652129
+    second: NPC_05_Anim_Healling 1_162
+  - first:
+      213: 2961975585564897915
+    second: NPC_05_Anim_Healling 1_163
+  - first:
+      213: -8625086057510974030
+    second: NPC_05_Anim_Healling 1_164
+  - first:
+      213: 8894366602157975200
+    second: NPC_05_Anim_Healling 1_165
+  - first:
+      213: 8678391031605015697
+    second: NPC_05_Anim_Healling 1_166
+  - first:
+      213: -7203270097080352739
+    second: NPC_05_Anim_Healling 1_167
+  - first:
+      213: -2310376272399145207
+    second: NPC_05_Anim_Healling 1_168
+  - first:
+      213: -7842449955850635437
+    second: NPC_05_Anim_Healling 1_169
+  - first:
+      213: -8907098340819451993
+    second: NPC_05_Anim_Healling 1_170
+  - first:
+      213: 1838938787374493456
+    second: NPC_05_Anim_Healling 1_171
+  - first:
+      213: 8363659737593234175
+    second: NPC_05_Anim_Healling 1_172
+  - first:
+      213: 5497468814921486042
+    second: NPC_05_Anim_Healling 1_173
+  - first:
+      213: 8808422993693085070
+    second: NPC_05_Anim_Healling 1_174
+  - first:
+      213: 1861095504856446717
+    second: NPC_05_Anim_Healling 1_175
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NPC_05_Anim_Healling 1_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 0
+        width: 265
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1583303bbf7227c30800000000000000
+      internalID: 4355587751614298193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_05_Anim_Healling 1_5
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 265
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b552099227f3f1c20800000000000000
+      internalID: 3179329621502993755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_05_Anim_Healling 1_9
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 0
+        width: 273
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a95d5daa484e3af0800000000000000
+      internalID: -414814630098151006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_05_Anim_Healling 1_14
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 0
+        width: 273
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abcb36feaa598ab20800000000000000
+      internalID: 3145928901111561402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_05_Anim_Healling 1_18
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 0
+        width: 274
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e35ffda3432334fd0800000000000000
+      internalID: -2358986579904563906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_05_Anim_Healling 1_22
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 0
+        width: 282
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc7cd351713ea07f0800000000000000
+      internalID: -645453908294121524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_05_Anim_Healling 1_27
+      rect:
+        serializedVersion: 2
+        x: 1683
+        y: 0
+        width: 274
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e2b42beacff15570800000000000000
+      internalID: 8453819222544659177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_05_Anim_Healling 1_31
+      rect:
+        serializedVersion: 2
+        x: 1963
+        y: 0
+        width: 274
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee0b0530e12e48a20800000000000000
+      internalID: 3063822265051295982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_05_Anim_Healling 1_35
+      rect:
+        serializedVersion: 2
+        x: 2243
+        y: 0
+        width: 273
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71766f104451b56c0800000000000000
+      internalID: -4153702849484265705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_05_Anim_Healling 1_40
+      rect:
+        serializedVersion: 2
+        x: 2527
+        y: 0
+        width: 266
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba5a0528a6ee56ec0800000000000000
+      internalID: -3574188588028353109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
