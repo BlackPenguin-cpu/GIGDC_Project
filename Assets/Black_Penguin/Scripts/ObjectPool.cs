@@ -10,7 +10,7 @@ public class ObjectPoolClass
 public class ObjectPool : MonoBehaviour
 {
     static public ObjectPool Instance;
-    public Dictionary<GameObject, ObjectPoolClass> ParentObj;
+    public Dictionary<GameObject, ObjectPoolClass> ParentObj = new Dictionary<GameObject, ObjectPoolClass>();
     public GameObject[] objects;
     public void Awake()
     {
@@ -30,6 +30,7 @@ public class ObjectPool : MonoBehaviour
         {
             GameObject newObj = new GameObject();
             newObj.transform.parent = gameObject.transform;
+            newObj.name = obj.name + "_ParentObj";
             ParentObj[obj].parentObj = newObj;
 
             Instantiate(obj, ParentObj[obj].parentObj.transform);
@@ -68,8 +69,7 @@ public class ObjectPool : MonoBehaviour
         }
         else
         {
-            Debug.Assert(false);
-            Debug.Log("오브젝트풀 오류 발생 (본 객체는 오브젝트풀 객체가 아닙니다)");
+            Debug.Assert(false, "오브젝트풀 오류 발생 (본 객체는 오브젝트풀 객체가 아닙니다)");
         }
     }
 }
