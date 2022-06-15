@@ -17,16 +17,7 @@ public class Shaman : BaseEnemy
         AttackDetectArea = transform.GetComponentInChildren<AttackCollision>();
 
         //±âº» ½ºÅÝ
-        crystalDropValueRange.Min = 30;
-        crystalDropValueRange.Max = 37;
-        coinDropValueRange.Min = 30;
-        coinDropValueRange.Max = 37;
-        _maxHp = 280;
-        attackDamage = 60;
-        attackSpeed = 1;
-        attackDelay = 4;
-        speed = 8;
-
+        BaseStatSet(280, 60, 4, 8, 30, 37, 30, 37);
         base.Start();
     }
     protected override void Update()

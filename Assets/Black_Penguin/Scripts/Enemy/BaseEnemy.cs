@@ -48,7 +48,7 @@ public class BaseEnemy : Entity
     public Range crystalDropValueRange;
     public EnemyBuffList buffList = new EnemyBuffList();
     public EnemyState state;
-    public float attackSpeed;
+    public float attackSpeed = 1;
     public float attackDelay;
     protected float curAttackDelay;
     public float attackDamage;
@@ -93,8 +93,26 @@ public class BaseEnemy : Entity
     {
         Move();
     }
+    /// <summary>
+    /// 반드시 start문에서 발동해야하는 구문
+    /// </summary>
+    protected virtual void BaseStatSet
+        (float hp, float attackDamage, float attackSpeed, float speed
+        , float minCoin, float maxCoin, float minCrystal, float maxCrystal)
+    {
+        this.hp = hp;
+        this.attackDamage = attackDamage;
+        this.attackSpeed = attackSpeed;
+        this.speed = speed;
+        this.coinDropValueRange.Min = minCoin;
+        this.coinDropValueRange.Max = maxCoin;
+        this.crystalDropValueRange.Min = minCrystal;
+        this.crystalDropValueRange.Max = maxCrystal;
+
+    }
     protected virtual void AnimController()
     {
+        return;
         animator.SetInteger("State", (int)state);
         animator.SetFloat("AttackSpeed", attackSpeed);
     }

@@ -5,6 +5,7 @@ public struct TagName
 {
     public const string Platform = "Platform";
 }
+#region 플레이어 인포 클래스
 [System.Serializable]
 public class StartStat
 {
@@ -154,7 +155,7 @@ public class PlayerInfo
                     swordSkill3Boolean = true;
                 }
             }
-            _hp = value;
+            hp = value;
         }
     }
     public float _speed
@@ -289,6 +290,7 @@ public class PlayerDAType
     public bool CrystalOrb;
     public bool TheOneRing;
 }
+#endregion
 public enum PlayerWeaponType
 {
     NONE,

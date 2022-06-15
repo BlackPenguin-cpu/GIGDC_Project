@@ -8,15 +8,7 @@ public class Wolf : BaseEnemy
 
     protected override void Start()
     {
-        crystalDropValueRange.Min = 20;
-        crystalDropValueRange.Max = 30;
-        coinDropValueRange.Min = 20;
-        coinDropValueRange.Max = 30;
-        _maxHp = 130;
-        attackDamage = 20;
-        attackSpeed = 1;
-        attackDelay = 2;
-        speed = 15;
+        BaseStatSet(130,20,2,15,20,30,20,30);
         base.Start();
     }
     protected override void Update()
