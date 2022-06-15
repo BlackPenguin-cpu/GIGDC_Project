@@ -1,0 +1,522 @@
+fileFormatVersion: 2
+guid: 4bbed2233b1cdd14e881eac6400cf84d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2212657167771709461
+    second: NPC_02_Anim_Idle (1)_0
+  - first:
+      213: -1797134197835067671
+    second: NPC_02_Anim_Idle (1)_1
+  - first:
+      213: -3473711776508463070
+    second: NPC_02_Anim_Idle (1)_2
+  - first:
+      213: 5701344013929029157
+    second: NPC_02_Anim_Idle (1)_3
+  - first:
+      213: 7887662329820251107
+    second: NPC_02_Anim_Idle (1)_4
+  - first:
+      213: -3422066388390843208
+    second: NPC_02_Anim_Idle (1)_5
+  - first:
+      213: 1477675219655995152
+    second: NPC_02_Anim_Idle (1)_6
+  - first:
+      213: 2580875630291796796
+    second: NPC_02_Anim_Idle (1)_7
+  - first:
+      213: -4872208180717567243
+    second: NPC_02_Anim_Idle (1)_8
+  - first:
+      213: -2093240719387715239
+    second: NPC_02_Anim_Idle (1)_9
+  - first:
+      213: 4021383834148723221
+    second: NPC_02_Anim_Idle (1)_10
+  - first:
+      213: 2488186881413688225
+    second: NPC_02_Anim_Idle (1)_11
+  - first:
+      213: 8768016462075543820
+    second: NPC_02_Anim_Idle (1)_12
+  - first:
+      213: -7185350697552146203
+    second: NPC_02_Anim_Idle (1)_13
+  - first:
+      213: -743454087756943543
+    second: NPC_02_Anim_Idle (1)_14
+  - first:
+      213: 5519074933852444822
+    second: NPC_02_Anim_Idle (1)_15
+  - first:
+      213: -6628786704683193196
+    second: NPC_02_Anim_Idle (1)_16
+  - first:
+      213: -8871021700265931649
+    second: NPC_02_Anim_Idle (1)_17
+  - first:
+      213: 631154587593392280
+    second: NPC_02_Anim_Idle (1)_18
+  - first:
+      213: 6155999082547814612
+    second: NPC_02_Anim_Idle (1)_19
+  - first:
+      213: 7006845760660665164
+    second: NPC_02_Anim_Idle (1)_20
+  - first:
+      213: 2161295527697552208
+    second: NPC_02_Anim_Idle (1)_21
+  - first:
+      213: 4612300080466033332
+    second: NPC_02_Anim_Idle (1)_22
+  - first:
+      213: 8919243469643123067
+    second: NPC_02_Anim_Idle (1)_23
+  - first:
+      213: 3603547939261669277
+    second: NPC_02_Anim_Idle (1)_24
+  - first:
+      213: 8664254482948565545
+    second: NPC_02_Anim_Idle (1)_25
+  - first:
+      213: 3418864537241859048
+    second: NPC_02_Anim_Idle (1)_26
+  - first:
+      213: -5810850184831054410
+    second: NPC_02_Anim_Idle (1)_27
+  - first:
+      213: 7748711621053910053
+    second: NPC_02_Anim_Idle (1)_28
+  - first:
+      213: 1937565668515346769
+    second: NPC_02_Anim_Idle (1)_29
+  - first:
+      213: 3421849097775912524
+    second: NPC_02_Anim_Idle (1)_30
+  - first:
+      213: 4530361533087496034
+    second: NPC_02_Anim_Idle (1)_31
+  - first:
+      213: 8223138343565817571
+    second: NPC_02_Anim_Idle (1)_32
+  - first:
+      213: 8083991233606019072
+    second: NPC_02_Anim_Idle (1)_33
+  - first:
+      213: -297844971065348840
+    second: NPC_02_Anim_Idle (1)_34
+  - first:
+      213: -4168045290092703841
+    second: NPC_02_Anim_Idle (1)_35
+  - first:
+      213: 7587437292863953738
+    second: NPC_02_Anim_Idle (1)_36
+  - first:
+      213: -4742883653732733633
+    second: NPC_02_Anim_Idle (1)_37
+  - first:
+      213: 4026319581092096668
+    second: NPC_02_Anim_Idle (1)_38
+  - first:
+      213: 6116824532453754072
+    second: NPC_02_Anim_Idle (1)_39
+  - first:
+      213: -6632441728831732947
+    second: NPC_02_Anim_Idle (1)_40
+  - first:
+      213: -1625031859000506826
+    second: NPC_02_Anim_Idle (1)_41
+  - first:
+      213: 8204939993657600618
+    second: NPC_02_Anim_Idle (1)_42
+  - first:
+      213: 1909250200086934956
+    second: NPC_02_Anim_Idle (1)_43
+  - first:
+      213: -7023462157207016431
+    second: NPC_02_Anim_Idle (1)_44
+  - first:
+      213: -7707137503513356440
+    second: NPC_02_Anim_Idle (1)_45
+  - first:
+      213: 4689557421044153632
+    second: NPC_02_Anim_Idle (1)_46
+  - first:
+      213: 7710397961876442579
+    second: NPC_02_Anim_Idle (1)_47
+  - first:
+      213: 5083000264903515565
+    second: NPC_02_Anim_Idle (1)_48
+  - first:
+      213: -8336637092493213261
+    second: NPC_02_Anim_Idle (1)_49
+  - first:
+      213: -1596812339436168125
+    second: NPC_02_Anim_Idle (1)_50
+  - first:
+      213: -7973416648256460693
+    second: NPC_02_Anim_Idle (1)_51
+  - first:
+      213: -5213172369243658369
+    second: NPC_02_Anim_Idle (1)_52
+  - first:
+      213: -5300179453300229045
+    second: NPC_02_Anim_Idle (1)_53
+  - first:
+      213: -5953897552094687719
+    second: NPC_02_Anim_Idle (1)_54
+  - first:
+      213: 5346490886712412481
+    second: NPC_02_Anim_Idle (1)_55
+  - first:
+      213: 2753841869453564719
+    second: NPC_02_Anim_Idle (1)_56
+  - first:
+      213: 4002239741347363392
+    second: NPC_02_Anim_Idle (1)_57
+  - first:
+      213: 2081427604346506818
+    second: NPC_02_Anim_Idle (1)_58
+  - first:
+      213: -4565050195994585322
+    second: NPC_02_Anim_Idle (1)_59
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NPC_02_Anim_Idle (1)_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 0
+        width: 356
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: befce3177001b41e0800000000000000
+      internalID: -2212657167771709461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_02_Anim_Idle (1)_10
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 0
+        width: 356
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51adeeb7a43dec730800000000000000
+      internalID: 4021383834148723221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_02_Anim_Idle (1)_11
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 0
+        width: 356
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ab237129c0d78220800000000000000
+      internalID: 2488186881413688225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_02_Anim_Idle (1)_16
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 0
+        width: 356
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49ca687ec91d104a0800000000000000
+      internalID: -6628786704683193196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_02_Anim_Idle (1)_21
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 0
+        width: 356
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0539d07d4d67efd10800000000000000
+      internalID: 2161295527697552208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_02_Anim_Idle (1)_26
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 0
+        width: 356
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e33b75ce2f327f20800000000000000
+      internalID: 3418864537241859048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_02_Anim_Idle (1)_32
+      rect:
+        serializedVersion: 2
+        x: 2188
+        y: 0
+        width: 356
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e6722361c47e1270800000000000000
+      internalID: 8223138343565817571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_02_Anim_Idle (1)_38
+      rect:
+        serializedVersion: 2
+        x: 2552
+        y: 0
+        width: 356
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9aa13f935c50e730800000000000000
+      internalID: 4026319581092096668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_02_Anim_Idle (1)_42
+      rect:
+        serializedVersion: 2
+        x: 2916
+        y: 0
+        width: 356
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a6b5dd37dcdd170800000000000000
+      internalID: 8204939993657600618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_02_Anim_Idle (1)_48
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 0
+        width: 356
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dad5ace5fc17a8640800000000000000
+      internalID: 5083000264903515565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
