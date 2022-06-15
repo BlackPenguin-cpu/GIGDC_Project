@@ -10,15 +10,7 @@ public class Knight : BaseEnemy
         AttackArea = transform.GetComponentInChildren<AttackCollision>();
 
         //±âº» ½ºÅÝ
-        crystalDropValueRange.Min = 10;
-        crystalDropValueRange.Max = 15;
-        coinDropValueRange.Min = 10;
-        coinDropValueRange.Max = 20;
-        _maxHp = 180;
-        attackDamage = 20;
-        attackSpeed = 1;
-        attackDelay = 2;
-        speed = 10;
+        BaseStatSet(180, 20, 2, 10, 10, 20, 10, 15);
         base.Start();
     }
     protected override void Update()

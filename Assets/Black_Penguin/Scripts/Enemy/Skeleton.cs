@@ -10,15 +10,7 @@ public class Skeleton : BaseEnemy
         AttackArea = transform.GetComponentInChildren<AttackCollision>();
 
         //±âº» ½ºÅÝ
-        crystalDropValueRange.Min = 5;
-        crystalDropValueRange.Max = 10;
-        coinDropValueRange.Min = 5;
-        coinDropValueRange.Max = 10;
-        _maxHp = 180;
-        attackDamage = 11;
-        attackSpeed = 1;
-        attackDelay = 2;
-        speed = 10;
+        BaseStatSet(180, 11, 2, 10, 5, 10, 5, 10);
         base.Start();
     }
     protected override void Update()
