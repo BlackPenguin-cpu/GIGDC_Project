@@ -43,6 +43,7 @@ public class BaseEnemy : Entity
     protected Rigidbody2D rigid;
     protected Player player;
     protected Animator animator;
+    public System.Action onDie;
 
     public Range coinDropValueRange;
     public Range crystalDropValueRange;
@@ -142,6 +143,18 @@ public class BaseEnemy : Entity
     /// </summary>
     public override void Die()
     {
+        onDie += () => MaterialDrop();
+        onDie += () => Player.Instance.DaggerSkill2();
+        onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
+
+        state = EnemyState.DIE;
+        //юс╫ц
+        if (gameObject.activeSelf)
+            Destroy(gameObject);
+    }
+
+    void MaterialDrop()
+    {
         int crystalDropValue = crystalDropValueRange.randomRangeIntReturn();
         int coinDropValue = crystalDropValueRange.randomRangeIntReturn();
         for (int i = 0; i < crystalDropValue / 10; i++)
@@ -158,10 +171,6 @@ public class BaseEnemy : Entity
         }
         GameManager.Instance.crystal += crystalDropValue;
         GameManager.Instance.coin += coinDropValue;
-
-        state = EnemyState.DIE;
-        Player.Instance.DaggerSkill2();
-        Destroy(gameObject);
     }
     /// <summary>
     /// OnHit

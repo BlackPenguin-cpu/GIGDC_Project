@@ -27,7 +27,6 @@ public class Shaman : BaseEnemy
         {
             OnCheck();
         }
-
     }
     void OnCheck()
     {

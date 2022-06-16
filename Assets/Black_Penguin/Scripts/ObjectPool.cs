@@ -69,7 +69,8 @@ public class ObjectPool : MonoBehaviour
         }
         else
         {
-            Debug.Assert(false, "오브젝트풀 오류 발생 (본 객체는 오브젝트풀 객체가 아닙니다)");
+            Debug.Log("오브젝트풀 오류 발생 (본 객체는 오브젝트풀 객체가 아닙니다)");
+            Destroy(obj);
         }
     }
 }
