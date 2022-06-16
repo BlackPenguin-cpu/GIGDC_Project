@@ -20,6 +20,7 @@ public class Skill_Collision : MonoBehaviour
     {
         if (collision.CompareTag("Player") && Skill_Window.Inst.Purchase == true && Skill_Window.Inst.SkillWindow == false)
         {
+            
             Skill_Window.Inst.SkillClose_Dot();
         }
     }
@@ -28,6 +29,7 @@ public class Skill_Collision : MonoBehaviour
     {
         if (collision.CompareTag("Player") && Skill_Window.Inst.Purchase == true && Skill_Window.Inst.SkillWindow == true)
         {
+            Debug.Log("asdf");
             Skill_Window.Inst.SkillNum = LeftRight_Nun;
             Skill_List.Inst.Skill_Num(LeftRight_Nun);
             Skill_Window.Inst.Skill_Window_Active();

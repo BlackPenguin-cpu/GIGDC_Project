@@ -31,6 +31,10 @@ public class Skill_Window : MonoBehaviour
     public RectTransform AfterPurchase_LeftDirection; // 왼쪽 화살표
     public RectTransform AfterPurchase_Skill; // 구매 후 스킬 이미지
     public RectTransform AfterPurchase_Skill_Box; // 구매 후 스킬박스 이미지
+
+    [Header("스킬 좌표")]
+    [SerializeField] GameObject Shop_Skill;
+
     //public Image AfterPurchase_Top_Light;
     //public Image AfterPurchase_Bottom_Light;
 
@@ -58,8 +62,14 @@ public class Skill_Window : MonoBehaviour
 
     void Update()
     {
-        Skill_Purchase();
+        ScreentoWorld();
+;       Skill_Purchase();
         AfterPurchase_UpDown();
+    }
+
+    void ScreentoWorld()
+    {
+        transform.localPosition = Camera.main.WorldToScreenPoint(Shop_Skill.gameObject.transform.position + new Vector3(-17.5f, -5, 0));
     }
 
     public void Skill_Window_Active()
