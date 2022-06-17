@@ -1,0 +1,1212 @@
+fileFormatVersion: 2
+guid: c605a2a9495a3b4449e1101e7a338322
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2091763668491180885
+    second: Die2_0
+  - first:
+      213: -1606288674081419084
+    second: Die2_1
+  - first:
+      213: -1025792569144493721
+    second: Die2_2
+  - first:
+      213: 1084477269428964257
+    second: Die2_3
+  - first:
+      213: -8792696443752205872
+    second: Die2_4
+  - first:
+      213: 6674553912443869413
+    second: Die2_5
+  - first:
+      213: -7351575442470092761
+    second: Die2_6
+  - first:
+      213: 5259260976691503096
+    second: Die2_7
+  - first:
+      213: 9016411605329167659
+    second: Die2_8
+  - first:
+      213: -455538016523825519
+    second: Die2_9
+  - first:
+      213: 2023677055101908563
+    second: Die2_10
+  - first:
+      213: -1736089400571500585
+    second: Die2_11
+  - first:
+      213: -4996266998763427200
+    second: Die2_12
+  - first:
+      213: 4568185290978017183
+    second: Die2_13
+  - first:
+      213: -8811717226012873806
+    second: Die2_14
+  - first:
+      213: -7382258282011925208
+    second: Die2_15
+  - first:
+      213: -2322434336483678914
+    second: Die2_16
+  - first:
+      213: -3305651209577139577
+    second: Die2_17
+  - first:
+      213: -1019181111602453047
+    second: Die2_18
+  - first:
+      213: 4505274682901691321
+    second: Die2_19
+  - first:
+      213: 3248927873848236116
+    second: Die2_20
+  - first:
+      213: 4009049631544877967
+    second: Die2_21
+  - first:
+      213: -3026626942913427065
+    second: Die2_22
+  - first:
+      213: 1102281400212675402
+    second: Die2_23
+  - first:
+      213: -1628719827383540445
+    second: Die2_24
+  - first:
+      213: 8552967580278060399
+    second: Die2_25
+  - first:
+      213: 5175639395201026172
+    second: Die2_26
+  - first:
+      213: 7270771480761563002
+    second: Die2_27
+  - first:
+      213: 1626010733589378684
+    second: Die2_28
+  - first:
+      213: -1430371169654314822
+    second: Die2_29
+  - first:
+      213: 4736898221009712176
+    second: Die2_30
+  - first:
+      213: 3392706994663200464
+    second: Die2_31
+  - first:
+      213: 6100772891467479785
+    second: Die2_32
+  - first:
+      213: -793891195894137629
+    second: Die2_33
+  - first:
+      213: -5248846896682519669
+    second: Die2_34
+  - first:
+      213: -2676851284465396408
+    second: Die2_35
+  - first:
+      213: -710272798235773596
+    second: Die2_36
+  - first:
+      213: -3927883143677518741
+    second: Die2_37
+  - first:
+      213: -4470844758265554657
+    second: Die2_38
+  - first:
+      213: 7437588721694172992
+    second: Die2_39
+  - first:
+      213: 6113562798866251426
+    second: Player_Anim_Sword_Died_0
+  - first:
+      213: 6844255747986410232
+    second: Player_Anim_Sword_Died_1
+  - first:
+      213: 2059326583454047317
+    second: Player_Anim_Sword_Died_2
+  - first:
+      213: -7533548377740499284
+    second: Player_Anim_Sword_Died_3
+  - first:
+      213: -4405265751906016937
+    second: Player_Anim_Sword_Died_4
+  - first:
+      213: 1523375983811988002
+    second: Player_Anim_Sword_Died_5
+  - first:
+      213: 2008883049758870984
+    second: Player_Anim_Sword_Died_6
+  - first:
+      213: -4831199222065550363
+    second: Player_Anim_Sword_Died_7
+  - first:
+      213: -7023306014639593113
+    second: Player_Anim_Sword_Died_8
+  - first:
+      213: -5434301399962528380
+    second: Player_Anim_Sword_Died_9
+  - first:
+      213: 5947451063375022056
+    second: Player_Anim_Sword_Died_10
+  - first:
+      213: 3931875811839135861
+    second: Player_Anim_Sword_Died_11
+  - first:
+      213: -7504380547287849685
+    second: Player_Anim_Sword_Died_12
+  - first:
+      213: 5958743073839230190
+    second: Player_Anim_Sword_Died_13
+  - first:
+      213: 7516741770764934142
+    second: Player_Anim_Sword_Died_14
+  - first:
+      213: -5062604487934514370
+    second: Player_Anim_Sword_Died_15
+  - first:
+      213: -8540918317420606441
+    second: Player_Anim_Sword_Died_16
+  - first:
+      213: 4861206362753895641
+    second: Player_Anim_Sword_Died_17
+  - first:
+      213: -4944923202342883378
+    second: Player_Anim_Sword_Died_18
+  - first:
+      213: 3428595522510846187
+    second: Player_Anim_Sword_Died_19
+  - first:
+      213: 1891311637607829512
+    second: Player_Anim_Sword_Died_20
+  - first:
+      213: 1291668934725249579
+    second: Player_Anim_Sword_Died_21
+  - first:
+      213: 8715968192341204115
+    second: Player_Anim_Sword_Died_22
+  - first:
+      213: -9099365942903266751
+    second: Player_Anim_Sword_Died_23
+  - first:
+      213: -6654118773615394605
+    second: Player_Anim_Sword_Died_24
+  - first:
+      213: -879272429387438044
+    second: Player_Anim_Sword_Died_25
+  - first:
+      213: 6225542118830930528
+    second: Player_Anim_Sword_Died_26
+  - first:
+      213: -7055311146916293283
+    second: Player_Anim_Sword_Died_27
+  - first:
+      213: -7421173946972333067
+    second: Player_Anim_Sword_Died_28
+  - first:
+      213: 4104853412408254095
+    second: Player_Anim_Sword_Died_29
+  - first:
+      213: 2298821593652082888
+    second: Player_Anim_Sword_Died_30
+  - first:
+      213: 1481255240831317461
+    second: Player_Anim_Sword_Died_31
+  - first:
+      213: 5725297389240820590
+    second: Player_Anim_Sword_Died_32
+  - first:
+      213: -331302873033675531
+    second: Player_Anim_Sword_Died_33
+  - first:
+      213: 4907560444445412803
+    second: Player_Anim_Sword_Died_34
+  - first:
+      213: 6028465085018471988
+    second: Player_Anim_Sword_Died_35
+  - first:
+      213: 1074725473629881662
+    second: Player_Anim_Sword_Died_36
+  - first:
+      213: 3559069321953803382
+    second: Player_Anim_Sword_Died_37
+  - first:
+      213: -3064427337859024787
+    second: Player_Anim_Sword_Died_38
+  - first:
+      213: -1940638517339621662
+    second: Player_Anim_Sword_Died_39
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ae377a79fcb7d450800000000000000
+      internalID: 6113562798866251426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_1
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fac7a2275eabfe50800000000000000
+      internalID: 6844255747986410232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_2
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55c1c4bed92349c10800000000000000
+      internalID: 2059326583454047317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_3
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca6ae863aa5737790800000000000000
+      internalID: -7533548377740499284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_4
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 751a274832a5dd2c0800000000000000
+      internalID: -4405265751906016937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_5
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22a8976d26e142510800000000000000
+      internalID: 1523375983811988002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_6
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cd4e208d7cf0eb10800000000000000
+      internalID: 2008883049758870984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_7
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eba3a187e124fcb0800000000000000
+      internalID: -4831199222065550363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_8
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 769ea880464388e90800000000000000
+      internalID: -7023306014639593113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_9
+      rect:
+        serializedVersion: 2
+        x: 1404
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48553dc3bab7594b0800000000000000
+      internalID: -5434301399962528380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_10
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e7cc7f2b37998250800000000000000
+      internalID: 5947451063375022056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_11
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5705f990834d09630800000000000000
+      internalID: 3931875811839135861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_12
+      rect:
+        serializedVersion: 2
+        x: 1872
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b256e83f6a51bd790800000000000000
+      internalID: -7504380547287849685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_13
+      rect:
+        serializedVersion: 2
+        x: 2028
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeca1004145b1b250800000000000000
+      internalID: 5958743073839230190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_14
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efbd8caa0d4d05860800000000000000
+      internalID: 7516741770764934142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_15
+      rect:
+        serializedVersion: 2
+        x: 2340
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3b6d528a040eb9b0800000000000000
+      internalID: -5062604487934514370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_16
+      rect:
+        serializedVersion: 2
+        x: 2496
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71c8482ca00987980800000000000000
+      internalID: -8540918317420606441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_17
+      rect:
+        serializedVersion: 2
+        x: 2652
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dc80df5e69767340800000000000000
+      internalID: 4861206362753895641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_18
+      rect:
+        serializedVersion: 2
+        x: 2808
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecfe3cafb8a106bb0800000000000000
+      internalID: -4944923202342883378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_19
+      rect:
+        serializedVersion: 2
+        x: 2964
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be8f0c55671d49f20800000000000000
+      internalID: 3428595522510846187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_20
+      rect:
+        serializedVersion: 2
+        x: 3120
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8005d2fe9e94f3a10800000000000000
+      internalID: 1891311637607829512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_21
+      rect:
+        serializedVersion: 2
+        x: 3276
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2aa4b57d0eece110800000000000000
+      internalID: 1291668934725249579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_22
+      rect:
+        serializedVersion: 2
+        x: 3432
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39cd91a44e655f870800000000000000
+      internalID: 8715968192341204115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_23
+      rect:
+        serializedVersion: 2
+        x: 3588
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 142a6fba2ee88b180800000000000000
+      internalID: -9099365942903266751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_24
+      rect:
+        serializedVersion: 2
+        x: 3744
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d0856dfa32d7a3a0800000000000000
+      internalID: -6654118773615394605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_25
+      rect:
+        serializedVersion: 2
+        x: 3900
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 428219152623cc3f0800000000000000
+      internalID: -879272429387438044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_26
+      rect:
+        serializedVersion: 2
+        x: 4056
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06a762f9291956650800000000000000
+      internalID: 6225542118830930528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_27
+      rect:
+        serializedVersion: 2
+        x: 4212
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d55533c74ef761e90800000000000000
+      internalID: -7055311146916293283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_28
+      rect:
+        serializedVersion: 2
+        x: 4368
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fb94524d91b20990800000000000000
+      internalID: -7421173946972333067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_29
+      rect:
+        serializedVersion: 2
+        x: 4524
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8ed4ad1e6e57f830800000000000000
+      internalID: 4104853412408254095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_30
+      rect:
+        serializedVersion: 2
+        x: 4680
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c831ab4f0e07ef10800000000000000
+      internalID: 2298821593652082888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_31
+      rect:
+        serializedVersion: 2
+        x: 4836
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d5bf632bc97e8410800000000000000
+      internalID: 1481255240831317461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_32
+      rect:
+        serializedVersion: 2
+        x: 4992
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e63ab2f34a7547f40800000000000000
+      internalID: 5725297389240820590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_33
+      rect:
+        serializedVersion: 2
+        x: 5148
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fce2c3dac9f66bf0800000000000000
+      internalID: -331302873033675531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_34
+      rect:
+        serializedVersion: 2
+        x: 5304
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd4dec09382b1440800000000000000
+      internalID: 4907560444445412803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_35
+      rect:
+        serializedVersion: 2
+        x: 5460
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43efe5dfd0969a350800000000000000
+      internalID: 6028465085018471988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_36
+      rect:
+        serializedVersion: 2
+        x: 5616
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e35c5c6cf113aee00800000000000000
+      internalID: 1074725473629881662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_37
+      rect:
+        serializedVersion: 2
+        x: 5772
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cfb0a01ba546130800000000000000
+      internalID: 3559069321953803382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_38
+      rect:
+        serializedVersion: 2
+        x: 5928
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d68baee7297f875d0800000000000000
+      internalID: -3064427337859024787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Sword_Died_39
+      rect:
+        serializedVersion: 2
+        x: 6084
+        y: 0
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.73, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e6f788ec877115e0800000000000000
+      internalID: -1940638517339621662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

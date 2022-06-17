@@ -29,6 +29,52 @@ public class PlayerWeaponSkillInfo
     public bool axeTakle;
     public bool axeEarthQuake;
     public bool axeEruption;
+
+    public void SwordSkillCheck(int level)
+    {
+        if (level >= 5)
+        {
+            swordIronHeart = true;
+        }
+        else if (level >= 3)
+        {
+            swordTenacity = true;
+        }
+        else if (level >= 1)
+        {
+            swordGodBless = true;
+        }
+    }
+    public void DaggerSkillCheck(int level)
+    {
+        if (level >= 5)
+        {
+            daggerSwift = true;
+        }
+        else if (level >= 3)
+        {
+            daggerComboAttack = true;
+        }
+        else if (level >= 1)
+        {
+            daggerHiddenCard = true;
+        }
+    }
+    public void AxeSkillCheck(int level)
+    {
+        if (level >= 5)
+        {
+            axeEruption = true;
+        }
+        else if (level >= 3)
+        {
+            axeEarthQuake = true;
+        }
+        else if (level >= 1)
+        {
+            axeTakle = true;
+        }
+    }
 }
 [System.Serializable]
 public class PlayerInfo
@@ -46,50 +92,17 @@ public class PlayerInfo
                 case PlayerWeaponType.Sword:
                     attackDamage = (10 * value) + 10 + startStat.originalAttackDamage;
                     maxHp = (10 * value) + 10 + startStat.originalMaxHp;
-                    if (value >= 5)
-                    {
-                        skillInfo.swordIronHeart = true;
-                    }
-                    else if (value >= 3)
-                    {
-                        skillInfo.swordTenacity = true;
-                    }
-                    else if (value >= 1)
-                    {
-                        skillInfo.swordGodBless = true;
-                    }
+                    skillInfo.SwordSkillCheck(value);
                     break;
                 case PlayerWeaponType.Dagger:
                     attackDamage = (8 * value) + 8 + startStat.originalAttackDamage;
                     crit = (value * 2) + startStat.originalCrit;
-                    if (value >= 5)
-                    {
-                        skillInfo.daggerSwift = true;
-                    }
-                    else if (value >= 3)
-                    {
-                        skillInfo.daggerComboAttack = true;
-                    }
-                    else if (value >= 1)
-                    {
-                        skillInfo.daggerHiddenCard = true;
-                    }
+                    skillInfo.DaggerSkillCheck(value);
                     break;
                 case PlayerWeaponType.Axe:
                     attackDamage = (15 * value) + 20 + startStat.originalAttackDamage;
                     def = (value * 5) + 5 + startStat.originalDef;
-                    if (value >= 5)
-                    {
-                        skillInfo.axeEruption = true;
-                    }
-                    else if (value >= 3)
-                    {
-                        skillInfo.axeEarthQuake = true;
-                    }
-                    else if (value >= 1)
-                    {
-                        skillInfo.axeTakle = true;
-                    }
+                    skillInfo.AxeSkillCheck(value);
                     break;
             }
             level = value;
@@ -307,11 +320,6 @@ public enum PlayerState
     Jump,
     JumpAttack,
     Die
-}
-public enum PlayerType
-{
-    Down = -1,
-    Up = 1
 }
 [RequireComponent(typeof(Rigidbody2D))]
 
