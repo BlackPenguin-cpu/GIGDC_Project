@@ -2096,7 +2096,7 @@ MonoBehaviour:
   attackCollisions: []
   state: 0
   stat:
-    weaponType: 2
+    weaponType: 1
     maxHp: 100
     hp: 0
     speed: 10
