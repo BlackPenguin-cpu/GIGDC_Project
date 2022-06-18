@@ -113,7 +113,7 @@ public class BaseEnemy : Entity
     }
     protected virtual void AnimController()
     {
-        return;
+        return;//애니메이션 생긴 추후 수정
         animator.SetInteger("State", (int)state);
         animator.SetFloat("AttackSpeed", attackSpeed);
     }

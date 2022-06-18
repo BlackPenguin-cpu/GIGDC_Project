@@ -19,4 +19,8 @@ public class Assasin : BaseEnemy
             curAttackDelay = 0;
         }
     }
+    public void Teleport()
+    {
+        transform.position = player.transform.position + (player.sprite.flipX ? Vector3.right : Vector3.left) * 3;                                                                                              
+    }
 }

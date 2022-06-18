@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 public struct TagName
 {
     public const string Platform = "Platform";
@@ -318,8 +319,13 @@ public enum PlayerState
     Dash,
     Attack,
     Jump,
-    JumpAttack,
-    Die
+    Die = 6
+}
+public enum PlayerStateOnAir
+{
+    NONE,
+    FALLING,
+    JUMPATTACK
 }
 [RequireComponent(typeof(Rigidbody2D))]
 
@@ -334,12 +340,13 @@ public class Player : Entity
     public AttackCollision[] attackCollisions;
 
     [SerializeField] PlayerState state;
+    [SerializeField] PlayerStateOnAir stateOnAir;
     public PlayerInfo stat;
     public float JumpPower;
 
-    float curDashCooltime = 0;
+    private float curDashCooltime = 0;
 
-    bool canJump = false;
+    private bool canJump = false;
     public override float _maxHp
     { get => stat._maxHp; set => stat._maxHp = value; }
     public override float _hp
@@ -403,6 +410,7 @@ public class Player : Entity
     void AnimationController()
     {
         animator.SetInteger("State", (int)state);
+        animator.SetInteger("StateOnAir", (int)stateOnAir);
         animator.SetInteger("Weapon", (int)stat.weaponType);
         animator.SetBool("isAttack", isAttack);
         animator.SetFloat("AttackSpeed", stat._attackSpeed);
@@ -477,24 +485,40 @@ public class Player : Entity
     }
     private void Jump()
     {
-        if (state == PlayerState.Dash || state == PlayerState.Attack || state == PlayerState.JumpAttack) return;
+        if (state == PlayerState.Dash || state == PlayerState.Attack) return;
         if (canJump == false) return;
 
+        state = PlayerState.Jump;
         canJump = false;
         rigid.velocity = new Vector3(rigid.velocity.x, 0);
         rigid.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
     }
     private void JumpCheck()
     {
-        RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position, transform.lossyScale, 0, Vector2.down);
-        if (raycasts != null && rigid.velocity.y <= 0)
+        RaycastHit2D[] raycasts = Physics2D.BoxCastAll(transform.position, transform.lossyScale, 0, Vector2.down, collider.size.y / 2);
+        if (raycasts != null)
         {
             foreach (RaycastHit2D ray in raycasts)
             {
-                if (ray.transform.gameObject.tag.Contains("Platform") && ray.distance < collider.size.y / 2)
+                if (ray.transform.gameObject.tag.Contains("Platform"))
                 {
-                    canJump = true;
+                    if (rigid.velocity.y <= 0.1f)
+                    {
+                        if (state == PlayerState.Jump || stateOnAir != PlayerStateOnAir.NONE)
+                        {
+                            state = PlayerState.Idle;
+                        }
+                        canJump = true;
+                    }
+                    if (stateOnAir == PlayerStateOnAir.FALLING || stateOnAir == PlayerStateOnAir.JUMPATTACK)
+                    {
+                        stateOnAir = PlayerStateOnAir.NONE;
+                    }
                 }
+            }
+            if (stateOnAir != PlayerStateOnAir.JUMPATTACK && raycasts.FirstOrDefault().transform.gameObject == gameObject && raycasts.Length == 1)
+            {
+                stateOnAir = PlayerStateOnAir.FALLING;
             }
         }
     }
@@ -504,7 +528,8 @@ public class Player : Entity
         {
             return;
         }
-        state = PlayerState.Walk;
+        if (state != PlayerState.Jump)
+            state = PlayerState.Walk;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -522,8 +547,18 @@ public class Player : Entity
     Coroutine nowAttackAction;
     public void OnAttack()
     {
-        if (state != PlayerState.Idle && state != PlayerState.Walk && state != PlayerState.Attack) return;
-        state = PlayerState.Attack;
+        if (state != PlayerState.Idle && state != PlayerState.Walk && state != PlayerState.Attack && state != PlayerState.Jump)
+        {
+            return;
+        }
+        if (stateOnAir == PlayerStateOnAir.FALLING)
+        {
+            stateOnAir = PlayerStateOnAir.JUMPATTACK;
+        }
+        else
+        {
+            state = PlayerState.Attack;
+        }
         switch (stat.weaponType)
         {
             case PlayerWeaponType.NONE:
@@ -577,6 +612,10 @@ public class Player : Entity
         isAttack = true;
         yield return new WaitForSeconds(1 / stat._attackSpeed);
         state = PlayerState.Idle;
+        if (stateOnAir != PlayerStateOnAir.NONE)
+        {
+            stateOnAir = PlayerStateOnAir.FALLING;
+        }
         isAttack = false;
     }
     public void onAttackHit(Entity entity)
