@@ -34,8 +34,10 @@ public class Skill_Manager : MonoBehaviour
     public bool AS_Limit_02 = true;
     public bool Limit = true;
 
+
     public int RandomTest;
     private int SumPer = 0;
+    private bool recall = true;
 
     [SerializeField] SkillSo SkillSo;
     [SerializeField] GameObject SkillPrefab;
@@ -44,6 +46,7 @@ public class Skill_Manager : MonoBehaviour
     public List<Skill> Skill_Down = new List<Skill>();
     public List<Skill> Skill_Have = new List<Skill>();
     public List<Skill> Skill = new List<Skill>();
+    public List<Skill> Skill_Shop = new List<Skill>();
     public List<Skill> SkillBuffer = new List<Skill>();
 
     void Start()
@@ -59,9 +62,10 @@ public class Skill_Manager : MonoBehaviour
 
         AS_Location();
 
-        if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(KeyCode.Keypad2) || recall == true)
         {
             AddSkill();
+            recall = false;
         }
     }
 
@@ -75,32 +79,61 @@ public class Skill_Manager : MonoBehaviour
 
     public int Skill_Percent(List<Skill> Percent_Skill)
     {
+        SumPer = 0;
         //if(Wave가 5일 경우)
         //{
         foreach (Skill addper in Percent_Skill)
         {
             SumPer += addper.Percent_01;
         }
-        int percent = Random.Range(1, SumPer);
+        int percent_01 = Random.Range(1, SumPer);
         for (int i = 0; i < Percent_Skill.Count; i++)
         {
-            if (percent < Percent_Skill[i].Percent_01)
+            if (percent_01 < Percent_Skill[i].Percent_01)
             {
                 return i;
             }
-            percent -= Percent_Skill[i].Percent_01;
+            percent_01 -= Percent_Skill[i].Percent_01;
         }
         return 0;
         //}
 
         //if(Wave가 10일 경우)
         //{
-        // 퍼센트만 바꿔주면 된다.
+        //foreach (Skill addper in Percent_Skill)
+        //{
+        //    SumPer += addper.Percent_02;
+
+
+        //}
+        //int percent_02 = Random.Range(1, SumPer);
+        //for (int i = 0; i < Percent_Skill.Count; i++)
+        //{
+        //    if (percent_02 < Percent_Skill[i].Percent_02)
+        //    {
+        //        return i;
+        //    }
+        //    percent_02 -= Percent_Skill[i].Percent_02;
+        //}
+        //return 0;
         //}        
 
         //if(Wave가 15일 경우)
         //{
-        // 퍼센트만 바꿔주면 된다.
+        //foreach (Skill addper in Percent_Skill)
+        //{
+        //    SumPer += addper.Percent_03;
+        //}
+        //int percent_03 = Random.Range(1, SumPer);
+        //for (int i = 0; i < Percent_Skill.Count; i++)
+        //{
+        //    if (percent_03 < Percent_Skill[i].Percent_03)
+        //    {
+        //        return i;
+        //    }
+        //    percent_03 -= Percent_Skill[i].Percent_03;
+        //}
+        //return 0;
         //}
     }
 
@@ -110,6 +143,7 @@ public class Skill_Manager : MonoBehaviour
         int SkillIndex = 0;
         // 스킬 소환
         Skill.Clear();
+        Skill_Shop.Clear();
         var SkillObject = Instantiate(SkillPrefab, this.transform.position, Quaternion.identity, GameObject.Find("SkillShop_Canvas").transform);
         var card = SkillObject.GetComponent<Skill_List>();
 
@@ -117,12 +151,14 @@ public class Skill_Manager : MonoBehaviour
         {
             RandomTest = Skill_Percent(SkillBuffer);
             Skill.Add(SkillBuffer[RandomTest]);
+            Skill_Shop.Add(SkillBuffer[RandomTest]);
             card.SkillCard(Skill[i], SkillIndex++);
             SkillBuffer.RemoveAt(RandomTest);
         }
-
     }
     #endregion
+
+
 
     #region A_스킬 쿨타임
     public void Skill_CoolTime_A() // 스킬 A의 쿨타임

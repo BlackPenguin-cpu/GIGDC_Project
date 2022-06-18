@@ -15,110 +15,135 @@ public class Skill_Window : MonoBehaviour
     [Header("스킬 창")]
     public RectTransform Skill_RectTransform;
     public RectTransform Pole_02;
-    public GameObject Skill_window;
-
-    [Header("상점에 있는 스킬")]
-    public GameObject Skill_01;
-    public GameObject Skill_02;
-    public GameObject Skill_03;
 
     [Header("기본 스킬 이미지")]
     public Image Basics_Skill_A;
     public Image Basics_Skill_S;
 
     [Header("구매 후 창")]
-    public RectTransform AfterPurchase_Window; // 구매 후 창
+    public GameObject AfterPurchase_Window_Prefab; // 스킬 적용 창 프리팹
+    public GameObject AfterPurchase_Key; // 선택 키 오브젝트
+    public RectTransform AfterPurchase_Skill; // 스킬 적용하기 전 스킬 이미지
+    public RectTransform AfterPurchase_Window; // 스킬적용 창
+    public RectTransform AfterPurchase_Skill_Box; // 스킬 적용하기 전 스킬박스 이미지
     public RectTransform AfterPurchase_LeftDirection; // 왼쪽 화살표
-    public RectTransform AfterPurchase_Skill; // 구매 후 스킬 이미지
-    public RectTransform AfterPurchase_Skill_Box; // 구매 후 스킬박스 이미지
 
     [Header("스킬 좌표")]
-    [SerializeField] GameObject Shop_Skill;
+    [SerializeField] GameObject Skill_Shop;
 
     //public Image AfterPurchase_Top_Light;
     //public Image AfterPurchase_Bottom_Light;
 
     public bool UpDown = true; // 현재 위 인지 아래 인지 확인
-    public bool UpDown_Limit = true; // 위아래 제한
+    public bool SkillWindow = true; // 스킬 창이 나오는지 확인
+    public bool Purchase = true; // 현재 구매중인지 아닌지 확인
+    public bool SkillColider_Check; // 현재 구매 스킬들과 충돌 했는지 체크 확인
+    public int SkillNum; // 현재 몇 번째 구매 스킬과 충돌했는지 숫자 확인
 
-    public bool SkillWindow = true;
-    public bool Purchase = true;
-    //public int LeftRight_KeyNum = 0;
+    public bool UpDown_Limit = true; // 위아래 제한
     public int RandomTest;
+
+    private bool MoreThanOnce_Purchase = true; // 1번 이상 스킬을 구매할 시
+    private bool UP_MoreThanOnce_Purchase = true; // 윗 스킬에 1번 이상 스킬을 적용할 시
+    private bool Down_MoreThanOnce_Purchase = true; // 아랫 스킬에 1번 이상 스킬을 적용할 시
+
     Skill SeletSkill;
 
-    public int SkillNum;
 
     void Start()
     {
-        this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
-
+        #region GameObject.Find
         Basics_Skill_A = GameObject.Find("Basic_Skill01").GetComponent<Image>();
         Basics_Skill_S = GameObject.Find("Basic_Skill02").GetComponent<Image>();
 
-        AfterPurchase_Left();
+        AfterPurchase_Key = GameObject.Find("Direction_Key");
+        AfterPurchase_Window = GameObject.Find("After_Purchase").GetComponent<RectTransform>();
+        AfterPurchase_Skill = GameObject.Find("After_Skill_Image").GetComponent<RectTransform>();
+        AfterPurchase_Skill_Box = GameObject.Find("After_Skill_Box").GetComponent<RectTransform>();
+        AfterPurchase_LeftDirection = GameObject.Find("Left_Direction").GetComponent<RectTransform>();
+        #endregion
 
+        AfterPurchase_Left();
+        SkillColider_Check = false;
+        AfterPurchase_Window.gameObject.SetActive(false);
+
+        // 게임이 시작할 때 오브젝트의 3번째 자식(스킬 창)을 꺼준다.
+        this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
     }
 
     void Update()
     {
         ScreentoWorld();
-;       Skill_Purchase();
+        Skill_Purchase();
         AfterPurchase_UpDown();
     }
 
     void ScreentoWorld()
     {
-        transform.localPosition = Camera.main.WorldToScreenPoint(Shop_Skill.gameObject.transform.position + new Vector3(-17.5f, -5, 0));
+        // 유니티 월드 좌표를 스크린 좌표로 변경을 해준다.
+        transform.localPosition = Camera.main.WorldToScreenPoint(Skill_Shop.gameObject.transform.position + new Vector3(-17.5f, -5, 0));
     }
 
     public void Skill_Window_Active()
     {
+        // 이 스크립트가 들어가 있는 오브젝트의 3번째 자식(스킬 창)을 켜준다.
         this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
     }
 
     public void SkillClose_Dot()
     {
+        // 스킬 창을 닫아주는 함수
         Skill_RectTransform.DOAnchorPosY(226.43f, 0.5f);
         Pole_02.DOAnchorPosY(202.92f, 0.5f);
         StartCoroutine(SkillWindowClose_Coroutine());
     }
-    
     public void Skill_Purchase()
     {
+        // F키를 통하여 구매 혹은 스킬적용을 할 수 있다.
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Purchase == true)
+            // 스킬구매
+            if (Purchase == true && SkillColider_Check == true && (UI_Manager.Inst.Gold >= Skill_List.Inst.Left_Gold || UI_Manager.Inst.Gold >= Skill_List.Inst.Among_Gold || UI_Manager.Inst.Gold >= Skill_List.Inst.Right_Gold))
             {
                 SeletSkill = Skill_Manager.Inst.Skill[SkillNum];
                 AfterPurchase_Skill.GetComponent<Image>().sprite = SeletSkill.Icon;
 
-                Skill_Manager.Inst.Skill_Have.Add(Skill_Manager.Inst.Skill[SkillNum]);
-                Skill_Manager.Inst.Skill.RemoveAt(SkillNum);
+                //if (Wave가 5일 경우)
+                //{
+                UI_Manager.Inst.Gold -= SeletSkill.Gold_01;
+                //}
+                //else if (Wave가 10일 경우)
+                //{
+                //  UI_Manager.Inst.Gold -= SeletSkill.Gold_02;
+                //}
+                //else if (Wave가 15일 경우)
+                //{
+                //  UI_Manager.Inst.Gold -= SeletSkill.Gold_03;
+                //}
+
+
+                Skill_Manager.Inst.Skill_Have.Add(SeletSkill);
+                Skill_Manager.Inst.Skill_Shop.RemoveAt(SkillNum);
 
 
                 for (int i = 0; i < 2; i++)
                 {
-                    Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill[0]);
-                    Skill_Manager.Inst.Skill.RemoveAt(0);
+                    //Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill[0]);
+                    //Skill_Manager.Inst.Skill.RemoveAt(0);
                 }
 
-
-                Purchase = false;
+                Purchase = false; // 이것을 통하여 스킬구매 -> 스킬적용으로 넘겨준다.
                 SkillClose_Dot();
                 this.gameObject.transform.GetChild(SkillNum).GetChild(3).gameObject.SetActive(false);
                 this.gameObject.transform.GetChild(SkillNum).GetChild(2).gameObject.SetActive(true);
             }
 
+            // 스킬적용
             else if (Purchase == false)
             {
-                this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
-                AfterPurchase_Window.transform.GetChild(0).gameObject.SetActive(false);
-
+                AfterPurchase_Key.gameObject.SetActive(false);
                 StartCoroutine(SkillHave());
-
+                Purchase = true; // 이것을 통하여 스킬적용 -> 스킬구매로 넘겨준다.
             }
         }
     }
@@ -127,21 +152,23 @@ public class Skill_Window : MonoBehaviour
     #region 구매 후 스킬 적용
     public IEnumerator SkillHave()
     {
+        // 윗 부분에 스킬을 적용 할 떄
         if (UpDown == true && UpDown_Limit == true)
         {
-            //if (Wave가 5 이상 일 경우)
-            //{
-            //    Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill_Up[0]);
-            //    Skill_Manager.Inst.Skill_Up.RemoveAt(0);
-            //}
+            if (UP_MoreThanOnce_Purchase == false)
+            {
+                Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill_Up[0]);
+                Skill_Manager.Inst.Skill_Up.RemoveAt(0);
+            }
+
             Skill_Manager.Inst.Skill_Up.Add(Skill_Manager.Inst.Skill_Have[0]);
             Skill_Manager.Inst.Skill_Have.RemoveAt(0);
             UpDown_Limit = false;
             AfterPurchase_Skill.DOAnchorPos(new Vector3(-779.92f, 60.7f, 0f), 0.5f).SetEase(Ease.InOutQuad);
             AfterPurchase_Skill_Box.DOAnchorPos(new Vector3(-779.92f, 60.7f, 0f), 0.5f).SetEase(Ease.InOutQuad);
             yield return new WaitForSeconds(0.5f);
-            AfterPurchase_Skill_Box.SetParent(GameObject.Find("Up").transform);
             AfterPurchase_Skill.SetParent(GameObject.Find("Up").transform);
+            AfterPurchase_Skill_Box.SetParent(GameObject.Find("Up").transform);
 
             if (Skill_Manager.Inst.AS_Limit == true)
             {
@@ -149,17 +176,38 @@ public class Skill_Window : MonoBehaviour
             }
             else Basics_Skill_S.sprite = SeletSkill.Icon;
 
-            Destroy(AfterPurchase_Skill_Box.gameObject);
-            Destroy(AfterPurchase_Skill.gameObject);
+            Destroy(AfterPurchase_Skill.gameObject); // 적용 한 후의 스킬을 지워준다.
+            Destroy(AfterPurchase_Skill_Box.gameObject); // 적용 한 후의 스킬 툴을 지워준다.
+            yield return new WaitForSeconds(0.5f);
+            Instantiate(AfterPurchase_Window_Prefab, AfterPurchase_Window.transform.position, Quaternion.identity, GameObject.Find("Skill_Purchase_Canvas").transform);
+            if (MoreThanOnce_Purchase == false)
+            {
+                Destroy(GameObject.Find("After_Purchase(Clone)")); // 스킬 적용 오브젝트를 지워준다.
+                GameObject.Find("After_Purchase(Clone)").SetActive(false);
+            }
+            Destroy(GameObject.Find("After_Purchase")); // 스킬 적용 오브젝트를 지워준다.
+            MoreThanOnce_Purchase = false;
+            UP_MoreThanOnce_Purchase = false;
+            UpDown_Limit = true;
+            #region GameObject.Find()
+            AfterPurchase_Skill = GameObject.Find("After_Skill_Image").GetComponent<RectTransform>();
+            AfterPurchase_Skill_Box = GameObject.Find("After_Skill_Box").GetComponent<RectTransform>();
+            AfterPurchase_Window = GameObject.Find("After_Purchase(Clone)").GetComponent<RectTransform>();
+            AfterPurchase_LeftDirection = GameObject.Find("Left_Direction").GetComponent<RectTransform>();
+            AfterPurchase_Key = GameObject.Find("Direction_Key");
+            #endregion
+
+            GameObject.Find("After_Purchase(Clone)").SetActive(false);
         }
 
+        // 아랫 부분에 스킬을 적용할라 할 떄
         else if (UpDown == false && UpDown_Limit == true)
         {
-            //if (Wave가 10 이상 일 경우)
-            //{
-            //    Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill_Down[0]);
-            //    Skill_Manager.Inst.Skill_Down.RemoveAt(0);
-            //}
+            if (Down_MoreThanOnce_Purchase == false)
+            {
+                Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill_Down[0]);
+                Skill_Manager.Inst.Skill_Down.RemoveAt(0);
+            }
 
             Skill_Manager.Inst.Skill_Down.Add(Skill_Manager.Inst.Skill_Have[0]);
             Skill_Manager.Inst.Skill_Have.RemoveAt(0);
@@ -167,16 +215,37 @@ public class Skill_Window : MonoBehaviour
             AfterPurchase_Skill.DOAnchorPos(new Vector3(-779.92f, 76.3f, 0f), 0.5f).SetEase(Ease.InOutQuad);
             AfterPurchase_Skill_Box.DOAnchorPos(new Vector3(-779.92f, 76.3f, 0f), 0.5f).SetEase(Ease.InOutQuad);
             yield return new WaitForSeconds(0.5f);
-            AfterPurchase_Skill_Box.SetParent(GameObject.Find("Down").transform);
             AfterPurchase_Skill.SetParent(GameObject.Find("Down").transform);
+            AfterPurchase_Skill_Box.SetParent(GameObject.Find("Down").transform);
 
             if (Skill_Manager.Inst.AS_Limit_02 == true)
             {
                 Basics_Skill_S.sprite = SeletSkill.Icon;
             }
             else Basics_Skill_A.sprite = SeletSkill.Icon;
-            Destroy(AfterPurchase_Skill_Box.gameObject);
-            Destroy(AfterPurchase_Skill.gameObject);
+
+            Destroy(AfterPurchase_Skill.gameObject); // 적용 한 후의 스킬을 지워준다.
+            Destroy(AfterPurchase_Skill_Box.gameObject); // 적용 한 후의 스킬 툴을 지워준다.
+            yield return new WaitForSeconds(0.5f);
+            Instantiate(AfterPurchase_Window_Prefab, AfterPurchase_Window.transform.position, Quaternion.identity, GameObject.Find("Skill_Purchase_Canvas").transform);
+            if (MoreThanOnce_Purchase == false)
+            {
+                Destroy(GameObject.Find("After_Purchase(Clone)")); // 스킬 적용 오브젝트를 지워준다.
+                GameObject.Find("After_Purchase(Clone)").SetActive(false);
+            }
+            Destroy(GameObject.Find("After_Purchase")); // 스킬 적용 오브젝트를 지워준다.
+            MoreThanOnce_Purchase = false;
+            Down_MoreThanOnce_Purchase = false;
+            UpDown_Limit = true;
+            #region GameObject.Find()
+            AfterPurchase_Skill = GameObject.Find("After_Skill_Image").GetComponent<RectTransform>();
+            AfterPurchase_Skill_Box = GameObject.Find("After_Skill_Box").GetComponent<RectTransform>();
+            AfterPurchase_Window = GameObject.Find("After_Purchase(Clone)").GetComponent<RectTransform>();
+            AfterPurchase_LeftDirection = GameObject.Find("Left_Direction").GetComponent<RectTransform>();
+            AfterPurchase_Key = GameObject.Find("Direction_Key");
+            #endregion
+
+            GameObject.Find("After_Purchase(Clone)").SetActive(false);
         }
     }
     #endregion
@@ -217,7 +286,6 @@ public class Skill_Window : MonoBehaviour
             UpDown = false;
             AfterPurchase_Window.DOAnchorPosY(-145f, 1f).SetEase(Ease.OutBack);
         }
-
     }
     #endregion
 
@@ -235,8 +303,6 @@ public class Skill_Window : MonoBehaviour
             Timer += Time.deltaTime * 3f;
             yield return null;
         }
-
-
     }
 
     public IEnumerator SkillWindowClose_Coroutine()
@@ -255,9 +321,8 @@ public class Skill_Window : MonoBehaviour
 
         if (Purchase == false)
         {
-            this.gameObject.transform.GetChild(4).gameObject.SetActive(true);
+            AfterPurchase_Window.gameObject.SetActive(true);
         }
     }
-
     #endregion
 }

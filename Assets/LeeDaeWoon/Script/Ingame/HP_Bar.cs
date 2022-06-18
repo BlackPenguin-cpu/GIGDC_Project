@@ -9,7 +9,7 @@ public class HP_Bar : MonoBehaviour
 
     void Start()
     {
-        HP = Player.Instance._hp;
+        //HP = Player.Instance._hp;
 
     }
 

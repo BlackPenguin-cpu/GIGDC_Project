@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dimension : MonoBehaviour
 {
-    [Header("마법진")]
-    public GameObject Magic_Circle;
+    [Header("제단")]
+    public GameObject Magic_Circle; // 마법진
     public float Speed;
 
     void Start()
     {
-        
+
     }
 
     void Update()
