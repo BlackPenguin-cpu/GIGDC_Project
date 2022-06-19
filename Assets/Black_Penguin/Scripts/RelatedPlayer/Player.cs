@@ -78,10 +78,24 @@ public class PlayerWeaponSkillInfo
     }
 }
 [System.Serializable]
+public class MagicPower
+{
+    public int silpidLeap = 0;
+    public int giantPower = 0;
+    public int ironSkin = 0;
+    public int magicHeart = 0;
+    public bool isMagicHeartActive = false;
+    public int invisibleHand = 0;
+    public int sharpEye = 0;
+    public int timeQuick = 0;
+    public int thaumcraft = 0;
+}
+[System.Serializable]
 public class PlayerInfo
 {
     private int level;
     public PlayerWeaponSkillInfo skillInfo = new PlayerWeaponSkillInfo();
+    public MagicPower magicPower = new MagicPower();
     private StartStat startStat = new StartStat();
     public int _level
     {
@@ -127,9 +141,10 @@ public class PlayerInfo
     {
         get
         {
+            int returnValue = dashCount;
             if (weaponType == PlayerWeaponType.Dagger)
-                return dashCount + 1;
-            else return dashCount;
+                returnValue += 1;
+            return dashCount;
         }
         set => dashCount = value;
     }
@@ -177,7 +192,7 @@ public class PlayerInfo
         get
         {
             float returnValue = speed;
-            returnValue += returnValue * Crystals[(int)CrystalsType.SPEED] / 10;
+            returnValue += returnValue * (Crystals[(int)CrystalsType.SPEED] * 0.1f + magicPower.silpidLeap * 0.1f);
             if (weaponType == PlayerWeaponType.Axe)
             {
                 returnValue *= 0.8f;
@@ -204,7 +219,16 @@ public class PlayerInfo
         get
         {
             float returnValue = crit;
-            return _crit;
+            returnValue += magicPower.sharpEye * 2;
+            if (magicPower.sharpEye >= 1)
+            {
+                returnValue += 1;
+            }
+            if (magicPower.sharpEye >= 4)
+            {
+                returnValue += 1;
+            }
+            return returnValue;
         }
         set => crit = value;
     }
@@ -213,7 +237,7 @@ public class PlayerInfo
         get
         {
             float returnValue = def;
-            returnValue += Crystals[(int)CrystalsType.DEFFENCE] * 5;
+            returnValue += Crystals[(int)CrystalsType.DEFFENCE] * 5 + magicPower.ironSkin * 5;
             if (skillInfo.swordIronHeart)
             {
                 returnValue *= 1.15f;
@@ -231,7 +255,7 @@ public class PlayerInfo
         get
         {
             float returnValue = cooldown;
-            returnValue += (cooldown * Crystals[(int)CrystalsType.TIME]) / 10;
+            returnValue += (cooldown * (Crystals[(int)CrystalsType.TIME]) * 0.1f + magicPower.timeQuick * 0.05f);
             return returnValue;
         }
         set { cooldown = value; }
@@ -241,7 +265,7 @@ public class PlayerInfo
         get
         {
             float returnValue = attackDamage;
-            returnValue += (returnValue * Crystals[(int)CrystalsType.POWER]) / 10;
+            returnValue += (returnValue * (Crystals[(int)CrystalsType.POWER]) * 0.1f + magicPower.giantPower * 0.15f);
 
             if (skillInfo.swordTenacity && hp / maxHp <= 0.3f)
                 returnValue *= 1.3f;
@@ -261,7 +285,7 @@ public class PlayerInfo
                 returnValue *= 0.8f;
             if (weaponType == PlayerWeaponType.Dagger)
                 returnValue *= 1.1f;
-            returnValue += returnValue * Crystals[(int)CrystalsType.ATTACKSPEED];
+            returnValue += returnValue * (Crystals[(int)CrystalsType.ATTACKSPEED] * 0.1f + magicPower.invisibleHand * 0.1f);
 
             if (skillInfo.daggerComboAttack)
             {
@@ -336,10 +360,21 @@ public class Player : Entity
     private Animator animator;
     private Rigidbody2D rigid;
     private new BoxCollider2D collider;
+    [SerializeField] private GameObject DashShadow;
     [HideInInspector] public SpriteRenderer sprite;
-    public AttackCollision[] attackCollisions;
+    [HideInInspector] public AttackCollision[] attackCollisions;
 
     [SerializeField] PlayerState state;
+    PlayerState _state
+    {
+        get { return _state; }
+        set
+        {
+            if (state == PlayerState.Die)
+                return;
+            _state = value;
+        }
+    }
     [SerializeField] PlayerStateOnAir stateOnAir;
     public PlayerInfo stat;
     public float JumpPower;
@@ -356,7 +391,7 @@ public class Player : Entity
         {
             if (value < hp)
             {
-                if (state == PlayerState.Dash) return;
+                if (_state == PlayerState.Dash) return;
                 value -= stat._def;
                 value = Mathf.Clamp(value, 0, hp);
             }
@@ -409,7 +444,7 @@ public class Player : Entity
     }
     void AnimationController()
     {
-        animator.SetInteger("State", (int)state);
+        animator.SetInteger("State", (int)_state);
         animator.SetInteger("StateOnAir", (int)stateOnAir);
         animator.SetInteger("Weapon", (int)stat.weaponType);
         animator.SetBool("isAttack", isAttack);
@@ -418,7 +453,20 @@ public class Player : Entity
 
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        if (stat.magicPower.magicHeart >= 1 && stat.magicPower.isMagicHeartActive == false)
+        {
+            stat.magicPower.isMagicHeartActive = true;
+            switch (stat.magicPower.magicHeart)
+            {
+                case 1:
+                    _hp = maxHp / 20;
+                    break;
+                case 2:
+                    _hp = maxHp / 50;
+                    break;
+            }
+        }
+        Debug.Log("죽었어 ㅠㅠ");
     }
     public override void OnHit(Entity entity, float Damage = 0)
     {
@@ -444,7 +492,7 @@ public class Player : Entity
     }
     private void Dash()
     {
-        if (state != PlayerState.Walk && state != PlayerState.Idle) return;
+        if (_state != PlayerState.Walk && _state != PlayerState.Idle && _state != PlayerState.Jump) return;
         if (stat._curDashCount > 0)
         {
             stat._dashCount--;
@@ -457,7 +505,7 @@ public class Player : Entity
     }
     private IEnumerator DashAction()
     {
-        state = PlayerState.Dash;
+        _state = PlayerState.Dash;
 
         float originGravity = rigid.gravityScale;
         rigid.gravityScale = 0;
@@ -475,20 +523,22 @@ public class Player : Entity
             {
                 AxeSkill1(enemies);
             }
+            if (i % 3 == 1)
+                ObjectPool.Instance.CreateObj(DashShadow, transform.position, Quaternion.identity);
 
             rigid.velocity = Vector2.zero;
             transform.position += dir;
             yield return waitSec;
         }
         rigid.gravityScale = originGravity;
-        state = PlayerState.Idle;
+        _state = PlayerState.Idle;
     }
     private void Jump()
     {
-        if (state == PlayerState.Dash || state == PlayerState.Attack) return;
+        if (_state == PlayerState.Dash || _state == PlayerState.Attack) return;
         if (canJump == false) return;
 
-        state = PlayerState.Jump;
+        _state = PlayerState.Jump;
         canJump = false;
         rigid.velocity = new Vector3(rigid.velocity.x, 0);
         rigid.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
@@ -504,9 +554,9 @@ public class Player : Entity
                 {
                     if (rigid.velocity.y <= 0.1f)
                     {
-                        if (state == PlayerState.Jump || stateOnAir != PlayerStateOnAir.NONE)
+                        if (_state == PlayerState.Jump || stateOnAir != PlayerStateOnAir.NONE)
                         {
-                            state = PlayerState.Idle;
+                            _state = PlayerState.Idle;
                         }
                         canJump = true;
                     }
@@ -524,12 +574,12 @@ public class Player : Entity
     }
     private void Move()
     {
-        if (state == PlayerState.Dash || state == PlayerState.Attack)
+        if (_state == PlayerState.Dash || _state == PlayerState.Attack)
         {
             return;
         }
-        if (state != PlayerState.Jump)
-            state = PlayerState.Walk;
+        if (_state != PlayerState.Jump)
+            _state = PlayerState.Walk;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -539,15 +589,15 @@ public class Player : Entity
         Vector2 dir = new Vector2(horizontal, 0) * stat._speed * Time.deltaTime;
         transform.Translate(dir);
 
-        if (dir == Vector2.zero && state == PlayerState.Walk)
-            state = PlayerState.Idle;
+        if (dir == Vector2.zero && _state == PlayerState.Walk)
+            _state = PlayerState.Idle;
     }
     #region 공격관련함수
     bool isAttack;
     Coroutine nowAttackAction;
     public void OnAttack()
     {
-        if (state != PlayerState.Idle && state != PlayerState.Walk && state != PlayerState.Attack && state != PlayerState.Jump)
+        if (_state != PlayerState.Idle && _state != PlayerState.Walk && _state != PlayerState.Attack && _state != PlayerState.Jump)
         {
             return;
         }
@@ -557,7 +607,7 @@ public class Player : Entity
         }
         else
         {
-            state = PlayerState.Attack;
+            _state = PlayerState.Attack;
         }
         switch (stat.weaponType)
         {
@@ -611,10 +661,13 @@ public class Player : Entity
         yield return null;
         isAttack = true;
         yield return new WaitForSeconds(1 / stat._attackSpeed);
-        state = PlayerState.Idle;
         if (stateOnAir != PlayerStateOnAir.NONE)
         {
             stateOnAir = PlayerStateOnAir.FALLING;
+        }
+        else
+        {
+            _state = PlayerState.Idle;
         }
         isAttack = false;
     }

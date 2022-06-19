@@ -6,7 +6,18 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public int coin;
+    private Player player;
+
+    private int coin;
+    public int _coin
+    {
+        get { return coin; }
+        set
+        {
+            coin += (int)(coin * (player.stat.magicPower.thaumcraft * 0.2f));
+            coin = value;
+        }
+    }
     public int crystal;
     private void Awake()
     {
@@ -18,6 +29,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    private void Start()
+    {
+        player = Player.Instance;
     }
     private void Update()
     {

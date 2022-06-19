@@ -170,13 +170,11 @@ public class BaseEnemy : Entity
             goldObj.AddForce(new Vector2(Random.Range(-10, 10), Random.Range(10, 15)));
         }
         GameManager.Instance.crystal += crystalDropValue;
-        GameManager.Instance.coin += coinDropValue;
+        GameManager.Instance._coin += coinDropValue;
     }
     /// <summary>
     /// OnHit
     /// </summary>
-    /// <param name="atkEntity"></param>
-    /// <param name="Damage"></param>
     public override void OnHit(Entity atkEntity, float Damage)
     {
         hpShowDuration = 3;
