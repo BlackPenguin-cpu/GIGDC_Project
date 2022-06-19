@@ -1521,7 +1521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.04, y: 202.92}
+  m_AnchoredPosition: {x: 1.9954, y: 202.92}
   m_SizeDelta: {x: 1796, y: 41.0806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2583938369596527671
@@ -2681,24 +2681,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Left_Skill_Icon: {fileID: 2583938369078428310}
   Left_Name: {fileID: 2583938369797654060}
-  Left_Explanation: {fileID: 2583938368853317106}
   Left_CoolTime: {fileID: 2583938369236558340}
+  Left_Explanation: {fileID: 2583938368853317106}
   Left_Gold: 0
   Left_Gold_01: {fileID: 2583938370306843014}
   Left_Gold_02: {fileID: 2583938370306843014}
   Left_Gold_03: {fileID: 2583938370306843014}
   Among_Skill_Icon: {fileID: 2583938369889179792}
   Among_Name: {fileID: 2583938369797654060}
-  Among_Explanation: {fileID: 2583938368853317106}
   Among_CoolTime: {fileID: 2583938369236558340}
+  Among_Explanation: {fileID: 2583938368853317106}
   Among_Gold: 0
   Among_Gold_01: {fileID: 2583938370323848172}
   Among_Gold_02: {fileID: 2583938370323848172}
   Among_Gold_03: {fileID: 2583938370323848172}
   Right_Skill_Icon: {fileID: 2583938370327821474}
   Right_Name: {fileID: 2583938369797654060}
-  Right_Explanation: {fileID: 2583938368853317106}
   Right_CoolTime: {fileID: 2583938369236558340}
+  Right_Explanation: {fileID: 2583938368853317106}
   Right_Gold: 0
   Right_Gold_01: {fileID: 2583938370286569115}
   Right_Gold_02: {fileID: 2583938370286569115}
@@ -2749,28 +2749,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Timer: 0
-  Skill_RectTransform: {fileID: 2583938369989253282}
+  Pole_01: {fileID: 2583938368565549193}
   Pole_02: {fileID: 2583938369596527669}
-  Skill_window: {fileID: 0}
-  Skill_01: {fileID: 0}
-  Skill_02: {fileID: 0}
-  Skill_03: {fileID: 0}
+  Skill_RectTransform: {fileID: 2583938369989253282}
   Basics_Skill_A: {fileID: 0}
   Basics_Skill_S: {fileID: 0}
   AfterPurchase_Window_Prefab: {fileID: 4912608567439538580, guid: 261fff62e50a8c74c83c18777936fbc2, type: 3}
   AfterPurchase_Key: {fileID: 0}
-  AfterPurchase_Window: {fileID: 0}
   AfterPurchase_Skill: {fileID: 0}
+  AfterPurchase_Window: {fileID: 0}
   AfterPurchase_Skill_Box: {fileID: 0}
   AfterPurchase_LeftDirection: {fileID: 0}
   Skill_Shop: {fileID: 2633791636960462780, guid: 383a5b3a80e82684c93fc07eb59e19fe, type: 3}
+  Save_Clone: {fileID: 0}
+  SkillNum: 0
   UpDown: 1
-  UpDown_Limit: 1
-  SkillWindow: 1
   Purchase: 1
+  SkillWindow: 1
+  UpDown_Limit: 1
   SkillColider_Check: 0
   RandomTest: 0
-  SkillNum: 0
+  MoreThanOnce_Purchase: 1
 --- !u!1 &2583938370496588301
 GameObject:
   m_ObjectHideFlags: 0

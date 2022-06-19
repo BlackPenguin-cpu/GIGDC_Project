@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HP_Bar : MonoBehaviour
 {
+    public static HP_Bar Inst { get; private set; }
+    void Awake() => Inst = this;
+
     public float HP;
     public GameObject Bar;
 

@@ -144,8 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19630745384b1ec458061f1e40cecb89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Different_Product: {fileID: 0}
   Different_Product_Text: {fileID: 0}
   Gold_Text: {fileID: 0}
-  Gold_Num: 0
   Gold_Image: {fileID: 0}
   F_Button: {fileID: 0}
+  Skill_Shop: {fileID: 0}
+  Gold_Num: 0
