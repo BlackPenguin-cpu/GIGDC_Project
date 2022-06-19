@@ -34,10 +34,8 @@ public class Skill_Manager : MonoBehaviour
     public bool AS_Limit_02 = true;
     public bool Limit = true;
 
-
     public int RandomTest;
     private int SumPer = 0;
-    private bool recall = true;
 
     [SerializeField] SkillSo SkillSo;
     [SerializeField] GameObject SkillPrefab;
@@ -53,6 +51,7 @@ public class Skill_Manager : MonoBehaviour
     {
         FillAmount_Skill_A.fillAmount = 0f;
         AddList();
+        AddSkill();
     }
 
     private void Update()
@@ -61,12 +60,6 @@ public class Skill_Manager : MonoBehaviour
         Skill_CoolTime_S();
 
         AS_Location();
-
-        if(Input.GetKeyDown(KeyCode.Keypad2) || recall == true)
-        {
-            AddSkill();
-            recall = false;
-        }
     }
 
     public void AddList()
@@ -107,7 +100,7 @@ public class Skill_Manager : MonoBehaviour
 
         //}
         //int percent_02 = Random.Range(1, SumPer);
-        //for (int i = 0; i < Percent_Skill.Count; i++)
+        //for (int i = 0; i < percent_skill.Count; i++)
         //{
         //    if (percent_02 < Percent_Skill[i].Percent_02)
         //    {
@@ -118,23 +111,23 @@ public class Skill_Manager : MonoBehaviour
         //return 0;
         //}        
 
-        //if(Wave가 15일 경우)
-        //{
-        //foreach (Skill addper in Percent_Skill)
-        //{
-        //    SumPer += addper.Percent_03;
-        //}
-        //int percent_03 = Random.Range(1, SumPer);
-        //for (int i = 0; i < Percent_Skill.Count; i++)
-        //{
-        //    if (percent_03 < Percent_Skill[i].Percent_03)
-        //    {
-        //        return i;
-        //    }
-        //    percent_03 -= Percent_Skill[i].Percent_03;
-        //}
-        //return 0;
-        //}
+            //if(Wave가 15일 경우)
+            //{
+            //foreach (Skill addper in Percent_Skill)
+            //{
+            //    SumPer += addper.Percent_03;
+            //}
+            //int percent_03 = Random.Range(1, SumPer);
+            //for (int i = 0; i < Percent_Skill.Count; i++)
+            //{
+            //    if (percent_03 < Percent_Skill[i].Percent_03)
+            //    {
+            //        return i;
+            //    }
+            //    percent_03 -= Percent_Skill[i].Percent_03;
+            //}
+            //return 0;
+            //}
     }
 
     #region 스킬 소환
@@ -143,7 +136,6 @@ public class Skill_Manager : MonoBehaviour
         int SkillIndex = 0;
         // 스킬 소환
         Skill.Clear();
-        Skill_Shop.Clear();
         var SkillObject = Instantiate(SkillPrefab, this.transform.position, Quaternion.identity, GameObject.Find("SkillShop_Canvas").transform);
         var card = SkillObject.GetComponent<Skill_List>();
 
@@ -151,14 +143,11 @@ public class Skill_Manager : MonoBehaviour
         {
             RandomTest = Skill_Percent(SkillBuffer);
             Skill.Add(SkillBuffer[RandomTest]);
-            Skill_Shop.Add(SkillBuffer[RandomTest]);
             card.SkillCard(Skill[i], SkillIndex++);
             SkillBuffer.RemoveAt(RandomTest);
         }
     }
     #endregion
-
-
 
     #region A_스킬 쿨타임
     public void Skill_CoolTime_A() // 스킬 A의 쿨타임

@@ -6,23 +6,34 @@ using DG.Tweening;
 
 public class Salesman : MonoBehaviour
 {
+    public static Salesman Inst { get; private set; }
+    void Awake() => Inst = this;
+
     [Header("다른 상품 보기")]
     public GameObject Different_Product;
+
     public Text Different_Product_Text;
     public Text Gold_Text;
+
     public Image Gold_Image;
     public Image F_Button;
-    public float Gold_Num;
+
+    private float Gold_Num;
+    public bool Apply_Check = true;
+    private bool Re_Roll_Check = true;
     private bool Collision_Check = true;
+
+
 
     void Start()
     {
         #region 오브젝트 찾기
         Different_Product = GameObject.Find("Salesman");
-        Different_Product_Text = GameObject.Find("Different_Product_Text").GetComponent<Text>();
-        Gold_Text = GameObject.Find("Salesman_Gold_Text").GetComponent<Text>();
-        Gold_Image = GameObject.Find("Salesman_Gold_Image").GetComponent<Image>();
         F_Button = GameObject.Find("F_Image").GetComponent<Image>();
+        Gold_Image = GameObject.Find("Salesman_Gold_Image").GetComponent<Image>();
+
+        Gold_Text = GameObject.Find("Salesman_Gold_Text").GetComponent<Text>();
+        Different_Product_Text = GameObject.Find("Different_Product_Text").GetComponent<Text>();
         #endregion
 
         //if (Wave가 5일 경우)
@@ -41,16 +52,12 @@ public class Salesman : MonoBehaviour
         //}
 
         Gold_Text.text = "" + Gold_Num;
-
-
-        Different_Product_Text = GameObject.Find("Different_Product_Text").GetComponent<Text>();
-        F_Button = GameObject.Find("F_Image").GetComponent<Image>();
     }
 
     void Update()
     {
-        Different_Product.transform.localPosition = Camera.main.WorldToScreenPoint(this.gameObject.transform.localPosition + new Vector3(-8, -4.9f, 0));
         Re_Roll();
+        Different_Product.transform.localPosition = Camera.main.WorldToScreenPoint(this.gameObject.transform.localPosition + new Vector3(-8, -4.9f, 0));
     }
 
     private void Re_Roll()
@@ -59,8 +66,34 @@ public class Salesman : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F) && Collision_Check == false)
             {
+                Destroy(GameObject.Find("Skill_Shop(Clone)"));
+                Apply_Check = false;
                 UI_Manager.Inst.Gold -= Gold_Num;
                 Gold_Text.text = "" + (Gold_Num += 200);
+
+
+                for (int i = 0; i < Skill_Manager.Inst.Skill.Count; i++)
+                {
+                    for (int j = 0; j < Skill_Manager.Inst.Skill_Shop.Count; j++)
+                    {
+                        if (Skill_Manager.Inst.Skill[i].Name == Skill_Manager.Inst.Skill_Shop[j].Name)
+                        {
+                            Re_Roll_Check = false;
+                            Skill_Manager.Inst.Skill.RemoveAt(i);
+                            Skill_Manager.Inst.Skill_Shop.RemoveAt(j--);
+                        }
+                    }
+                }
+
+                if (Re_Roll_Check == false)
+                {
+                    for (int i = 0; i < Skill_Manager.Inst.Skill.Count; i++)
+                    {
+                        Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill[i]);
+                        Skill_Manager.Inst.Skill.RemoveAt(i--);
+                    }
+                }
+                Skill_Manager.Inst.AddSkill();
             }
         }
     }
