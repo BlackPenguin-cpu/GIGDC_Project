@@ -51,7 +51,6 @@ public class ObjectPool : MonoBehaviour
                 return returnObj;
             }
         }
-        return null;
     }
     public GameObject CreateObj(GameObject obj, Vector3 pos, Quaternion quaternion)
     {

@@ -153,7 +153,7 @@ public class PlayerInfo
         get { return curDashCount; }
         set
         {
-            value = Mathf.Max(value, dashCount);
+            value = Mathf.Clamp(value, 0, dashCount);
             curDashCount = value;
         }
     }
@@ -499,7 +499,7 @@ public class Player : Entity
         if (_state != PlayerState.Walk && _state != PlayerState.Idle && _state != PlayerState.Jump) return;
         if (stat._curDashCount > 0)
         {
-            stat._dashCount--;
+            stat._curDashCount--;
             StartCoroutine(DashAction());
         }
         else if (stat.PlayerDATypeList.WindEarRing)
@@ -691,7 +691,7 @@ public class Player : Entity
     #endregion
     #region 플레이어 아이템
 
-    float windEarRingDashCooldown => curDashCooltime;
+    float windEarRingDashCooldown => stat.dashCooldown;
     float curWindEarRingDashCooldown;
     void windEarRingAction()
     {
