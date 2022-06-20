@@ -367,12 +367,12 @@ public class Player : Entity
     [SerializeField] PlayerState state;
     PlayerState _state
     {
-        get { return _state; }
+        get { return state; }
         set
         {
             if (state == PlayerState.Die)
                 return;
-            _state = value;
+            state = value;
         }
     }
     [SerializeField] PlayerStateOnAir stateOnAir;
@@ -444,6 +444,10 @@ public class Player : Entity
     }
     void AnimationController()
     {
+        if (stateOnAir != PlayerStateOnAir.NONE && state != PlayerState.Dash)
+        {
+            state = PlayerState.Jump;
+        }
         animator.SetInteger("State", (int)_state);
         animator.SetInteger("StateOnAir", (int)stateOnAir);
         animator.SetInteger("Weapon", (int)stat.weaponType);
@@ -566,7 +570,7 @@ public class Player : Entity
                     }
                 }
             }
-            if (stateOnAir != PlayerStateOnAir.JUMPATTACK && raycasts.FirstOrDefault().transform.gameObject == gameObject && raycasts.Length == 1)
+            if (stateOnAir != PlayerStateOnAir.JUMPATTACK && raycasts.Length == 1 && raycasts.FirstOrDefault().transform.gameObject == gameObject)
             {
                 stateOnAir = PlayerStateOnAir.FALLING;
             }
@@ -574,11 +578,11 @@ public class Player : Entity
     }
     private void Move()
     {
-        if (_state == PlayerState.Dash || _state == PlayerState.Attack)
+        if (_state == PlayerState.Dash || (_state == PlayerState.Attack && stateOnAir != PlayerStateOnAir.JUMPATTACK))
         {
             return;
         }
-        if (_state != PlayerState.Jump)
+        if (stateOnAir == PlayerStateOnAir.NONE && state != PlayerState.Jump)
             _state = PlayerState.Walk;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -637,6 +641,10 @@ public class Player : Entity
     {
         base.Attack(target, atkDmg);
     }
+    public void AnimOnAttack()
+    {
+        isAttack = true;
+    }
     public void AnimAttackFunc(int index)
     {
         foreach (AttackCollision attackCollision in attackCollisions)
@@ -658,8 +666,7 @@ public class Player : Entity
 
     IEnumerator AttackAction()
     {
-        yield return null;
-        isAttack = true;
+        //애니메이션에서 isattack을 true로 바꿈
         yield return new WaitForSeconds(1 / stat._attackSpeed);
         if (stateOnAir != PlayerStateOnAir.NONE)
         {
