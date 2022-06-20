@@ -10,8 +10,8 @@ public class Skill_Manager : MonoBehaviour
     void Awake() => Inst = this;
 
     [Header("A스킬, S스킬")]
-    public RectTransform A_Skill;
-    public RectTransform S_Skill;
+    public RectTransform A_Skill = new RectTransform();
+    public RectTransform S_Skill = new RectTransform();
 
     [Header("A스킬 쿨타임")]
     public float A_Skill_CoolTime = 0;
