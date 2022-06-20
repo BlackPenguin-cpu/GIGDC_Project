@@ -143,8 +143,10 @@ public class PlayerInfo
         {
             int returnValue = dashCount;
             if (weaponType == PlayerWeaponType.Dagger)
-                returnValue += 1;
-            return dashCount;
+                returnValue++;
+            if (magicPower.silpidLeap >= 1)
+                returnValue++;
+            return returnValue;
         }
         set => dashCount = value;
     }
@@ -419,11 +421,12 @@ public class Player : Entity
         AnimationController();
         PlayerItemContoroller();
 
-        curDashCooltime += Time.deltaTime;
+        if (stat._dashCount != stat._curDashCount)
+            curDashCooltime += Time.deltaTime;
         if (curDashCooltime > stat.dashCooldown && stat._dashCount > stat._curDashCount)
         {
             curDashCooltime = 0;
-            stat._curDashCount++;
+            stat._curDashCount = stat._dashCount;
         }
     }
     void PlayerItemContoroller()
@@ -582,7 +585,7 @@ public class Player : Entity
         {
             return;
         }
-        if (stateOnAir == PlayerStateOnAir.NONE && state != PlayerState.Jump)
+        if (stateOnAir == PlayerStateOnAir.NONE && state != PlayerState.Jump && stateOnAir != PlayerStateOnAir.JUMPATTACK)
             _state = PlayerState.Walk;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -605,7 +608,7 @@ public class Player : Entity
         {
             return;
         }
-        if (stateOnAir == PlayerStateOnAir.FALLING)
+        if (stateOnAir == PlayerStateOnAir.FALLING || state == PlayerState.Jump)
         {
             stateOnAir = PlayerStateOnAir.JUMPATTACK;
         }
@@ -613,29 +616,9 @@ public class Player : Entity
         {
             _state = PlayerState.Attack;
         }
-        switch (stat.weaponType)
-        {
-            case PlayerWeaponType.NONE:
-                nowAttackAction = StartCoroutine(AttackAction());
-                break;
-            case PlayerWeaponType.Sword:
-                if (nowAttackAction != null)
-                    StopCoroutine(nowAttackAction);
-                nowAttackAction = StartCoroutine(AttackAction());
-                break;
-            case PlayerWeaponType.Dagger:
-                if (nowAttackAction != null)
-                    StopCoroutine(nowAttackAction);
-                nowAttackAction = StartCoroutine(AttackAction());
-                break;
-            case PlayerWeaponType.Axe:
-                if (nowAttackAction != null)
-                    StopCoroutine(nowAttackAction);
-                nowAttackAction = StartCoroutine(AttackAction());
-                break;
-            default:
-                break;
-        }
+        if (nowAttackAction != null)
+            StopCoroutine(nowAttackAction);
+        nowAttackAction = StartCoroutine(AttackAction(stateOnAir));
     }
     public override void Attack(Entity target, float atkDmg)
     {
@@ -644,6 +627,10 @@ public class Player : Entity
     public void AnimOnAttack()
     {
         isAttack = true;
+    }
+    public void AnimNotAttack()
+    {
+        isAttack = false;
     }
     public void AnimAttackFunc(int index)
     {
@@ -664,11 +651,11 @@ public class Player : Entity
         }
     }
 
-    IEnumerator AttackAction()
+    IEnumerator AttackAction(PlayerStateOnAir onAirState)
     {
         //애니메이션에서 isattack을 true로 바꿈
         yield return new WaitForSeconds(1 / stat._attackSpeed);
-        if (stateOnAir != PlayerStateOnAir.NONE)
+        if (onAirState != PlayerStateOnAir.NONE)
         {
             stateOnAir = PlayerStateOnAir.FALLING;
         }
