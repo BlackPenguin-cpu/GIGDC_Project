@@ -7,6 +7,7 @@ public class DashShadow : MonoBehaviour
     private SpriteRenderer sprite;
     [HideInInspector]
     public System.Action onDisappear;
+    public bool isDark;
     private void Start()
     {
         onDisappear += () => ObjectPool.Instance.DeleteObj(gameObject);
@@ -14,6 +15,10 @@ public class DashShadow : MonoBehaviour
     private void OnEnable()
     {
         sprite = GetComponent<SpriteRenderer>();
+        if (isDark)
+        {
+            sprite.flipY = true;
+        }
         sprite.color = Color.white;
         sprite.sprite = Player.Instance.sprite.sprite;
         sprite.flipX = Player.Instance.sprite.flipX;

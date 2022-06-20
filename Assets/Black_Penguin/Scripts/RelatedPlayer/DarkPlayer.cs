@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class DarkPlayer : MonoBehaviour
 {
+    public static DarkPlayer instance;
     SpriteRenderer sprite;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();

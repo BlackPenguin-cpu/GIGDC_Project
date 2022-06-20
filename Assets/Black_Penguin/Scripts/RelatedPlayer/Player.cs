@@ -531,7 +531,7 @@ public class Player : Entity
                 AxeSkill1(enemies);
             }
             if (i % 3 == 1)
-                ObjectPool.Instance.CreateObj(DashShadow, transform.position, Quaternion.identity);
+                DashShadowCreate();
 
             rigid.velocity = Vector2.zero;
             transform.position += dir;
@@ -540,6 +540,14 @@ public class Player : Entity
         rigid.gravityScale = originGravity;
         _state = PlayerState.Idle;
     }
+    void DashShadowCreate()
+    {
+        ObjectPool.Instance.CreateObj(DashShadow, transform.position, Quaternion.identity);
+        DashShadow shadow = ObjectPool.Instance.CreateObj(DashShadow, DarkPlayer.instance.transform.position, Quaternion.identity).GetComponent<DashShadow>();
+
+        shadow.isDark = true;
+    }
+
     private void Jump()
     {
         if (_state == PlayerState.Dash || _state == PlayerState.Attack) return;

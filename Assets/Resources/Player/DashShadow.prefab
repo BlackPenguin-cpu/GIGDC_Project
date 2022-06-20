@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3846015101702581912}
   - component: {fileID: 7446327066338321489}
   - component: {fileID: -6109679632614615251}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: DashShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,3 +95,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a0a8116ef8f2364a87eb7caee5a2027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDark: 0
