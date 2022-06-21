@@ -1,20 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class DamageText : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigid;
-    [SerializeField] private TextMeshProUGUI tmpro;
+    [SerializeField] private TextMesh textMesh;
 
     private string textString;
-    private float duration = 2;
+    [SerializeField] private float duration;
 
     public bool isCrit;
     public float damageValue;
-    public Vector3 pos;
     private void Update()
     {
         duration -= Time.deltaTime;
@@ -23,24 +21,29 @@ public class DamageText : MonoBehaviour
             ObjectPool.Instance.DeleteObj(gameObject);
         }
     }
+    private void Start()
+    {
+        OnEnable();
+    }
     private void OnEnable()
     {
         rigid = GetComponent<Rigidbody2D>();
+        textMesh = GetComponent<TextMesh>();
 
         textString = ((int)damageValue).ToString();
-        transform.position = Camera.main.WorldToScreenPoint(pos);
+
+        textMesh.text = textString;
+        duration = 0.5f;
+        rigid.AddForce(new Vector3(Random.Range(-30, 30), 100, 0));
 
         if (isCrit)
         {
-            tmpro.color = Color.red;
+            textMesh.color = new Color(1,0,0,0.8f);
         }
         else
         {
-            tmpro.color = Color.white;
+            textMesh.color = new Color(1,1,1,0.8f);
         }
-        tmpro.text = textString;
-        duration = 2;
-        rigid.AddForce(new Vector3(0, 10, 0));
     }
 
 }

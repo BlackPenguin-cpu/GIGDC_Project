@@ -475,8 +475,10 @@ public class Player : Entity
         }
         Debug.Log("죽었어 ㅠㅠ");
     }
+
     public override void OnHit(Entity entity, float Damage = 0)
     {
+        OnHitEffect.Instance.OnHitFunc();
         if (stat.PlayerDATypeList.NeedleArmour && Random.Range(0, 10) == 0) needleArmourAction(entity);
     }
     #region 플레이어 인풋
@@ -634,12 +636,10 @@ public class Player : Entity
         if (isCrit)
         {
             atkDmg *= 1.5f;
-            Debug.Log("명치타!");
         }
-        DamageText text = ObjectPool.Instance.CreateObj(Resources.Load<GameObject>("Player/DamageText")).GetComponent<DamageText>();
+        DamageText text = ObjectPool.Instance.CreateObj(Resources.Load<GameObject>("Player/DamageText"), target.transform.position, Quaternion.identity).GetComponent<DamageText>();
         text.damageValue = atkDmg;
         text.isCrit = isCrit;
-        text.pos = target.transform.position;
 
         base.Attack(target, atkDmg);
     }
