@@ -23,8 +23,7 @@ public class Salesman : MonoBehaviour
     private bool Re_Roll_Check = true;
     private bool Collision_Check = true;
 
-
-
+    private GameObject AfterObject;
     void Start()
     {
         #region 오브젝트 찾기
@@ -34,6 +33,7 @@ public class Salesman : MonoBehaviour
 
         Gold_Text = GameObject.Find("Salesman_Gold_Text").GetComponent<Text>();
         Different_Product_Text = GameObject.Find("Different_Product_Text").GetComponent<Text>();
+        AfterObject = GameObject.Find("After_Purchase");
         #endregion
 
         //if (Wave가 5일 경우)
@@ -53,7 +53,6 @@ public class Salesman : MonoBehaviour
 
         Gold_Text.text = "" + Gold_Num;
     }
-
     void Update()
     {
         Re_Roll();
@@ -66,6 +65,7 @@ public class Salesman : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F) && Collision_Check == false)
             {
+                AfterObject.SetActive(true);
                 Destroy(GameObject.Find("Skill_Shop(Clone)"));
                 Apply_Check = false;
                 UI_Manager.Inst.Gold -= Gold_Num;

@@ -12,9 +12,9 @@ public class Skill_Window : MonoBehaviour
     public float Timer = 0;
 
     [Header("스킬 창")]
-    public RectTransform Pole_01;
-    public RectTransform Pole_02;
-    public RectTransform Skill_RectTransform;
+    public RectTransform Pole_01 = new RectTransform();
+    public RectTransform Pole_02 = new RectTransform();
+    public RectTransform Skill_RectTransform = new RectTransform();
 
     [Header("기본 스킬 이미지")]
     public Image Basics_Skill_A;
@@ -23,10 +23,16 @@ public class Skill_Window : MonoBehaviour
     [Header("구매 후 창")]
     public GameObject AfterPurchase_Window_Prefab; // 스킬 적용 창 프리팹
     public GameObject AfterPurchase_Key; // 선택 키 오브젝트
-    public RectTransform AfterPurchase_Skill; // 스킬 적용하기 전 스킬 이미지
-    public RectTransform AfterPurchase_Window; // 스킬적용 창
-    public RectTransform AfterPurchase_Skill_Box; // 스킬 적용하기 전 스킬박스 이미지
-    public RectTransform AfterPurchase_LeftDirection; // 왼쪽 화살표
+
+
+    public GameObject AfterPurchase_Skill; // 스킬 적용하기 전 스킬 이미지
+    public GameObject AfterPurchase_Window; // 스킬적용 창
+    public GameObject AfterPurchase_Skill_Box; // 스킬 적용하기 전 스킬박스 이미지
+    public GameObject AfterPurchase_LeftDirection; // 왼쪽 화살표
+/*  public RectTransform AfterPurchase_Skill = new RectTransform(); // 스킬 적용하기 전 스킬 이미지
+    public RectTransform AfterPurchase_Window = new RectTransform(); // 스킬적용 창
+    public RectTransform AfterPurchase_Skill_Box = new RectTransform(); // 스킬 적용하기 전 스킬박스 이미지
+    public RectTransform AfterPurchase_LeftDirection = new RectTransform(); // 왼쪽 화살표*/
 
     [Header("스킬 좌표")]
     [SerializeField] GameObject Skill_Shop;
@@ -49,7 +55,7 @@ public class Skill_Window : MonoBehaviour
     private bool UP_MoreThanOnce_Purchase = true; // 윗 스킬에 1번 이상 스킬을 적용할 시
     private bool Down_MoreThanOnce_Purchase = true; // 아랫 스킬에 1번 이상 스킬을 적용할 시
 
-    Skill SeletSkill;
+    Skill SeletSkill = new Skill();
 
     void Start()
     {
@@ -57,10 +63,14 @@ public class Skill_Window : MonoBehaviour
         Basics_Skill_A = GameObject.Find("Basic_Skill01").GetComponent<Image>();
         Basics_Skill_S = GameObject.Find("Basic_Skill02").GetComponent<Image>();
 
+        AfterPurchase_Window = GameObject.Find("After_Purchase");
         AfterPurchase_Key = GameObject.Find("Direction_Key");
-        AfterPurchase_Skill = GameObject.Find("After_Skill_Image").GetComponent<RectTransform>();
+        AfterPurchase_Skill = GameObject.Find("After_Skill_Image");
+        AfterPurchase_Skill_Box = GameObject.Find("After_Skill_Box");
+        AfterPurchase_LeftDirection = GameObject.Find("Left_Direction");
+   /*     AfterPurchase_Skill = GameObject.Find("After_Skill_Image").GetComponent<RectTransform>();
         AfterPurchase_Skill_Box = GameObject.Find("After_Skill_Box").GetComponent<RectTransform>();
-        AfterPurchase_LeftDirection = GameObject.Find("Left_Direction").GetComponent<RectTransform>();
+        AfterPurchase_LeftDirection = GameObject.Find("Left_Direction").GetComponent<RectTransform>();*/
         #endregion
 
         AfterPurchase_Left();
@@ -81,10 +91,10 @@ public class Skill_Window : MonoBehaviour
     private void Awake()
     {
         Inst = this;
-        if (Salesman.Inst.Apply_Check == true)
+    /*    if (Salesman.Inst.Apply_Check == true)
             AfterPurchase_Window = GameObject.Find("After_Purchase").GetComponent<RectTransform>();
         else
-            AfterPurchase_Window = GameObject.Find("After_Purchase(Clone)").GetComponent<RectTransform>();
+            AfterPurchase_Window = GameObject.Find("After_Purchase(Clone)").GetComponent<RectTransform>();*/
     }
     void ScreentoWorld()
     {
@@ -142,7 +152,7 @@ public class Skill_Window : MonoBehaviour
         }
     }
 
-
+   
     #region 구매 후 스킬 적용
     public IEnumerator SkillHave()
     {
@@ -162,16 +172,15 @@ public class Skill_Window : MonoBehaviour
             Skill_Manager.Inst.Skill_Up.Add(Skill_Manager.Inst.Skill_Have[0]);
             Skill_Manager.Inst.Skill_Have.RemoveAt(0);
 
-            // 스킬을 윗 부분에 적용할려 할 떄 닷트윈
-            AfterPurchase_Skill.DOAnchorPos(new Vector3(-779.92f, 60.7f, 0f), 0.5f).SetEase(Ease.InOutQuad);
-            AfterPurchase_Skill_Box.DOAnchorPos(new Vector3(-779.92f, 60.7f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+            Vector3[] SaveSkillPos = new Vector3[2];
+            SaveSkillPos[0] = AfterPurchase_Skill.transform.position;
+            SaveSkillPos[1] = AfterPurchase_Skill_Box.transform.position;
 
-            // 0.5초 대기한다.
+            //스킬 적용 애니메이션
+            AfterPurchase_Skill.transform.DOLocalMove(new Vector3(-779.92f, 60.7f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+            AfterPurchase_Skill_Box.transform.DOLocalMove(new Vector3(-779.92f, 60.7f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+
             yield return new WaitForSeconds(0.5f);
-
-            // 스킬툴과 스킬을 Up오브젝트로 넘겨준다.
-            AfterPurchase_Skill.SetParent(GameObject.Find("Up").transform);
-            AfterPurchase_Skill_Box.SetParent(GameObject.Find("Up").transform);
 
             // AS_Limit = Shift를 통한 스킬 전환 체크
             if (Skill_Manager.Inst.AS_Limit == true) // true일 경우 A스킬에 구매한 스킬을 적용시킨다.
@@ -180,43 +189,22 @@ public class Skill_Window : MonoBehaviour
             }
             else Basics_Skill_S.sprite = SeletSkill.Icon; // false일 경우 S스킬에 구매한 스킬을 적용시킨다.
 
-            Destroy(AfterPurchase_Skill.gameObject); // 적용 한 후의 스킬을 지워준다.
-            Destroy(AfterPurchase_Skill_Box.gameObject); // 적용 한 후의 스킬 툴을 지워준다.
-
-            // 0.5초 대기한다.
-            yield return new WaitForSeconds(0.5f);
-
             // 한 번 미만 스킬을 적용시킬 시 실행시킨다.
+            AfterPurchase_Skill.transform.position = SaveSkillPos[0];
+            AfterPurchase_Skill_Box.transform.position = SaveSkillPos[1];
+            AfterPurchase_Key.gameObject.SetActive(true);
             if (MoreThanOnce_Purchase == true)
             {
-                Destroy(GameObject.Find("After_Purchase")); // 스킬 적용 오브젝트를 지워준다.
+                AfterPurchase_Window.SetActive(false);
                 MoreThanOnce_Purchase = false;
                 UP_MoreThanOnce_Purchase = false;
             }
+
             // 한 번 이상 스킬을 적용시킬 시 실행시킨다.
             else
             {
-                Destroy(Save_Clone); // 소환 된 스킬 적용 오브젝트를 지워준다.
-                //Save_Clone.SetActive(false);
+                AfterPurchase_Window.SetActive(false);
             }
-
-            // AfterPurchase_Window_Prefab : 스킬 적용 프리팹
-            // 스킬 적용 프리팹을 소환시킨다.
-            GameObject Save = Instantiate(AfterPurchase_Window_Prefab, AfterPurchase_Window.transform.position, Quaternion.identity, GameObject.Find("Skill_Purchase_Canvas").transform);
-            #region GameObject.Find()
-            AfterPurchase_Key = GameObject.Find("Direction_Key");
-            AfterPurchase_Skill = GameObject.Find("After_Skill_Image").GetComponent<RectTransform>();
-            AfterPurchase_Skill_Box = GameObject.Find("After_Skill_Box").GetComponent<RectTransform>();
-            AfterPurchase_Window = Save.GetComponent<RectTransform>();
-            AfterPurchase_LeftDirection = GameObject.Find("Left_Direction").GetComponent<RectTransform>();
-            #endregion
-
-            // 소환 된 오브젝트를 꺼준다.
-            Save.SetActive(false);
-
-            // 소환 된 오브젝트를 받아주는 오브젝트 = 소환 된 오브젝트
-            Save_Clone = Save;
-
             UpDown_Limit = true;
         }
 
@@ -225,75 +213,49 @@ public class Skill_Window : MonoBehaviour
         {
             UpDown_Limit = false;
 
-            // 아랫 부분에 1개 이상의 스킬을 적용을 할 때 적용하기 전의 스킬은 다시 상점으로 넘어간다.
+            // 윗 부분에 1개 이상의 스킬을 적용을 할 때 적용하기 전의 스킬은 다시 상점으로 넘어간다.
             if (Down_MoreThanOnce_Purchase == false)
             {
                 Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill_Down[0]);
                 Skill_Manager.Inst.Skill_Down.RemoveAt(0);
             }
 
-            // 구매한 스킬을 윗 부분에 넣어준다.
+            // 구매한 스킬을 아랫 부분에 넣어준다.
             Skill_Manager.Inst.Skill_Down.Add(Skill_Manager.Inst.Skill_Have[0]);
             Skill_Manager.Inst.Skill_Have.RemoveAt(0);
 
-            // 스킬을 아랫 부분에 적용할려 할 떄 닷트윈
-            AfterPurchase_Skill.DOAnchorPos(new Vector3(-779.92f, 76.3f, 0f), 0.5f).SetEase(Ease.InOutQuad);
-            AfterPurchase_Skill_Box.DOAnchorPos(new Vector3(-779.92f, 76.3f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+            Vector3[] SaveSkillPos = new Vector3[2];
+            SaveSkillPos[0] = AfterPurchase_Skill.transform.position;
+            SaveSkillPos[1] = AfterPurchase_Skill_Box.transform.position;
 
-            // 0.5초 대기한다.
+            //스킬 적용 애니메이션
+            AfterPurchase_Skill.transform.DOLocalMove(new Vector3(-779.92f, 76.3f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+            AfterPurchase_Skill_Box.transform.DOLocalMove(new Vector3(-779.92f, 76.3f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+
             yield return new WaitForSeconds(0.5f);
 
-            // 스킬툴과 스킬을 Down오브젝트로 넘겨준다.
-            AfterPurchase_Skill.SetParent(GameObject.Find("Down").transform);
-            AfterPurchase_Skill_Box.SetParent(GameObject.Find("Down").transform);
-
-            // AS_Limit_02 = Shift를 통한 스킬 전환 체크
+            // AS_Limit = Shift를 통한 스킬 전환 체크
             if (Skill_Manager.Inst.AS_Limit_02 == true) // true일 경우 S스킬에 구매한 스킬을 적용시킨다.
             {
                 Basics_Skill_S.sprite = SeletSkill.Icon;
             }
-            else Basics_Skill_A.sprite = SeletSkill.Icon; // false일 경우 A스킬에 구매한 스킬을 적용시킨다.
-
-            Destroy(AfterPurchase_Skill.gameObject); // 적용 한 후의 스킬을 지워준다.
-            Destroy(AfterPurchase_Skill_Box.gameObject); // 적용 한 후의 스킬 툴을 지워준다.
-
-            // 0.5초 대기한다.
-            yield return new WaitForSeconds(0.5f);
+            else Basics_Skill_A.sprite = SeletSkill.Icon;
 
             // 한 번 미만 스킬을 적용시킬 시 실행시킨다.
+            AfterPurchase_Skill.transform.position = SaveSkillPos[0];
+            AfterPurchase_Skill_Box.transform.position = SaveSkillPos[1];
+            AfterPurchase_Key.gameObject.SetActive(true);
             if (MoreThanOnce_Purchase == true)
             {
-                Destroy(GameObject.Find("After_Purchase")); // 스킬 적용 오브젝트를 지워준다.
+                AfterPurchase_Window.SetActive(false);
                 MoreThanOnce_Purchase = false;
                 Down_MoreThanOnce_Purchase = false;
             }
-
             // 한 번 이상 스킬을 적용시킬 시 실행시킨다.
             else
             {
-                //Destroy(Save_Clone); // 소환 된 스킬 적용 오브젝트를 지워준다.
-                ////Save_Clone.SetActive(false);
+                AfterPurchase_Window.SetActive(false);
             }
-
-            // AfterPurchase_Window_Prefab : 스킬 적용 프리팹
-            // 스킬 적용 프리팹을 소환시킨다.
-            GameObject Save = Instantiate(AfterPurchase_Window_Prefab, AfterPurchase_Window.transform.position, Quaternion.identity, GameObject.Find("Skill_Purchase_Canvas").transform);
-
-
-            #region GameObject.Find()
-            AfterPurchase_Key = GameObject.Find("Direction_Key");
-            AfterPurchase_Skill = GameObject.Find("After_Skill_Image").GetComponent<RectTransform>();
-            AfterPurchase_Skill_Box = GameObject.Find("After_Skill_Box").GetComponent<RectTransform>();
-            AfterPurchase_Window = Save.GetComponent<RectTransform>();
-            AfterPurchase_LeftDirection = GameObject.Find("Left_Direction").GetComponent<RectTransform>();
-            #endregion
-
-            // 스킬 소환 오브젝트틑 꺼준다.
-            Save.SetActive(false);
-
-            // 소환 된 오브젝트를 받아주는 오브젝트 = 소환 된 오브젝트
-            Save_Clone = Save;
-
             UpDown_Limit = true;
         }
     }
@@ -307,14 +269,14 @@ public class Skill_Window : MonoBehaviour
 
     public IEnumerator AfterPurchase_Left_forward()
     {
-        AfterPurchase_LeftDirection.DOAnchorPosX(-570, 1f).SetEase(Ease.InOutBack);
+        AfterPurchase_LeftDirection.transform.DOLocalMoveX(-570, 1f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(AfterPurchase_Left_Back());
     }
 
     public IEnumerator AfterPurchase_Left_Back()
     {
-        AfterPurchase_LeftDirection.DOAnchorPosX(-550, 1f).SetEase(Ease.InOutBack);
+        AfterPurchase_LeftDirection.transform.DOLocalMoveX(-550, 1f).SetEase(Ease.InOutBack);
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(AfterPurchase_Left_forward());
     }
@@ -326,14 +288,16 @@ public class Skill_Window : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && Purchase == false && UpDown == false && UpDown_Limit == true)
         {
             UpDown = true;
-            AfterPurchase_Window.DOAnchorPosY(5f, 1f).SetEase(Ease.OutBack);
+            AfterPurchase_Window.transform.DOLocalMoveY(5f, 1f).SetEase(Ease.OutBack);
+            //AfterPurchase_Window.DOAnchorPosY(5f, 1f).SetEase(Ease.OutBack);
 
         }
 
         else if (Input.GetKeyDown(KeyCode.DownArrow) && Purchase == false && UpDown == true && UpDown_Limit == true)
         {
             UpDown = false;
-            AfterPurchase_Window.DOAnchorPosY(-145f, 1f).SetEase(Ease.OutBack);
+            AfterPurchase_Window.transform.DOLocalMoveY(-145f, 1f).SetEase(Ease.OutBack);
+            //AfterPurchase_Window.DOAnchorPosY(-145f, 1f).SetEase(Ease.OutBack);
         }
     }
     #endregion
@@ -396,6 +360,7 @@ public class Skill_Window : MonoBehaviour
 
     public IEnumerator SkillWindowClose_Coroutine()
     {
+        //asdf
         // 스킬 창을 닫아주는 코루틴
 
         Timer = 0;

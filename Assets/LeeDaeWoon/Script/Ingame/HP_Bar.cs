@@ -12,12 +12,12 @@ public class HP_Bar : MonoBehaviour
 
     void Start()
     {
-        //HP = Player.Instance._hp;
 
     }
 
     void Update()
     {
+        HP = Player.Instance.stat._hp;
     }
 
     public void Test()

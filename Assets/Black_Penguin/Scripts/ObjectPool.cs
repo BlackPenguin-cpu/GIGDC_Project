@@ -10,9 +10,8 @@ public class ObjectPoolClass
 
 public class ObjectPool : MonoBehaviour
 {
-    static public ObjectPool Instance;
-    public Dictionary<string, ObjectPoolClass> ParentObj = new Dictionary<string, ObjectPoolClass>();
-    public GameObject[] objects;
+    public static ObjectPool Instance;
+    private Dictionary<string, ObjectPoolClass> ParentObj = new Dictionary<string, ObjectPoolClass>();
     public void Awake()
     {
         if (Instance == null)
