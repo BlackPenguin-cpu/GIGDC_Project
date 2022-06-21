@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Skill_Window : MonoBehaviour
 {
     public static Skill_Window Inst { get; private set; }
+    void Awake() => Inst = this;
 
     [Header("스킬창 시간")]
     public float Timer = 0;
@@ -29,10 +30,6 @@ public class Skill_Window : MonoBehaviour
     public GameObject AfterPurchase_Window; // 스킬적용 창
     public GameObject AfterPurchase_Skill_Box; // 스킬 적용하기 전 스킬박스 이미지
     public GameObject AfterPurchase_LeftDirection; // 왼쪽 화살표
-/*  public RectTransform AfterPurchase_Skill = new RectTransform(); // 스킬 적용하기 전 스킬 이미지
-    public RectTransform AfterPurchase_Window = new RectTransform(); // 스킬적용 창
-    public RectTransform AfterPurchase_Skill_Box = new RectTransform(); // 스킬 적용하기 전 스킬박스 이미지
-    public RectTransform AfterPurchase_LeftDirection = new RectTransform(); // 왼쪽 화살표*/
 
     [Header("스킬 좌표")]
     [SerializeField] GameObject Skill_Shop;
@@ -40,14 +37,17 @@ public class Skill_Window : MonoBehaviour
     //public Image AfterPurchase_Top_Light;
     //public Image AfterPurchase_Bottom_Light;
 
-    public GameObject Save_Clone;
-
     public int SkillNum; // 현재 몇 번째 구매 스킬과 충돌했는지 숫자 확인
     public bool UpDown = true; // 현재 위 인지 아래 인지 확인
     public bool Purchase = true; // 현재 구매중인지 아닌지 확인
     public bool SkillWindow = true; // 스킬 창이 나오는지 확인
     public bool UpDown_Limit = true; // 위아래 제한
     public bool SkillColider_Check; // 현재 구매 스킬들과 충돌 했는지 체크 확인
+
+    // 몇 번째 스킬을 구매했는지 확인
+    public bool Skill01_Purchase = true;
+    public bool Skill02_Purchase = true;
+    public bool Skill03_Purchase = true;
 
     public int RandomTest;
 
@@ -68,9 +68,6 @@ public class Skill_Window : MonoBehaviour
         AfterPurchase_Skill = GameObject.Find("After_Skill_Image");
         AfterPurchase_Skill_Box = GameObject.Find("After_Skill_Box");
         AfterPurchase_LeftDirection = GameObject.Find("Left_Direction");
-   /*     AfterPurchase_Skill = GameObject.Find("After_Skill_Image").GetComponent<RectTransform>();
-        AfterPurchase_Skill_Box = GameObject.Find("After_Skill_Box").GetComponent<RectTransform>();
-        AfterPurchase_LeftDirection = GameObject.Find("Left_Direction").GetComponent<RectTransform>();*/
         #endregion
 
         AfterPurchase_Left();
@@ -88,14 +85,6 @@ public class Skill_Window : MonoBehaviour
         AfterPurchase_UpDown();
     }
 
-    private void Awake()
-    {
-        Inst = this;
-    /*    if (Salesman.Inst.Apply_Check == true)
-            AfterPurchase_Window = GameObject.Find("After_Purchase").GetComponent<RectTransform>();
-        else
-            AfterPurchase_Window = GameObject.Find("After_Purchase(Clone)").GetComponent<RectTransform>();*/
-    }
     void ScreentoWorld()
     {
         // 월드 좌표를 스크린 좌표로 변경을 해준다.
@@ -136,10 +125,18 @@ public class Skill_Window : MonoBehaviour
                 Skill_Manager.Inst.Skill_Shop.Add(SeletSkill);
 
                 Purchase = false; // 이것을 통하여 스킬구매 -> 스킬적용으로 넘겨준다.
-                SkillClose_Dot(); // 스킬 창을 닫아준다.
 
                 this.gameObject.transform.GetChild(SkillNum).GetChild(3).gameObject.SetActive(false);
                 this.gameObject.transform.GetChild(SkillNum).GetChild(2).gameObject.SetActive(true);
+
+                SkillClose_Dot(); // 스킬 창을 닫아준다.
+
+                if (SkillNum == 0)
+                    Skill01_Purchase = false;
+                else if (SkillNum == 1)
+                    Skill02_Purchase = false;
+                else if (SkillNum == 2)
+                    Skill03_Purchase = false;
             }
 
             // 스킬적용
@@ -152,7 +149,7 @@ public class Skill_Window : MonoBehaviour
         }
     }
 
-   
+
     #region 구매 후 스킬 적용
     public IEnumerator SkillHave()
     {
@@ -177,8 +174,8 @@ public class Skill_Window : MonoBehaviour
             SaveSkillPos[1] = AfterPurchase_Skill_Box.transform.position;
 
             //스킬 적용 애니메이션
-            AfterPurchase_Skill.transform.DOLocalMove(new Vector3(-779.92f, 60.7f, 0f), 0.5f).SetEase(Ease.InOutQuad);
-            AfterPurchase_Skill_Box.transform.DOLocalMove(new Vector3(-779.92f, 60.7f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+            AfterPurchase_Skill.transform.DOLocalMove(new Vector3(-774f, 66f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+            AfterPurchase_Skill_Box.transform.DOLocalMove(new Vector3(-774f, 66f, 0f), 0.5f).SetEase(Ease.InOutQuad);
 
             yield return new WaitForSeconds(0.5f);
 
@@ -213,7 +210,7 @@ public class Skill_Window : MonoBehaviour
         {
             UpDown_Limit = false;
 
-            // 윗 부분에 1개 이상의 스킬을 적용을 할 때 적용하기 전의 스킬은 다시 상점으로 넘어간다.
+            // 아랫 부분에 1개 이상의 스킬을 적용을 할 때 적용하기 전의 스킬은 다시 상점으로 넘어간다.
             if (Down_MoreThanOnce_Purchase == false)
             {
                 Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill_Down[0]);
@@ -229,8 +226,8 @@ public class Skill_Window : MonoBehaviour
             SaveSkillPos[1] = AfterPurchase_Skill_Box.transform.position;
 
             //스킬 적용 애니메이션
-            AfterPurchase_Skill.transform.DOLocalMove(new Vector3(-779.92f, 76.3f, 0f), 0.5f).SetEase(Ease.InOutQuad);
-            AfterPurchase_Skill_Box.transform.DOLocalMove(new Vector3(-779.92f, 76.3f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+            AfterPurchase_Skill.transform.DOLocalMove(new Vector3(-784, 80f, 0f), 0.5f).SetEase(Ease.InOutQuad);
+            AfterPurchase_Skill_Box.transform.DOLocalMove(new Vector3(-784, 80f, 0f), 0.5f).SetEase(Ease.InOutQuad);
 
             yield return new WaitForSeconds(0.5f);
 
@@ -289,21 +286,17 @@ public class Skill_Window : MonoBehaviour
         {
             UpDown = true;
             AfterPurchase_Window.transform.DOLocalMoveY(5f, 1f).SetEase(Ease.OutBack);
-            //AfterPurchase_Window.DOAnchorPosY(5f, 1f).SetEase(Ease.OutBack);
-
         }
 
         else if (Input.GetKeyDown(KeyCode.DownArrow) && Purchase == false && UpDown == true && UpDown_Limit == true)
         {
             UpDown = false;
             AfterPurchase_Window.transform.DOLocalMoveY(-145f, 1f).SetEase(Ease.OutBack);
-            //AfterPurchase_Window.DOAnchorPosY(-145f, 1f).SetEase(Ease.OutBack);
         }
     }
     #endregion
 
     #region 스킬 창
-
     public void SkillClose_Dot()
     {
         // 스킬 창을 닫아주는 함수
@@ -316,42 +309,44 @@ public class Skill_Window : MonoBehaviour
     {
         // 스킬 창을 열어주는 코루틴
         SkillWindow = false;
-
         Timer = 0;
-        if (SkillNum == 0)
+        if (SkillNum == 0 && Skill01_Purchase == true)
         {
+            Skill_Window_Active();
             while (Timer < 1)
             {
-                Skill_RectTransform.anchoredPosition = new Vector2(1.995371f, Mathf.Lerp(226.43f, 32.97299f, Timer));
-                Skill_RectTransform.sizeDelta = new Vector2(1724.1f, Mathf.Lerp(5.9433f, 392.86f, Timer));
-                Pole_01.anchoredPosition = new Vector3(1.9954f, 244, 0);
-                Pole_02.anchoredPosition = new Vector2(1.9954f, Mathf.Lerp(202.92f, -176.01f, Timer));
+                Skill_RectTransform.localPosition = new Vector2(1.995371f, Mathf.Lerp(218f, 34f, Timer));
+                Skill_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(0f, 485f, Timer));
+                Pole_01.localPosition = new Vector3(0.2999878f, 237f, 0);
+                Pole_02.localPosition = new Vector2(-2f, Mathf.Lerp(182f, -149f, Timer));
                 Timer += Time.deltaTime * 4f;
                 yield return null;
             }
         }
 
-        else if (SkillNum == 1)
+        else if (SkillNum == 1 && Skill02_Purchase == true)
         {
+            Skill_Window_Active();
             while (Timer < 1)
             {
-                Skill_RectTransform.anchoredPosition = new Vector2(402.6954f, Mathf.Lerp(226.43f, 32.97299f, Timer));
-                Skill_RectTransform.sizeDelta = new Vector2(1724.1f, Mathf.Lerp(5.9433f, 392.86f, Timer));
-                Pole_01.anchoredPosition = new Vector3(402.6954f, 244, 0);
-                Pole_02.anchoredPosition = new Vector2(402.6954f, Mathf.Lerp(202.92f, -176.01f, Timer));
+                Skill_RectTransform.localPosition = new Vector2(404.9954f, Mathf.Lerp(218f, 34f, Timer));
+                Skill_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(0f, 485f, Timer));
+                Pole_01.localPosition = new Vector3(403.3f, 237f, 0);
+                Pole_02.localPosition = new Vector2(401f, Mathf.Lerp(202.92f, -149f, Timer));
                 Timer += Time.deltaTime * 4f;
                 yield return null;
             }
         }
 
-        else if (SkillNum == 2)
+        else if (SkillNum == 2 && Skill03_Purchase == true)
         {
+            Skill_Window_Active();
             while (Timer < 1)
             {
-                Skill_RectTransform.anchoredPosition = new Vector2(839.6954f, Mathf.Lerp(226.43f, 32.97299f, Timer));
-                Skill_RectTransform.sizeDelta = new Vector2(1724.1f, Mathf.Lerp(5.9433f, 392.86f, Timer));
-                Pole_01.anchoredPosition = new Vector3(839.6954f, 244, 0);
-                Pole_02.anchoredPosition = new Vector2(839.6954f, Mathf.Lerp(202.92f, -176.01f, Timer));
+                Skill_RectTransform.localPosition = new Vector2(819.9954f, Mathf.Lerp(218f, 34f, Timer));
+                Skill_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(0f, 485f, Timer));
+                Pole_01.localPosition = new Vector3(818.3f, 237f, 0);
+                Pole_02.localPosition = new Vector2(816f, Mathf.Lerp(202.92f, -149f, Timer));
                 Timer += Time.deltaTime * 4f;
                 yield return null;
             }
@@ -360,34 +355,46 @@ public class Skill_Window : MonoBehaviour
 
     public IEnumerator SkillWindowClose_Coroutine()
     {
-        //asdf
         // 스킬 창을 닫아주는 코루틴
 
         Timer = 0;
-        while (Timer < 1)
+        if (SkillNum == 0 && Skill01_Purchase == true)
         {
-            Skill_RectTransform.sizeDelta = new Vector2(1724.1f, Mathf.Lerp(392.86f, 5.9433f, Timer));
-
-            if (SkillNum == 0)
+            while (Timer < 1)
             {
-                Pole_01.anchoredPosition = new Vector3(1.9954f, 244, 0);
-                Pole_02.anchoredPosition = new Vector2(1.9954f, Mathf.Lerp(-176.01f, 202.92f, Timer));
-            }
+                Pole_01.localPosition = new Vector3(0.2999878f, 237f, 0);
+                Pole_02.localPosition = new Vector2(-2f, Mathf.Lerp(-149f, 182f, Timer));
+                Skill_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(485f, 0f, Timer));
 
-            else if (SkillNum == 1)
-            {
-                Pole_01.anchoredPosition = new Vector3(402.6954f, 244, 0);
-                Pole_02.anchoredPosition = new Vector2(402.6954f, Mathf.Lerp(-176.01f, 202.92f, Timer));
+                Timer += Time.deltaTime * 4f;
+                yield return null;
             }
-            
-            else if (SkillNum == 2)
-            {
-                Pole_01.anchoredPosition = new Vector3(839.6954f, 244, 0);
-                Pole_02.anchoredPosition = new Vector2(839.6954f, Mathf.Lerp(-176.01f, 202.92f, Timer));
-            }
+        }
 
-            Timer += Time.deltaTime * 4f;
-            yield return null;
+        else if (SkillNum == 1 && Skill02_Purchase == true)
+        {
+            while (Timer < 1)
+            {
+                Pole_01.localPosition = new Vector3(403.3f, 237f, 0);
+                Pole_02.localPosition = new Vector2(401f, Mathf.Lerp(-149f, 202.92f, Timer));
+                Skill_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(485f, 0f, Timer));
+
+                Timer += Time.deltaTime * 4f;
+                yield return null;
+            }
+        }
+
+        else if (SkillNum == 2 && Skill03_Purchase == true)
+        {
+            while (Timer < 1)
+            {
+                Pole_01.localPosition = new Vector3(818.3f, 237f, 0);
+                Pole_02.localPosition = new Vector2(816f, Mathf.Lerp(-149f, 202.92f, Timer));
+                Skill_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(485f, 0f, Timer));
+
+                Timer += Time.deltaTime * 4f;
+                yield return null;
+            }
         }
 
         this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
