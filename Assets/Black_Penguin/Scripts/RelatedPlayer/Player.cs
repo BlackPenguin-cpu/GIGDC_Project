@@ -35,7 +35,7 @@ public class PlayerWeaponSkillInfo
     {
         if (level >= 5)
         {
-            swordIronHeart = true;
+            swordGodBless = true;
         }
         else if (level >= 3)
         {
@@ -43,14 +43,14 @@ public class PlayerWeaponSkillInfo
         }
         else if (level >= 1)
         {
-            swordGodBless = true;
+            swordIronHeart = true;
         }
     }
     public void DaggerSkillCheck(int level)
     {
         if (level >= 5)
         {
-            daggerSwift = true;
+            daggerHiddenCard = true;
         }
         else if (level >= 3)
         {
@@ -58,7 +58,7 @@ public class PlayerWeaponSkillInfo
         }
         else if (level >= 1)
         {
-            daggerHiddenCard = true;
+            daggerSwift = true;
         }
     }
     public void AxeSkillCheck(int level)
@@ -475,8 +475,10 @@ public class Player : Entity
         }
         Debug.Log("죽었어 ㅠㅠ");
     }
+
     public override void OnHit(Entity entity, float Damage = 0)
     {
+        OnHitEffect.Instance.OnHitFunc();
         if (stat.PlayerDATypeList.NeedleArmour && Random.Range(0, 10) == 0) needleArmourAction(entity);
     }
     #region 플레이어 인풋
@@ -630,6 +632,15 @@ public class Player : Entity
     }
     public override void Attack(Entity target, float atkDmg)
     {
+        bool isCrit = Random.Range(0, 100) < stat._crit;
+        if (isCrit)
+        {
+            atkDmg *= 1.5f;
+        }
+        DamageText text = ObjectPool.Instance.CreateObj(Resources.Load<GameObject>("Player/DamageText"), target.transform.position, Quaternion.identity).GetComponent<DamageText>();
+        text.damageValue = atkDmg;
+        text.isCrit = isCrit;
+
         base.Attack(target, atkDmg);
     }
     public void AnimOnAttack()
@@ -772,9 +783,18 @@ public class Player : Entity
     {
         if (stat.skillInfo.daggerHiddenCard)
         {
-            DaggerSkillObj obj = Instantiate(Resources.Load<DaggerSkillObj>(""), transform.position, Quaternion.identity);
+            StartCoroutine(DaggerSkill3Coroutine());
+        }
+    }
+    IEnumerator DaggerSkill3Coroutine()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject obj
+    = ObjectPool.Instance.CreateObj(Resources.Load<GameObject>("Player/DaggerSkill3Obj"), transform.position, Quaternion.identity);
             obj.GetComponent<SpriteRenderer>().flipX = sprite.flipX;
-            obj.damage = stat._attackDamage / 3;
+            obj.GetComponent<DaggerSkillObj>().damage = stat._attackDamage / 3;
+            yield return new WaitForSeconds(0.1f);
         }
     }
     #endregion
