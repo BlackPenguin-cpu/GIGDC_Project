@@ -630,11 +630,17 @@ public class Player : Entity
     }
     public override void Attack(Entity target, float atkDmg)
     {
-        if (Random.Range(0, 100) < stat._crit)
+        bool isCrit = Random.Range(0, 100) < stat._crit;
+        if (isCrit)
         {
             atkDmg *= 1.5f;
             Debug.Log("명치타!");
         }
+        DamageText text = ObjectPool.Instance.CreateObj(Resources.Load<GameObject>("Player/DamageText")).GetComponent<DamageText>();
+        text.damageValue = atkDmg;
+        text.isCrit = isCrit;
+        text.pos = target.transform.position;
+
         base.Attack(target, atkDmg);
     }
     public void AnimOnAttack()

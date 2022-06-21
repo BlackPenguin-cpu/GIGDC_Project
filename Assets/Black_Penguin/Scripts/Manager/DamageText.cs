@@ -6,22 +6,40 @@ using TMPro;
 [RequireComponent(typeof(Rigidbody2D))]
 public class DamageText : MonoBehaviour
 {
-    Rigidbody2D rigid;
-    TextMeshProUGUI tmpro;
+    [SerializeField] private Rigidbody2D rigid;
+    [SerializeField] private TextMeshProUGUI tmpro;
 
-    string textString;
-    bool isCrit;
-    DamageText(string text, bool isCrit)
+    private string textString;
+    private float duration = 2;
+
+    public bool isCrit;
+    public float damageValue;
+    public Vector3 pos;
+    private void Update()
     {
-        this.textString = text;
-        this.isCrit = isCrit;
-    }
-    private void Start()
-    {
-        rigid = GetComponent<Rigidbody2D>();
+        duration -= Time.deltaTime;
+        if (duration <= 0)
+        {
+            ObjectPool.Instance.DeleteObj(gameObject);
+        }
     }
     private void OnEnable()
     {
+        rigid = GetComponent<Rigidbody2D>();
+
+        textString = ((int)damageValue).ToString();
+        transform.position = Camera.main.WorldToScreenPoint(pos);
+
+        if (isCrit)
+        {
+            tmpro.color = Color.red;
+        }
+        else
+        {
+            tmpro.color = Color.white;
+        }
+        tmpro.text = textString;
+        duration = 2;
         rigid.AddForce(new Vector3(0, 10, 0));
     }
 
