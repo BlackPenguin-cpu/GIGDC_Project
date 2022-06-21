@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public enum SoundType
 {
     SFX,
@@ -18,8 +18,8 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    public Dictionary<string, AudioClip> audioClips;
-    public Dictionary<SoundType, AudioSourceClass> audioSourceClasses;
+    public Dictionary<string, AudioClip> audioClips = new Dictionary<string, AudioClip>();
+    public Dictionary<SoundType, AudioSourceClass> audioSourceClasses = new Dictionary<SoundType, AudioSourceClass>();
     private void Awake()
     {
         if (instance == null)
@@ -38,13 +38,16 @@ public class SoundManager : MonoBehaviour
             audioClips[clip.name] = clip;
         }
 
+        string[] enumNames = Enum.GetNames(typeof(SoundType));
         for (int i = 0; i < (int)SoundType.END; i++)
         {
-            GameObject AudioSourceObj = new GameObject();
-            AudioSourceObj.AddComponent<AudioSource>();
-            audioSourceClasses[(SoundType)i].audioSource = Instantiate(AudioSourceObj, transform).GetComponent<AudioSource>();
-            audioSourceClasses[(SoundType)i].audioVolume = 0.5f;
+            GameObject AudioSourceObj = new GameObject(enumNames[i]);
+            AudioSourceObj.transform.SetParent(transform);
+            AudioSourceClass sourceClass
+                = new AudioSourceClass { audioSource = AudioSourceObj.AddComponent<AudioSource>(), audioVolume = 0.5f };
+            audioSourceClasses[(SoundType)i] = sourceClass;
         }
+
 
         audioSourceClasses[SoundType.BGM].audioSource.loop = true;
     }
