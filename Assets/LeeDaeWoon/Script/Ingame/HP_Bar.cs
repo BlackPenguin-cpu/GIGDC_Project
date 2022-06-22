@@ -12,21 +12,19 @@ public class HP_Bar : MonoBehaviour
 
     void Start()
     {
-
     }
 
     void Update()
     {
         HP = Player.Instance.stat._hp;
+        Test();
     }
 
     public void Test()
     {
-        //if (Bar.transform.localScale.y >= 0.001)
-        //{
-        //    Bar.transform.localScale += new Vector3(0, -0.01f, 0);
-        //}
-
-
+        if (Bar.transform.localScale.y >= 0.001)
+        {
+            Bar.transform.localScale = new Vector3(100, HP, 1);
+        }
     }
 }

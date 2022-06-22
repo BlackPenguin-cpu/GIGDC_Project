@@ -34,13 +34,13 @@ public class Healing : MonoBehaviour
     void Update()
     {
         ScreentoWorld();
-        Healing_Purchase();
+        StartCoroutine(Healing_Purchase());
     }
 
     void ScreentoWorld()
     {
         // 월드 좌표를 스크린 좌표로 변경을 해준다.
-        Healing_Window_Position.localPosition = Camera.main.WorldToScreenPoint(this.gameObject.transform.localPosition + new Vector3(2.6f, -3.95f, 0));
+        Healing_Window_Position.localPosition = Camera.main.WorldToScreenPoint(this.gameObject.transform.localPosition + new Vector3(2.6f, -5f, 0));
     }
 
     public void Healing_Price()
@@ -60,19 +60,20 @@ public class Healing : MonoBehaviour
         //}
         Healing_Gold_Text.text = "" + Healing_Gold;
     }
-
-    public void Healing_Purchase()
+    IEnumerator Healing_Purchase()
     {
         if (Input.GetKeyDown(KeyCode.F) && Healing_Colider_Check == false && UI_Manager.Inst.Gold >= Healing_Gold && Healing_Purchase_Check == true)
         {
             UI_Manager.Inst.Gold -= Healing_Gold;
-            HP_Bar.Inst.HP += Heal;
-
-            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            Player.Instance.stat._hp += Heal;
 
             StartCoroutine(HealingWindow_Close_Coroutine());
             Healing_Purchase_Check = false;
+
+            yield return new WaitForSeconds(1f);
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+
         }
     }
 
@@ -82,9 +83,9 @@ public class Healing : MonoBehaviour
         Timer = 0;
         while (Timer < 1)
         {
-            Healing_RectTransform.anchoredPosition = new Vector2(1.995371f, Mathf.Lerp(-135f, -244f, Timer));
-            Healing_RectTransform.sizeDelta = new Vector2(1724.1f, Mathf.Lerp(0, 264.2f, Timer));
-            Pole_02.anchoredPosition = new Vector2(1.9954f, Mathf.Lerp(-153f, -382f, Timer));
+            Healing_RectTransform.localPosition = new Vector2(-1.995371f, Mathf.Lerp(-22.25f, -244f, Timer));
+            Healing_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(0, 486f, Timer));
+            Pole_02.localPosition = new Vector2(1.9954f, Mathf.Lerp(-70f, -382f, Timer));
             Timer += Time.deltaTime * 4f;
             yield return null;
         }
@@ -95,9 +96,9 @@ public class Healing : MonoBehaviour
         Timer = 0;
         while (Timer < 1)
         {
-            Healing_RectTransform.anchoredPosition = new Vector2(1.995371f, Mathf.Lerp(-244f, -135f, Timer));
-            Healing_RectTransform.sizeDelta = new Vector2(1724.1f, Mathf.Lerp(264.2f, 0, Timer));
-            Pole_02.anchoredPosition = new Vector2(1.9954f, Mathf.Lerp(-382f, -153f, Timer));
+            Healing_RectTransform.anchoredPosition = new Vector2(-1.995371f, Mathf.Lerp(-244f, -22.25f, Timer));
+            Healing_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(486f, 0, Timer));
+            Pole_02.anchoredPosition = new Vector2(1.9954f, Mathf.Lerp(-382f, -70f, Timer));
             Timer += Time.deltaTime * 4f;
             yield return null;
         }

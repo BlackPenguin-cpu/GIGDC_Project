@@ -171,7 +171,7 @@ public class PlayerInfo
     }
     public float _hp
     {
-        get { return _hp; }
+        get { return hp; }
         set
         {
             if (value < hp && weaponType == PlayerWeaponType.Sword)
