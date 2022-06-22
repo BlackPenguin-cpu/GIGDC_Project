@@ -36,13 +36,15 @@ public class DamageText : MonoBehaviour
         duration = 0.5f;
         rigid.AddForce(new Vector3(Random.Range(-30, 30), 100, 0));
 
+
         if (isCrit)
         {
-            textMesh.color = new Color(1,0,0,0.8f);
+            textMesh.color = new Color(1, 0, 0, 0.8f);
+            textMesh.fontStyle = FontStyle.Bold;
         }
         else
         {
-            textMesh.color = new Color(1,1,1,0.8f);
+            textMesh.color = new Color(1, 1, 1, 0.8f);
         }
     }
 
