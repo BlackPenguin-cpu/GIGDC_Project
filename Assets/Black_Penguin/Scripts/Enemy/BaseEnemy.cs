@@ -146,7 +146,8 @@ public class BaseEnemy : Entity
         onDie += () => MaterialDrop();
         onDie += () => Player.Instance.DaggerSkill2();
         onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
-        onDie += () => CameraManager.instance.CameraShake(0.1f, 0.4f, 0.05f); ;
+        onDie += () => CameraManager.instance.CameraShake(0.1f, 0.4f, 0.05f);
+        onDie += () => player.BloodGauntletAction(this);
 
         state = EnemyState.DIE;
         //юс╫ц

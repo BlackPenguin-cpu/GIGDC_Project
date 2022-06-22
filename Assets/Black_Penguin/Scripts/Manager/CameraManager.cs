@@ -19,7 +19,7 @@ public class CameraManager : MonoBehaviour
         startPos = transform.position;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         CameraMove();
     }
@@ -31,7 +31,7 @@ public class CameraManager : MonoBehaviour
                 break;
             case CameraState.ONPLAYER:
                 float posY = transform.position.y;
-                transform.position = Vector3.Lerp(transform.position, Player.Instance.transform.position + new Vector3(0, 0, -10), Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, Player.Instance.transform.position + new Vector3(0, 0, -10), Time.deltaTime * Player.Instance.stat._speed / 5);
                 transform.position = new Vector3(transform.position.x, posY, transform.position.z);
                 break;
             default:

@@ -79,4 +79,12 @@ public class ObjectPool : MonoBehaviour
         builder.Replace("(Clone)", "");
         return builder.ToString();
     }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        foreach (Transform obj in transform.GetComponentInChildren<Transform>())
+        {
+            Destroy(obj); 
+        }
+    }
 }

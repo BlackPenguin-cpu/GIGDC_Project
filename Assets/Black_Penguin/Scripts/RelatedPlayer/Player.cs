@@ -687,10 +687,6 @@ public class Player : Entity
     public void onAttackHit(Entity entity)
     {
         entity.GetComponent<Rigidbody2D>().AddForce(new Vector3(sprite.flipX ? -50 : 50, 30, 0));
-        if (stat.PlayerDATypeList.BloodGauntlet)
-        {
-            BloodGauntletAction(entity);
-        }
     }
     #endregion
 
@@ -751,9 +747,10 @@ public class Player : Entity
         obj.rotatePower = 5;
         obj.target = target.gameObject;
     }
-    void BloodGauntletAction(Entity entity)
+    public void BloodGauntletAction(Entity entity)
     {
-        stat.bloodGauntletDuration = 3;
+        if (stat.PlayerDATypeList.BloodGauntlet)
+            stat.bloodGauntletDuration = 1.5f;
     }
     public float crystalOrbCoolodwn = 40;
     float curCrystalOrbCoolodwn = 0;
