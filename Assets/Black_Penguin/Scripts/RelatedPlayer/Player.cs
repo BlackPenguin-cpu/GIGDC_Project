@@ -408,6 +408,7 @@ public class Player : Entity
     {
         base.Start();
         stat._hp = stat._maxHp;
+        stat._level = stat._level;
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
