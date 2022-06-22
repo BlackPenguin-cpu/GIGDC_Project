@@ -7,13 +7,26 @@ public class Card_Manager : MonoBehaviour
     public static Card_Manager Inst { get; private set; }
     void Awake() => Inst = this;
 
-    private int RandomMix;
+    public int RandomMix;
 
     [SerializeField] ItemSo itemSo;
     [SerializeField] GameObject CardPrefab;
 
-    List<Item> ItemBuffer = new List<Item>();
-    List<Item> DABuffer = new List<Item>();
+    public List<Item> ItemBuffer = new List<Item>();
+    public List<Item> DABuffer = new List<Item>();
+
+    public List<Item> DA_LeftCheck = new List<Item>();
+    public List<Item> DA_AmongCheck = new List<Item>();
+    public List<Item> DA_RightCheck = new List<Item>();
+
+    public bool DAClick_Check = true;
+
+    private int Item_RandomTest;
+    private int DA_RandomTest;
+
+    public bool DA_Left = true;
+    public bool DA_Among = true;
+    public bool DA_Right = true;
 
     void Start()
     {
@@ -40,18 +53,6 @@ public class Card_Manager : MonoBehaviour
         {
             DABuffer.Add(itemSo.DA[i]);
         }
-
-        //foreach (Item item in itemSo.Items)
-        //{
-        //    Debug.Log(item.Itme_Name);
-        //    ItemBuffer.Add(item);
-
-        //}
-
-        //foreach (Item DA in itemSo.DA)
-        //{
-        //    DABuffer.Add(DA);
-        //}
     }
 
     public int Card_Percent(List<Item> Percent_Item)
@@ -75,6 +76,14 @@ public class Card_Manager : MonoBehaviour
         // 아이템 카드 소환
         var cardObject = Instantiate(CardPrefab, this.transform.position, Quaternion.identity, GameObject.Find("Item_Canvas").transform);
         var card = cardObject.GetComponent<Item_CardList>();
+        DA_LeftCheck.Clear();
+        DA_AmongCheck.Clear();
+        DA_RightCheck.Clear();
+
+        DA_Left = true;
+        DA_Among = true;
+        DA_Right = true;
+
         for (int i = 0; i < 3; i++)
         {
             RandomMix = Random.Range(0, 101);
@@ -82,33 +91,48 @@ public class Card_Manager : MonoBehaviour
             // 마정석
             if (RandomMix <= 70 || DABuffer.Count == 0)
             {
-                int RandomTest = Card_Percent(ItemBuffer);
+                Item_RandomTest = Card_Percent(ItemBuffer);
                 for (int j = 0; j < item.Count; j++)
                 {
-                    while (item[j] == ItemBuffer[RandomTest])
+                    while (item[j] == ItemBuffer[Item_RandomTest])
                     {
-                        RandomTest = Card_Percent(ItemBuffer);
+                        Item_RandomTest = Card_Percent(ItemBuffer);
                     }
                 }
-                item.Add(ItemBuffer[RandomTest]);
-                card.ItemCard(ItemBuffer[RandomTest], itemIndex++);
+                item.Add(ItemBuffer[Item_RandomTest]);
+                card.ItemCard(ItemBuffer[Item_RandomTest], itemIndex++);
             }
 
             // 방어구 및 장신구
             else
             {
-                int RandomTest = Card_Percent(DABuffer);
+                DA_RandomTest = Card_Percent(DABuffer);
                 for (int j = 0; j < item.Count; j++)
                 {
-                    while (item[j] == DABuffer[RandomTest])
+                    while (item[j] == DABuffer[DA_RandomTest])
                     {
-                        RandomTest = Card_Percent(DABuffer);
+                        DA_RandomTest = Card_Percent(DABuffer);
                     }
                 }
-                item.Add(DABuffer[RandomTest]);
-                card.ItemCard(DABuffer[RandomTest], itemIndex++);
-                // 아이템 클릭 시 if문 달아주기
-                DABuffer.RemoveAt(RandomTest);
+                item.Add(DABuffer[DA_RandomTest]);
+                card.ItemCard(DABuffer[DA_RandomTest], itemIndex++);
+
+                if (i == 0)
+                {
+                    DA_Left = false;
+                    DA_LeftCheck.Add(DABuffer[DA_RandomTest]);
+                }
+                else if (i == 1)
+                {
+                    DA_Among = false;
+                    DA_AmongCheck.Add(DABuffer[DA_RandomTest]);
+                }
+                else if (i == 2)
+                {
+                    DA_Right = false;
+                    DA_RightCheck.Add(DABuffer[DA_RandomTest]);
+                }
+
             }
         }
     }

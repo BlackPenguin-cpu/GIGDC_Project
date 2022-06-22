@@ -20,7 +20,8 @@ public class Skill_Collision : MonoBehaviour
 
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && Skill_Window.Inst.Purchase == true && Skill_Window.Inst.SkillWindow == true)
         {
@@ -36,7 +37,7 @@ public class Skill_Collision : MonoBehaviour
         if (collision.CompareTag("Player") && Skill_Window.Inst.Purchase == true && Skill_Window.Inst.SkillWindow == false)
         {
             Skill_Window.Inst.SkillColider_Check = false;
-            Skill_Window.Inst.SkillClose_Dot();
+            StartCoroutine(Skill_Window.Inst.SkillWindowClose_Coroutine());
         }
     }
 

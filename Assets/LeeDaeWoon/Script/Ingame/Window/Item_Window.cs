@@ -8,22 +8,25 @@ using UnityEngine.EventSystems;
 public class Item_Window : MonoBehaviour
 {
     [Header("속도")]
-    public float timer = 0f;
+    public float Window_timer = 0f;
+    //public float RectMast_timer = 0f;
 
     [Header("왼쪽 창")]
     public GameObject Left_Pole_01;
     public GameObject Left_Pole_02;
-    public RectTransform Left_Window;
+    public RectTransform Left_RectMask;
 
     [Header("가운데 창")]
     public GameObject Among_Pole_01;
     public GameObject Among_Pole_02;
-    public RectTransform Among_Window;
+    public RectTransform Among_RectMask;
+
 
     [Header("오른쪽 창")]
     public GameObject Right_Pole_01;
     public GameObject Right_Pole_02;
-    public RectTransform Right_Window;
+    public RectTransform Right_RectMask;
+
 
     [Header("빛")]
     public Image Left_Light;
@@ -42,31 +45,31 @@ public class Item_Window : MonoBehaviour
 
     }
 
-
     private IEnumerator itemWindow()
     {
-        #region 창 연출(위, 아래 봉 ( 리소스 나오면 지워도 됨 ))
+        Window_timer = 0;
 
-        Left_Pole_01.transform.DOLocalMoveY(447f, 0.5f);
-        Left_Pole_02.transform.DOLocalMoveY(-440f, 0.5f);
+        #region 창 연출(위, 아래 봉)
 
-        Among_Pole_01.transform.DOLocalMoveY(370f, 0.5f);
-        Among_Pole_02.transform.DOLocalMoveY(-513f, 0.5f);
+        Left_Pole_01.transform.DOLocalMoveY(435f, 0.55f);
+        Left_Pole_02.transform.DOLocalMoveY(-455f, 0.55f);
 
-        Right_Pole_01.transform.DOLocalMoveY(370f, 0.5f);
-        Right_Pole_02.transform.DOLocalMoveY(-513f, 0.5f);
+        Among_Pole_01.transform.DOLocalMoveY(334f, 0.55f);
+        Among_Pole_02.transform.DOLocalMoveY(-552f, 0.55f);
+
+        Right_Pole_01.transform.DOLocalMoveY(355f, 0.55f);
+        Right_Pole_02.transform.DOLocalMoveY(-525f, 0.55f);
 
         #endregion
 
-        while (timer < 1)
+        while (Window_timer < 1)
         {
+            Left_RectMask.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(0, 824.77f, Window_timer));
+            Among_RectMask.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(0, 824.77f, Window_timer));
+            Right_RectMask.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(0, 824.77f, Window_timer));
 
-            Left_Window.sizeDelta = new Vector2(1224, Mathf.Lerp(1, 915, timer));
-            Among_Window.sizeDelta = new Vector2(1224, Mathf.Lerp(1, 915, timer));
-            Right_Window.sizeDelta = new Vector2(1224, Mathf.Lerp(1, 915, timer));
-            timer += Time.deltaTime * 3f;
+            Window_timer += Time.deltaTime * 3f;
             yield return null;
         }
-
     }
 }

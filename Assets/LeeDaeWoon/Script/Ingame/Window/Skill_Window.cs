@@ -129,7 +129,8 @@ public class Skill_Window : MonoBehaviour
                 this.gameObject.transform.GetChild(SkillNum).GetChild(3).gameObject.SetActive(false);
                 this.gameObject.transform.GetChild(SkillNum).GetChild(2).gameObject.SetActive(true);
 
-                SkillClose_Dot(); // 스킬 창을 닫아준다.
+                // 스킬창을 닫아준다.
+                StartCoroutine(SkillWindowClose_Coroutine()); 
 
                 if (SkillNum == 0)
                     Skill01_Purchase = false;
@@ -297,25 +298,18 @@ public class Skill_Window : MonoBehaviour
     #endregion
 
     #region 스킬 창
-    public void SkillClose_Dot()
-    {
-        // 스킬 창을 닫아주는 함수
-        Skill_RectTransform.DOAnchorPosY(226.43f, 0.5f);
-        Pole_02.DOAnchorPosY(202.92f, 0.5f);
-        StartCoroutine(SkillWindowClose_Coroutine());
-    }
 
     public IEnumerator SkillWindow_Coroutine()
     {
         // 스킬 창을 열어주는 코루틴
-        SkillWindow = false;
         Timer = 0;
-        if (SkillNum == 0 && Skill01_Purchase == true)
+        if (SkillNum == 0 && Skill01_Purchase == true && SkillWindow == true)
         {
             Skill_Window_Active();
+            SkillWindow = false;
             while (Timer < 1)
             {
-                Skill_RectTransform.localPosition = new Vector2(1.995371f, Mathf.Lerp(218f, 34f, Timer));
+                Skill_RectTransform.localPosition = new Vector2(1.995371f, Mathf.Lerp(245.1f, 34f, Timer));
                 Skill_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(0f, 485f, Timer));
                 Pole_01.localPosition = new Vector3(0.2999878f, 237f, 0);
                 Pole_02.localPosition = new Vector2(-2f, Mathf.Lerp(182f, -149f, Timer));
@@ -324,12 +318,13 @@ public class Skill_Window : MonoBehaviour
             }
         }
 
-        else if (SkillNum == 1 && Skill02_Purchase == true)
+        else if (SkillNum == 1 && Skill02_Purchase == true && SkillWindow == true)
         {
             Skill_Window_Active();
+            SkillWindow = false;
             while (Timer < 1)
             {
-                Skill_RectTransform.localPosition = new Vector2(404.9954f, Mathf.Lerp(218f, 34f, Timer));
+                Skill_RectTransform.localPosition = new Vector2(404.9954f, Mathf.Lerp(245.1f, 34f, Timer));
                 Skill_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(0f, 485f, Timer));
                 Pole_01.localPosition = new Vector3(403.3f, 237f, 0);
                 Pole_02.localPosition = new Vector2(401f, Mathf.Lerp(202.92f, -149f, Timer));
@@ -338,12 +333,13 @@ public class Skill_Window : MonoBehaviour
             }
         }
 
-        else if (SkillNum == 2 && Skill03_Purchase == true)
+        else if (SkillNum == 2 && Skill03_Purchase == true && SkillWindow == true)
         {
             Skill_Window_Active();
-            while (Timer < 1)
+            SkillWindow = false;
+            while (Timer < 1 )
             {
-                Skill_RectTransform.localPosition = new Vector2(819.9954f, Mathf.Lerp(218f, 34f, Timer));
+                Skill_RectTransform.localPosition = new Vector2(819.9954f, Mathf.Lerp(245.1f, 34f, Timer));
                 Skill_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(0f, 485f, Timer));
                 Pole_01.localPosition = new Vector3(818.3f, 237f, 0);
                 Pole_02.localPosition = new Vector2(816f, Mathf.Lerp(202.92f, -149f, Timer));
@@ -358,39 +354,44 @@ public class Skill_Window : MonoBehaviour
         // 스킬 창을 닫아주는 코루틴
 
         Timer = 0;
-        if (SkillNum == 0 && Skill01_Purchase == true)
+        if (SkillNum == 0 && Skill01_Purchase == true && SkillWindow == false)
         {
+            SkillWindow = true;
             while (Timer < 1)
             {
                 Pole_01.localPosition = new Vector3(0.2999878f, 237f, 0);
-                Pole_02.localPosition = new Vector2(-2f, Mathf.Lerp(-149f, 182f, Timer));
+                Pole_02.localPosition = new Vector2(-2f, Mathf.Lerp(-149f, 200f, Timer));
                 Skill_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(485f, 0f, Timer));
+                Skill_RectTransform.localPosition = new Vector2(1.995371f, Mathf.Lerp(34f, 245.1f, Timer));
 
                 Timer += Time.deltaTime * 4f;
                 yield return null;
             }
         }
 
-        else if (SkillNum == 1 && Skill02_Purchase == true)
+        else if (SkillNum == 1 && Skill02_Purchase == true && SkillWindow == false)
         {
+            SkillWindow = true;
             while (Timer < 1)
             {
                 Pole_01.localPosition = new Vector3(403.3f, 237f, 0);
-                Pole_02.localPosition = new Vector2(401f, Mathf.Lerp(-149f, 202.92f, Timer));
+                Pole_02.localPosition = new Vector2(401f, Mathf.Lerp(-149f, 200f, Timer));
                 Skill_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(485f, 0f, Timer));
+                Skill_RectTransform.localPosition = new Vector2(404.9954f, Mathf.Lerp(34f, 245.1f, Timer));
 
                 Timer += Time.deltaTime * 4f;
                 yield return null;
             }
         }
-
-        else if (SkillNum == 2 && Skill03_Purchase == true)
+        else if (SkillNum == 2 && Skill03_Purchase == true && SkillWindow == false)
         {
+            SkillWindow = true;
             while (Timer < 1)
             {
                 Pole_01.localPosition = new Vector3(818.3f, 237f, 0);
                 Pole_02.localPosition = new Vector2(816f, Mathf.Lerp(-149f, 202.92f, Timer));
                 Skill_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(485f, 0f, Timer));
+                Skill_RectTransform.localPosition = new Vector2(819.9954f, Mathf.Lerp(34f, 245.1f, Timer));
 
                 Timer += Time.deltaTime * 4f;
                 yield return null;
@@ -398,7 +399,6 @@ public class Skill_Window : MonoBehaviour
         }
 
         this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
-        SkillWindow = true;
 
         if (Purchase == false)
         {
