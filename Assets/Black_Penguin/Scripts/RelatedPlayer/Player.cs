@@ -519,7 +519,7 @@ public class Player : Entity
 
         float originGravity = rigid.gravityScale;
         rigid.gravityScale = 0;
-        Vector3 dir = new Vector3(sprite.flipX == false ? 1 : -1, 0) / 2;
+        Vector3 dir = Vector3.right * (!sprite.flipX ? 1 : -1) / 2;
         var waitSec = new WaitForSeconds(0.01f);
 
         var enemies = new List<BaseEnemy>();
@@ -568,20 +568,18 @@ public class Player : Entity
         {
             foreach (RaycastHit2D ray in raycasts)
             {
-                if (ray.transform.gameObject.tag.Contains("Platform"))
+                if (!ray.transform.gameObject.tag.Contains("Platform")) continue;
+                if (rigid.velocity.y <= 0.1f)
                 {
-                    if (rigid.velocity.y <= 0.1f)
+                    if (_state == PlayerState.Jump || stateOnAir != PlayerStateOnAir.NONE)
                     {
-                        if (_state == PlayerState.Jump || stateOnAir != PlayerStateOnAir.NONE)
-                        {
-                            _state = PlayerState.Idle;
-                        }
-                        canJump = true;
+                        _state = PlayerState.Idle;
                     }
-                    if (stateOnAir == PlayerStateOnAir.FALLING || stateOnAir == PlayerStateOnAir.JUMPATTACK)
-                    {
-                        stateOnAir = PlayerStateOnAir.NONE;
-                    }
+                    canJump = true;
+                }
+                if (stateOnAir == PlayerStateOnAir.FALLING || stateOnAir == PlayerStateOnAir.JUMPATTACK)
+                {
+                    stateOnAir = PlayerStateOnAir.NONE;
                 }
             }
             if (stateOnAir != PlayerStateOnAir.JUMPATTACK && raycasts.Length == 1 && raycasts.FirstOrDefault().transform.gameObject == gameObject)
@@ -638,6 +636,8 @@ public class Player : Entity
         {
             atkDmg *= 1.5f;
         }
+
+        // 매니저에 넣어놔 Load 비용 ㅅㅂ
         DamageText text = ObjectPool.Instance.CreateObj(Resources.Load<GameObject>("Player/DamageText"), target.transform.position, Quaternion.identity).GetComponent<DamageText>();
         text.damageValue = atkDmg;
         text.isCrit = isCrit;
@@ -660,11 +660,11 @@ public class Player : Entity
             {
                 if (stat.weaponType == PlayerWeaponType.Dagger && Input.GetAxisRaw("Horizontal") == (sprite.flipX ? -1 : 1))
                 {
-                    rigid.AddForce(new Vector2((sprite.flipX ? -1 : 1) * 5, 0), ForceMode2D.Impulse);
+                    rigid.AddForce(Vector2.right * (sprite.flipX ? -1 : 1) * 5, ForceMode2D.Impulse);
                 }
                 if (stat.weaponType == PlayerWeaponType.Axe)
                 {
-                    CameraManager.instance.CameraShake(0.1f, 0.1f, 0.05f);
+                    CameraManager.Instance.CameraShake(0.1f, 0.1f, 0.05f);
                 }
                 attackCollision.OnAttack(this);
             }
@@ -767,7 +767,7 @@ public class Player : Entity
     #region 플레이어 장비 스킬
     #region 단검
     //Enemy에서 발동시킴
-    public void DaggerSkill2()
+    public void DaggerSkill2() // WOW
     {
         if (stat.skillInfo.daggerComboAttack)
         {

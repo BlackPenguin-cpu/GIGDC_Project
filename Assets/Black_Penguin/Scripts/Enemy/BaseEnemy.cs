@@ -1,7 +1,8 @@
-
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum EnemyState
 {
@@ -95,7 +96,8 @@ public class BaseEnemy : Entity
         Move();
     }
     /// <summary>
-    /// 반드시 start문에서 발동해야하는 구문
+    /// 반드시 start문에서 발동해야하는 함수 
+    /// .
     /// </summary>
     protected virtual void BaseStatSet
         (float hp, float attackDamage, float attackSpeed, float speed
@@ -105,10 +107,10 @@ public class BaseEnemy : Entity
         this.attackDamage = attackDamage;
         this.attackSpeed = attackSpeed;
         this.speed = speed;
-        this.coinDropValueRange.Min = minCoin;
-        this.coinDropValueRange.Max = maxCoin;
-        this.crystalDropValueRange.Min = minCrystal;
-        this.crystalDropValueRange.Max = maxCrystal;
+        coinDropValueRange.Min = minCoin;
+        coinDropValueRange.Max = maxCoin;
+        crystalDropValueRange.Min = minCrystal;
+        crystalDropValueRange.Max = maxCrystal;
 
     }
     protected virtual void AnimController()
@@ -144,9 +146,9 @@ public class BaseEnemy : Entity
     public override void Die()
     {
         onDie += () => MaterialDrop();
-        onDie += () => Player.Instance.DaggerSkill2();
+        onDie += () => Player.Instance.DaggerSkill2(); // HOLLY SHIT
         onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
-        onDie += () => CameraManager.instance.CameraShake(0.1f, 0.4f, 0.05f);
+        onDie += () => CameraManager.Instance.CameraShake(0.1f, 0.4f, 0.05f);
         onDie += () => player.BloodGauntletAction(this);
 
         state = EnemyState.DIE;
