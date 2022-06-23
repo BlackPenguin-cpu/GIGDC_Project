@@ -362,6 +362,7 @@ public class Player : Entity
     private Animator animator;
     private Rigidbody2D rigid;
     private new BoxCollider2D collider;
+    private PlayerHpView hpView;
     [SerializeField] private GameObject DashShadow;
     [HideInInspector] public SpriteRenderer sprite;
     [HideInInspector] public AttackCollision[] attackCollisions;
@@ -414,6 +415,7 @@ public class Player : Entity
         collider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         attackCollisions = GetComponentsInChildren<AttackCollision>();
+        hpView = GetComponentInChildren<PlayerHpView>();
     }
     private void Update()
     {
@@ -480,6 +482,7 @@ public class Player : Entity
     public override void OnHit(Entity entity, float Damage = 0)
     {
         OnHitEffect.Instance.OnHitFunc();
+        hpView.value = 1;
         if (stat.PlayerDATypeList.NeedleArmour && Random.Range(0, 10) == 0) needleArmourAction(entity);
     }
     #region 플레이어 인풋
