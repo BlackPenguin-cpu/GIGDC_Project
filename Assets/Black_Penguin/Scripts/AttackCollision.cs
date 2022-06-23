@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class AttackCollision : MonoBehaviour
 {
     private SpriteRenderer parentSpriteRenderer;
     private new BoxCollider2D collider2D;
     [Header("플레이어 공격 관련")]
     public PlayerWeaponType weaponType;
-    [Header("Enemy 플레이어 인식 범위")]
-    public bool isOnlyDetect = false;
     [Header("콜라이더 넘버")]
     public int index;
 
@@ -22,7 +21,7 @@ public class AttackCollision : MonoBehaviour
     RaycastHit2D[] DetectEntity()
     {
         return Physics2D.BoxCastAll(transform.parent.position, collider2D.size, 0, parentSpriteRenderer.flipX ? Vector2.left : Vector2.right
-            , /*Mathf.Abs(entity.transform.position.x - enemy.transform.position.x) < */(collider2D.offset.x + collider2D.size.x / 2));
+            , /*Mathf.Abs(entity.transform.position.x - enemy.transform.position.x) < */ collider2D.size.x / 2);
     }
     /// <summary>
     /// 몬스터 공격인지 플레이어 공격인지 구분하기위해 자기자신을 넣어야한다
