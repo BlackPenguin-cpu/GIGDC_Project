@@ -474,7 +474,7 @@ public class Player : Entity
                     break;
             }
         }
-        Debug.Log("죽었어 ㅠㅠ");
+        state = PlayerState.Die;
     }
 
     public override void OnHit(Entity entity, float Damage = 0)
@@ -486,6 +486,7 @@ public class Player : Entity
     //플레이어 인풋
     void InputManager()
     {
+        if (state == PlayerState.Die) return;
         Move();
         if (Input.GetKeyDown(KeyCode.Z))
         {
