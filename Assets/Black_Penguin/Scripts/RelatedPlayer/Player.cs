@@ -362,6 +362,7 @@ public class Player : Entity
     private Animator animator;
     private Rigidbody2D rigid;
     private new BoxCollider2D collider;
+    private PlayerHpView hpView;
     [SerializeField] private GameObject DashShadow;
     [HideInInspector] public SpriteRenderer sprite;
     [HideInInspector] public AttackCollision[] attackCollisions;
@@ -414,6 +415,7 @@ public class Player : Entity
         collider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         attackCollisions = GetComponentsInChildren<AttackCollision>();
+        hpView = GetComponentInChildren<PlayerHpView>();
     }
     private void Update()
     {
