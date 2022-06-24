@@ -42,7 +42,6 @@ public class BaseEnemy : Entity
     protected new BoxCollider2D collider;
     protected AttackCollision[] attackCollisions;
     protected SpriteRenderer sprite;
-    protected Rigidbody2D rigid;
     protected Player player;
     protected Animator animator;
     public System.Action onDie;

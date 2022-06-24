@@ -480,6 +480,7 @@ public class Player : Entity
     public override void OnHit(Entity entity, float Damage = 0)
     {
         OnHitEffect.Instance.OnHitFunc();
+        rigid.AddForce(entity.transform.position.x > transform.position.x ? Vector3.left : Vector3.right * 3);
         if (stat.PlayerDATypeList.NeedleArmour && Random.Range(0, 10) == 0) needleArmourAction(entity);
     }
     #region 플레이어 인풋
@@ -688,7 +689,7 @@ public class Player : Entity
     }
     public void onAttackHit(Entity entity)
     {
-        entity.GetComponent<Rigidbody2D>().AddForce(new Vector3(sprite.flipX ? -50 : 50, 30, 0));
+        //entity.GetComponent<Rigidbody2D>().AddForce(new Vector3(sprite.flipX ? -50 : 50, 30, 0));
     }
     #endregion
 
