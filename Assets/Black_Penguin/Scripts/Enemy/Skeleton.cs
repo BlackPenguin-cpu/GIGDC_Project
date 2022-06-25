@@ -21,15 +21,15 @@ public class Skeleton : BaseEnemy
     }
     void OnCheck()
     {
-        if (state != EnemyState.ATTACK && state != EnemyState.HIT)
+        if (_state != EnemyState.ATTACK && _state != EnemyState.HIT)
         {
-            state = UseAttackCollision(0, true) ? EnemyState.ATTACK : EnemyState.MOVE;
+            _state = UseAttackCollision(0, true) ? EnemyState.ATTACK : EnemyState.MOVE;
             curAttackDelay = 0;
         }
     }
     public void AttackEnd()
     {
-        state = EnemyState.IDLE;
+        _state = EnemyState.IDLE;
     }
     public override void OnHit(Entity atkEntity, float Damage)
     {
@@ -42,8 +42,8 @@ public class Skeleton : BaseEnemy
     }
     IEnumerator HitAnim()
     {
-        state = EnemyState.HIT;
+        _state = EnemyState.HIT;
         yield return new WaitForSeconds(0.4f);
-        state = EnemyState.IDLE;
+        _state = EnemyState.IDLE;
     }
 }

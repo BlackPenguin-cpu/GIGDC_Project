@@ -24,9 +24,9 @@ public class Hunter : BaseEnemy
     }
     void OnCheck()
     {
-        if (state != EnemyState.ATTACK)
+        if (_state != EnemyState.ATTACK)
         {
-            state = AttackDetectArea.isCanAttack(this) ? EnemyState.ATTACK : EnemyState.MOVE;
+            _state = AttackDetectArea.isCanAttack(this) ? EnemyState.ATTACK : EnemyState.MOVE;
             curAttackDelay = 0;
         }
     }

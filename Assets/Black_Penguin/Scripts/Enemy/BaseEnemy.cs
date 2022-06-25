@@ -6,10 +6,10 @@ using Random = UnityEngine.Random;
 
 public enum EnemyState
 {
-    IDLE,
+    MOVE,
     ATTACK,
     HIT,
-    MOVE,
+    IDLE,
     DIE,
 }
 
@@ -33,7 +33,7 @@ public class Range
     }
 }
 [RequireComponent(typeof(Animator))]
-public class BaseEnemy : Entity
+public class BaseEnemy : Entity, IObjectPoolingObj
 {
     //HealthBar
     private GameObject HealthBarObj;
@@ -49,12 +49,26 @@ public class BaseEnemy : Entity
     public Range coinDropValueRange;
     public Range crystalDropValueRange;
     public EnemyBuffList buffList = new EnemyBuffList();
-    public EnemyState state;
+    private EnemyState state;
+    public EnemyState _state
+    {
+        get
+        {
+            if (buffList.stun > 0)
+            {
+                return EnemyState.HIT;
+            }
+            return state;
+        }
+        set
+        {
+            state = value;
+        }
+    }
     public float attackSpeed = 1;
     public float attackDelay;
     protected float curAttackDelay;
     public float attackDamage;
-    public bool isUnder;
 
     public override float _hp
     {
@@ -71,30 +85,35 @@ public class BaseEnemy : Entity
     protected override void Start()
     {
         base.Start();
+        OnObjCreate();
+    }
+    public virtual void OnObjCreate()
+    {
         player = Player.Instance;
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         attackCollisions = GetComponentsInChildren<AttackCollision>();
+
         if (transform.position.y < 0)
         {
-            isUnder = true;
             rigid.gravityScale = -rigid.gravityScale;
             sprite.flipY = true;
+            dimensionType = DimensionType.UNDER;
+
             //TODO: 나중에 스프라이트나오면 그걸로 바꾸는 작업
             sprite.color = Color.black;
         }
-
         HealthBarObj = Instantiate(Resources.Load<GameObject>("HealthBar"), transform);
         HealthBarObj.transform.localScale = new Vector3(collider.size.x, 1, 1);
-        HealthBarObj.transform.localPosition = new Vector3(0, collider.size.y, 0);
+        HealthBarObj.transform.localPosition = new Vector3(0, dimensionType == DimensionType.OVER ? collider.size.y : -collider.size.y, 0);
     }
     protected virtual void Update()
     {
         HealthBarObj.SetActive(hpShowDuration > 0);
         AnimController();
-        if (state == EnemyState.HIT)
+        if (_state == EnemyState.HIT)
             curAttackDelay = 0;
 
         curAttackDelay += Time.deltaTime;
@@ -107,7 +126,6 @@ public class BaseEnemy : Entity
     }
     /// <summary>
     /// 반드시 start문에서 발동해야하는 함수 
-    /// .
     /// </summary>
     protected virtual void BaseStatSet
         (float maxHp, float attackDamage, float attackSpeed, float speed
@@ -125,7 +143,7 @@ public class BaseEnemy : Entity
     }
     protected virtual void AnimController()
     {
-        animator.SetInteger("State", (int)state);
+        animator.SetInteger("State", (int)_state);
         animator.SetFloat("AttackSpeed", attackSpeed);
     }
     /// <summary>
@@ -133,7 +151,7 @@ public class BaseEnemy : Entity
     /// </summary>
     public virtual void Move()
     {
-        if (state != EnemyState.MOVE) return;
+        if (_state != EnemyState.MOVE) return;
         float dir;
 
         if (player.transform.position.x > transform.position.x)
@@ -159,12 +177,9 @@ public class BaseEnemy : Entity
         onDie += () => CameraManager.Instance.CameraShake(0.1f, 0.4f, 0.05f);
         onDie += () => player.BloodGauntletAction(this);
         onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
+        onDie += () => _state = EnemyState.DIE;
 
-        state = EnemyState.DIE;
-        //임시
         onDie.Invoke();
-        if (gameObject.activeSelf)
-            Destroy(gameObject);
     }
 
     void MaterialDrop()
@@ -199,10 +214,10 @@ public class BaseEnemy : Entity
 
     IEnumerator HitEffectCoroutine()
     {
-        state = EnemyState.HIT;
+        _state = EnemyState.HIT;
         sprite.color = Color.red;
         yield return new WaitForSeconds(0.2f);
-        state = EnemyState.MOVE;
+        _state = EnemyState.MOVE;
         sprite.color = Color.white;
     }
 
@@ -224,4 +239,6 @@ public class BaseEnemy : Entity
         }
         return false;
     }
+
+
 }

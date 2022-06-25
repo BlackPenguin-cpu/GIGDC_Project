@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashShadow : MonoBehaviour
+public class DashShadow : MonoBehaviour , IObjectPoolingObj
 {
     private SpriteRenderer sprite;
     [HideInInspector]
@@ -11,18 +11,6 @@ public class DashShadow : MonoBehaviour
     private void Start()
     {
         onDisappear += () => ObjectPool.Instance.DeleteObj(gameObject);
-    }
-    private void OnEnable()
-    {
-        sprite = GetComponent<SpriteRenderer>();
-        if (isDark)
-        {
-            sprite.flipY = true;
-        }
-        sprite.color = Color.white;
-        sprite.sprite = Player.Instance.sprite.sprite;
-        sprite.flipX = Player.Instance.sprite.flipX;
-        StartCoroutine(DoFade());
     }
     IEnumerator DoFade()
     {
@@ -33,5 +21,17 @@ public class DashShadow : MonoBehaviour
             yield return null;
         }
         onDisappear.Invoke();
+    }
+    public void OnObjCreate()
+    {
+        sprite = GetComponent<SpriteRenderer>();
+        if (isDark)
+        {
+            sprite.flipY = true;
+        }
+        sprite.color = Color.white;
+        sprite.sprite = Player.Instance.sprite.sprite;
+        sprite.flipX = Player.Instance.sprite.flipX;
+        StartCoroutine(DoFade());
     }
 }

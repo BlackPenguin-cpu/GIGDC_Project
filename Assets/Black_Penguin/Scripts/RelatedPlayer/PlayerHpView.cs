@@ -24,4 +24,8 @@ public class PlayerHpView : MonoBehaviour
             textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, value);
         }
     }
+    public void onHit()
+    {
+        textMesh.color = Color.white;
+    }
 }

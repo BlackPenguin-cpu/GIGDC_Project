@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class DamageText : MonoBehaviour
+public class DamageText : MonoBehaviour, IObjectPoolingObj
 {
     [SerializeField] private Rigidbody2D rigid;
     [SerializeField] private TextMesh textMesh;
@@ -12,6 +12,7 @@ public class DamageText : MonoBehaviour
     [SerializeField] private float duration;
 
     public bool isCrit;
+    public DimensionType dimensionType;
     public float damageValue;
     private void Update()
     {
@@ -23,9 +24,9 @@ public class DamageText : MonoBehaviour
     }
     private void Start()
     {
-        OnEnable();
+        OnObjCreate();
     }
-    private void OnEnable()
+    public void OnObjCreate()
     {
         rigid = GetComponent<Rigidbody2D>();
         textMesh = GetComponent<TextMesh>();
@@ -34,8 +35,6 @@ public class DamageText : MonoBehaviour
 
         textMesh.text = textString;
         duration = 0.5f;
-        rigid.AddForce(new Vector3(Random.Range(-30, 30), 100, 0));
-
 
         if (isCrit)
         {
@@ -46,6 +45,14 @@ public class DamageText : MonoBehaviour
         {
             textMesh.color = new Color(1, 1, 1, 0.8f);
         }
-    }
 
+        if (dimensionType == DimensionType.OVER)
+        {
+            rigid.AddForce(new Vector3(Random.Range(-30, 30), 100, 0));
+        }
+        else
+        {
+            rigid.AddForce(new Vector3(Random.Range(-30, 30), -100, 0));
+        }
+    }
 }

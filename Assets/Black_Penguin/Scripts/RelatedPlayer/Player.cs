@@ -362,12 +362,11 @@ public enum PlayerStateOnAir
 }
 [RequireComponent(typeof(Rigidbody2D))]
 
-public class Player : Entity
+public class Player : Entity, ITypePlayer
 {
     public static Player Instance = null;
 
     private Animator animator;
-    private Rigidbody2D rigid;
     private new BoxCollider2D collider;
     private PlayerHpView hpView;
     [SerializeField] private GameObject DashShadow;
@@ -488,6 +487,7 @@ public class Player : Entity
 
     public override void OnHit(Entity entity, float Damage = 0)
     {
+        hpView.onHit();
         OnHitEffect.Instance.OnHitFunc();
         rigid.AddForce(entity.transform.position.x > transform.position.x ? Vector3.left : Vector3.right * 3);
         if (stat.PlayerDATypeList.NeedleArmour && Random.Range(0, 10) == 0) needleArmourAction(entity);
@@ -642,16 +642,27 @@ public class Player : Entity
     }
     public override void Attack(Entity target, float atkDmg)
     {
+        Attack(target.GetComponent<BaseEnemy>(), atkDmg);
+    }
+    public void Attack(BaseEnemy target, float atkDmg)
+    {
         bool isCrit = Random.Range(0, 100) < stat._crit;
         if (isCrit)
         {
             atkDmg *= 1.5f;
         }
 
-        // 매니저에 넣어놔 Load 비용 ㅅㅂ
-        DamageText text = ObjectPool.Instance.CreateObj(Resources.Load<GameObject>("Player/DamageText"), target.transform.position, Quaternion.identity).GetComponent<DamageText>();
+        //TODO: 매니저에 넣어놔 Load 비용 ㅅㅂ
+        DamageText text = ObjectPool.Instance.CreateObj(Resources.Load<GameObject>("Player/DamageText"), target.transform.position
+            , Quaternion.Euler(0, 0, target.dimensionType == DimensionType.OVER ? 0 : 180)).GetComponent<DamageText>();
         text.damageValue = atkDmg;
         text.isCrit = isCrit;
+        text.dimensionType = target.dimensionType;
+
+        if (stat.skillInfo.axeEarthQuake)
+        {
+            target.buffList.stun = 2;
+        }
 
         base.Attack(target, atkDmg);
     }
@@ -659,12 +670,17 @@ public class Player : Entity
     {
         isAttack = true;
     }
+    public void AnimEndJumpAttack()
+    {
+        stateOnAir = PlayerStateOnAir.FALLING;
+    }
     public void AnimNotAttack()
     {
         isAttack = false;
     }
     public void AnimAttackFunc(int index)
     {
+        DarkPlayer.Instance.OnAttack(stat.weaponType, index);
         foreach (AttackCollision attackCollision in attackCollisions)
         {
             if (attackCollision.index == index && attackCollision.weaponType == stat.weaponType)

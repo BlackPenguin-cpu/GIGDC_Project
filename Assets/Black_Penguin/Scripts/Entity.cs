@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+public enum DimensionType
+{
+    OVER,
+    UNDER
+}
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Entity : MonoBehaviour
 {
     public float speed;
+    public DimensionType dimensionType = DimensionType.OVER;
     protected Rigidbody2D rigid;
     [SerializeField] protected float maxHp;
     public virtual float _maxHp

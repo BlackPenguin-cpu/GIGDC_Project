@@ -24,6 +24,18 @@ public class ObjectPool : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    void OnObjCreate(GameObject obj)
+    {
+
+        if (obj.TryGetComponent(out IObjectPoolingObj poolingObj))
+        {
+            poolingObj.OnObjCreate();
+        }
+        else
+        {
+            Debug.Log("오브젝트풀 오류 발생 (오브젝트풀 인터페이스 상속 없음)");
+        }
+    }
     public GameObject CreateObj(GameObject obj)
     {
         if (ParentObj.ContainsKey(obj.name) == false)
@@ -34,19 +46,23 @@ public class ObjectPool : MonoBehaviour
             ParentObj[obj.name] = new ObjectPoolClass() { parentObj = newObj, objQueue = new Queue<GameObject>() };
             ParentObj[obj.name].parentObj = newObj;
 
-            return Instantiate(obj, ParentObj[obj.name].parentObj.transform);
+            return CreateObj(obj);
+            //return Instantiate(obj, ParentObj[obj.name].parentObj.transform);
         }
         else
         {
+
             if (ParentObj[obj.name].objQueue.Count > 0)
             {
                 GameObject returnObj = ParentObj[obj.name].objQueue.Dequeue();
                 returnObj.SetActive(true);
+                OnObjCreate(returnObj);
                 return returnObj;
             }
             else
             {
                 GameObject returnObj = Instantiate(obj, ParentObj[obj.name].parentObj.transform);
+                OnObjCreate(returnObj);
                 return returnObj;
             }
         }
@@ -84,7 +100,7 @@ public class ObjectPool : MonoBehaviour
     {
         foreach (Transform obj in transform.GetComponentInChildren<Transform>())
         {
-            Destroy(obj); 
+            Destroy(obj);
         }
     }
 }
