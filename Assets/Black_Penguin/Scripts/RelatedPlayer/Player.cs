@@ -176,7 +176,14 @@ public class PlayerInfo
         {
             if (value < hp && weaponType == PlayerWeaponType.Sword)
             {
-                value = Mathf.Min(value + 5, hp);
+                if (value <= 0)
+                {
+                    value = 0;
+                }
+                else
+                {
+                    value = Mathf.Min(value + 5, hp);
+                }
             }
             if (value <= 0)
             {
@@ -407,15 +414,15 @@ public class Player : Entity
     }
     protected override void Start()
     {
-        base.Start();
-        stat._hp = stat._maxHp;
         stat._level = stat._level;
+        stat._hp = stat._maxHp;
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         attackCollisions = GetComponentsInChildren<AttackCollision>();
         hpView = GetComponentInChildren<PlayerHpView>();
+        base.Start();
     }
     private void Update()
     {
@@ -550,7 +557,7 @@ public class Player : Entity
     void DashShadowCreate()
     {
         ObjectPool.Instance.CreateObj(DashShadow, transform.position, Quaternion.identity);
-        DashShadow shadow = ObjectPool.Instance.CreateObj(DashShadow, DarkPlayer.instance.transform.position, Quaternion.identity).GetComponent<DashShadow>();
+        DashShadow shadow = ObjectPool.Instance.CreateObj(DashShadow, DarkPlayer.Instance.transform.position, Quaternion.identity).GetComponent<DashShadow>();
 
         shadow.isDark = true;
     }

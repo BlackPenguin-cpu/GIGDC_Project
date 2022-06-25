@@ -29,6 +29,8 @@ public abstract class Entity : MonoBehaviour
             else if (value <= 0)
             {
                 Die();
+                hp = 0;
+                return;
             }
             hp = value;
         }

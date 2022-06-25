@@ -12,6 +12,7 @@ public class PlayerHpView : MonoBehaviour
     {
         textMesh = GetComponent<TextMesh>();
         player = Player.Instance;
+        textMesh.color = new Color(textMesh.color.r, textMesh.color.g, textMesh.color.b, 0);
     }
     private void Update()
     {

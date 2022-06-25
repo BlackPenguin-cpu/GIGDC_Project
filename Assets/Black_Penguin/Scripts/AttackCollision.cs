@@ -7,6 +7,7 @@ public class AttackCollision : MonoBehaviour
 {
     private SpriteRenderer parentSpriteRenderer;
     private new BoxCollider2D collider2D;
+    private Player player;
     [Header("플레이어 공격 관련")]
     public PlayerWeaponType weaponType;
     [Header("콜라이더 넘버")]
@@ -14,6 +15,7 @@ public class AttackCollision : MonoBehaviour
 
     private void Start()
     {
+        player = Player.Instance;
         collider2D = GetComponent<BoxCollider2D>();
         parentSpriteRenderer = transform.parent.GetComponent<SpriteRenderer>();
     }
@@ -35,12 +37,12 @@ public class AttackCollision : MonoBehaviour
             {
                 if (raycast.collider.TryGetComponent(out BaseEnemy enemy))
                 {
-                    entity.Attack(enemy, Player.Instance.stat._attackDamage);
+                    entity.Attack(enemy, player.stat._attackDamage);
                 }
             }
             else if (entity is BaseEnemy)
             {
-                if (raycast.collider.TryGetComponent(out Player player))
+                if (raycast.collider.GetComponent<Player>() || raycast.collider.GetComponent<DarkPlayer>())
                 {
                     entity.Attack(player, entity.GetComponent<BaseEnemy>().attackDamage);
                 }
@@ -55,7 +57,7 @@ public class AttackCollision : MonoBehaviour
     {
         foreach (RaycastHit2D raycast in DetectEntity())
         {
-            if (raycast.collider.TryGetComponent(out Player player))
+            if (raycast.collider.GetComponent<Player>() || raycast.collider.GetComponent<DarkPlayer>())
             {
                 return true;
             }

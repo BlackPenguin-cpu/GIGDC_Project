@@ -55,6 +55,7 @@ public class BaseEnemy : Entity
     public float attackDelay;
     protected float curAttackDelay;
     public float attackDamage;
+    public bool isUnder;
 
     public override float _hp
     {
@@ -77,6 +78,14 @@ public class BaseEnemy : Entity
         collider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         attackCollisions = GetComponentsInChildren<AttackCollision>();
+        if (transform.position.y < 0)
+        {
+            isUnder = true;
+            rigid.gravityScale = -rigid.gravityScale;
+            sprite.flipY = true;
+            //TODO: 나중에 스프라이트나오면 그걸로 바꾸는 작업
+            sprite.color = Color.black;
+        }
 
         HealthBarObj = Instantiate(Resources.Load<GameObject>("HealthBar"), transform);
         HealthBarObj.transform.localScale = new Vector3(collider.size.x, 1, 1);
@@ -148,9 +157,9 @@ public class BaseEnemy : Entity
     {
         onDie += () => MaterialDrop();
         onDie += () => Player.Instance.DaggerSkill2(); // HOLLY SHIT
-        onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
         onDie += () => CameraManager.Instance.CameraShake(0.1f, 0.4f, 0.05f);
         onDie += () => player.BloodGauntletAction(this);
+        onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
 
         state = EnemyState.DIE;
         //임시
