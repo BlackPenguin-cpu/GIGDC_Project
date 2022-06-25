@@ -61,12 +61,16 @@ public class Among_Mouse : SingletonMono<Among_Mouse>, IPointerEnterHandler, IPo
             {
                 for (int i = 0; i < Card_Manager.Inst.DABuffer.Count; i++)
                 {
-                    if (Card_Manager.Inst.DABuffer[i].Itme_Name == Card_Manager.Inst.DA_AmongCheck[0].Itme_Name)
+                    if (Card_Manager.Inst.DABuffer[i].Itme_Name == Card_Manager.Inst.ItemDA_AmongCheck[0].Itme_Name)
                     {
+                        Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.DABuffer[i]);
                         Card_Manager.Inst.DABuffer.RemoveAt(i);
                     }
                 }
             }
+
+            if (Card_Manager.Inst.Item_Among == false)
+                Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.ItemDA_AmongCheck[0]);
 
             Among_Light.DOFade(1f, 0.1f);
             Among_Window.transform.DOLocalMoveY(1150, 0.5f).SetEase(Ease.InQuad);

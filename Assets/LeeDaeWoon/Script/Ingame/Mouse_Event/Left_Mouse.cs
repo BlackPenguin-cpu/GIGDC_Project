@@ -65,12 +65,16 @@ public class Left_Mouse : SingletonMono<Left_Mouse>, IPointerEnterHandler, IPoin
             {
                 for (int i = 0; i < Card_Manager.Inst.DABuffer.Count; i++)
                 {
-                    if (Card_Manager.Inst.DABuffer[i].Itme_Name == Card_Manager.Inst.DA_LeftCheck[0].Itme_Name)
+                    if (Card_Manager.Inst.DABuffer[i].Itme_Name == Card_Manager.Inst.ItemDA_LeftCheck[0].Itme_Name)
                     {
+                        Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.DABuffer[i]);
                         Card_Manager.Inst.DABuffer.RemoveAt(i);
                     }
                 }
             }
+
+            if (Card_Manager.Inst.Item_Left == false)
+                Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.ItemDA_LeftCheck[0]);
 
             Left_Light.DOFade(1f, 0.1f);
             Left_Window.transform.DOLocalMoveY(1100, 0.5f).SetEase(Ease.InQuad);

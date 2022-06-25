@@ -15,14 +15,18 @@ public class Card_Manager : MonoBehaviour
     public List<Item> ItemBuffer = new List<Item>();
     public List<Item> DABuffer = new List<Item>();
 
-    public List<Item> DA_LeftCheck = new List<Item>();
-    public List<Item> DA_AmongCheck = new List<Item>();
-    public List<Item> DA_RightCheck = new List<Item>();
+    public List<Item> ItemDA_LeftCheck = new List<Item>();
+    public List<Item> ItemDA_AmongCheck = new List<Item>();
+    public List<Item> ItemDA_RightCheck = new List<Item>();
 
     public bool DAClick_Check = true;
 
     private int Item_RandomTest;
     private int DA_RandomTest;
+
+    public bool Item_Left = true;
+    public bool Item_Among = true;
+    public bool Item_Right = true;
 
     public bool DA_Left = true;
     public bool DA_Among = true;
@@ -76,13 +80,17 @@ public class Card_Manager : MonoBehaviour
         // 아이템 카드 소환
         var cardObject = Instantiate(CardPrefab, this.transform.position, Quaternion.identity, GameObject.Find("Item_Canvas").transform);
         var card = cardObject.GetComponent<Item_CardList>();
-        DA_LeftCheck.Clear();
-        DA_AmongCheck.Clear();
-        DA_RightCheck.Clear();
+        ItemDA_LeftCheck.Clear();
+        ItemDA_AmongCheck.Clear();
+        ItemDA_RightCheck.Clear();
 
         DA_Left = true;
         DA_Among = true;
         DA_Right = true;
+
+        Item_Left = true;
+        Item_Among = true;
+        Item_Right = true;
 
         for (int i = 0; i < 3; i++)
         {
@@ -101,6 +109,22 @@ public class Card_Manager : MonoBehaviour
                 }
                 item.Add(ItemBuffer[Item_RandomTest]);
                 card.ItemCard(ItemBuffer[Item_RandomTest], itemIndex++);
+
+                if (i == 0)
+                {
+                    Item_Left = false;
+                    ItemDA_LeftCheck.Add(ItemBuffer[Item_RandomTest]);
+                }
+                else if (i == 1)
+                {
+                    Item_Among = false;
+                    ItemDA_AmongCheck.Add(ItemBuffer[Item_RandomTest]);
+                }
+                else if (i == 2)
+                {
+                    Item_Right = false;
+                    ItemDA_RightCheck.Add(ItemBuffer[Item_RandomTest]);
+                }
             }
 
             // 방어구 및 장신구
@@ -120,19 +144,18 @@ public class Card_Manager : MonoBehaviour
                 if (i == 0)
                 {
                     DA_Left = false;
-                    DA_LeftCheck.Add(DABuffer[DA_RandomTest]);
+                    ItemDA_LeftCheck.Add(DABuffer[DA_RandomTest]);
                 }
                 else if (i == 1)
                 {
                     DA_Among = false;
-                    DA_AmongCheck.Add(DABuffer[DA_RandomTest]);
+                    ItemDA_AmongCheck.Add(DABuffer[DA_RandomTest]);
                 }
                 else if (i == 2)
                 {
                     DA_Right = false;
-                    DA_RightCheck.Add(DABuffer[DA_RandomTest]);
+                    ItemDA_RightCheck.Add(DABuffer[DA_RandomTest]);
                 }
-
             }
         }
     }
