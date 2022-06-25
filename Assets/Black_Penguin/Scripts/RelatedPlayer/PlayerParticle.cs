@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class PlayerParticle : MonoBehaviour
 {
-    Player player;
+    private Player player;
+    private DarkPlayer darkPlayer;
 
-    [SerializeField] GameObject bloodGautletParticle;
+    [SerializeField] SpriteRenderer bloodGautletParticle;
+    private float bloodGauntletAlpahValue;
 
     private void Start()
     {
         player = Player.Instance;
+        darkPlayer = DarkPlayer.Instance;
     }
 
     private void Update()
@@ -19,6 +22,15 @@ public class PlayerParticle : MonoBehaviour
     }
     void ParticleCheck()
     {
-        bloodGautletParticle.SetActive(player.stat.bloodGauntletDuration > 0);
+        if (player.stat.bloodGauntletDuration > 0)
+        {
+            bloodGautletParticle.color = Color.white;
+            bloodGauntletAlpahValue = 1;
+        }
+        else
+        {
+            bloodGautletParticle.color = new Color(1, 1, 1, bloodGauntletAlpahValue);
+            bloodGauntletAlpahValue -= Time.deltaTime;
+        }
     }
 }

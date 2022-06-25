@@ -6,11 +6,11 @@ using Random = UnityEngine.Random;
 
 public enum EnemyState
 {
-    MOVE,
     IDLE,
+    ATTACK,
     HIT,
+    MOVE,
     DIE,
-    ATTACK
 }
 
 [System.Serializable]
@@ -40,8 +40,8 @@ public class BaseEnemy : Entity
     private float hpShowDuration;
 
     protected new BoxCollider2D collider;
+    protected AttackCollision[] attackCollisions;
     protected SpriteRenderer sprite;
-    protected Rigidbody2D rigid;
     protected Player player;
     protected Animator animator;
     public System.Action onDie;
@@ -54,6 +54,7 @@ public class BaseEnemy : Entity
     public float attackDelay;
     protected float curAttackDelay;
     public float attackDamage;
+    public bool isUnder;
 
     public override float _hp
     {
@@ -75,6 +76,15 @@ public class BaseEnemy : Entity
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
+        attackCollisions = GetComponentsInChildren<AttackCollision>();
+        if (transform.position.y < 0)
+        {
+            isUnder = true;
+            rigid.gravityScale = -rigid.gravityScale;
+            sprite.flipY = true;
+            //TODO: 나중에 스프라이트나오면 그걸로 바꾸는 작업
+            sprite.color = Color.black;
+        }
 
         HealthBarObj = Instantiate(Resources.Load<GameObject>("HealthBar"), transform);
         HealthBarObj.transform.localScale = new Vector3(collider.size.x, 1, 1);
@@ -100,10 +110,10 @@ public class BaseEnemy : Entity
     /// .
     /// </summary>
     protected virtual void BaseStatSet
-        (float hp, float attackDamage, float attackSpeed, float speed
+        (float maxHp, float attackDamage, float attackSpeed, float speed
         , float minCoin, float maxCoin, float minCrystal, float maxCrystal)
     {
-        this.hp = hp;
+        this.maxHp = maxHp;
         this.attackDamage = attackDamage;
         this.attackSpeed = attackSpeed;
         this.speed = speed;
@@ -115,7 +125,6 @@ public class BaseEnemy : Entity
     }
     protected virtual void AnimController()
     {
-        return;//애니메이션 생긴 추후 수정
         animator.SetInteger("State", (int)state);
         animator.SetFloat("AttackSpeed", attackSpeed);
     }
@@ -147,9 +156,9 @@ public class BaseEnemy : Entity
     {
         onDie += () => MaterialDrop();
         onDie += () => Player.Instance.DaggerSkill2(); // HOLLY SHIT
-        onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
         onDie += () => CameraManager.Instance.CameraShake(0.1f, 0.4f, 0.05f);
         onDie += () => player.BloodGauntletAction(this);
+        onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
 
         state = EnemyState.DIE;
         //임시
@@ -195,5 +204,24 @@ public class BaseEnemy : Entity
         yield return new WaitForSeconds(0.2f);
         state = EnemyState.MOVE;
         sprite.color = Color.white;
+    }
+
+    public bool UseAttackCollision(int index, bool isForCheck = false)
+    {
+        foreach (AttackCollision attackCollision in attackCollisions)
+        {
+            if (attackCollision.index == index)
+            {
+                if (isForCheck)
+                {
+                    return attackCollision.isCanAttack(this);
+                }
+                else
+                {
+                    attackCollision.OnAttack(this);
+                }
+            }
+        }
+        return false;
     }
 }

@@ -25,7 +25,7 @@ public class OnHitEffect : MonoBehaviour
     IEnumerator OnHitCoroutine()
     {
         float value = 1;
-        for (; value <= 0; value -= Time.deltaTime)
+        for (; value > 0; value -= Time.deltaTime)
         {
             hitImage.color = new Color(1, 1, 1, value);
             yield return null;

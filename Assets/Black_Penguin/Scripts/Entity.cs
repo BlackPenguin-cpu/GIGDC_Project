@@ -9,6 +9,7 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
     public float speed;
+    protected Rigidbody2D rigid;
     [SerializeField] protected float maxHp;
     public virtual float _maxHp
     {
@@ -29,6 +30,8 @@ public abstract class Entity : MonoBehaviour
             else if (value <= 0)
             {
                 Die();
+                hp = 0;
+                return;
             }
             hp = value;
         }
@@ -36,9 +39,11 @@ public abstract class Entity : MonoBehaviour
     protected virtual void Start()
     {
         hp = _maxHp;
+        rigid = GetComponent<Rigidbody2D>();
     }
     public virtual void Attack(Entity target, float atkDmg)
     {
+        target.rigid.AddForce(new Vector3(transform.position.x > target.transform.position.x ? -100 : 100, 30, 0));
         target.OnHit(this, atkDmg);
         target._hp -= atkDmg;
     }

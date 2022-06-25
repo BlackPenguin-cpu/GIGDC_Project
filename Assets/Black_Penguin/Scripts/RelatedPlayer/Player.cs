@@ -176,7 +176,14 @@ public class PlayerInfo
         {
             if (value < hp && weaponType == PlayerWeaponType.Sword)
             {
-                value = Mathf.Min(value + 5, hp);
+                if (value <= 0)
+                {
+                    value = 0;
+                }
+                else
+                {
+                    value = Mathf.Min(value + 5, hp);
+                }
             }
             if (value <= 0)
             {
@@ -362,6 +369,7 @@ public class Player : Entity
     private Animator animator;
     private Rigidbody2D rigid;
     private new BoxCollider2D collider;
+    private PlayerHpView hpView;
     [SerializeField] private GameObject DashShadow;
     [HideInInspector] public SpriteRenderer sprite;
     [HideInInspector] public AttackCollision[] attackCollisions;
@@ -406,14 +414,15 @@ public class Player : Entity
     }
     protected override void Start()
     {
-        base.Start();
-        stat._hp = stat._maxHp;
         stat._level = stat._level;
+        stat._hp = stat._maxHp;
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         attackCollisions = GetComponentsInChildren<AttackCollision>();
+        hpView = GetComponentInChildren<PlayerHpView>();
+        base.Start();
     }
     private void Update()
     {
@@ -474,18 +483,20 @@ public class Player : Entity
                     break;
             }
         }
-        Debug.Log("죽었어 ㅠㅠ");
+        state = PlayerState.Die;
     }
 
     public override void OnHit(Entity entity, float Damage = 0)
     {
         OnHitEffect.Instance.OnHitFunc();
+        rigid.AddForce(entity.transform.position.x > transform.position.x ? Vector3.left : Vector3.right * 3);
         if (stat.PlayerDATypeList.NeedleArmour && Random.Range(0, 10) == 0) needleArmourAction(entity);
     }
     #region 플레이어 인풋
     //플레이어 인풋
     void InputManager()
     {
+        if (state == PlayerState.Die) return;
         Move();
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -546,7 +557,7 @@ public class Player : Entity
     void DashShadowCreate()
     {
         ObjectPool.Instance.CreateObj(DashShadow, transform.position, Quaternion.identity);
-        DashShadow shadow = ObjectPool.Instance.CreateObj(DashShadow, DarkPlayer.instance.transform.position, Quaternion.identity).GetComponent<DashShadow>();
+        DashShadow shadow = ObjectPool.Instance.CreateObj(DashShadow, DarkPlayer.Instance.transform.position, Quaternion.identity).GetComponent<DashShadow>();
 
         shadow.isDark = true;
     }
@@ -687,7 +698,7 @@ public class Player : Entity
     }
     public void onAttackHit(Entity entity)
     {
-        entity.GetComponent<Rigidbody2D>().AddForce(new Vector3(sprite.flipX ? -50 : 50, 30, 0));
+        //entity.GetComponent<Rigidbody2D>().AddForce(new Vector3(sprite.flipX ? -50 : 50, 30, 0));
     }
     #endregion
 

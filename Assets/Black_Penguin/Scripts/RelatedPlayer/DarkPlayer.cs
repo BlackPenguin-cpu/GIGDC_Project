@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class DarkPlayer : MonoBehaviour
 {
-    public static DarkPlayer instance;
+    public static DarkPlayer Instance;
     SpriteRenderer sprite;
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
