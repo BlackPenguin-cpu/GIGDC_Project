@@ -126,8 +126,11 @@ public class Skill_Window : MonoBehaviour
 
                 Purchase = false; // 이것을 통하여 스킬구매 -> 스킬적용으로 넘겨준다.
 
-                this.gameObject.transform.GetChild(SkillNum).GetChild(3).gameObject.SetActive(false);
-                this.gameObject.transform.GetChild(SkillNum).GetChild(2).gameObject.SetActive(true);
+
+                this.gameObject.transform.GetChild(SkillNum).GetChild(0).gameObject.SetActive(false);
+                this.gameObject.transform.GetChild(SkillNum).GetChild(1).gameObject.SetActive(true);
+                this.gameObject.transform.GetChild(SkillNum).GetChild(3).gameObject.SetActive(true);
+                this.gameObject.transform.GetChild(SkillNum).GetChild(4).gameObject.SetActive(false);
 
                 // 스킬창을 닫아준다.
                 StartCoroutine(SkillWindowClose_Coroutine()); 

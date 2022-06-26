@@ -5,9 +5,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class Among_Mouse : SingletonMono<Among_Mouse>, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class Among_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    public static Among_Mouse Inst { get; private set; }
+    void Awake() => Inst = this;
+
     private float timer = 0f;
+    public int AmongClick_Check = 1;
 
     [Header("°¡¿îµ¥ ºû")]
     public bool Among_Pick = true;
@@ -37,7 +41,7 @@ public class Among_Mouse : SingletonMono<Among_Mouse>, IPointerEnterHandler, IPo
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (Left_Mouse.In.Left_Pick == true && Right_Mouse.In.Right_Pick == true)
+        if (Left_Mouse.Inst.Left_Pick == true && Right_Mouse.Inst.Right_Pick == true)
         {
             Among_Light.DOFade(1f, 0.5f);
         }
@@ -51,11 +55,11 @@ public class Among_Mouse : SingletonMono<Among_Mouse>, IPointerEnterHandler, IPo
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (Among_Pick == true)
+        if (Among_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
         {
             Among_Pick = false;
-            Left_Mouse.In.Left_Pick = false;
-            Right_Mouse.In.Right_Pick = false;
+            Left_Mouse.Inst.Left_Pick = false;
+            Right_Mouse.Inst.Right_Pick = false;
 
             if (Card_Manager.Inst.DA_Among == false)
             {
@@ -71,6 +75,13 @@ public class Among_Mouse : SingletonMono<Among_Mouse>, IPointerEnterHandler, IPo
 
             if (Card_Manager.Inst.Item_Among == false)
                 Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.ItemDA_AmongCheck[0]);
+
+            if (Card_Manager.Inst.Item_bool == true)
+                Card_Manager.Inst.Item_bool = false;
+
+            else if (Card_Manager.Inst.Item_bool == false)
+                Card_Manager.Inst.Item_Check += AmongClick_Check;
+
 
             Among_Light.DOFade(1f, 0.1f);
             Among_Window.transform.DOLocalMoveY(1150, 0.5f).SetEase(Ease.InQuad);

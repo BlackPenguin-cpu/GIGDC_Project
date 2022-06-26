@@ -7,9 +7,9 @@ using UnityEngine.EventSystems;
 
 public class Item_Window : MonoBehaviour
 {
+
     [Header("속도")]
     public float Window_timer = 0f;
-    //public float RectMast_timer = 0f;
 
     [Header("왼쪽 창")]
     public GameObject Left_Pole_01;
@@ -35,6 +35,7 @@ public class Item_Window : MonoBehaviour
 
     public int Light_num;
 
+
     void Start()
     {
         StartCoroutine(itemWindow());
@@ -47,6 +48,7 @@ public class Item_Window : MonoBehaviour
 
     private IEnumerator itemWindow()
     {
+        Card_Manager.Inst.ItemCard_OpenCheck = true;
         Window_timer = 0;
 
         #region 창 연출(위, 아래 봉)
@@ -71,5 +73,6 @@ public class Item_Window : MonoBehaviour
             Window_timer += Time.deltaTime * 3f;
             yield return null;
         }
+        Card_Manager.Inst.ItemCard_OpenCheck = false;
     }
 }
