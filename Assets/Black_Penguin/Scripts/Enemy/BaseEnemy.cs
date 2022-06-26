@@ -49,8 +49,8 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     public Range coinDropValueRange;
     public Range crystalDropValueRange;
     public EnemyBuffList buffList = new EnemyBuffList();
-    private EnemyState state;
-    public EnemyState _state
+    protected EnemyState state;
+    public virtual EnemyState _state
     {
         get
         {
@@ -91,11 +91,12 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     {
         player = Player.Instance;
         animator = GetComponent<Animator>();
-        rigid = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         attackCollisions = GetComponentsInChildren<AttackCollision>();
 
+        hp = _maxHp;
+        sprite.color = Color.white;
         if (transform.position.y < 0)
         {
             rigid.gravityScale = -rigid.gravityScale;
@@ -105,9 +106,13 @@ public class BaseEnemy : Entity, IObjectPoolingObj
             //TODO: 나중에 스프라이트나오면 그걸로 바꾸는 작업
             sprite.color = Color.black;
         }
-        HealthBarObj = Instantiate(Resources.Load<GameObject>("HealthBar"), transform);
-        HealthBarObj.transform.localScale = new Vector3(collider.size.x, 1, 1);
-        HealthBarObj.transform.localPosition = new Vector3(0, dimensionType == DimensionType.OVER ? collider.size.y : -collider.size.y, 0);
+        if (HealthBarObj == null)
+        {
+            HealthBarObj = Instantiate(Resources.Load<GameObject>("HealthBar"), transform);
+            HealthBarObj.transform.localScale = new Vector3(collider.size.x, 1, 1);
+            HealthBarObj.transform.localPosition = new Vector3(0, dimensionType == DimensionType.OVER ? collider.size.y : -collider.size.y, 0);
+        }
+
     }
     protected virtual void Update()
     {
