@@ -20,25 +20,25 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 6388924728882233969, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
+      value: {fileID: 3111217882083656645, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
     - time: 0.083333336
-      value: {fileID: -3190534159761003943, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
+      value: {fileID: 3229398429366896906, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
     - time: 0.16666667
-      value: {fileID: 1137858563107952469, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
+      value: {fileID: -5585112014663234319, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
     - time: 0.25
-      value: {fileID: 1715210269369880893, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
+      value: {fileID: 6389453499066680759, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
     - time: 0.33333334
-      value: {fileID: 8822212700402661986, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
+      value: {fileID: -5381337999449847459, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
     - time: 0.41666666
-      value: {fileID: 301760505014559919, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
+      value: {fileID: 2384819739732570889, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
     - time: 0.5
-      value: {fileID: -2962991110260070327, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
+      value: {fileID: 4980245082951981588, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
     - time: 0.5833333
-      value: {fileID: 7643635009098362854, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
+      value: {fileID: 1962697998898553155, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
     - time: 0.6666667
-      value: {fileID: 854923724559476417, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
+      value: {fileID: -8561629999709419641, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
     - time: 0.75
-      value: {fileID: 7026578369201232789, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
+      value: {fileID: 5369235782824506048, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -58,16 +58,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 6388924728882233969, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
-    - {fileID: -3190534159761003943, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
-    - {fileID: 1137858563107952469, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
-    - {fileID: 1715210269369880893, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
-    - {fileID: 8822212700402661986, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
-    - {fileID: 301760505014559919, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
-    - {fileID: -2962991110260070327, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
-    - {fileID: 7643635009098362854, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
-    - {fileID: 854923724559476417, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
-    - {fileID: 7026578369201232789, guid: 47b53d580db9dd8468d33b2dc576081c, type: 3}
+    - {fileID: 3111217882083656645, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
+    - {fileID: 3229398429366896906, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
+    - {fileID: -5585112014663234319, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
+    - {fileID: 6389453499066680759, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
+    - {fileID: -5381337999449847459, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
+    - {fileID: 2384819739732570889, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
+    - {fileID: 4980245082951981588, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
+    - {fileID: 1962697998898553155, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
+    - {fileID: -8561629999709419641, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
+    - {fileID: 5369235782824506048, guid: 4fa86469b290cac4b83c612fd0d7d0dd, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
