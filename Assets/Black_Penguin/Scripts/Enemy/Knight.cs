@@ -7,7 +7,7 @@ public class Knight : BaseEnemy
     protected override void Start()
     {
         //±âº» ½ºÅÝ
-        BaseStatSet(180,20,2,10,10,20,10,15);
+        BaseStatSet(180,20,0,10,10,20,10,15);
         base.Start();
     }
     protected override void Update()

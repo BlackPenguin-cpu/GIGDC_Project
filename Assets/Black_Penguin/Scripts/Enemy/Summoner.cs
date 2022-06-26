@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Summoner : BaseEnemy
 {
-    private AttackCollision AttackDetectArea;
-    AttackCondition attackCondition;
     protected override void Start()
     {
-        AttackDetectArea = transform.GetComponentInChildren<AttackCollision>();
 
         //±âº» ½ºÅÝ
         BaseStatSet(600, 0, 3, 11, 60, 65, 60, 65);
@@ -26,7 +23,7 @@ public class Summoner : BaseEnemy
     {
         if (_state != EnemyState.ATTACK)
         {
-            _state = AttackDetectArea.isCanAttack(this) ? EnemyState.ATTACK : EnemyState.MOVE;
+            _state = attackCollisions[0].isCanAttack(this) ? EnemyState.ATTACK : EnemyState.MOVE;
             curAttackDelay = 0;
         }
     }

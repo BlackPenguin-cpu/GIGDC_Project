@@ -128,18 +128,18 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     /// 반드시 start문에서 발동해야하는 함수 
     /// </summary>
     protected virtual void BaseStatSet
-        (float maxHp, float attackDamage, float attackSpeed, float speed
-        , float minCoin, float maxCoin, float minCrystal, float maxCrystal)
+        (float maxHp, float attackDamage, float attackDelay, float speed
+        , float minCoin, float maxCoin, float minCrystal, float maxCrystal, float attackSpeed = 1)
     {
         this.maxHp = maxHp;
         this.attackDamage = attackDamage;
-        this.attackSpeed = attackSpeed;
+        this.attackDelay = attackDelay;
         this.speed = speed;
         coinDropValueRange.Min = minCoin;
         coinDropValueRange.Max = maxCoin;
         crystalDropValueRange.Min = minCrystal;
         crystalDropValueRange.Max = maxCrystal;
-
+        this.attackSpeed = attackSpeed;
     }
     protected virtual void AnimController()
     {
@@ -152,6 +152,7 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     public virtual void Move()
     {
         if (_state != EnemyState.MOVE) return;
+        if (attackCollisions[0].isCanAttack(this) && curAttackDelay < attackDelay) return;
         float dir;
 
         if (player.transform.position.x > transform.position.x)
@@ -207,7 +208,7 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     public override void OnHit(Entity atkEntity, float Damage)
     {
         hpShowDuration = 3;
-        player.onAttackHit(this);
+        rigid.AddForce(new Vector3(transform.position.x > atkEntity.transform.position.x ? 40 : -40, 0, 0));
         StartCoroutine(HitEffectCoroutine());
         HealthBarObj.transform.GetChild(0).GetComponent<SpriteRenderer>().size = new Vector2(hp / _maxHp, 1);
     }

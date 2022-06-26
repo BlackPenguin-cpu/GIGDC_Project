@@ -7,7 +7,7 @@ public class Skeleton : BaseEnemy
     protected override void Start()
     {
         //±âº» ½ºÅÝ
-        BaseStatSet(180, 11, 2, 4, 5, 10, 5, 10);
+        BaseStatSet(180, 11, 0, 4, 5, 10, 5, 10);
         base.Start();
     }
     protected override void Update()

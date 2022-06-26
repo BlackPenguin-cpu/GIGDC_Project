@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class Hunter : BaseEnemy
 {
-    private AttackCollision AttackDetectArea;
-    AttackCondition attackCondition;
     protected override void Start()
     {
-        AttackDetectArea = transform.GetComponentInChildren<AttackCollision>();
-
         //±âº» ½ºÅÝ
         BaseStatSet(360,38,2,13,45,50,30,50);
         base.Start();
@@ -26,7 +22,7 @@ public class Hunter : BaseEnemy
     {
         if (_state != EnemyState.ATTACK)
         {
-            _state = AttackDetectArea.isCanAttack(this) ? EnemyState.ATTACK : EnemyState.MOVE;
+            _state = attackCollisions[0].isCanAttack(this) ? EnemyState.ATTACK : EnemyState.MOVE;
             curAttackDelay = 0;
         }
     }

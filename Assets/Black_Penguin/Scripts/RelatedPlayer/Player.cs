@@ -182,7 +182,7 @@ public class PlayerInfo
                 }
                 else
                 {
-                    value = Mathf.Min(value + 5, hp);
+                    value = Mathf.Min(value + 2, hp);
                 }
             }
             if (value <= 0)
@@ -309,10 +309,10 @@ public class PlayerInfo
         set { attackSpeed = value; }
     }
 
-    readonly float ConDefValue = 40;
+    readonly float ConDefValue = 50;
     public float ReturnDefValue()
     {
-        return def - (def / ConDefValue);
+        return 1 - (_def / (_def + ConDefValue));
     }
     public float bloodGauntletDuration;
     public PlayerDAType PlayerDATypeList;
@@ -401,10 +401,10 @@ public class Player : Entity, ITypePlayer
             if (value < hp)
             {
                 if (_state == PlayerState.Dash) return;
-                value -= stat._def;
+                value = (int)(hp - ((hp - value) * stat.ReturnDefValue()));
                 value = Mathf.Clamp(value, 0, hp);
             }
-            stat._hp = base._hp = value;
+            base._hp = stat._hp = value;
         }
     }
     private void Awake()
@@ -487,9 +487,10 @@ public class Player : Entity, ITypePlayer
 
     public override void OnHit(Entity entity, float Damage = 0)
     {
+        if (_state == PlayerState.Dash) return;
         hpView.onHit();
         OnHitEffect.Instance.OnHitFunc();
-        rigid.AddForce(entity.transform.position.x > transform.position.x ? Vector3.left : Vector3.right * 3);
+        rigid.AddForce(new Vector3(entity.transform.position.x > transform.position.x ? -100 : 100, 0));
         if (stat.PlayerDATypeList.NeedleArmour && Random.Range(0, 10) == 0) needleArmourAction(entity);
     }
     #region 플레이어 인풋
@@ -712,10 +713,7 @@ public class Player : Entity, ITypePlayer
         }
         isAttack = false;
     }
-    public void onAttackHit(Entity entity)
-    {
-        //entity.GetComponent<Rigidbody2D>().AddForce(new Vector3(sprite.flipX ? -50 : 50, 30, 0));
-    }
+
     #endregion
 
     #endregion
@@ -781,7 +779,7 @@ public class Player : Entity, ITypePlayer
             stat.bloodGauntletDuration = 1.5f;
     }
     public float crystalOrbCoolodwn = 40;
-    float curCrystalOrbCoolodwn = 0;
+    //private float curCrystalOrbCoolodwn = 0;
     void CrystalOrbAction()
     {
         //겁나 큰 폭*발 (리소스 주면 함 ㄹㅇㅋㅋ)

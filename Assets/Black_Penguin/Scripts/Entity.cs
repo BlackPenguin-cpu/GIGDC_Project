@@ -48,7 +48,6 @@ public abstract class Entity : MonoBehaviour
     }
     public virtual void Attack(Entity target, float atkDmg)
     {
-        target.rigid.AddForce(new Vector3(transform.position.x > target.transform.position.x ? -100 : 100, 30, 0));
         target.OnHit(this, atkDmg);
         target._hp -= atkDmg;
     }

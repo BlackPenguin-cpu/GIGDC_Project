@@ -36,7 +36,7 @@ public class ObjectPool : MonoBehaviour
             Debug.Log("오브젝트풀 오류 발생 (오브젝트풀 인터페이스 상속 없음)");
         }
     }
-    public GameObject CreateObj(GameObject obj)
+    public GameObject CreateObj(GameObject obj, bool isNotStartFunc = false)
     {
         if (ParentObj.ContainsKey(obj.name) == false)
         {
@@ -51,27 +51,27 @@ public class ObjectPool : MonoBehaviour
         }
         else
         {
-
+            GameObject returnObj;
             if (ParentObj[obj.name].objQueue.Count > 0)
             {
-                GameObject returnObj = ParentObj[obj.name].objQueue.Dequeue();
+                returnObj = ParentObj[obj.name].objQueue.Dequeue();
                 returnObj.SetActive(true);
-                OnObjCreate(returnObj);
-                return returnObj;
             }
             else
             {
-                GameObject returnObj = Instantiate(obj, ParentObj[obj.name].parentObj.transform);
-                OnObjCreate(returnObj);
-                return returnObj;
+                returnObj = Instantiate(obj, ParentObj[obj.name].parentObj.transform);
             }
+            if (!isNotStartFunc)
+                OnObjCreate(returnObj);
+            return returnObj;
         }
     }
     public GameObject CreateObj(GameObject obj, Vector3 pos, Quaternion quaternion)
     {
-        GameObject returnObj = CreateObj(obj);
+        GameObject returnObj = CreateObj(obj, true);
         returnObj.transform.position = pos;
         returnObj.transform.rotation = quaternion;
+        OnObjCreate(returnObj);
 
         return returnObj;
     }

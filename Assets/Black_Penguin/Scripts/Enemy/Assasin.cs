@@ -8,7 +8,7 @@ public class Assasin : BaseEnemy
     protected override void Start()
     {
         collision = transform.GetComponentInChildren<AttackCollision>();
-        BaseStatSet(300, 50, 3, 15, 40, 45, 35, 45);
+        BaseStatSet(300, 40, 3, 15, 40, 45, 35, 45);
         base.Start();
     }
     protected override void Update()
