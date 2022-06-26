@@ -5,9 +5,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class Right_Mouse : SingletonMono<Right_Mouse>, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class Right_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    public static Right_Mouse Inst { get; private set; }
+    void Awake() => Inst = this;
+
     private float timer = 0f;
+    public int RightClick_Check = 1;
 
     [Header("¿À¸¥ÂÊ ºû")]
     public bool Right_Pick = true;
@@ -37,7 +41,7 @@ public class Right_Mouse : SingletonMono<Right_Mouse>, IPointerEnterHandler, IPo
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (Left_Mouse.In.Left_Pick == true && Among_Mouse.In.Among_Pick == true)
+        if (Left_Mouse.Inst.Left_Pick == true && Among_Mouse.Inst.Among_Pick == true)
         {
             Right_Light.DOFade(1f, 0.5f);
         }
@@ -51,11 +55,11 @@ public class Right_Mouse : SingletonMono<Right_Mouse>, IPointerEnterHandler, IPo
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (Right_Pick == true)
+        if (Right_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
         {
             Right_Pick = false;
-            Left_Mouse.In.Left_Pick = false;
-            Among_Mouse.In.Among_Pick = false;
+            Left_Mouse.Inst.Left_Pick = false;
+            Among_Mouse.Inst.Among_Pick = false;
 
             if (Card_Manager.Inst.DA_Right == false)
             {
@@ -71,6 +75,13 @@ public class Right_Mouse : SingletonMono<Right_Mouse>, IPointerEnterHandler, IPo
 
             if (Card_Manager.Inst.Item_Right == false)
                 Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.ItemDA_RightCheck[0]);
+
+            if (Card_Manager.Inst.Item_bool == true)
+                Card_Manager.Inst.Item_bool = false;
+
+            else if (Card_Manager.Inst.Item_bool == false)
+                Card_Manager.Inst.Item_Check += RightClick_Check;
+
 
             Right_Light.DOFade(1f, 0.1f);
             Right_Window.transform.DOLocalMoveY(1150, 0.5f).SetEase(Ease.InQuad);

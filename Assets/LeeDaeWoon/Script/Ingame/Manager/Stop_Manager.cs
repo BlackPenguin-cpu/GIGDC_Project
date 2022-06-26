@@ -37,6 +37,14 @@ public class Stop_Manager : MonoBehaviour
     public GameObject Player_Weapon_Window; // 무기 창
     public GameObject Player_Item_Window; // 아이템 창
 
+    private bool Icon_Check = true;
+    public Image Player_Item_Icon; // 아이템 아이콘
+    public Text Player_Item_Name; // 아이템 이름
+    public Text Player_Item_Explanation; // 아이템 설명
+
+    public Image Player_Item_Log; // 아이템 로그
+    public float ItemClick_Check; // 아이템 클릭 체크
+
     public bool WI_Check = true; // 현재 무기창이 열려져 있는지 아이템 창이 열려져 있는지 확인한다.
 
     [Header("메인화면 창")]
@@ -60,13 +68,23 @@ public class Stop_Manager : MonoBehaviour
 
     void Update()
     {
+        Item_Log();
+
         // ESC 키를 누르면 일시정지 창이 열린다.
-        if (Input.GetKeyDown(KeyCode.Escape) && Pause_Check == true)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause_Check = false;
-            Pause_Window_Canvas.SetActive(true);
-            Fade_Background.DOFade(0.5f, 0.5f);
-            StartCoroutine(Pause_Window_Open());
+            if (Pause_Check == true)
+            {
+                Pause_Check = false;
+                Pause_Window_Canvas.SetActive(true);
+                Fade_Background.DOFade(0.5f, 0.5f);
+                StartCoroutine(Pause_Window_Open());
+            }
+            else if (Pause_Check == false)
+            {
+                Pause_Check = true;
+                Back_Btn();
+            }
         }
     }
 
@@ -179,6 +197,22 @@ public class Stop_Manager : MonoBehaviour
     public void Player_Btn() => StartCoroutine(Player_Window_Coroutine01());
     public void Player_Close_Btn() => StartCoroutine(Player_Window_Close());
 
+    public void Item_Log()
+    {
+        if (Card_Manager.Inst.Item_bool == false)
+        {
+            Player_Item_Log.transform.GetChild(Card_Manager.Inst.Item_Check).GetComponent<Image>().sprite = ItemDA_Have[Card_Manager.Inst.Item_Check].Item_Icon;
+            Player_Item_Log.transform.GetChild(Card_Manager.Inst.Item_Check).gameObject.SetActive(true);
+
+            if (Icon_Check == true)
+            {
+                Icon_Check = false;
+                Player_Item_Icon.sprite = ItemDA_Have[0].Item_Icon;
+                Player_Item_Name.text = ItemDA_Have[0].Itme_Name;
+                Player_Item_Explanation.text = ItemDA_Have[0].Item_Explanation;
+            }
+        }
+    }
 
     public IEnumerator Player_Window_Coroutine01() // 플레이어버튼을 클릭했을 떄
     {
@@ -212,6 +246,27 @@ public class Stop_Manager : MonoBehaviour
             timer += Time.unscaledDeltaTime * 3f;
             yield return null;
         }
+    }
+
+
+    public IEnumerator Player_Window_Close() // 플레이어 창 닫힘
+    {
+        timer = 0;
+        Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
+        Player_Pole01.transform.DOLocalMoveY(30, 0.48f).SetUpdate(true);
+        Player_Pole02.transform.DOLocalMoveY(-30, 0.48f).SetUpdate(true);
+
+        while (timer < 1)
+        {
+            Player_Window.sizeDelta = new Vector2(1732.5f, Mathf.Lerp(916.9f, 0f, timer));
+
+            timer += Time.unscaledDeltaTime * 3f;
+            yield return null;
+        }
+        yield return new WaitForSecondsRealtime(0.1f);
+        Player_Window_Canvas.SetActive(false);
+        Pause_Check = true;
+        Time.timeScale = 1f;
     }
 
     #region 플레이어 -> 무기 창 & 아이템 창
@@ -300,26 +355,6 @@ public class Stop_Manager : MonoBehaviour
         }
     }
     #endregion
-
-    public IEnumerator Player_Window_Close() // 플레이어 창 닫힘
-    {
-        timer = 0;
-        Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
-        Player_Pole01.transform.DOLocalMoveY(30, 0.48f).SetUpdate(true);
-        Player_Pole02.transform.DOLocalMoveY(-30, 0.48f).SetUpdate(true);
-
-        while (timer < 1)
-        {
-            Player_Window.sizeDelta = new Vector2(1732.5f, Mathf.Lerp(916.9f, 0f, timer));
-
-            timer += Time.unscaledDeltaTime * 3f;
-            yield return null;
-        }
-        yield return new WaitForSecondsRealtime(0.1f);
-        Player_Window_Canvas.SetActive(false);
-        Pause_Check = true;
-        Time.timeScale = 1f;
-    }
 
     #endregion
 

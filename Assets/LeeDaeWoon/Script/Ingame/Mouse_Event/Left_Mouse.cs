@@ -5,9 +5,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class Left_Mouse : SingletonMono<Left_Mouse>, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class Left_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    public static Left_Mouse Inst { get; private set; }
+    void Awake() => Inst = this;
+
     private float timer = 0f;
+    public int LeftClick_Check = 1;
 
     [Header("¿ÞÂÊ ºû")]
     public bool Left_Pick = true;
@@ -41,11 +45,10 @@ public class Left_Mouse : SingletonMono<Left_Mouse>, IPointerEnterHandler, IPoin
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (Among_Mouse.In.Among_Pick == true && Right_Mouse.In.Right_Pick == true)
+        if (Among_Mouse.Inst.Among_Pick == true && Right_Mouse.Inst.Right_Pick == true)
         {
             Left_Light.DOFade(1f, 0.5f);
         }
-
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -55,11 +58,11 @@ public class Left_Mouse : SingletonMono<Left_Mouse>, IPointerEnterHandler, IPoin
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (Left_Pick == true)
+        if (Left_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
         {
             Left_Pick = false;
-            Among_Mouse.In.Among_Pick = false;
-            Right_Mouse.In.Right_Pick = false;
+            Among_Mouse.Inst.Among_Pick = false;
+            Right_Mouse.Inst.Right_Pick = false;
 
             if (Card_Manager.Inst.DA_Left == false)
             {
@@ -76,11 +79,16 @@ public class Left_Mouse : SingletonMono<Left_Mouse>, IPointerEnterHandler, IPoin
             if (Card_Manager.Inst.Item_Left == false)
                 Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.ItemDA_LeftCheck[0]);
 
+            if (Card_Manager.Inst.Item_bool == true)
+                Card_Manager.Inst.Item_bool = false;
+
+            else if (Card_Manager.Inst.Item_bool == false)
+                Card_Manager.Inst.Item_Check += LeftClick_Check;
+
             Left_Light.DOFade(1f, 0.1f);
             Left_Window.transform.DOLocalMoveY(1100, 0.5f).SetEase(Ease.InQuad);
             StartCoroutine(Close_Dot());
         }
-
     }
 
     public IEnumerator Close_Dot()

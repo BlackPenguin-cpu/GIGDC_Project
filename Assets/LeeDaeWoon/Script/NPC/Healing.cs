@@ -65,7 +65,10 @@ public class Healing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && Healing_Colider_Check == false && UI_Manager.Inst.Gold >= Healing_Gold && Healing_Purchase_Check == true)
         {
             UI_Manager.Inst.Gold -= Healing_Gold;
-            Player.Instance.stat._hp += Heal;
+            if (100 >= Player.Instance.stat._hp + Heal)
+                Player.Instance.stat._hp += Heal;
+            else
+                Player.Instance.stat._hp = 100;
 
             StartCoroutine(HealingWindow_Close_Coroutine());
             Healing_Purchase_Check = false;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Dimension : MonoBehaviour
+public class Foundation : MonoBehaviour
 {
     [Header("제단")]
     public GameObject Magic_Circle; // 마법진

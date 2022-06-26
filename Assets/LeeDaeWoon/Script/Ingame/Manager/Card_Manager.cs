@@ -32,17 +32,29 @@ public class Card_Manager : MonoBehaviour
     public bool DA_Among = true;
     public bool DA_Right = true;
 
+    public int Item_Check;
+    public bool Item_bool = true;
+
+    public bool ItemCard_OpenCheck = true;
+
+    public int Count;
+
+
     void Start()
     {
         AddList();
+        Item_bool = true;
     }
 
     private void Update()
     {
+        //TimeItem_Limit();
+
         if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.O))
         {
             AddCard();
         }
+
     }
 
     public void AddList()
@@ -91,6 +103,7 @@ public class Card_Manager : MonoBehaviour
         Item_Left = true;
         Item_Among = true;
         Item_Right = true;
+
 
         for (int i = 0; i < 3; i++)
         {
@@ -159,4 +172,19 @@ public class Card_Manager : MonoBehaviour
             }
         }
     }
+
+    //public void TimeItem_Limit()
+    //{
+    //    Debug.Log("1");
+    //    for (int i = 0; i < Stop_Manager.Inst.ItemDA_Have.Count; i++)
+    //    {
+    //        Debug.Log("2");
+    //        if (Stop_Manager.Inst.ItemDA_Have[i].Itme_Name == ItemBuffer[2].Itme_Name)
+    //        {
+    //            Debug.Log("3");
+    //            Count++;
+    //            return;
+    //        }
+    //    }
+    //}
 }
