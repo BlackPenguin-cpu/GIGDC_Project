@@ -15,6 +15,8 @@ public class AttackProjectile : MonoBehaviour
     public float damage;
     public float speed;
     public ProjectileType projectileType;
+
+    Player player;
     public AttackProjectile(Entity shootSelf, float damage, float speed, ProjectileType projectileType, GameObject target = null)
     {
         this.shootSelf = shootSelf;
@@ -25,6 +27,7 @@ public class AttackProjectile : MonoBehaviour
     }
     private void Start()
     {
+        player = Player.Instance;
         if (projectileType == ProjectileType.Target)
             transform.LookAt(target.transform);
     }
@@ -38,7 +41,7 @@ public class AttackProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (shootSelf.TryGetComponent(out BaseEnemy enemy) && collision.TryGetComponent(out Player player))
+        if (shootSelf.TryGetComponent(out BaseEnemy enemy) && collision.GetComponent<ITypePlayer>() != null)
         {
             shootSelf.Attack(player, damage);
         }
