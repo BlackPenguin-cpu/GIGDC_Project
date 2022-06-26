@@ -180,6 +180,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackDelay: 0
   attackDamage: 0
+  boomEffect: {fileID: 7777144639048550139, guid: 0563abaadf33cd54c8913f50d50850a3, type: 3}
 --- !u!1 &6579659989207037488
 GameObject:
   m_ObjectHideFlags: 0

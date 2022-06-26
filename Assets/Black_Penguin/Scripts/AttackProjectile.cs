@@ -71,7 +71,6 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
         this.startWaitTime = startWaitTime;
         this.target = target;
         this.projectileType = projectileType;
-
     }
 
     public void OnObjCreate()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5752165092604690378}
   - component: {fileID: 3875178372733692994}
   - component: {fileID: 285336594501497359}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039130448598325260}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 7154892826932934023}
   - component: {fileID: 1222738869539031338}
   - component: {fileID: 4203393302086440688}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: E_Assassin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.08920804}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -203,7 +203,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.85714287, y: 1.7714286}
+  m_Size: {x: 0.85714287, y: 1.5930126}
   m_EdgeRadius: 0
 --- !u!50 &1222738869539031338
 Rigidbody2D:
@@ -225,7 +225,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4203393302086440688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 7563150148569979903}
   - component: {fileID: 3056817258056912997}
   - component: {fileID: 8994543860855774906}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DetectCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8457612599957126775}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -309,7 +309,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 2.0131824}
+  m_Size: {x: 8, y: 4}
   m_EdgeRadius: 0
 --- !u!114 &8994543860855774906
 MonoBehaviour:

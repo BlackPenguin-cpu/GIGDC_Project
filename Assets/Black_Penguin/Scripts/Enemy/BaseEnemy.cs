@@ -179,7 +179,7 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     public override void Die()
     {
         onDie += () => MaterialDrop();
-        onDie += () => Player.Instance.DaggerSkill2(); // HOLLY SHIT
+        onDie += () => Player.Instance.DaggerSkill2(); // HOLY SHIT
         onDie += () => CameraManager.Instance.CameraShake(0.1f, 0.4f, 0.05f);
         onDie += () => player.BloodGauntletAction(this);
         onDie += () => ObjectPool.Instance.DeleteObj(gameObject);

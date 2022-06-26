@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Soul : BaseEnemy
 {
+    [SerializeField] GameObject boomEffect;
     protected override void Start()
     {
         BaseStatSet(80, 30, 0, 15, 0, 0, 0, 0);
@@ -52,6 +53,7 @@ public class Soul : BaseEnemy
     }
     public override void Die()
     {
+        ObjectPool.Instance.CreateObj(boomEffect, transform.position, Quaternion.identity);
         base.Die();
     }
 }
