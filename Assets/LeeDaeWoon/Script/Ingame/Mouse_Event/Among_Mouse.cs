@@ -12,6 +12,7 @@ public class Among_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private float timer = 0f;
     public int AmongClick_Check = 1;
+    public bool AmongCloseWindow_Check = true;
 
     [Header("°¡¿îµ¥ ºû")]
     public bool Among_Pick = true;
@@ -41,7 +42,7 @@ public class Among_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (Left_Mouse.Inst.Left_Pick == true && Right_Mouse.Inst.Right_Pick == true)
+        if (Left_Mouse.Inst.Left_Pick == true && Right_Mouse.Inst.Right_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
         {
             Among_Light.DOFade(1f, 0.5f);
         }
@@ -76,12 +77,25 @@ public class Among_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             if (Card_Manager.Inst.Item_Among == false)
                 Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.ItemDA_AmongCheck[0]);
 
+
             if (Card_Manager.Inst.Item_bool == true)
                 Card_Manager.Inst.Item_bool = false;
 
             else if (Card_Manager.Inst.Item_bool == false)
                 Card_Manager.Inst.Item_Check += AmongClick_Check;
 
+            if (Card_Manager.Inst.TimeItem_Count <= 2)
+            {
+                Card_Manager.Inst.Time_Item_Limit.Add(Card_Manager.Inst.ItemDA_AmongCheck[0]);
+                for (int i = 0; i < Card_Manager.Inst.Time_Item_Limit.Count; i++)
+                {
+                    if (Card_Manager.Inst.Time_Item_Limit[i].Itme_Name.Contains(Card_Manager.Inst.ItemBuffer[4].Itme_Name))
+                    {
+                        Card_Manager.Inst.TimeItem_Count++;
+                        Card_Manager.Inst.Time_Item_Limit.Clear();
+                    }
+                }
+            }
 
             Among_Light.DOFade(1f, 0.1f);
             Among_Window.transform.DOLocalMoveY(1150, 0.5f).SetEase(Ease.InQuad);
@@ -99,13 +113,17 @@ public class Among_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         while (timer < 1)
         {
-            Left_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, 0, timer));
-            Right_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, 0, timer));
+            Left_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, -20, timer));
+            Right_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, -20, timer));
             timer += Time.deltaTime * 3f;
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.2f);
-        Destroy(GameObject.Find("Item_Window(Clone)"));
+        AmongCloseWindow_Check = false;
+        if (AmongCloseWindow_Check == false)
+        {
+            yield return new WaitForSeconds(0.2f);
+            Destroy(GameObject.Find("Item_Window(Clone)"));
+        }
     }
 }

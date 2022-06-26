@@ -53,22 +53,22 @@ public class Item_Window : MonoBehaviour
 
         #region 창 연출(위, 아래 봉)
 
-        Left_Pole_01.transform.DOLocalMoveY(435f, 0.55f);
-        Left_Pole_02.transform.DOLocalMoveY(-455f, 0.55f);
+        Left_Pole_01.transform.DOLocalMoveY(460.9912f, 0.55f);
+        Left_Pole_02.transform.DOLocalMoveY(-457f, 0.55f);
 
-        Among_Pole_01.transform.DOLocalMoveY(334f, 0.55f);
-        Among_Pole_02.transform.DOLocalMoveY(-552f, 0.55f);
+        Among_Pole_01.transform.DOLocalMoveY(361f, 0.55f);
+        Among_Pole_02.transform.DOLocalMoveY(-554f, 0.55f);
 
-        Right_Pole_01.transform.DOLocalMoveY(355f, 0.55f);
-        Right_Pole_02.transform.DOLocalMoveY(-525f, 0.55f);
+        Right_Pole_01.transform.DOLocalMoveY(384f, 0.55f);
+        Right_Pole_02.transform.DOLocalMoveY(-538f, 0.55f);
 
         #endregion
 
         while (Window_timer < 1)
         {
-            Left_RectMask.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(0, 824.77f, Window_timer));
-            Among_RectMask.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(0, 824.77f, Window_timer));
-            Right_RectMask.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(0, 824.77f, Window_timer));
+            Left_RectMask.sizeDelta = new Vector2(559.2f, Mathf.Lerp(0, 859.05f, Window_timer));
+            Among_RectMask.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(0, 841f, Window_timer));
+            Right_RectMask.sizeDelta = new Vector2(574.5f, Mathf.Lerp(0, 887.7f, Window_timer));
 
             Window_timer += Time.deltaTime * 3f;
             yield return null;

@@ -12,6 +12,8 @@ public class Right_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private float timer = 0f;
     public int RightClick_Check = 1;
+    public bool RightCloseWindow_Check = true;
+
 
     [Header("¿À¸¥ÂÊ ºû")]
     public bool Right_Pick = true;
@@ -41,7 +43,7 @@ public class Right_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (Left_Mouse.Inst.Left_Pick == true && Among_Mouse.Inst.Among_Pick == true)
+        if (Left_Mouse.Inst.Left_Pick == true && Among_Mouse.Inst.Among_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
         {
             Right_Light.DOFade(1f, 0.5f);
         }
@@ -82,6 +84,18 @@ public class Right_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             else if (Card_Manager.Inst.Item_bool == false)
                 Card_Manager.Inst.Item_Check += RightClick_Check;
 
+            if (Card_Manager.Inst.TimeItem_Count <= 2)
+            {
+                Card_Manager.Inst.Time_Item_Limit.Add(Card_Manager.Inst.ItemDA_RightCheck[0]);
+                for (int i = 0; i < Card_Manager.Inst.Time_Item_Limit.Count; i++)
+                {
+                    if (Card_Manager.Inst.Time_Item_Limit[i].Itme_Name.Contains(Card_Manager.Inst.ItemBuffer[4].Itme_Name))
+                    {
+                        Card_Manager.Inst.TimeItem_Count++;
+                        Card_Manager.Inst.Time_Item_Limit.Clear();
+                    }
+                }
+            }
 
             Right_Light.DOFade(1f, 0.1f);
             Right_Window.transform.DOLocalMoveY(1150, 0.5f).SetEase(Ease.InQuad);
@@ -99,13 +113,17 @@ public class Right_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         while (timer < 1)
         {
-            Left_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, 0, timer));
-            Among_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, 0, timer));
+            Left_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, -20, timer));
+            Among_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, -20, timer));
             timer += Time.deltaTime * 3f;
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.2f);
-        Destroy(GameObject.Find("Item_Window(Clone)"));
+        RightCloseWindow_Check = false;
+        if (RightCloseWindow_Check == false)
+        {
+            yield return new WaitForSeconds(0.2f);
+            Destroy(GameObject.Find("Item_Window(Clone)"));
+        }
     }
 }

@@ -12,32 +12,36 @@ public class Card_Manager : MonoBehaviour
     [SerializeField] ItemSo itemSo;
     [SerializeField] GameObject CardPrefab;
 
+    [Header("마정석 과 방어구 및 장신구")]
     public List<Item> ItemBuffer = new List<Item>();
     public List<Item> DABuffer = new List<Item>();
 
+    [Header("왼쪽카드 / 가운데카드 / 오른쪽 카드")]
     public List<Item> ItemDA_LeftCheck = new List<Item>();
     public List<Item> ItemDA_AmongCheck = new List<Item>();
     public List<Item> ItemDA_RightCheck = new List<Item>();
 
     public bool DAClick_Check = true;
-
-    private int Item_RandomTest;
-    private int DA_RandomTest;
-
-    public bool Item_Left = true;
-    public bool Item_Among = true;
-    public bool Item_Right = true;
+    public int Item_Check;
 
     public bool DA_Left = true;
     public bool DA_Among = true;
     public bool DA_Right = true;
 
-    public int Item_Check;
+    public bool Item_Left = true;
+    public bool Item_Among = true;
+    public bool Item_Right = true;
+
+
+    [Header("시간의 마정석 제한")]
+    public List<Item> Time_Item_Limit = new List<Item>();
+    public int TimeItem_Count;
+
+
     public bool Item_bool = true;
-
     public bool ItemCard_OpenCheck = true;
-
-    public int Count;
+    private int Item_RandomTest;
+    private int DA_RandomTest;
 
 
     void Start()
@@ -48,27 +52,25 @@ public class Card_Manager : MonoBehaviour
 
     private void Update()
     {
-        //TimeItem_Limit();
-
         if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.O))
         {
             AddCard();
         }
 
+        if (TimeItem_Count == 3)
+        {
+            TimeItem_Count++;
+            ItemBuffer.RemoveAt(4);
+        }
     }
 
     public void AddList()
     {
         for (int i = 0; i < itemSo.Items.Count; i++)
-        {
-            //Debug.Log(itemSo.Items[i].Itme_Name);
             ItemBuffer.Add(itemSo.Items[i]);
-        }
-
+        
         for (int i = 0; i < itemSo.DA.Count; i++)
-        {
             DABuffer.Add(itemSo.DA[i]);
-        }
     }
 
     public int Card_Percent(List<Item> Percent_Item)
@@ -172,19 +174,4 @@ public class Card_Manager : MonoBehaviour
             }
         }
     }
-
-    //public void TimeItem_Limit()
-    //{
-    //    Debug.Log("1");
-    //    for (int i = 0; i < Stop_Manager.Inst.ItemDA_Have.Count; i++)
-    //    {
-    //        Debug.Log("2");
-    //        if (Stop_Manager.Inst.ItemDA_Have[i].Itme_Name == ItemBuffer[2].Itme_Name)
-    //        {
-    //            Debug.Log("3");
-    //            Count++;
-    //            return;
-    //        }
-    //    }
-    //}
 }

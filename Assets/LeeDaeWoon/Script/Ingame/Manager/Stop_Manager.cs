@@ -98,7 +98,7 @@ public class Stop_Manager : MonoBehaviour
 
         while (timer < 1)
         {
-            Pause_Window.sizeDelta = new Vector2(557.1f, Mathf.Lerp(0, 772.4f, timer));
+            Pause_Window.sizeDelta = new Vector2(610f, Mathf.Lerp(0, 772.4f, timer));
 
             timer += Time.deltaTime * 3.3f;
             yield return null;
@@ -120,7 +120,7 @@ public class Stop_Manager : MonoBehaviour
 
         while (timer < 1)
         {
-            Pause_Window.sizeDelta = new Vector2(557.1f, Mathf.Lerp(772.4f, 5f, timer));
+            Pause_Window.sizeDelta = new Vector2(610f, Mathf.Lerp(772.4f, 5f, timer));
 
             timer += Time.unscaledDeltaTime * 2.5f;
             yield return null;
