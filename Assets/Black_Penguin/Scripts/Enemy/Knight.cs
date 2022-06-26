@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Knight : BaseEnemy
 {
-    private AttackCollision AttackArea;
     protected override void Start()
     {
-        AttackArea = transform.GetComponentInChildren<AttackCollision>();
-
         //기본 스텟
-        BaseStatSet(180, 20, 2, 10, 10, 20, 10, 15);
+        BaseStatSet(180, 11, 2, 4, 5, 10, 5, 10);
         base.Start();
     }
     protected override void Update()
@@ -24,17 +21,29 @@ public class Knight : BaseEnemy
     }
     void OnCheck()
     {
-        if (state != EnemyState.ATTACK)
+        if (_state != EnemyState.ATTACK && _state != EnemyState.HIT)
         {
-            state = AttackArea.isCanAttack(this) ? EnemyState.ATTACK : EnemyState.MOVE;
+            _state = UseAttackCollision(0, true) ? EnemyState.ATTACK : EnemyState.MOVE;
             curAttackDelay = 0;
         }
     }
-    /// <summary>
-    /// 본 함수는 애니매이터에서 실행함
-    /// </summary>
-    public void OnAttack()
+    public void AttackEnd()
     {
-        AttackArea.OnAttack(this);
+        _state = EnemyState.IDLE;
+    }
+    public override void OnHit(Entity atkEntity, float Damage)
+    {
+        StartCoroutine(HitAnim());
+        base.OnHit(atkEntity, Damage);
+    }
+    public void OnAttack(int index)
+    {
+        UseAttackCollision(index);
+    }
+    IEnumerator HitAnim()
+    {
+        _state = EnemyState.HIT;
+        yield return new WaitForSeconds(0.4f);
+        _state = EnemyState.IDLE;
     }
 }

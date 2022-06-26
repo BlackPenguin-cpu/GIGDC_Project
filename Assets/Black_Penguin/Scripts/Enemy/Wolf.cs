@@ -22,7 +22,7 @@ public class Wolf : BaseEnemy
     }
     IEnumerator AttackTrigger()
     {
-        while (state == EnemyState.ATTACK)
+        while (_state == EnemyState.ATTACK)
         {
             RaycastHit2D[] rays = Physics2D.BoxCastAll(transform.position, collider.size, 0, new Vector2(sprite.flipX ? -1 : 1, 0));
             foreach (RaycastHit2D ray in rays)
@@ -43,10 +43,10 @@ public class Wolf : BaseEnemy
 
         yield return new WaitForSeconds(WaitSecond);
         rigid.AddForce(new Vector2((sprite.flipX ? -1 : 1) * LeapPower, 15));
-        state = EnemyState.ATTACK;
+        _state = EnemyState.ATTACK;
         StartCoroutine(AttackTrigger());
         yield return new WaitForSeconds(0.2f);
-        state = EnemyState.MOVE;
+        _state = EnemyState.MOVE;
     }
 
     public override void Attack(Entity target, float atkDmg)

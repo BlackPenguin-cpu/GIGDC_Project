@@ -134,4 +134,5 @@ MonoBehaviour:
   textMesh: {fileID: 0}
   duration: 0.2
   isCrit: 0
+  dimensionType: 0
   damageValue: 0
