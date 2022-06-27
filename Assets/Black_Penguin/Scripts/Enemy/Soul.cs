@@ -7,7 +7,7 @@ public class Soul : BaseEnemy
     [SerializeField] GameObject boomEffect;
     protected override void Start()
     {
-        BaseStatSet(80, 30, 0, 15, 0, 0, 0, 0);
+        BaseStatSet(80, 30, 0, 15, 0, 0, 0, 0, 0.5f);
 
         base.Start();
     }

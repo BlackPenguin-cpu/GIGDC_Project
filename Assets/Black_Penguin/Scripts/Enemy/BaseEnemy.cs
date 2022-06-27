@@ -129,7 +129,11 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     {
         HealthBarObj.SetActive(hpShowDuration > 0);
         AnimController();
-        if (player._hp <= 0) return;
+        if (player._hp <= 0)
+        {
+            _state = EnemyState.HIT;
+            return;
+        }
         if (_state == EnemyState.HIT)
             curAttackDelay = 0;
 
