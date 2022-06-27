@@ -23,6 +23,7 @@ public class LonginusSpear : BaseSkill, IObjectPoolingObj
     {
         AttackProjectile projectile = ObjectPool.Instance.CreateObj(spear, transform.position, Quaternion.Euler(0, 0, player.sprite.flipX ? 180 : 0)).GetComponent<AttackProjectile>();
         projectile.Init(player, SkillInfo.damagePercent / 100 * player.stat._attackDamage, 30, 0, ProjectileType.Basic);
+        projectile.canPierce = true;
     }
     private void Update()
     {

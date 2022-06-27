@@ -17,6 +17,7 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
     public float speed;
     public float startWaitTime = 1;
     public float duration = 3;
+    public bool canPierce;
     public ProjectileType projectileType;
     public DimensionType dimensionType = DimensionType.NONE;
 
@@ -69,7 +70,7 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
         else if (shootSelf.GetComponent<Player>() && collision.TryGetComponent(out BaseEnemy enemy1))
         {
             shootSelf.Attack(enemy1, damage);
-            if (projectileType != ProjectileType.Basic)
+            if (!canPierce)
                 ObjectPool.Instance.DeleteObj(gameObject);
         }
     }
