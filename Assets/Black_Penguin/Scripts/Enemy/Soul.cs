@@ -51,6 +51,13 @@ public class Soul : BaseEnemy
         attackCollisions[0].OnAttack(this);
         Die();
     }
+    public override void OnDieActionAdd()
+    {
+        onDie += () => MaterialDrop();
+        onDie += () => CameraManager.Instance.CameraShake(0.1f, 0.4f, 0.05f);
+        onDie += () => _state = EnemyState.DIE;
+        onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
+    }
     public override void Die()
     {
         ObjectPool.Instance.CreateObj(boomEffect, transform.position, Quaternion.identity);

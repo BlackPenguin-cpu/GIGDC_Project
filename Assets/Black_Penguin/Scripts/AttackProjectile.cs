@@ -16,6 +16,7 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
     public float damage;
     public float speed;
     public float startWaitTime = 1;
+    public float duration = 3;
     public ProjectileType projectileType;
 
     private Player player;
@@ -43,6 +44,11 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
                 }
                 transform.Translate(Vector2.right * speed * Time.deltaTime);
             }
+        }
+        duration -= Time.deltaTime;
+        if (duration < 0)
+        {
+            ObjectPool.Instance.DeleteObj(gameObject);
         }
     }
 
@@ -75,5 +81,8 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
 
     public void OnObjCreate()
     {
+        duration = 3;
+        startWaitTime = 1;
+        isRotateSet = false;
     }
 }

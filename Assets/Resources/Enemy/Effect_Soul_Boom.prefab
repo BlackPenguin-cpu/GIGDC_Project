@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3298749199694446099}
   - component: {fileID: 7940786914366026179}
-  - component: {fileID: 8258044300148202351}
   - component: {fileID: -4730468983634852894}
+  - component: {fileID: 7460293273142752035}
   m_Layer: 0
   m_Name: Effect_Soul_Boom
   m_TagString: Untagged
@@ -84,25 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8258044300148202351
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7777144639048550139}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 495f7809542224d41a1a1174049eb12d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &-4730468983634852894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,3 +96,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bdba9b2e49d7e0448eb43aae2977b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7460293273142752035
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7777144639048550139}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6cbf521654ac9bd40a618cac46d4563d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
