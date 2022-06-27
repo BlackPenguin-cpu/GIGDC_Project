@@ -38,12 +38,12 @@ public class DamageText : MonoBehaviour, IObjectPoolingObj
 
         if (isCrit)
         {
-            textMesh.color = new Color(1, 0, 0, 0.8f);
+            textMesh.color = new Color(1, 1, 0, 0.8f);
             textMesh.fontStyle = FontStyle.Bold;
         }
         else
         {
-            textMesh.color = new Color(1, 1, 1, 0.8f);
+            textMesh.color = new Color(1, 0, 0, 0.8f);
         }
 
         if (dimensionType == DimensionType.OVER)

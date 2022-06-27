@@ -16,8 +16,11 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
     public float damage;
     public float speed;
     public float startWaitTime = 1;
+    public float duration = 3;
     public ProjectileType projectileType;
+    public DimensionType dimensionType = DimensionType.NONE;
 
+    private SpriteRenderer sprite;
     private Player player;
     private bool isRotateSet;
     private void Start()
@@ -26,23 +29,29 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
     }
     private void Update()
     {
-        if (projectileType == ProjectileType.Target)
+        if (startWaitTime > 0)
         {
-            if (startWaitTime > 0)
+            startWaitTime -= Time.deltaTime;
+        }
+        else if (projectileType == ProjectileType.Target)
+        {
+            if (isRotateSet == false)
             {
-                startWaitTime -= Time.deltaTime;
+                isRotateSet = true;
+                Vector2 len = target.transform.position - transform.position;
+                float z = Mathf.Atan2(len.y, len.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0, 0, z);
             }
-            else
-            {
-                if (isRotateSet == false)
-                {
-                    isRotateSet = true;
-                    Vector2 len = target.transform.position - transform.position;
-                    float z = Mathf.Atan2(len.y, len.x) * Mathf.Rad2Deg;
-                    transform.rotation = Quaternion.Euler(0, 0, z);
-                }
-                transform.Translate(Vector2.right * speed * Time.deltaTime);
-            }
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+        }
+        else if (projectileType == ProjectileType.Basic)
+        {
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+        }
+        duration -= Time.deltaTime;
+        if (duration < 0)
+        {
+            ObjectPool.Instance.DeleteObj(gameObject);
         }
     }
 
@@ -57,7 +66,7 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
             shootSelf.Attack(player, damage);
             ObjectPool.Instance.DeleteObj(gameObject);
         }
-        else if (shootSelf.TryGetComponent(out Player player1) && collision.TryGetComponent(out BaseEnemy enemy1))
+        else if (shootSelf.GetComponent<Player>() && collision.TryGetComponent(out BaseEnemy enemy1))
         {
             shootSelf.Attack(enemy1, damage);
             ObjectPool.Instance.DeleteObj(gameObject);
@@ -75,5 +84,20 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
 
     public void OnObjCreate()
     {
+        if (transform.GetChild(0).GetComponent<ProjectileSprite>())
+        {
+            sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        }
+        else
+        {
+            sprite = GetComponent<SpriteRenderer>();
+        }
+
+        dimensionType = transform.position.y > 0 ? DimensionType.OVER : DimensionType.UNDER;
+        sprite.material = dimensionType == DimensionType.OVER ? GameManager.Instance.OverMaterial : GameManager.Instance.UnderMaterial;
+
+        duration = 3;
+        startWaitTime = 1;
+        isRotateSet = false;
     }
 }
