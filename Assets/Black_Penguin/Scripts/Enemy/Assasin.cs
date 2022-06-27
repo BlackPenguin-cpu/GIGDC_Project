@@ -20,7 +20,13 @@ public class Assasin : BaseEnemy
     }
     protected override void Update()
     {
-        base.Update();
+        HealthBarObj.SetActive(hpShowDuration > 0);
+        AnimController();
+
+        curAttackDelay += Time.deltaTime;
+        buffList.stun -= Time.deltaTime;
+        hpShowDuration -= Time.deltaTime;
+
         if (attackCollisions[0].isCanAttack(this))
         {
             if (curAttackDelay > attackDelay)
