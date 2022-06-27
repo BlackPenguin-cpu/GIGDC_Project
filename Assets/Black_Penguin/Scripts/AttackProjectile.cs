@@ -69,7 +69,8 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
         else if (shootSelf.GetComponent<Player>() && collision.TryGetComponent(out BaseEnemy enemy1))
         {
             shootSelf.Attack(enemy1, damage);
-            ObjectPool.Instance.DeleteObj(gameObject);
+            if (projectileType != ProjectileType.Basic)
+                ObjectPool.Instance.DeleteObj(gameObject);
         }
     }
     public void Init(Entity shootSelf, float damage, float speed, float startWaitTime, ProjectileType projectileType, GameObject target = null)
@@ -84,7 +85,7 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
 
     public void OnObjCreate()
     {
-        if (transform.GetChild(0).GetComponent<ProjectileSprite>())
+        if (transform.GetComponentInChildren<ProjectileSprite>())
         {
             sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         }

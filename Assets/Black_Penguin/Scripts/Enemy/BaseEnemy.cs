@@ -114,8 +114,7 @@ public class BaseEnemy : Entity, IObjectPoolingObj
             sprite.flipY = true;
             dimensionType = DimensionType.UNDER;
 
-            //TODO: 나중에 스프라이트나오면 그걸로 바꾸는 작업
-            sprite.color = Color.black;
+            sprite.material = dimensionType == DimensionType.OVER ? GameManager.Instance.OverMaterial : GameManager.Instance.UnderMaterial;
         }
         if (HealthBarObj == null)
         {
