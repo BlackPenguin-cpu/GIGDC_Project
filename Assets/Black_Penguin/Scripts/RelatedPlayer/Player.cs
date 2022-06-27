@@ -686,7 +686,7 @@ public class Player : Entity, ITypePlayer
         {
             if (attackCollision.index == index && attackCollision.weaponType == stat.weaponType)
             {
-                if (stat.weaponType == PlayerWeaponType.Dagger && Input.GetAxisRaw("Horizontal") == (sprite.flipX ? -1 : 1))
+                if (stat.weaponType == PlayerWeaponType.Dagger && Input.GetAxisRaw("Horizontal") == (sprite.flipX ? -1 : 1) && stateOnAir == PlayerStateOnAir.NONE)
                 {
                     rigid.AddForce(Vector2.right * (sprite.flipX ? -1 : 1) * 5, ForceMode2D.Impulse);
                 }

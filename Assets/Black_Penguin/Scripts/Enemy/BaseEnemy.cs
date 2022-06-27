@@ -86,6 +86,17 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     {
         base.Start();
         OnObjCreate();
+
+        OnDieActionAdd();
+    }
+    public virtual void OnDieActionAdd()
+    {
+        onDie += () => MaterialDrop();
+        onDie += () => Player.Instance.DaggerSkill2(); // HOLY SHIT
+        onDie += () => CameraManager.Instance.CameraShake(0.1f, 0.4f, 0.05f);
+        onDie += () => player.BloodGauntletAction(this);
+        onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
+        onDie += () => _state = EnemyState.DIE;
     }
     public virtual void OnObjCreate()
     {
@@ -103,8 +114,7 @@ public class BaseEnemy : Entity, IObjectPoolingObj
             sprite.flipY = true;
             dimensionType = DimensionType.UNDER;
 
-            //TODO: 나중에 스프라이트나오면 그걸로 바꾸는 작업
-            sprite.color = Color.black;
+            sprite.material = dimensionType == DimensionType.OVER ? GameManager.Instance.OverMaterial : GameManager.Instance.UnderMaterial;
         }
         if (HealthBarObj == null)
         {
@@ -118,6 +128,11 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     {
         HealthBarObj.SetActive(hpShowDuration > 0);
         AnimController();
+        if (player._hp <= 0)
+        {
+            _state = EnemyState.HIT;
+            return;
+        }
         if (_state == EnemyState.HIT)
             curAttackDelay = 0;
 
@@ -178,32 +193,28 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     /// </summary>
     public override void Die()
     {
-        onDie += () => MaterialDrop();
-        onDie += () => Player.Instance.DaggerSkill2(); // HOLY SHIT
-        onDie += () => CameraManager.Instance.CameraShake(0.1f, 0.4f, 0.05f);
-        onDie += () => player.BloodGauntletAction(this);
-        onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
-        onDie += () => _state = EnemyState.DIE;
+
 
         onDie.Invoke();
     }
 
-    void MaterialDrop()
+    protected void MaterialDrop()
     {
         int crystalDropValue = crystalDropValueRange.randomRangeIntReturn();
         int coinDropValue = crystalDropValueRange.randomRangeIntReturn();
-        for (int i = 0; i < crystalDropValue / 10; i++)
-        {
-            Rigidbody2D crystalObj = Instantiate(Resources.Load<Rigidbody2D>("CrystalObj"), transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
-            crystalObj.AddTorque(Random.Range(-100, 100));
-            crystalObj.AddForce(new Vector2(Random.Range(-100, 100), Random.Range(-100, 100)));
-        }
-        for (int i = 0; i < coinDropValue / 10; i++)
-        {
-            Rigidbody2D goldObj = Instantiate(Resources.Load<Rigidbody2D>("CoinObj"), transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
-            goldObj.AddTorque(Random.Range(-100, 100));
-            goldObj.AddForce(new Vector2(Random.Range(-10, 10), Random.Range(10, 15)));
-        }
+        //TODO: 죽은놈 파티클
+        //for (int i = 0; i < crystalDropValue / 10; i++)
+        //{
+        //    Rigidbody2D crystalObj = Instantiate(Resources.Load<Rigidbody2D>("CrystalObj"), transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+        //    crystalObj.AddTorque(Random.Range(-100, 100));
+        //    crystalObj.AddForce(new Vector2(Random.Range(-100, 100), Random.Range(-100, 100)));
+        //}
+        //for (int i = 0; i < coinDropValue / 10; i++)
+        //{
+        //    Rigidbody2D goldObj = Instantiate(Resources.Load<Rigidbody2D>("CoinObj"), transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+        //    goldObj.AddTorque(Random.Range(-100, 100));
+        //    goldObj.AddForce(new Vector2(Random.Range(-10, 10), Random.Range(10, 15)));
+        //}
         GameManager.Instance.crystal += crystalDropValue;
         GameManager.Instance._coin += coinDropValue;
     }

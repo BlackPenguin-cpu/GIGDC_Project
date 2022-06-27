@@ -27,5 +27,6 @@ public class PlayerHpView : MonoBehaviour
     public void onHit()
     {
         textMesh.color = Color.white;
+        value = 1;
     }
 }

@@ -25,7 +25,7 @@ public class AttackCollision : MonoBehaviour
 
     RaycastHit2D[] DetectEntity()
     {
-        return Physics2D.BoxCastAll(transform.parent.position, collider2D.size, 0, parentSpriteRenderer.flipX ? Vector2.left : Vector2.right, collider2D.size.x / 2);
+        return Physics2D.BoxCastAll(transform.parent.position + new Vector3((parentSpriteRenderer.flipX ? -1 : 1) * collider2D.offset.x, collider2D.offset.y), collider2D.size, 0, parentSpriteRenderer.flipX ? Vector2.left : Vector2.right, 0); ;
     }
     /// <summary>
     /// 몬스터 공격인지 플레이어 공격인지 구분하기위해 자기자신을 넣어야한다

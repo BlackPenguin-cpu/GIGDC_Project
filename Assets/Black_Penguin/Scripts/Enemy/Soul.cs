@@ -7,7 +7,7 @@ public class Soul : BaseEnemy
     [SerializeField] GameObject boomEffect;
     protected override void Start()
     {
-        BaseStatSet(80, 30, 0, 15, 0, 0, 0, 0);
+        BaseStatSet(80, 30, 0, 15, 0, 0, 0, 0, 0.5f);
 
         base.Start();
     }
@@ -50,6 +50,13 @@ public class Soul : BaseEnemy
     {
         attackCollisions[0].OnAttack(this);
         Die();
+    }
+    public override void OnDieActionAdd()
+    {
+        onDie += () => MaterialDrop();
+        onDie += () => CameraManager.Instance.CameraShake(0.1f, 0.4f, 0.05f);
+        onDie += () => _state = EnemyState.DIE;
+        onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
     }
     public override void Die()
     {
