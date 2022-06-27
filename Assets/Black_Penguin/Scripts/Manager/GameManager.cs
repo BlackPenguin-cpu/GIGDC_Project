@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public Material OverMaterial;
+    public Material UnderMaterial;
     private Player player;
 
     private int coin;

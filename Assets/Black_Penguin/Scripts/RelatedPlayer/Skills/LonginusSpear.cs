@@ -9,8 +9,9 @@ public class LonginusSpear : BaseSkill, IObjectPoolingObj
     private Player player;
     private float duration = 3;
 
-    public void OnObjCreate()
+    public override void OnObjCreate()
     {
+        base.OnObjCreate();
         duration = 3;
         player = Player.Instance;
         Action();

@@ -18,7 +18,9 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
     public float startWaitTime = 1;
     public float duration = 3;
     public ProjectileType projectileType;
+    public DimensionType dimensionType = DimensionType.NONE;
 
+    private SpriteRenderer sprite;
     private Player player;
     private bool isRotateSet;
     private void Start()
@@ -82,6 +84,18 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
 
     public void OnObjCreate()
     {
+        if (transform.GetChild(0).GetComponent<ProjectileSprite>())
+        {
+            sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        }
+        else
+        {
+            sprite = GetComponent<SpriteRenderer>();
+        }
+
+        dimensionType = transform.position.y > 0 ? DimensionType.OVER : DimensionType.UNDER;
+        sprite.material = dimensionType == DimensionType.OVER ? GameManager.Instance.OverMaterial : GameManager.Instance.UnderMaterial;
+
         duration = 3;
         startWaitTime = 1;
         isRotateSet = false;
