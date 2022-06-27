@@ -17,47 +17,80 @@ public class Stop_Manager : MonoBehaviour
     public List<Item> ItemDA_Have = new List<Item>();
 
     [Header("일시정지 창")]
-    public GameObject Pause_Window_Canvas; // 일시정지 창
     public GameObject Pause_Pole01; // 일시정지 창의 윗 봉
     public GameObject Pause_Pole02; // 일시정지 창의 아랫 봉 
     public RectTransform Pause_Window; // 일시정지 창의 중간
+    public GameObject Pause_Window_Canvas; // 일시정지 창
 
     [Header("설정 창")]
-    public GameObject Setting_Window_Canvas; // 설정 창
     public GameObject Setting_Pole01; // 설정 창의 윗 봉
     public GameObject Setting_Pole02; // 설정 창의 아랫 봉 
     public RectTransform Setting_Window; // 설정 창의 중간 
+    public GameObject Setting_Window_Canvas; // 설정 창
+
+    public Text Resolution;
+    public int Resolution_Num;
 
     [Header("플레이어 창")]
-    public GameObject Player_Window_Canvas; // 플레이어 창
     public GameObject Player_Pole01; // 플레이어 창의 윗 봉
     public GameObject Player_Pole02; // 플레이어 창의 아랫 봉 
     public RectTransform Player_Window; // 플레이어 창의 중간 
 
-    public GameObject Player_Weapon_Window; // 무기 창
+    [Space(10f)]
     public GameObject Player_Item_Window; // 아이템 창
-
-    private bool Icon_Check = true;
-    public Image Player_Item_Icon; // 아이템 아이콘
-    public Text Player_Item_Name; // 아이템 이름
-    public Text Player_Item_Explanation; // 아이템 설명
-
-    public Image Player_Item_Log; // 아이템 로그
-    public float ItemClick_Check; // 아이템 클릭 체크
-
+    public GameObject Player_Weapon_Window; // 무기 창
+    public GameObject Player_Window_Canvas; // 플레이어 창
     public bool WI_Check = true; // 현재 무기창이 열려져 있는지 아이템 창이 열려져 있는지 확인한다.
 
+    [Header("플레이어_무기 창")]
+    public GameObject Axe_Window; // 도끼
+    public Text AxeLevel_Text;
+    public Text Axe_Skill_Text;
+
+    public Text Axe_AttackDamage;
+    public Text Axe_AttackDamage_Upgrade;
+    public Text Axe_Defense;
+    public Text Axe_Defense_Upgrade;
+
+    [Space(10f)]
+    public GameObject Sword_Window; // 검
+    public Text SwordLevel_Text;
+    public Text Sword_Skill_Text;
+
+    public Text Sword_AttackDamage;
+    public Text Sword_AttackDamage_Upgrade;
+    public Text Sword_MaxHp;
+    public Text Sword_MaxHp_Upgrade;
+
+    [Space(10f)]
+    public GameObject Dagger_Window; // 단검
+    public Text DaggerLevel_Text;
+    public Text Dagger_Skill_Text;
+
+    public Text Dagger_AttackDamage;
+    public Text Dagger_AttackDamage_Upgrade;
+    public Text Dagger_Critical;
+    public Text Dagger_Critical_Upgrade;
+
+    [Header("플레이어_아이템 창")]
+    public Image Player_Item_Log; // 아이템 로그
+    public Text Player_Item_Name; // 아이템 이름
+    public Image Player_Item_Icon; // 아이템 아이콘
+    public Text Player_Item_Explanation; // 아이템 설명
+
+    private bool Icon_Check = true;
+
     [Header("메인화면 창")]
-    public GameObject Main_Window_Canvas; // 메인 창
     public GameObject Main_Pole01; // 메인 창의 윗 봉
     public GameObject Main_Pole02; // 메인 창의 아랫 봉 
     public RectTransform Main_Window; // 메인 창의 중간 
+    public GameObject Main_Window_Canvas; // 메인 창
 
     [Header("게임종료 창")]
-    public GameObject Exit_Window_Canvas; // 게임종료 창
     public GameObject Exit_Pole01; // 게임종료 창의 윗 봉
     public GameObject Exit_Pole02; // 게임종료 창의 아랫 봉 
     public RectTransform Exit_Window; // 게임종료 창의 중간 
+    public GameObject Exit_Window_Canvas; // 게임종료 창
 
     void Start()
     {
@@ -68,7 +101,12 @@ public class Stop_Manager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Keypad8))
+            Player.Instance.stat._level++;
+
         Item_Log();
+        WeaponType();
+        Resolution_Size();
 
         // ESC 키를 누르면 일시정지 창이 열린다.
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -172,7 +210,7 @@ public class Stop_Manager : MonoBehaviour
         }
     }
 
-    public IEnumerator Setting_Window_Close()
+    public IEnumerator Setting_Window_Close() // 설정 창 닫힘
     {
         timer = 0;
         Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
@@ -190,6 +228,42 @@ public class Stop_Manager : MonoBehaviour
         Setting_Window_Canvas.SetActive(false);
         Pause_Check = true;
         Time.timeScale = 1f;
+    }
+
+    public void Resolution_Size()
+    {
+        switch (Resolution_Num)
+        {
+            case 0:
+                Resolution.text = "1920 * 1080";
+                Screen.SetResolution(1920, 1080, true);
+                break;
+            case 1:
+                Resolution.text = "1680 * 1050";
+                Screen.SetResolution(1680, 1050, true);
+                break;
+            case 2:
+                Resolution.text = "1400 * 1050";
+                Screen.SetResolution(1400, 1050, true);
+                break;
+            case 3:
+                Resolution.text = "1280 * 600";
+                Screen.SetResolution(1280, 600, true);
+                break;
+
+        }
+    }
+
+    public void ResolutionSize_Left()
+    {
+        if (Resolution_Num > 0)
+            Resolution_Num--;
+    }
+
+    public void ResolutionSize_Right()
+    {
+        if (Resolution_Num < 3)
+            Resolution_Num++;
     }
     #endregion
 
@@ -247,7 +321,6 @@ public class Stop_Manager : MonoBehaviour
             yield return null;
         }
     }
-
 
     public IEnumerator Player_Window_Close() // 플레이어 창 닫힘
     {
@@ -352,6 +425,104 @@ public class Stop_Manager : MonoBehaviour
             Player_Window.sizeDelta = new Vector2(1732.5f, Mathf.Lerp(0f, 916.9f, timer));
             timer += Time.unscaledDeltaTime * 3f;
             yield return null;
+        }
+    }
+    #endregion
+
+    #region 무기 창
+    public void WeaponType()
+    {
+        int Weapon_Level = Player.Instance.stat._level;
+        Player.Instance.stat.weaponType = PlayerWeaponType.Sword;
+
+        switch (Player.Instance.stat.weaponType)
+        {
+            case PlayerWeaponType.Sword:
+                SwordLevel_Text.text = "" + Weapon_Level;
+
+                Sword_AttackDamage.text = "" + (10 + (10 * Weapon_Level));
+                Sword_AttackDamage_Upgrade.text = "" + (10 + (10 * (Weapon_Level + 1)));
+
+                Sword_MaxHp.text = "" + (10 + (10 * Weapon_Level));
+                Sword_MaxHp_Upgrade.text = "" + (10 + (10 * (Weapon_Level + 1)));
+
+                switch (Weapon_Level)
+                {
+                    case 1:
+                        Sword_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
+                        break;
+
+                    case 3:
+                        Sword_Skill_Text.transform.GetChild(1).gameObject.SetActive(false);
+                        break;
+
+                    case 5:
+                        Sword_Skill_Text.transform.GetChild(2).gameObject.SetActive(false);
+                        break;
+                }
+
+                Sword_Window.SetActive(true);
+                Dagger_Window.SetActive(false);
+                Axe_Window.SetActive(false);
+                break;
+
+            case PlayerWeaponType.Dagger:
+                DaggerLevel_Text.text = "" + Weapon_Level;
+
+                Dagger_AttackDamage.text = "" + (8 + (8 * Weapon_Level));
+                Dagger_AttackDamage_Upgrade.text = "" + (8 + (8 * (Weapon_Level + 1)));
+
+                Dagger_Critical.text = "" + (0 + (2 * Weapon_Level));
+                Dagger_Critical_Upgrade.text = "" + (0 + (2 * (Weapon_Level + 1)));
+
+                switch (Weapon_Level)
+                {
+                    case 1:
+                        Dagger_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
+                        break;
+
+                    case 3:
+                        Dagger_Skill_Text.transform.GetChild(1).gameObject.SetActive(false);
+                        break;
+
+                    case 5:
+                        Dagger_Skill_Text.transform.GetChild(2).gameObject.SetActive(false);
+                        break;
+                }
+
+                Sword_Window.SetActive(false);
+                Dagger_Window.SetActive(true);
+                Axe_Window.SetActive(false);
+                break;
+
+            case PlayerWeaponType.Axe:
+                AxeLevel_Text.text = "" + Weapon_Level;
+
+                Axe_AttackDamage.text = "" + (20 + (15 * Weapon_Level));
+                Axe_AttackDamage_Upgrade.text = "" + (20 + (15 * (Weapon_Level + 1)));
+
+                Axe_Defense.text = "" + (400 + (200 * Weapon_Level));
+                Axe_Defense_Upgrade.text = "" + (400 + (200 * (Weapon_Level + 1)));
+
+                switch (Weapon_Level)
+                {
+                    case 1:
+                        Axe_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
+                        break;
+
+                    case 3:
+                        Axe_Skill_Text.transform.GetChild(1).gameObject.SetActive(false);
+                        break;
+
+                    case 5:
+                        Axe_Skill_Text.transform.GetChild(2).gameObject.SetActive(false);
+                        break;
+                }
+
+                Sword_Window.SetActive(false);
+                Dagger_Window.SetActive(false);
+                Axe_Window.SetActive(true);
+                break;
         }
     }
     #endregion
