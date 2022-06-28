@@ -36,8 +36,8 @@ public class Range
 public class BaseEnemy : Entity, IObjectPoolingObj
 {
     //HealthBar
-    private GameObject HealthBarObj;
-    private float hpShowDuration;
+    protected GameObject HealthBarObj;
+    protected float hpShowDuration;
 
     protected new BoxCollider2D collider;
     protected AttackCollision[] attackCollisions;
