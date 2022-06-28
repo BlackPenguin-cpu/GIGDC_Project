@@ -2,10 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
+
+
+/// <summary>
+/// 오브젝트풀 전용 오브젝트를 위한 인터페이스이다
+/// </summary>
+public interface IObjectPoolingObj
+{
+    /// <summary>
+    /// 이 함수는 오브젝트 풀로 처음 생성됬을때 발동된다
+    /// </summary>
+    void OnObjCreate();
+}
+
 public class ObjectPoolClass
 {
-    public GameObject parentObj = new GameObject();
-    public Queue<GameObject> objQueue = new Queue<GameObject>();
+    public GameObject parentObj;
+    public Queue<GameObject> objNotActiveQueue = new Queue<GameObject>();
+    public Queue<GameObject> objActiveQueue = new Queue<GameObject>();
 }
 
 public class ObjectPool : MonoBehaviour
@@ -40,10 +54,9 @@ public class ObjectPool : MonoBehaviour
     {
         if (ParentObj.ContainsKey(obj.name) == false)
         {
-            GameObject newObj = new GameObject();
+            GameObject newObj = new GameObject(obj.name + "_ParentObj");
             newObj.transform.parent = gameObject.transform;
-            newObj.name = obj.name + "_ParentObj";
-            ParentObj[obj.name] = new ObjectPoolClass() { parentObj = newObj, objQueue = new Queue<GameObject>() };
+            ParentObj[obj.name] = new ObjectPoolClass() { parentObj = newObj, objNotActiveQueue = new Queue<GameObject>(), objActiveQueue = new Queue<GameObject>() };
             ParentObj[obj.name].parentObj = newObj;
 
             return CreateObj(obj);
@@ -52,15 +65,16 @@ public class ObjectPool : MonoBehaviour
         else
         {
             GameObject returnObj;
-            if (ParentObj[obj.name].objQueue.Count > 0)
+            if (ParentObj[obj.name].objNotActiveQueue.Count > 0)
             {
-                returnObj = ParentObj[obj.name].objQueue.Dequeue();
+                returnObj = ParentObj[obj.name].objNotActiveQueue.Dequeue();
                 returnObj.SetActive(true);
             }
             else
             {
                 returnObj = Instantiate(obj, ParentObj[obj.name].parentObj.transform);
             }
+            ParentObj[obj.name].objActiveQueue.Enqueue(returnObj);
             if (!isNotStartFunc)
                 OnObjCreate(returnObj);
             return returnObj;
@@ -79,7 +93,7 @@ public class ObjectPool : MonoBehaviour
     {
         if (ParentObj.ContainsKey(textCloneRemove(obj.name)))
         {
-            ParentObj[textCloneRemove(obj.name)].objQueue.Enqueue(obj);
+            ParentObj[textCloneRemove(obj.name)].objNotActiveQueue.Enqueue(obj);
             obj.gameObject.SetActive(false);
             obj.transform.position = Vector3.zero;
         }
@@ -87,6 +101,17 @@ public class ObjectPool : MonoBehaviour
         {
             Debug.Log("오브젝트풀 오류 발생 (본 객체는 오브젝트풀 객체가 아닙니다)");
             Destroy(obj);
+        }
+    }
+    public GameObject[] ReturnObjList(GameObject obj, bool getActive = true)
+    {
+        if (getActive)
+        {
+            return ParentObj[textCloneRemove(obj.name)].objActiveQueue.ToArray();
+        }
+        else
+        {
+            return ParentObj[textCloneRemove(obj.name)].objNotActiveQueue.ToArray();
         }
     }
     string textCloneRemove(string objName)

@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class SpaceBang : BaseSkill
 {
-    private Player player;
-    private BoxCollider2D collider2D;
-    private float duration;
-
+    private BoxCollider2D boxCollider2D;
+    private List<BaseEnemy> baseEnemies;
     protected override void Action()
     {
         StartCoroutine(OnStart());
@@ -33,7 +31,8 @@ public class SpaceBang : BaseSkill
     public override void OnObjCreate()
     {
         base.OnObjCreate();
-        collider2D = GetComponent<BoxCollider2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        baseEnemies = new List<BaseEnemy>();
 
         player = Player.Instance;
         sprite.flipY = dimensionType == DimensionType.UNDER;
@@ -42,16 +41,26 @@ public class SpaceBang : BaseSkill
         transform.localScale = new Vector3(0.1f, 0.1f, 1f);
 
         if (dimensionType == DimensionType.UNDER)
-            collider2D.offset = new Vector2(0, -2);
+            boxCollider2D.offset = new Vector2(0, -2);
+        else
+            boxCollider2D.offset = new Vector2(0, 2);
+
+        Debug.Log(boxCollider2D.offset.y);
 
         Action();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.TryGetComponent(out BaseEnemy baseEnemy))
+        RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxCollider2D.offset, boxCollider2D.size, 0, Vector2.right, 0);
+
+        for (int i = 0; i < rays.Length; i++)
         {
-            baseEnemy.GetComponent<Rigidbody2D>().AddForce(new Vector3(transform.position.x < baseEnemy.transform.position.x ? 10 : -10, 0), ForceMode2D.Impulse);
-            player.Attack(baseEnemy, (SkillInfo.damagePercent / 100) * player.stat._attackDamage);
+            if (rays[i].collider.TryGetComponent(out BaseEnemy enemy) && !baseEnemies.Contains(enemy))
+            {
+                baseEnemies.Add(enemy);
+                enemy.GetComponent<Rigidbody2D>().AddForce(new Vector3(transform.position.x < enemy.transform.position.x ? 10 : -10, 0), ForceMode2D.Impulse);
+                player.Attack(enemy, DefaultReturnDamage());
+            }
         }
     }
 }

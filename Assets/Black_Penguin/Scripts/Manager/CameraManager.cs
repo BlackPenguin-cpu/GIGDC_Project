@@ -7,15 +7,15 @@ public enum CameraState
     NONE,
     ONPLAYER
 }
-public class CameraManager : Singleton<CameraManager>
+public class CameraManager : MonoBehaviour
 {
-    //static public CameraManager instance;
+    static public CameraManager Instance;
 
     private Vector3 startPos;
     public CameraState state;
     private void Awake()
     {
-        //instance = this;
+        Instance = this;
         startPos = transform.position;
     }
 

@@ -6,14 +6,12 @@ public class LonginusSpear : BaseSkill, IObjectPoolingObj
 {
     [SerializeField] GameObject spear;
 
-    private Player player;
     private float duration = 1;
 
     public override void OnObjCreate()
     {
         base.OnObjCreate();
         duration = 1;
-        player = Player.Instance;
 
         sprite.flipX = player.sprite.flipX;
         Action();
@@ -22,7 +20,7 @@ public class LonginusSpear : BaseSkill, IObjectPoolingObj
     protected override void Action()
     {
         AttackProjectile projectile = ObjectPool.Instance.CreateObj(spear, transform.position, Quaternion.Euler(0, 0, player.sprite.flipX ? 180 : 0)).GetComponent<AttackProjectile>();
-        projectile.Init(player, SkillInfo.damagePercent / 100 * player.stat._attackDamage, 30, 0, ProjectileType.Basic);
+        projectile.Init(player, DefaultReturnDamage(), 30, 0, ProjectileType.Basic);
         projectile.canPierce = true;
     }
     private void Update()

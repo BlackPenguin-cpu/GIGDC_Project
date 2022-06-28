@@ -10,7 +10,7 @@ public class SkillManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ObjectPool.Instance.CreateObj(Skills[0].gameObject, new Vector3(Player.Instance.transform.position.x, 0.01f), Quaternion.identity); ;
+            ObjectPool.Instance.CreateObj(Skills[0].gameObject, new Vector3(Player.Instance.transform.position.x, 1.5f), Quaternion.identity);
         }
     }
 }

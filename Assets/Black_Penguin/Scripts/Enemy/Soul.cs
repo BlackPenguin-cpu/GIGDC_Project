@@ -23,7 +23,6 @@ public class Soul : BaseEnemy
     public override void Move()
     {
         if (_state != EnemyState.MOVE) return;
-        float dir;
 
         if (player.transform.position.x > transform.position.x)
         {

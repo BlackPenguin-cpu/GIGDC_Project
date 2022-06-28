@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e08c20fd473311b44aa6a7e8246072fd, type: 3}
-  m_Name: GodOfGockgang-E
+  m_Name: SolarGodLight
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 79aaa75c6e0216a4383dc1a6bb87eea5, type: 3}
-  SkillName: "\uC2E0\uC758 \uACE1\uAD2D\uC774"
-  Description: "\uC0AC\uC6A9\uD558\uBA74 \uB370\uBBF8\uC9C0\uC640 \uACE8\uB4DC\uB97C
-    \uC5BB\uB294\uB2E4."
+  sprite: {fileID: 21300000, guid: 03395ee9d0149de409a35a35d188e787, type: 3}
+  SkillName: "\uD0DC\uC591\uC2E0\uC758 \uBE5B"
+  Description: "\uD0DC\uC591\uC2E0\uC758 \uC131\uC2A4\uB7EC\uC6B4 \uBE5B\uC774 \uB208\uC744
+    \uBA40\uAC8C\uD55C\uB2E4."
   price:
   - 1650
   - 4360
   - 0
-  damagePercent: 100
-  cooldown: 25
+  damagePercent: 20
+  cooldown: 20
   appearChance:
   - 20
-  - 15
+  - 20
   - 0

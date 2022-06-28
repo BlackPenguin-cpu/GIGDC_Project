@@ -66,7 +66,7 @@ public class Summoner : BaseEnemy
     {
         for (int i = -1; i < 2; i += 2)
         {
-            ObjectPool.Instance.CreateObj(m_Soul, transform.position + new Vector3(i, 1, 0), Quaternion.identity);
+            ObjectPool.Instance.CreateObj(m_Soul, transform.position + new Vector3(i, dimensionType == DimensionType.OVER ? 1 : -1, 0), Quaternion.identity);
         }
         ObjectPool.Instance.CreateObj(m_Skull, transform.position, Quaternion.identity);
 
