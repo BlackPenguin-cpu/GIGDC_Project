@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SolarGodLight : BaseSkill
+public class EletricField : BaseSkill
 {
     private BoxCollider2D boxCollider2D;
-    private Animator animator;
+    private float attackSpeed = 1;
+    private float duration = 10;
     protected override void Action()
     {
         RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxCollider2D.offset, boxCollider2D.size, 0, Vector2.right, 0);
@@ -14,22 +15,29 @@ public class SolarGodLight : BaseSkill
         {
             if (rays[i].collider.TryGetComponent(out BaseEnemy enemy) && enemy.dimensionType == dimensionType)
             {
-                player.Attack(enemy, DefaultReturnDamage());
-                enemy.buffList.stun = 1.5f;
+                player.Attack(enemy, 30 / 100 * player.stat._attackDamage);
             }
         }
-    }
-    void AnimEnd()
-    {
-        ObjectPool.Instance.DeleteObj(gameObject);
     }
     public override void OnObjCreate()
     {
         base.OnObjCreate();
-        animator = GetComponent<Animator>();
         boxCollider2D = GetComponent<BoxCollider2D>();
-
-        animator.Play("SolarGodLight");
+        attackSpeed = 1;
+        duration = 10;
     }
-
+    private void Update()
+    {
+        duration -= Time.deltaTime;
+        attackSpeed -= Time.deltaTime;
+        if (attackSpeed < 0)
+        {
+            Action();
+            attackSpeed = 1;
+        }
+        if (duration < 0)
+        {
+            ObjectPool.Instance.DeleteObj(gameObject);
+        }
+    }
 }

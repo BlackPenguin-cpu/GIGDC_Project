@@ -645,8 +645,9 @@ public class Player : Entity, ITypePlayer
     {
         Attack(target.GetComponent<BaseEnemy>(), atkDmg);
     }
-    public void Attack(BaseEnemy target, float atkDmg)
+    public void Attack(BaseEnemy target, float atkDmg, DimensionType dimensionType = DimensionType.NONE)
     {
+        if (target.dimensionType != dimensionType) return;
         bool isCrit = Random.Range(0, 100) < stat._crit;
         if (isCrit)
         {
