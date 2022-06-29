@@ -33,6 +33,7 @@ public class SkillManager : MonoBehaviour
             SkillList[skill.name] = skill;
         }
     }
+    
     public void UseSkill(string name, DimensionType dimensionType)
     {
         BaseSkill skill = SkillList[name];
@@ -40,4 +41,5 @@ public class SkillManager : MonoBehaviour
             (skill.gameObject, new Vector3(player.transform.position.x, skill.StartPosY * (dimensionType == DimensionType.OVER ? 1 : -1)), Quaternion.identity)
             .GetComponent<BaseSkill>().dimensionType = dimensionType;
     }
+
 }
