@@ -8,6 +8,7 @@ public abstract class BaseSkill : MonoBehaviour, IObjectPoolingObj
     public SkillScript SkillInfo;
     protected SpriteRenderer sprite;
     protected Player player;
+    public float StartPosY;
 
     public virtual void OnObjCreate()
     {

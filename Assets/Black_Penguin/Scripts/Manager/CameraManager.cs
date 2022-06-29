@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum CameraState
 {
@@ -11,8 +12,9 @@ public class CameraManager : MonoBehaviour
 {
     static public CameraManager Instance;
 
-    private Vector3 startPos;
     public CameraState state;
+    private Vector3 startPos;
+    [SerializeField] private Image LightingImg;
     private void Awake()
     {
         Instance = this;
@@ -42,6 +44,10 @@ public class CameraManager : MonoBehaviour
     {
         StartCoroutine(CameraShakeCoroutine(duration, Scale, delay));
     }
+    public void Lighting(float duration, float alpha)
+    {
+        StartCoroutine(LightingCoroutine(duration, alpha));
+    }
     IEnumerator CameraShakeCoroutine(float duration, float Scale, float delay)
     {
         Vector3 pos = transform.position;
@@ -55,6 +61,16 @@ public class CameraManager : MonoBehaviour
             nowTime = Time.time;
             yield return new WaitForSeconds(delay);
             transform.position = pos;
+        }
+    }
+    public IEnumerator LightingCoroutine(float duration, float alpha)
+    {
+        LightingImg.color = new Color(1, 1, 1, alpha);
+        while (LightingImg.color.a > 0)
+        {
+            LightingImg.color = new Color(1, 1, 1, alpha);
+            alpha -= Time.deltaTime / duration;
+            yield return null;
         }
     }
 }

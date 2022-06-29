@@ -97,3 +97,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dimensionType: 2
   SkillInfo: {fileID: 11400000, guid: 31c6fd39acb342a4d8e3d9d9cb9507cf, type: 2}
+  StartPosY: 1
