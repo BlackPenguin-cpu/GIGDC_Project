@@ -14,7 +14,7 @@ public class ZeusFury : BaseSkill
     }
     private void OnLighting()
     {
-        CameraManager.Instance.CameraShake(0.4f, 0.3f, 0.05f);
+        CameraManager.Instance.CameraShake(0.4f, 0.3f, 0.03f);
         RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxColliders[0].offset, boxColliders[0].size, 0, Vector2.right, 0);
 
         for (int i = 0; i < rays.Length; i++)
