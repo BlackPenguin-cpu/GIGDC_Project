@@ -44,9 +44,9 @@ public class CameraManager : MonoBehaviour
     {
         StartCoroutine(CameraShakeCoroutine(duration, Scale, delay));
     }
-    public void Lighting(float duration, float alpha)
+    public void ScreenFade(float duration, float alpha)
     {
-        StartCoroutine(LightingCoroutine(duration, alpha));
+        StartCoroutine(ScreenFadeCoroutine(duration, alpha));
     }
     IEnumerator CameraShakeCoroutine(float duration, float Scale, float delay)
     {
@@ -63,7 +63,7 @@ public class CameraManager : MonoBehaviour
             transform.position = pos;
         }
     }
-    public IEnumerator LightingCoroutine(float duration, float alpha)
+    public IEnumerator ScreenFadeCoroutine(float duration, float alpha)
     {
         LightingImg.color = new Color(1, 1, 1, alpha);
         while (LightingImg.color.a > 0)

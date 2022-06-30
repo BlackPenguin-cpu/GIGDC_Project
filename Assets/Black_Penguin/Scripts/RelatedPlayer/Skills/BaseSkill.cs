@@ -6,10 +6,12 @@ public abstract class BaseSkill : MonoBehaviour, IObjectPoolingObj
 {
     public DimensionType dimensionType = DimensionType.NONE;
     public SkillScript SkillInfo;
+    public float StartPosY;
+    public float curCooldown;
+    public bool canUseSkill;
+
     protected SpriteRenderer sprite;
     protected Player player;
-    public float StartPosY;
-
     public virtual void OnObjCreate()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -33,6 +35,14 @@ public abstract class BaseSkill : MonoBehaviour, IObjectPoolingObj
     {
         return SkillInfo.damagePercent / 100 * player.stat._attackDamage;
     }
-
+    protected virtual void Update()
+    {
+        curCooldown += Time.deltaTime;
+        Mathf.Clamp(curCooldown, 0, SkillInfo._cooldown);
+        if (curCooldown >= SkillInfo._cooldown)
+        {
+            canUseSkill = true;
+        }
+    }
     protected abstract void Action();
 }
