@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SkillSo
   m_EditorClassIdentifier: 
   Skills:
-  - Name: "\uB9C8\uBC95 \uD3EC\uD0D1"
+  - Name: MagicTurret
     Icon: {fileID: 21300000, guid: f0901230e0724c4459918e09af242a5a, type: 3}
     Explanation: "\uC790\uB3D9\uC73C\uB85C \uC801\uC744 \uACF5\uACA9\uD558\uB294
       \uB9C8\uBC95\uC758 \uD3EC\uD0D1"
@@ -24,7 +24,7 @@ MonoBehaviour:
     Gold_02: 0
     Percent_03: 0
     Gold_03: 0
-  - Name: "\uC8FD\uC74C\uC758 \uD0DC\uD48D"
+  - Name: DeathStrom
     Icon: {fileID: 21300000, guid: 1042f73155cb525448d54037b420e534, type: 3}
     Explanation: "\uAC70\uB300\uD55C \uD0DC\uD48D\uC774 \uBAA8\uB4E0\uAC78 \uD729\uC4F4\uB2E4."
     CoolTime: 40
@@ -34,7 +34,7 @@ MonoBehaviour:
     Gold_02: 4360
     Percent_03: 5
     Gold_03: 6221
-  - Name: "\uD0DC\uC591\uC2E0\uC758 \uBE5B"
+  - Name: SolarGodLight
     Icon: {fileID: 21300000, guid: 03395ee9d0149de409a35a35d188e787, type: 3}
     Explanation: "\uD0DC\uC591\uC2E0\uC758 \uC131\uC2A4\uB7EC\uC6B4 \uBE5B\uC774
       \uB208\uC744 \uBA40\uAC8C\uD55C\uB2E4."
@@ -45,7 +45,7 @@ MonoBehaviour:
     Gold_02: 4360
     Percent_03: 0
     Gold_03: 0
-  - Name: "\uC2E0\uC758 \uACE1\uAD2D\uC774"
+  - Name: GodOfGockGang-E
     Icon: {fileID: 21300000, guid: 79aaa75c6e0216a4383dc1a6bb87eea5, type: 3}
     Explanation: "\uC0AC\uC6A9\uD558\uBA74 \uB370\uBBF8\uC9C0\uC640 \uACE8\uB4DC\uB97C
       \uC5BB\uB294\uB2E4."
@@ -56,7 +56,7 @@ MonoBehaviour:
     Gold_02: 4360
     Percent_03: 0
     Gold_03: 0
-  - Name: "\uC9C0\uB2C8\uC758 \uB9C8\uBC95"
+  - Name: Jeany
     Icon: {fileID: 21300000, guid: 89a3de6e46b2c8147a0e10fc843fba35, type: 3}
     Explanation: "\uB7A8\uD504\uC758 \uBD09\uC778\uB41C \uB9C8\uC2E0\uC774 \uC77C\uACA9\uC744
       \uB0A0\uB9B0\uB2E4."
@@ -77,7 +77,7 @@ MonoBehaviour:
     Gold_02: 4360
     Percent_03: 20
     Gold_03: 6221
-  - Name: "\uBA85\uACC4\uC758 \uC190\uAE38"
+  - Name: AtemHands
     Icon: {fileID: 21300000, guid: 5b0b483e0b4e58b4292ebb791ffb67d3, type: 3}
     Explanation: "\uB9DD\uC790\uB4E4\uC758 \uC190\uC774 \uC801\uB4E4\uC744 \uACF5\uACA9\uD55C\uB2E4."
     CoolTime: 40
@@ -87,7 +87,7 @@ MonoBehaviour:
     Gold_02: 4360
     Percent_03: 10
     Gold_03: 6221
-  - Name: "\uC81C\uC6B0\uC2A4\uC758 \uCC9C\uBC8C"
+  - Name: ZeusFury
     Icon: {fileID: 21300000, guid: d6928cc2be2f2da44b6f3efefd6dbfc1, type: 3}
     Explanation: "\uC81C\uC6B0\uC2A4\uC758 \uBC88\uAC1C\uAC00 \uCE58\uACE0 \uC804\uAE30\uAC00
       \uBC14\uB2E5\uC744 \uB4A4\uC5CE\uB294\uB2E4."
@@ -119,3 +119,23 @@ MonoBehaviour:
     Gold_02: 5000
     Percent_03: 15
     Gold_03: 6221
+  - Name: LonginusSpear
+    Icon: {fileID: 21300000, guid: 495475bf74c8526438bad28ecf4cb411, type: 3}
+    Explanation: 
+    CoolTime: 0
+    Percent_01: 0
+    Gold_01: 0
+    Percent_02: 0
+    Gold_02: 0
+    Percent_03: 0
+    Gold_03: 0
+  - Name: SpaceBang
+    Icon: {fileID: 21300000, guid: a500defe87a890c488f9a0fbe941dc3d, type: 3}
+    Explanation: 
+    CoolTime: 0
+    Percent_01: 0
+    Gold_01: 0
+    Percent_02: 0
+    Gold_02: 0
+    Percent_03: 0
+    Gold_03: 0

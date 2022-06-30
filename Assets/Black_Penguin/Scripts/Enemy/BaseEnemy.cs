@@ -104,6 +104,7 @@ public class BaseEnemy : Entity, IObjectPoolingObj
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
+        rigid = GetComponent<Rigidbody2D>();
         attackCollisions = GetComponentsInChildren<AttackCollision>();
 
         hp = _maxHp;
