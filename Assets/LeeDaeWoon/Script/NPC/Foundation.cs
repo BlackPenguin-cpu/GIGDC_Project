@@ -10,24 +10,27 @@ public class Foundation : MonoBehaviour
     void Awake() => Inst = this;
 
     [Header("제단")]
-    public GameObject Magic_Circle;
-    public float Speed;
+    public float Speed; // 마법진 돌아가는 속도
+    public GameObject Magic_Circle; // 마법진
 
     [Header("업그레이드 버튼")]
-    public GameObject Upgrade;
-    public Text Upgrade_Text;
-    public Image F_Button;
-    public bool Collision_Check = true;
+    public Image F_Button; // 상호작용 버튼
+    public GameObject Upgrade; // 상호작용 오브젝트
+    public Text Upgrade_Text; // 상호작용 텍스트
+    public bool Collision_Check = true; // 충돌 했는지 체크
 
     [Header("마력강화 창")]
-    private float timer;
-    public GameObject Malyeog_Window;
-    public RectTransform MalyeogRect_Window;
-    public GameObject Pole_01;
-    public GameObject Pole_02;
+    private float timer; // 창 열리는 속도
+    public GameObject Pole_01; // 봉_01
+    public GameObject Pole_02; // 봉_02
+    public GameObject Malyeog_Window; // 창 오브젝트
+    public RectTransform MalyeogRect_Window; // 창
 
-    public Text Title;
-    public Text Explanation;
+    public Text Title; // 마력 이름
+    public Text Explanation; // 마력 설명
+    public GameObject Close_Btn; // 닫기 버튼
+    public GameObject Price_obj; // 가격 오브젝트
+    public Text Dimensional_Price; // 마력 가격
 
     void Start()
     {
@@ -39,7 +42,9 @@ public class Foundation : MonoBehaviour
     {
         MagicCircle_Rotation();
         Foundation_Click();
+        #region 월드 좌표를 스크린 좌표로 변경을 해준다.
         Upgrade.transform.localPosition = Camera.main.WorldToScreenPoint(this.gameObject.transform.localPosition + new Vector3(-5.2f, -4.4f, 0));
+        #endregion
     }
 
     public void MagicCircle_Rotation() => Magic_Circle.transform.Rotate(new Vector3(0, 0, Speed * Time.deltaTime));
@@ -53,6 +58,8 @@ public class Foundation : MonoBehaviour
     }
 
     #region 창 연출
+    public void Close() => StartCoroutine(Close_Window());
+
     public IEnumerator Open_Window()
     {
         Malyeog_Window.SetActive(true);
@@ -66,6 +73,21 @@ public class Foundation : MonoBehaviour
             timer += Time.deltaTime * 3f;
             yield return null;
         }
+    }
+
+    public IEnumerator Close_Window()
+    {
+        timer = 0f;
+        Pole_01.transform.DOLocalMoveY(30, 0.5f);
+        Pole_02.transform.DOLocalMoveY(-30, 0.5f);
+
+        while (timer < 1)
+        {
+            MalyeogRect_Window.sizeDelta = new Vector2(1696.425f, Mathf.Lerp(931.6482f, 0, timer));
+            timer += Time.deltaTime * 3f;
+            yield return null;
+        }
+        Malyeog_Window.SetActive(false);
     }
     #endregion
 
