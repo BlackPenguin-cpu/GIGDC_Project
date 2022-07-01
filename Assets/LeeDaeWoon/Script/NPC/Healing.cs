@@ -130,7 +130,7 @@ public class Healing : MonoBehaviour
     #region 충돌체크
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && Healing_Colider_Check == true && Healing_Purchase_Check == true)
+        if ((collision.CompareTag("Player") || collision.GetComponent<ITypePlayer>() != null) && Healing_Colider_Check == true && Healing_Purchase_Check == true)
         {
             Healing_Colider_Check = false;
             Healing_Window.SetActive(true);
@@ -140,7 +140,7 @@ public class Healing : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && Healing_Colider_Check == false && Healing_Purchase_Check == true)
+        if ((collision.CompareTag("Player") || collision.GetComponent<ITypePlayer>() != null) && Healing_Colider_Check == false && Healing_Purchase_Check == true)
         {
             Healing_Colider_Check = true;
             StartCoroutine(HealingWindow_Close_Coroutine());

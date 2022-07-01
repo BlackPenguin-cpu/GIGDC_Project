@@ -354,7 +354,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2597886528859928958}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 960, y: 540, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -395,7 +395,7 @@ MonoBehaviour:
   Skill_Up:
   - {fileID: 11400000, guid: d0fefc4c4bfc7d84595508500426998e, type: 2}
   Skill_Down:
-  - {fileID: 11400000, guid: d9f100c8b1f93ba4ba4d3a7fd067e1d4, type: 2}
+  - {fileID: 11400000, guid: 7a7d32e824dce4a4d9d6bf0fc158d2f7, type: 2}
   Skill_Have: []
   Skill: []
   Skill_Shop: []
