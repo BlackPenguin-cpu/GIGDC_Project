@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/LeeDaeWoon/Scene/Title.unity
     guid: 45aacfb37aae54c42bceec8dffcb68b2
+  - enabled: 1
+    path: Assets/LeeDaeWoon/Scene/Dimension.unity
+    guid: 536f987e07172264587b3fd9ab4360c0
   m_configObjects: {}

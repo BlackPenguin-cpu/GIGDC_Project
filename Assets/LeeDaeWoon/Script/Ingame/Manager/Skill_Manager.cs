@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Skill_Manager : MonoBehaviour
 {
@@ -126,23 +127,23 @@ public class Skill_Manager : MonoBehaviour
         //return 0;
         //}        
 
-            //if(Wave가 15일 경우)
-            //{
-            //foreach (Skill addper in Percent_Skill)
-            //{
-            //    SumPer += addper.Percent_03;
-            //}
-            //int percent_03 = Random.Range(1, SumPer);
-            //for (int i = 0; i < Percent_Skill.Count; i++)
-            //{
-            //    if (percent_03 < Percent_Skill[i].Percent_03)
-            //    {
-            //        return i;
-            //    }
-            //    percent_03 -= Percent_Skill[i].Percent_03;
-            //}
-            //return 0;
-            //}
+        //if(Wave가 15일 경우)
+        //{
+        //foreach (Skill addper in Percent_Skill)
+        //{
+        //    SumPer += addper.Percent_03;
+        //}
+        //int percent_03 = Random.Range(1, SumPer);
+        //for (int i = 0; i < Percent_Skill.Count; i++)
+        //{
+        //    if (percent_03 < Percent_Skill[i].Percent_03)
+        //    {
+        //        return i;
+        //    }
+        //    percent_03 -= Percent_Skill[i].Percent_03;
+        //}
+        //return 0;
+        //}
     }
 
     #region 스킬 획득 확인
@@ -227,18 +228,21 @@ public class Skill_Manager : MonoBehaviour
     #region 스킬 소환
     public void AddSkill()
     {
-        int SkillIndex = 0;
-        // 스킬 소환
-        Skill.Clear();
-        var SkillObject = Instantiate(SkillPrefab, this.transform.position, Quaternion.identity, GameObject.Find("SkillShop_Canvas").transform);
-        var card = SkillObject.GetComponent<Skill_List>();
-
-        for (int i = 0; i < 3; i++)
+        if (SceneManager.GetActiveScene().name == "Dimension")
         {
-            RandomTest = Skill_Percent(SkillBuffer);
-            Skill.Add(SkillBuffer[RandomTest]);
-            card.SkillCard(Skill[i], SkillIndex++);
-            SkillBuffer.RemoveAt(RandomTest);
+            int SkillIndex = 0;
+            // 스킬 소환
+            Skill.Clear();
+            var SkillObject = Instantiate(SkillPrefab, this.transform.position, Quaternion.identity, GameObject.Find("SkillShop_Canvas").transform);
+            var card = SkillObject.GetComponent<Skill_List>();
+
+            for (int i = 0; i < 3; i++)
+            {
+                RandomTest = Skill_Percent(SkillBuffer);
+                Skill.Add(SkillBuffer[RandomTest]);
+                card.SkillCard(Skill[i], SkillIndex++);
+                SkillBuffer.RemoveAt(RandomTest);
+            }
         }
     }
     #endregion
@@ -369,6 +373,11 @@ public class Skill_Manager : MonoBehaviour
 
     public IEnumerator Skill_Change()
     {
+        Skill_Up.Add(Skill_Down[0]);
+        Skill_Down.Add(Skill_Up[0]);
+        Skill_Up.RemoveAt(0);
+        Skill_Down.RemoveAt(0);
+
         if (AS_Limit == true && Limit == true)
         {
             Limit = false;
