@@ -65,9 +65,7 @@ public class Skill_Manager : MonoBehaviour
     public void AddList()
     {
         for (int i = 0; i < SkillSo.Skills.Count; i++)
-        {
             SkillBuffer.Add(SkillSo.Skills[i]);
-        }
     }
 
     public int Skill_Percent(List<Skill> Percent_Skill)

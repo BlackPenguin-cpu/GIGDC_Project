@@ -203,9 +203,8 @@ public class Skill_Window : MonoBehaviour
 
             // 한 번 이상 스킬을 적용시킬 시 실행시킨다.
             else
-            {
                 AfterPurchase_Window.SetActive(false);
-            }
+
             UpDown_Limit = true;
         }
 
@@ -237,10 +236,9 @@ public class Skill_Window : MonoBehaviour
 
             // AS_Limit = Shift를 통한 스킬 전환 체크
             if (Skill_Manager.Inst.AS_Limit_02 == true) // true일 경우 S스킬에 구매한 스킬을 적용시킨다.
-            {
                 Basics_Skill_S.sprite = SeletSkill.Icon;
-            }
-            else Basics_Skill_A.sprite = SeletSkill.Icon;
+            else 
+                Basics_Skill_A.sprite = SeletSkill.Icon;
 
             // 한 번 미만 스킬을 적용시킬 시 실행시킨다.
             AfterPurchase_Skill.transform.position = SaveSkillPos[0];
@@ -252,11 +250,10 @@ public class Skill_Window : MonoBehaviour
                 MoreThanOnce_Purchase = false;
                 Down_MoreThanOnce_Purchase = false;
             }
+
             // 한 번 이상 스킬을 적용시킬 시 실행시킨다.
             else
-            {
                 AfterPurchase_Window.SetActive(false);
-            }
             UpDown_Limit = true;
         }
     }
