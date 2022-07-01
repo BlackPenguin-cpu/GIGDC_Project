@@ -9,7 +9,9 @@ public class ZeusFury : BaseSkill
     private float duration = 10;
     protected override void Action()
     {
-        ObjectPool.Instance.CreateObj(Field, gameObject.transform.position, Quaternion.identity);
+        Field.GetComponent<BaseSkill>().dimensionType = dimensionType;
+        ObjectPool.Instance.CreateObj
+            (Field, gameObject.transform.position + (dimensionType == DimensionType.OVER ? Vector3.up : Vector3.down) * 0.25f, Quaternion.identity);
         ObjectPool.Instance.DeleteObj(gameObject);
     }
     private void OnLighting()

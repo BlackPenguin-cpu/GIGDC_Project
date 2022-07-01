@@ -20,7 +20,7 @@ MonoBehaviour:
   - 4360
   - 6221
   damagePercent: 40
-  cooldown: 40
+  originalCooldown: 40
   appearChance:
   - 2
   - 10

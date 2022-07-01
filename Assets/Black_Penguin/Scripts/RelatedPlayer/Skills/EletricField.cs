@@ -15,7 +15,7 @@ public class EletricField : BaseSkill
         {
             if (rays[i].collider.TryGetComponent(out BaseEnemy enemy) && enemy.dimensionType == dimensionType)
             {
-                player.Attack(enemy, 30 / 100 * player.stat._attackDamage);
+                player.Attack(enemy, 0.3f * player.stat._attackDamage);
             }
         }
     }
