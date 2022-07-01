@@ -6,10 +6,10 @@ public abstract class BaseSkill : MonoBehaviour, IObjectPoolingObj
 {
     public DimensionType dimensionType = DimensionType.NONE;
     public SkillScript SkillInfo;
-    protected SpriteRenderer sprite;
-    protected Player player;
     public float StartPosY;
 
+    protected SpriteRenderer sprite;
+    protected Player player;
     public virtual void OnObjCreate()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -33,6 +33,5 @@ public abstract class BaseSkill : MonoBehaviour, IObjectPoolingObj
     {
         return SkillInfo.damagePercent / 100 * player.stat._attackDamage;
     }
-
     protected abstract void Action();
 }

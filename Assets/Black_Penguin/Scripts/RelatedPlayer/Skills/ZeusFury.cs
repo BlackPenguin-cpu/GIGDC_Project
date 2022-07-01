@@ -28,7 +28,7 @@ public class ZeusFury : BaseSkill
     public override void OnObjCreate()
     {
         base.OnObjCreate();
-        CameraManager.Instance.Lighting(0.2f, 0.3f);
+        CameraManager.Instance.ScreenFade(0.2f, 0.3f);
         boxColliders = transform.GetComponentsInChildren<BoxCollider2D>();
         duration = 10;
     }

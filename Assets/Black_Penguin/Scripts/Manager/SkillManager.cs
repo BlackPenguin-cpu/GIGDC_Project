@@ -7,7 +7,9 @@ public class SkillManager : MonoBehaviour
 {
     public static SkillManager Instance;
     public Dictionary<string, BaseSkill> SkillList = new Dictionary<string, BaseSkill>();
+    public Dictionary<string, float> SkillsCooldown = new Dictionary<string, float>();
 
+    private Skill_Manager skillManager;
     private Player player;
 
     private void Awake()
@@ -25,21 +27,42 @@ public class SkillManager : MonoBehaviour
 
     private void Start()
     {
+        skillManager = Skill_Manager.Inst;
         player = Player.Instance;
         BaseSkill[] Skills = Resources.LoadAll<BaseSkill>("Skills/SkillObj/");
 
         foreach (BaseSkill skill in Skills)
         {
-            SkillList[skill.name] = skill;
+            SkillList.Add(skill.name, skill);
+            SkillsCooldown.Add(skill.name, 0);
         }
     }
-    
+    private void Update()
+    {
+        if (SkillsCooldown.ContainsKey(skillManager.Skill_Up[0].Name))
+            SkillsCooldown[skillManager.Skill_Up[0].Name] -= Time.deltaTime;
+
+        if (SkillsCooldown.ContainsKey(skillManager.Skill_Down[0].Name))
+            SkillsCooldown[skillManager.Skill_Down[0].Name] -= Time.deltaTime;
+
+        //디버깅용 치트키
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            UseSkill("ZeusFury", DimensionType.OVER);
+        }
+    }
+
+    //TODO: 스킬 스트링을 담고있는 클래스 or 구조체를 만들어 스트링으로 넣는 인수를 최소화 시키자
     public void UseSkill(string name, DimensionType dimensionType)
     {
         BaseSkill skill = SkillList[name];
-        ObjectPool.Instance.CreateObj
-            (skill.gameObject, new Vector3(player.transform.position.x, skill.StartPosY * (dimensionType == DimensionType.OVER ? 1 : -1)), Quaternion.identity)
-            .GetComponent<BaseSkill>().dimensionType = dimensionType;
+        if (SkillsCooldown.TryGetValue(name, out float cooldown) && cooldown >= skill.SkillInfo._cooldown)
+        {
+            SkillsCooldown[name] = SkillList[name].SkillInfo._cooldown;
+            ObjectPool.Instance.CreateObj
+                (skill.gameObject, new Vector3(player.transform.position.x, skill.StartPosY * (dimensionType == DimensionType.OVER ? 1 : -1)), Quaternion.identity)
+                .GetComponent<BaseSkill>().dimensionType = dimensionType;
+        }
     }
 
 }
