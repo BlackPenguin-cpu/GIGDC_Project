@@ -55,7 +55,7 @@ public class Skill_Window : MonoBehaviour
     private bool UP_MoreThanOnce_Purchase = true; // 윗 스킬에 1번 이상 스킬을 적용할 시
     private bool Down_MoreThanOnce_Purchase = true; // 아랫 스킬에 1번 이상 스킬을 적용할 시
 
-    SkillScript SeletSkill = new SkillScript();
+    SkillScript SeletSkill;
 
     void Start()
     {
