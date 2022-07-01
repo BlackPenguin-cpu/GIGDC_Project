@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129fb05fa0e490e4380e18d217d9d137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dimensionType: 2
+  dimensionType: 0
   SkillInfo: {fileID: 11400000, guid: d0fefc4c4bfc7d84595508500426998e, type: 2}
-  StartPosY: 0
+  StartPosY: 2
   spear: {fileID: 6714966605293544527, guid: 310ee783df49d8f43b120a3eaaacce9a, type: 3}

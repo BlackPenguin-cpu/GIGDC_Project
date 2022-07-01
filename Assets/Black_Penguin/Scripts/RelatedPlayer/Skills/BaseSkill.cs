@@ -14,19 +14,8 @@ public abstract class BaseSkill : MonoBehaviour, IObjectPoolingObj
     {
         sprite = GetComponent<SpriteRenderer>();
         player = Player.Instance;
-        dimensionType = DimensionType.NONE;
-        if (dimensionType == DimensionType.NONE)
-        {
-            if (transform.position.y > 0)
-            {
-                dimensionType = DimensionType.OVER;
-            }
-            else if (transform.position.y < 0)
-            {
-                dimensionType = DimensionType.UNDER;
-            }
-        }
 
+        sprite.flipY = dimensionType == DimensionType.UNDER;
         sprite.material = (dimensionType == DimensionType.OVER ? GameManager.Instance.OverMaterial : GameManager.Instance.UnderMaterial);
     }
     public float DefaultReturnDamage()

@@ -45,8 +45,6 @@ public class SpaceBang : BaseSkill
         else
             boxCollider2D.offset = new Vector2(0, 2);
 
-        Debug.Log(boxCollider2D.offset.y);
-
         Action();
     }
     private void Update()
