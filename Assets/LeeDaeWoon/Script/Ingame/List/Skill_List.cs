@@ -50,22 +50,22 @@ public class Skill_List : MonoBehaviour
     {
         if (i == 0)
         {
-            Left_Name.text = this.Left_Skill.name;
-            Left_CoolTime.text = this.Left_Skill._cooldown.ToString();
+            Left_Name.text = this.Left_Skill.SkillName;
+            Left_CoolTime.text = this.Left_Skill.originalCooldown.ToString();
             Left_Explanation.text = this.Left_Skill.Description;
         }
 
         else if (i == 1)
         {
-            Among_Name.text = this.Among_Skill.name;
-            Among_CoolTime.text = this.Among_Skill._cooldown.ToString();
+            Among_Name.text = this.Among_Skill.SkillName;
+            Among_CoolTime.text = this.Among_Skill.originalCooldown.ToString();
             Among_Explanation.text = this.Among_Skill.Description;
         }
 
         else if (i == 2)
         {
-            Right_Name.text = this.Right_Skill.name;
-            Right_CoolTime.text = this.Right_Skill._cooldown.ToString();
+            Right_Name.text = this.Right_Skill.SkillName;
+            Right_CoolTime.text = this.Right_Skill.originalCooldown.ToString();
             Right_Explanation.text = this.Right_Skill.Description;
         }
 
@@ -82,8 +82,8 @@ public class Skill_List : MonoBehaviour
         {
             case 0:
                 this.Left_Skill = skill;
-                Left_Name.text = this.Left_Skill.name;
-                Left_CoolTime.text = this.Left_Skill._cooldown.ToString();
+                Left_Name.text = this.Left_Skill.SkillName;
+                Left_CoolTime.text = this.Left_Skill.originalCooldown.ToString();
                 Left_Explanation.text = this.Left_Skill.Description;
                 //if (Wave啊 5老 版快)
                 //{
@@ -106,8 +106,8 @@ public class Skill_List : MonoBehaviour
             case 1:
                 this.Among_Skill = skill;
 
-                Among_Name.text = this.Among_Skill.name;
-                Among_CoolTime.text = this.Among_Skill._cooldown.ToString();
+                Among_Name.text = this.Among_Skill.SkillName;
+                Among_CoolTime.text = this.Among_Skill.originalCooldown.ToString();
                 Among_Explanation.text = this.Among_Skill.Description;
                 //if (Wave啊 5老 版快)
                 //{
@@ -129,8 +129,8 @@ public class Skill_List : MonoBehaviour
 
             case 2:
                 this.Right_Skill = skill;
-                Right_Name.text = this.Right_Skill.name;
-                Right_CoolTime.text = this.Right_Skill._cooldown.ToString();
+                Right_Name.text = this.Right_Skill.SkillName;
+                Right_CoolTime.text = this.Right_Skill.originalCooldown.ToString();
                 Right_Explanation.text = this.Right_Skill.Description;
                 //if (Wave啊 5老 版快)
                 //{

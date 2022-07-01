@@ -19,14 +19,14 @@ public class SkillScript : ScriptableObject
     /// 데미지 배울 
     /// </summary>
     public float damagePercent;
-    [SerializeField] private float cooldown;
+    public float originalCooldown;
     public float _cooldown
     {
         get
         {
-            return cooldown * (1 - Player.Instance.stat._cooldown);
+            return originalCooldown * (1 - Player.Instance.stat._cooldown);
         }
-        set { cooldown = value; }
+        set { originalCooldown = value; }
     }
     public float[] appearChance = new float[3];
 }
