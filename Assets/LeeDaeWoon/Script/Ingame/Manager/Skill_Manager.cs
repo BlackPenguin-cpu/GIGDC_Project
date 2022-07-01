@@ -175,16 +175,18 @@ public class Skill_Manager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A) && isCoolDown_01 == false && AS_Limit == true)
         {
+            A_Skill_CoolTime = Skill_Up[0]._cooldown;
             A_Skill_Text_Object.SetActive(true);
             FillAmount_Skill_A.fillAmount = 1f;
+            A_Current_CoolTime = A_Skill_CoolTime;
             StartCoroutine(A_CoolTime());
 
-            A_Current_CoolTime = A_Skill_CoolTime;
             A_Skill_Text.text = "" + A_Current_CoolTime;
 
             StartCoroutine(A_CoolTimeCounter());
 
             skillManager.UseSkill(Skill_Up[0].name, DimensionType.OVER);
+
             isCoolDown_01 = true;
         }
 
@@ -194,7 +196,6 @@ public class Skill_Manager : MonoBehaviour
             FillAmount_Skill_A.fillAmount = 1f;
             StartCoroutine(A_CoolTime());
 
-            A_Current_CoolTime = A_Skill_CoolTime;
             A_Skill_Text.text = "" + A_Current_CoolTime;
 
             StartCoroutine(A_CoolTimeCounter());
@@ -208,7 +209,7 @@ public class Skill_Manager : MonoBehaviour
     {
         while (FillAmount_Skill_A.fillAmount > 0)
         {
-            FillAmount_Skill_A.fillAmount -= 1 * Time.deltaTime / A_Skill_CoolTime;
+            FillAmount_Skill_A.fillAmount = A_Current_CoolTime / A_Skill_CoolTime;
             yield return null;
         }
 
@@ -223,7 +224,7 @@ public class Skill_Manager : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             A_Current_CoolTime -= 1f;
-            A_Skill_Text.text = "" + A_Current_CoolTime;
+            A_Skill_Text.text = A_Current_CoolTime.ToString();
         }
         yield break;
     }
@@ -234,11 +235,12 @@ public class Skill_Manager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S) && isCoolDown_02 == false && AS_Limit_02 == true)
         {
+            S_Skill_CoolTime = Skill_Down[0]._cooldown;
             S_Skill_Text_Object.SetActive(true);
             FillAmount_Skill_S.fillAmount = 1f;
+            S_Current_CoolTime = S_Skill_CoolTime;
             StartCoroutine(S_CoolTime());
 
-            S_Current_CoolTime = S_Skill_CoolTime;
             S_Skill_Text.text = "" + S_Current_CoolTime;
 
             skillManager.UseSkill(Skill_Down[0].name, DimensionType.UNDER);
@@ -253,7 +255,6 @@ public class Skill_Manager : MonoBehaviour
             FillAmount_Skill_S.fillAmount = 1f;
             StartCoroutine(S_CoolTime());
 
-            S_Current_CoolTime = S_Skill_CoolTime;
             S_Skill_Text.text = "" + S_Current_CoolTime;
 
             StartCoroutine(S_CoolTimeCounter());
@@ -267,7 +268,7 @@ public class Skill_Manager : MonoBehaviour
     {
         while (FillAmount_Skill_S.fillAmount > 0)
         {
-            FillAmount_Skill_S.fillAmount -= 1 * Time.deltaTime / S_Skill_CoolTime;
+            FillAmount_Skill_S.fillAmount = S_Current_CoolTime / S_Skill_CoolTime;
             yield return null;
         }
 
@@ -282,7 +283,7 @@ public class Skill_Manager : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             S_Current_CoolTime -= 1f;
-            S_Skill_Text.text = "" + S_Current_CoolTime;
+            S_Skill_Text.text =  S_Current_CoolTime.ToString();
         }
         yield break;
     }

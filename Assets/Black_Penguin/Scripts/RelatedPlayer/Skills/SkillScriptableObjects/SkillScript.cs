@@ -7,7 +7,7 @@ using UnityEngine;
 public class SkillScript : ScriptableObject
 {
     public Sprite sprite;
-    public string SkillName; 
+    public string SkillName;
     [TextArea]
     public string Description;
     /// <summary>
