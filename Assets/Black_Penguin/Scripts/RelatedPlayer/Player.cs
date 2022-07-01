@@ -409,7 +409,15 @@ public class Player : Entity, ITypePlayer
     }
     private void Awake()
     {
-        Instance = this;
+        if (Instance != null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     protected override void Start()
     {
