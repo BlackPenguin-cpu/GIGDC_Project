@@ -6,6 +6,7 @@ using System.Linq;
 public class SkillManager : MonoBehaviour
 {
     public static SkillManager Instance;
+    public List<SkillScript> SkillScriptList = new List<SkillScript>();
     public Dictionary<string, BaseSkill> SkillList = new Dictionary<string, BaseSkill>();
     public Dictionary<string, float> SkillsCooldown = new Dictionary<string, float>();
 
@@ -39,11 +40,11 @@ public class SkillManager : MonoBehaviour
     }
     private void Update()
     {
-        if (SkillsCooldown.ContainsKey(skillManager.Skill_Up[0].Name))
-            SkillsCooldown[skillManager.Skill_Up[0].Name] -= Time.deltaTime;
+        if (SkillsCooldown.ContainsKey(skillManager.Skill_Up[0].name))
+            SkillsCooldown[skillManager.Skill_Up[0].name] -= Time.deltaTime;
 
-        if (SkillsCooldown.ContainsKey(skillManager.Skill_Down[0].Name))
-            SkillsCooldown[skillManager.Skill_Down[0].Name] -= Time.deltaTime;
+        if (SkillsCooldown.ContainsKey(skillManager.Skill_Down[0].name))
+            SkillsCooldown[skillManager.Skill_Down[0].name] -= Time.deltaTime;
 
         //디버깅용 치트키
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -56,13 +57,14 @@ public class SkillManager : MonoBehaviour
     public void UseSkill(string name, DimensionType dimensionType)
     {
         BaseSkill skill = SkillList[name];
-        if (SkillsCooldown.TryGetValue(name, out float cooldown) && cooldown >= skill.SkillInfo._cooldown)
+        if (SkillsCooldown.TryGetValue(name, out float cooldown) && cooldown < skill.SkillInfo._cooldown)
         {
             SkillsCooldown[name] = SkillList[name].SkillInfo._cooldown;
             ObjectPool.Instance.CreateObj
                 (skill.gameObject, new Vector3(player.transform.position.x, skill.StartPosY * (dimensionType == DimensionType.OVER ? 1 : -1)), Quaternion.identity)
                 .GetComponent<BaseSkill>().dimensionType = dimensionType;
         }
+        Debug.Log($"잘못됨 이름:{name} 쿨타임:{cooldown}");
     }
 
 }

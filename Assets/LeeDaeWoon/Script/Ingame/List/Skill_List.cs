@@ -38,9 +38,9 @@ public class Skill_List : MonoBehaviour
     public Text Right_Gold_02;
     public Text Right_Gold_03;
 
-    public Skill Left_Skill;
-    public Skill Among_Skill;
-    public Skill Right_Skill;
+    public SkillScript Left_Skill;
+    public SkillScript Among_Skill;
+    public SkillScript Right_Skill;
     void Start()
     {
 
@@ -50,23 +50,23 @@ public class Skill_List : MonoBehaviour
     {
         if (i == 0)
         {
-            Left_Name.text = this.Left_Skill.Name;
-            Left_CoolTime.text = this.Left_Skill.CoolTime;
-            Left_Explanation.text = this.Left_Skill.Explanation;
+            Left_Name.text = this.Left_Skill.name;
+            Left_CoolTime.text = this.Left_Skill._cooldown.ToString();
+            Left_Explanation.text = this.Left_Skill.Description;
         }
 
         else if (i == 1)
         {
-            Among_Name.text = this.Among_Skill.Name;
-            Among_CoolTime.text = this.Among_Skill.CoolTime;
-            Among_Explanation.text = this.Among_Skill.Explanation;
+            Among_Name.text = this.Among_Skill.name;
+            Among_CoolTime.text = this.Among_Skill._cooldown.ToString();
+            Among_Explanation.text = this.Among_Skill.Description;
         }
 
         else if (i == 2)
         {
-            Right_Name.text = this.Right_Skill.Name;
-            Right_CoolTime.text = this.Right_Skill.CoolTime;
-            Right_Explanation.text = this.Right_Skill.Explanation;
+            Right_Name.text = this.Right_Skill.name;
+            Right_CoolTime.text = this.Right_Skill._cooldown.ToString();
+            Right_Explanation.text = this.Right_Skill.Description;
         }
 
         return;
@@ -76,19 +76,19 @@ public class Skill_List : MonoBehaviour
 
     }
 
-    public void SkillCard(Skill skill, int skillIndex)
+    public void SkillCard(SkillScript skill, int skillIndex)
     {
         switch (skillIndex)
         {
             case 0:
                 this.Left_Skill = skill;
-                Left_Name.text = this.Left_Skill.Name;
-                Left_CoolTime.text = this.Left_Skill.CoolTime;
-                Left_Explanation.text = this.Left_Skill.Explanation;
+                Left_Name.text = this.Left_Skill.name;
+                Left_CoolTime.text = this.Left_Skill._cooldown.ToString();
+                Left_Explanation.text = this.Left_Skill.Description;
                 //if (Wave啊 5老 版快)
                 //{
-                    Left_Gold = this.Left_Skill.Gold_01;
-                    Left_Gold_01.text = "" + Left_Gold;
+                Left_Gold = this.Left_Skill.price[0];
+                Left_Gold_01.text = "" + Left_Gold;
                 //}
                 //if (Wave啊 10老 版快)
                 //{
@@ -100,19 +100,19 @@ public class Skill_List : MonoBehaviour
                 //  Left_Gold = this.Left_Skill.Gold_03;
                 //  Left_Gold_03.text = "" + Left_Gold;
                 //}
-                Left_Skill_Icon.sprite = this.Left_Skill.Icon;
+                Left_Skill_Icon.sprite = this.Left_Skill.sprite;
                 break;
 
             case 1:
                 this.Among_Skill = skill;
 
-                Among_Name.text = this.Among_Skill.Name;
-                Among_CoolTime.text = this.Among_Skill.CoolTime;
-                Among_Explanation.text = this.Among_Skill.Explanation;
+                Among_Name.text = this.Among_Skill.name;
+                Among_CoolTime.text = this.Among_Skill._cooldown.ToString();
+                Among_Explanation.text = this.Among_Skill.Description;
                 //if (Wave啊 5老 版快)
                 //{
-                    Among_Gold = this.Among_Skill.Gold_01;
-                    Among_Gold_01.text = "" + Among_Gold;
+                Among_Gold = this.Among_Skill.price[0];
+                Among_Gold_01.text = "" + Among_Gold;
                 //}
                 //if (Wave啊 10老 版快)
                 //{
@@ -124,18 +124,18 @@ public class Skill_List : MonoBehaviour
                 //  Among_Gold = this.Among_Skill.Gold_03;
                 //  Among_Gold_03.text = "" + Among_Gold;
                 //}
-                Among_Skill_Icon.sprite = this.Among_Skill.Icon;
+                Among_Skill_Icon.sprite = this.Among_Skill.sprite;
                 break;
 
             case 2:
                 this.Right_Skill = skill;
-                Right_Name.text = this.Right_Skill.Name;
-                Right_CoolTime.text = this.Right_Skill.CoolTime;
-                Right_Explanation.text = this.Right_Skill.Explanation;
+                Right_Name.text = this.Right_Skill.name;
+                Right_CoolTime.text = this.Right_Skill._cooldown.ToString();
+                Right_Explanation.text = this.Right_Skill.Description;
                 //if (Wave啊 5老 版快)
                 //{
-                    Right_Gold = this.Right_Skill.Gold_01;
-                    Right_Gold_01.text = "" + Right_Gold;
+                Right_Gold = this.Right_Skill.price[0];
+                Right_Gold_01.text = "" + Right_Gold;
                 //}
                 //if (Wave啊 10老 版快)
                 //{
@@ -148,7 +148,7 @@ public class Skill_List : MonoBehaviour
                 //  Right_Gold_03.text = "" + Right_Gold;
                 //}
 
-                Right_Skill_Icon.sprite = this.Right_Skill.Icon;
+                Right_Skill_Icon.sprite = this.Right_Skill.sprite;
                 break;
 
         }

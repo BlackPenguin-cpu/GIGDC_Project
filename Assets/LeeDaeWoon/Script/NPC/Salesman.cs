@@ -76,7 +76,7 @@ public class Salesman : MonoBehaviour
                 {
                     for (int j = 0; j < Skill_Manager.Inst.Skill_Shop.Count; j++)
                     {
-                        if (Skill_Manager.Inst.Skill[i].Name == Skill_Manager.Inst.Skill_Shop[j].Name)
+                        if (Skill_Manager.Inst.Skill[i].name == Skill_Manager.Inst.Skill_Shop[j].name)
                         {
                             Re_Roll_Check = false;
                             Skill_Manager.Inst.Skill.RemoveAt(i);

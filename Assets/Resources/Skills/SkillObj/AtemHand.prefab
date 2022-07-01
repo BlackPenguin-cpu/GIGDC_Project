@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1009310002504772610}
   - component: {fileID: 2171400556294715646}
   m_Layer: 0
-  m_Name: AtemHands
+  m_Name: AtemHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
