@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZeusFury : BaseSkill
 {
     [SerializeField] private GameObject Field;
-    private BoxCollider2D[] boxColliders;
+    private BoxCollider2D boxCollider;
     private float duration = 10;
     protected override void Action()
     {
@@ -17,7 +17,8 @@ public class ZeusFury : BaseSkill
     private void OnLighting()
     {
         CameraManager.Instance.CameraShake(0.4f, 0.3f, 0.03f);
-        RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxColliders[0].offset, boxColliders[0].size, 0, Vector2.right, 0);
+        RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position +
+            new Vector2(boxCollider.offset.x, dimensionType == DimensionType.OVER ? boxCollider.offset.y : -boxCollider.offset.y), boxCollider.size, 0, Vector2.right, 0);
 
         for (int i = 0; i < rays.Length; i++)
         {
@@ -31,7 +32,8 @@ public class ZeusFury : BaseSkill
     {
         base.OnObjCreate();
         CameraManager.Instance.ScreenFade(0.2f, 0.3f);
-        boxColliders = transform.GetComponentsInChildren<BoxCollider2D>();
+        boxCollider = transform.GetComponent<BoxCollider2D>();
+
         duration = 10;
     }
     private void Update()
