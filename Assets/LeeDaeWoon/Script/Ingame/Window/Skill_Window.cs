@@ -55,7 +55,7 @@ public class Skill_Window : MonoBehaviour
     private bool UP_MoreThanOnce_Purchase = true; // 윗 스킬에 1번 이상 스킬을 적용할 시
     private bool Down_MoreThanOnce_Purchase = true; // 아랫 스킬에 1번 이상 스킬을 적용할 시
 
-    Skill SeletSkill = new Skill();
+    SkillScript SeletSkill = new SkillScript();
 
     void Start()
     {
@@ -106,11 +106,11 @@ public class Skill_Window : MonoBehaviour
             if (Purchase == true && SkillColider_Check == true && (UI_Manager.Inst.Gold >= Skill_List.Inst.Left_Gold || UI_Manager.Inst.Gold >= Skill_List.Inst.Among_Gold || UI_Manager.Inst.Gold >= Skill_List.Inst.Right_Gold))
             {
                 SeletSkill = Skill_Manager.Inst.Skill[SkillNum];
-                AfterPurchase_Skill.GetComponent<Image>().sprite = SeletSkill.Icon;
+                AfterPurchase_Skill.GetComponent<Image>().sprite = SeletSkill.sprite;
 
                 //if (Wave가 5일 경우)
                 //{
-                UI_Manager.Inst.Gold -= SeletSkill.Gold_01;
+                UI_Manager.Inst.Gold -= SeletSkill.price[0];
                 //}
                 //else if (Wave가 10일 경우)
                 //{
@@ -183,9 +183,9 @@ public class Skill_Window : MonoBehaviour
             // AS_Limit = Shift를 통한 스킬 전환 체크
             if (Skill_Manager.Inst.AS_Limit == true) // true일 경우 A스킬에 구매한 스킬을 적용시킨다.
             {
-                Basics_Skill_A.sprite = SeletSkill.Icon;
+                Basics_Skill_A.sprite = SeletSkill.sprite;
             }
-            else Basics_Skill_S.sprite = SeletSkill.Icon; // false일 경우 S스킬에 구매한 스킬을 적용시킨다.
+            else Basics_Skill_S.sprite = SeletSkill.sprite; // false일 경우 S스킬에 구매한 스킬을 적용시킨다.
 
             // 한 번 미만 스킬을 적용시킬 시 실행시킨다.
             AfterPurchase_Skill.transform.position = SaveSkillPos[0];
@@ -230,9 +230,9 @@ public class Skill_Window : MonoBehaviour
 
             // AS_Limit = Shift를 통한 스킬 전환 체크
             if (Skill_Manager.Inst.AS_Limit_02 == true) // true일 경우 S스킬에 구매한 스킬을 적용시킨다.
-                Basics_Skill_S.sprite = SeletSkill.Icon;
+                Basics_Skill_S.sprite = SeletSkill.sprite;
             else
-                Basics_Skill_A.sprite = SeletSkill.Icon;
+                Basics_Skill_A.sprite = SeletSkill.sprite;
 
             // 한 번 미만 스킬을 적용시킬 시 실행시킨다.
             AfterPurchase_Skill.transform.position = SaveSkillPos[0];
