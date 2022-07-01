@@ -3155,69 +3155,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: 0, y: 0, z: 0, w: 0}
   m_Softness: {x: 0, y: 0}
---- !u!1 &305649494
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 305649496}
-  - component: {fileID: 305649495}
-  m_Layer: 0
-  m_Name: ItemCard_Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &305649495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305649494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbc71bab21a742a4a8425cbc2e66e1aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RandomMix: 0
-  itemSo: {fileID: 11400000, guid: 85974998ca6b01f4882908433834a6ae, type: 2}
-  CardPrefab: {fileID: 6711820591797814597, guid: eba2a774be07be9448f54aba063df576, type: 3}
-  ItemBuffer: []
-  DABuffer: []
-  ItemDA_LeftCheck: []
-  ItemDA_AmongCheck: []
-  ItemDA_RightCheck: []
-  DAClick_Check: 1
-  Item_Check: 0
-  DA_Left: 1
-  DA_Among: 1
-  DA_Right: 1
-  Item_Left: 1
-  Item_Among: 1
-  Item_Right: 1
-  Time_Item_Limit: []
-  TimeItem_Count: 0
-  Item_bool: 0
-  ItemCard_OpenCheck: 1
---- !u!4 &305649496
+--- !u!4 &305649496 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7486971746282662761, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+  m_PrefabInstance: {fileID: 7486971746049309745}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305649494}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 962.4267, y: 540.4258, z: 12.6622}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 960203500}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &317714124
 GameObject:
   m_ObjectHideFlags: 0
@@ -11999,103 +11941,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1800513094
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1800513096}
-  - component: {fileID: 1800513095}
-  m_Layer: 0
-  m_Name: Stop_Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1800513095
+--- !u!114 &1800513095 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+  m_PrefabInstance: {fileID: 8909996914045199598}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800513094}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cddd306a7c1e6b44684e12fac824f217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0
-  Fade_Background: {fileID: 508741050}
-  Pause_Check: 1
-  ItemDA_Have: []
-  Pause_Pole01: {fileID: 620534056}
-  Pause_Pole02: {fileID: 234875678}
-  Pause_Window: {fileID: 1348590353}
-  Pause_Window_Canvas: {fileID: 1713773026}
-  Setting_Pole01: {fileID: 1342695366}
-  Setting_Pole02: {fileID: 656314212}
-  Setting_Window: {fileID: 304852295}
-  Setting_Window_Canvas: {fileID: 1491927129}
-  Resolution: {fileID: 1295803088}
-  Resolution_Num: 0
-  Player_Pole01: {fileID: 98914675}
-  Player_Pole02: {fileID: 1055929143}
-  Player_Window: {fileID: 914590887}
-  Player_Item_Window: {fileID: 317714124}
-  Player_Weapon_Window: {fileID: 1653808004}
-  Player_Window_Canvas: {fileID: 1982870615}
-  WI_Check: 0
-  Axe_Window: {fileID: 2105934994}
-  AxeLevel_Text: {fileID: 1552232212}
-  Axe_Skill_Text: {fileID: 1533969071}
-  Axe_AttackDamage: {fileID: 554235726}
-  Axe_AttackDamage_Upgrade: {fileID: 1640700083}
-  Axe_Defense: {fileID: 369887354}
-  Axe_Defense_Upgrade: {fileID: 1565936297}
-  Sword_Window: {fileID: 596626628}
-  SwordLevel_Text: {fileID: 280563610}
-  Sword_Skill_Text: {fileID: 1754102135}
-  Sword_AttackDamage: {fileID: 496760280}
-  Sword_AttackDamage_Upgrade: {fileID: 213817384}
-  Sword_MaxHp: {fileID: 752917466}
-  Sword_MaxHp_Upgrade: {fileID: 1817047259}
-  Dagger_Window: {fileID: 13092122}
-  DaggerLevel_Text: {fileID: 1365290232}
-  Dagger_Skill_Text: {fileID: 1306121185}
-  Dagger_AttackDamage: {fileID: 899082560}
-  Dagger_AttackDamage_Upgrade: {fileID: 1278411}
-  Dagger_Critical: {fileID: 2043655640}
-  Dagger_Critical_Upgrade: {fileID: 1464904349}
-  Player_Item_Log: {fileID: 1000876452}
-  Player_Item_Name: {fileID: 393184605}
-  Player_Item_Icon: {fileID: 795640464}
-  Player_Item_Explanation: {fileID: 336007278}
-  Main_Pole01: {fileID: 968961405}
-  Main_Pole02: {fileID: 1866886175}
-  Main_Window: {fileID: 1661577475}
-  Main_Window_Canvas: {fileID: 87438848}
-  Exit_Pole01: {fileID: 1359648675}
-  Exit_Pole02: {fileID: 1130522333}
-  Exit_Window: {fileID: 1085924869}
-  Exit_Window_Canvas: {fileID: 1212864698}
---- !u!4 &1800513096
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800513094}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 814.3936, y: 512.7255, z: -421.096}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1817047256
 GameObject:
   m_ObjectHideFlags: 0
@@ -13741,3 +13597,313 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &7486971746049309745
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 960203500}
+    m_Modifications:
+    - target: {fileID: 7486971746282662759, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+      propertyPath: m_Name
+      value: ItemCard_Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486971746282662761, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486971746282662761, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 962.4267
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486971746282662761, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 540.4258
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486971746282662761, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.6622
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486971746282662761, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486971746282662761, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486971746282662761, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486971746282662761, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486971746282662761, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486971746282662761, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486971746282662761, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5ba82db2e014a945bd3c556604dbb88, type: 3}
+--- !u!1001 &8909996914045199598
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8909996912513122982, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909996912513122982, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 814.3936
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909996912513122982, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 512.7255
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909996912513122982, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -421.096
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909996912513122982, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909996912513122982, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909996912513122982, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909996912513122982, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909996912513122982, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909996912513122982, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909996912513122982, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909996912513122984, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_Name
+      value: Stop_Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Axe_Window
+      value: 
+      objectReference: {fileID: 2105934994}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Resolution
+      value: 
+      objectReference: {fileID: 1295803088}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Axe_Defense
+      value: 
+      objectReference: {fileID: 369887354}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Exit_Pole01
+      value: 
+      objectReference: {fileID: 1359648675}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Exit_Pole02
+      value: 
+      objectReference: {fileID: 1130522333}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Exit_Window
+      value: 
+      objectReference: {fileID: 1085924869}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Main_Pole01
+      value: 
+      objectReference: {fileID: 968961405}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Main_Pole02
+      value: 
+      objectReference: {fileID: 1866886175}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Main_Window
+      value: 
+      objectReference: {fileID: 1661577475}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Sword_MaxHp
+      value: 
+      objectReference: {fileID: 752917466}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Pause_Pole01
+      value: 
+      objectReference: {fileID: 620534056}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Pause_Pole02
+      value: 
+      objectReference: {fileID: 234875678}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Pause_Window
+      value: 
+      objectReference: {fileID: 1348590353}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Sword_Window
+      value: 
+      objectReference: {fileID: 596626628}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: AxeLevel_Text
+      value: 
+      objectReference: {fileID: 1552232212}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Dagger_Window
+      value: 
+      objectReference: {fileID: 13092122}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Player_Pole01
+      value: 
+      objectReference: {fileID: 98914675}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Player_Pole02
+      value: 
+      objectReference: {fileID: 1055929143}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Player_Window
+      value: 
+      objectReference: {fileID: 914590887}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Axe_Skill_Text
+      value: 
+      objectReference: {fileID: 1533969071}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Setting_Pole01
+      value: 
+      objectReference: {fileID: 1342695366}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Setting_Pole02
+      value: 
+      objectReference: {fileID: 656314212}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Setting_Window
+      value: 
+      objectReference: {fileID: 304852295}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Dagger_Critical
+      value: 
+      objectReference: {fileID: 2043655640}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Fade_Background
+      value: 
+      objectReference: {fileID: 508741050}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Player_Item_Log
+      value: 
+      objectReference: {fileID: 1000876452}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: SwordLevel_Text
+      value: 
+      objectReference: {fileID: 280563610}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Axe_AttackDamage
+      value: 
+      objectReference: {fileID: 554235726}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: DaggerLevel_Text
+      value: 
+      objectReference: {fileID: 1365290232}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Player_Item_Icon
+      value: 
+      objectReference: {fileID: 795640464}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Player_Item_Name
+      value: 
+      objectReference: {fileID: 393184605}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Sword_Skill_Text
+      value: 
+      objectReference: {fileID: 1754102135}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Dagger_Skill_Text
+      value: 
+      objectReference: {fileID: 1306121185}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Exit_Window_Canvas
+      value: 
+      objectReference: {fileID: 1212864698}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Main_Window_Canvas
+      value: 
+      objectReference: {fileID: 87438848}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Player_Item_Window
+      value: 
+      objectReference: {fileID: 317714124}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Sword_AttackDamage
+      value: 
+      objectReference: {fileID: 496760280}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Axe_Defense_Upgrade
+      value: 
+      objectReference: {fileID: 1565936297}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Dagger_AttackDamage
+      value: 
+      objectReference: {fileID: 899082560}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Pause_Window_Canvas
+      value: 
+      objectReference: {fileID: 1713773026}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Sword_MaxHp_Upgrade
+      value: 
+      objectReference: {fileID: 1817047259}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Player_Weapon_Window
+      value: 
+      objectReference: {fileID: 1653808004}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Player_Window_Canvas
+      value: 
+      objectReference: {fileID: 1982870615}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Setting_Window_Canvas
+      value: 
+      objectReference: {fileID: 1491927129}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Dagger_Critical_Upgrade
+      value: 
+      objectReference: {fileID: 1464904349}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Player_Item_Explanation
+      value: 
+      objectReference: {fileID: 336007278}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Axe_AttackDamage_Upgrade
+      value: 
+      objectReference: {fileID: 1640700083}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Sword_AttackDamage_Upgrade
+      value: 
+      objectReference: {fileID: 213817384}
+    - target: {fileID: 8909996912513122985, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: Dagger_AttackDamage_Upgrade
+      value: 
+      objectReference: {fileID: 1278411}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
