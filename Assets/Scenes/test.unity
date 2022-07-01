@@ -2816,22 +2816,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skill_Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 2597886528859928959, guid: cef11f1395d65de4294c9b71fd48d9ef, type: 3}
-      propertyPath: Skill_Up.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2597886528859928959, guid: cef11f1395d65de4294c9b71fd48d9ef, type: 3}
-      propertyPath: Skill_Down.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2597886528859928959, guid: cef11f1395d65de4294c9b71fd48d9ef, type: 3}
-      propertyPath: Skill_Up.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: d0fefc4c4bfc7d84595508500426998e, type: 2}
-    - target: {fileID: 2597886528859928959, guid: cef11f1395d65de4294c9b71fd48d9ef, type: 3}
-      propertyPath: Skill_Down.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7a7d32e824dce4a4d9d6bf0fc158d2f7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cef11f1395d65de4294c9b71fd48d9ef, type: 3}
 --- !u!1 &1040823543
