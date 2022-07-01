@@ -6,8 +6,6 @@ using UnityEngine;
 [System.Serializable]
 public class SkillScript : ScriptableObject
 {
-    private Player player;
-
     public Sprite sprite;
     public string SkillName; 
     [TextArea]
@@ -26,13 +24,9 @@ public class SkillScript : ScriptableObject
     {
         get
         {
-            return cooldown * (1 - player.stat._cooldown);
+            return cooldown * (1 - Player.Instance.stat._cooldown);
         }
         set { cooldown = value; }
     }
     public float[] appearChance = new float[3];
-    private void Awake()
-    {
-        player = Player.Instance;
-    }
 }

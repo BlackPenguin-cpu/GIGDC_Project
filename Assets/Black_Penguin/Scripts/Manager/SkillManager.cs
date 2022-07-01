@@ -60,11 +60,10 @@ public class SkillManager : MonoBehaviour
         if (SkillsCooldown.TryGetValue(name, out float cooldown) && cooldown < skill.SkillInfo._cooldown)
         {
             SkillsCooldown[name] = SkillList[name].SkillInfo._cooldown;
+            skill.dimensionType = dimensionType;
             ObjectPool.Instance.CreateObj
-                (skill.gameObject, new Vector3(player.transform.position.x, skill.StartPosY * (dimensionType == DimensionType.OVER ? 1 : -1)), Quaternion.identity)
-                .GetComponent<BaseSkill>().dimensionType = dimensionType;
+                (skill.gameObject, new Vector3(player.transform.position.x, skill.StartPosY * (dimensionType == DimensionType.OVER ? 1 : -1)), Quaternion.identity);
         }
-        Debug.Log($"Àß¸øµÊ ÀÌ¸§:{name} ÄðÅ¸ÀÓ:{cooldown}");
     }
 
 }

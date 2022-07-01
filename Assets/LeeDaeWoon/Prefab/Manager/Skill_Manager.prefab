@@ -339,6 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2597886528859928956}
   - component: {fileID: 2597886528859928959}
+  - component: {fileID: 6974675717583582655}
   m_Layer: 0
   m_Name: Skill_Manager
   m_TagString: Untagged
@@ -388,15 +389,6 @@ MonoBehaviour:
   AS_Limit: 1
   AS_Limit_02: 1
   Limit: 1
-  Have_MagicTurret: 0
-  Have_DeathStrom: 0
-  Have_SolarGodLightt: 0
-  Have_GodOfGockGang_E: 0
-  Have_Jeany: 0
-  Have_AtemHands: 0
-  Have_ZeusFury: 0
-  Have_LonginusSpear: 0
-  Have_SpaceBang: 0
   RandomTest: 0
   SkillSo: {fileID: 11400000, guid: 8d468ff0d005a91428acefcbdfc86778, type: 2}
   SkillPrefab: {fileID: 2583938370413519097, guid: 548ccebbac879ad449874255e02c2f91, type: 3}
@@ -406,6 +398,31 @@ MonoBehaviour:
   Skill: []
   Skill_Shop: []
   SkillBuffer: []
+--- !u!114 &6974675717583582655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2597886528859928958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53cf51ef10f799f4493efc108c2566a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillScriptList:
+  - {fileID: 11400000, guid: 69c5d74652a776d45b57965e6ee23b9b, type: 2}
+  - {fileID: 11400000, guid: d9f9aabed4d1646498e03968493f8f55, type: 2}
+  - {fileID: 11400000, guid: dde1b8caf5e52984399f95b043b97dbc, type: 2}
+  - {fileID: 11400000, guid: 31c6fd39acb342a4d8e3d9d9cb9507cf, type: 2}
+  - {fileID: 11400000, guid: e8beb6b7c1dd8044eaaad99dd6e026fd, type: 2}
+  - {fileID: 11400000, guid: 04945c9c0d939d04bac79b5d624cc9c0, type: 2}
+  - {fileID: 11400000, guid: d0fefc4c4bfc7d84595508500426998e, type: 2}
+  - {fileID: 11400000, guid: 0f4e2b86977d153489f3757710d4141f, type: 2}
+  - {fileID: 11400000, guid: d9f100c8b1f93ba4ba4d3a7fd067e1d4, type: 2}
+  - {fileID: 11400000, guid: 5b22fc45c535d6349a76c0d6006e0965, type: 2}
+  - {fileID: 11400000, guid: 7abc6d28ce620594397a18ebc928454f, type: 2}
+  - {fileID: 11400000, guid: 7a7d32e824dce4a4d9d6bf0fc158d2f7, type: 2}
 --- !u!1 &2597886528970582856
 GameObject:
   m_ObjectHideFlags: 0
