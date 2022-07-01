@@ -60,7 +60,7 @@ public class Skill_Manager : MonoBehaviour
         FillAmount_Skill_A.fillAmount = 0f;
         AddList();
         AddSkill();
-
+        
     }
 
     private void Update()
