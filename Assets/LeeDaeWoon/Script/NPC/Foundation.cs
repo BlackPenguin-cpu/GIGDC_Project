@@ -6,6 +6,9 @@ using DG.Tweening;
 
 public class Foundation : MonoBehaviour
 {
+    public static Foundation Inst { get; private set; }
+    void Awake() => Inst = this;
+
     [Header("Á¦´Ü")]
     public GameObject Magic_Circle;
     public float Speed;
@@ -22,6 +25,9 @@ public class Foundation : MonoBehaviour
     public RectTransform MalyeogRect_Window;
     public GameObject Pole_01;
     public GameObject Pole_02;
+
+    public Text Title;
+    public Text Explanation;
 
     void Start()
     {
