@@ -23,7 +23,7 @@ public class Skill_Collision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && /*collision.GetComponent<ITypePlayer>() != null &&*/ Skill_Window.Inst.Purchase == true && Skill_Window.Inst.SkillWindow == true)
+        if ((collision.CompareTag("Player") || collision.GetComponent<ITypePlayer>() != null ) && Skill_Window.Inst.Purchase == true && Skill_Window.Inst.SkillWindow == true)
         {
             Skill_Window.Inst.SkillColider_Check = true;
             Skill_Window.Inst.SkillNum = LeftRight_Nun;
@@ -34,7 +34,7 @@ public class Skill_Collision : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")&& /*collision.GetComponent<ITypePlayer>() != null &&*/ Skill_Window.Inst.Purchase == true && Skill_Window.Inst.SkillWindow == false)
+        if ((collision.CompareTag("Player") || collision.GetComponent<ITypePlayer>() != null) && Skill_Window.Inst.Purchase == true && Skill_Window.Inst.SkillWindow == false)
         {
             Skill_Window.Inst.SkillColider_Check = false;
             StartCoroutine(Skill_Window.Inst.SkillWindowClose_Coroutine());

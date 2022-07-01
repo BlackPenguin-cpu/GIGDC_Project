@@ -94,7 +94,7 @@ public class Foundation : MonoBehaviour
     #region 충돌 체크
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.GetComponent<ITypePlayer>() != null)
         {
             Collision_Check = false;
             Upgrade_Text.DOFade(1f, 0.5f);
@@ -104,7 +104,7 @@ public class Foundation : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.GetComponent<ITypePlayer>() != null)
         {
             Collision_Check = true;
             Upgrade_Text.DOFade(0f, 0.5f);
