@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Skill
 {
     public string Name;
+    public string E_Name;
     public Sprite Icon;
     public string Explanation;
     public string CoolTime;

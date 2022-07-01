@@ -133,7 +133,7 @@ public class Skill_Window : MonoBehaviour
                 this.gameObject.transform.GetChild(SkillNum).GetChild(4).gameObject.SetActive(false);
 
                 // 스킬창을 닫아준다.
-                StartCoroutine(SkillWindowClose_Coroutine()); 
+                StartCoroutine(SkillWindowClose_Coroutine());
 
                 if (SkillNum == 0)
                     Skill01_Purchase = false;
@@ -162,12 +162,9 @@ public class Skill_Window : MonoBehaviour
         {
             UpDown_Limit = false;
 
-            // 윗 부분에 1개 이상의 스킬을 적용을 할 때 적용하기 전의 스킬은 다시 상점으로 넘어간다.
-            if (UP_MoreThanOnce_Purchase == false)
-            {
-                Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill_Up[0]);
-                Skill_Manager.Inst.Skill_Up.RemoveAt(0);
-            }
+            // 윗 부분에 있던 스킬은 상점에으로 보낸다.
+            Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill_Up[0]);
+            Skill_Manager.Inst.Skill_Up.RemoveAt(0);
 
             // 구매한 스킬을 윗 부분에 넣어준다.
             Skill_Manager.Inst.Skill_Up.Add(Skill_Manager.Inst.Skill_Have[0]);
@@ -213,12 +210,9 @@ public class Skill_Window : MonoBehaviour
         {
             UpDown_Limit = false;
 
-            // 아랫 부분에 1개 이상의 스킬을 적용을 할 때 적용하기 전의 스킬은 다시 상점으로 넘어간다.
-            if (Down_MoreThanOnce_Purchase == false)
-            {
-                Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill_Down[0]);
-                Skill_Manager.Inst.Skill_Down.RemoveAt(0);
-            }
+            // 아랫 부분에 있던 스킬은 상점으로 보낸다.
+            Skill_Manager.Inst.SkillBuffer.Add(Skill_Manager.Inst.Skill_Down[0]);
+            Skill_Manager.Inst.Skill_Down.RemoveAt(0);
 
             // 구매한 스킬을 아랫 부분에 넣어준다.
             Skill_Manager.Inst.Skill_Down.Add(Skill_Manager.Inst.Skill_Have[0]);
@@ -237,7 +231,7 @@ public class Skill_Window : MonoBehaviour
             // AS_Limit = Shift를 통한 스킬 전환 체크
             if (Skill_Manager.Inst.AS_Limit_02 == true) // true일 경우 S스킬에 구매한 스킬을 적용시킨다.
                 Basics_Skill_S.sprite = SeletSkill.Icon;
-            else 
+            else
                 Basics_Skill_A.sprite = SeletSkill.Icon;
 
             // 한 번 미만 스킬을 적용시킬 시 실행시킨다.
@@ -337,7 +331,7 @@ public class Skill_Window : MonoBehaviour
         {
             Skill_Window_Active();
             SkillWindow = false;
-            while (Timer < 1 )
+            while (Timer < 1)
             {
                 Skill_RectTransform.localPosition = new Vector2(819.9954f, Mathf.Lerp(245.1f, 34f, Timer));
                 Skill_RectTransform.sizeDelta = new Vector2(690f, Mathf.Lerp(0f, 485f, Timer));
