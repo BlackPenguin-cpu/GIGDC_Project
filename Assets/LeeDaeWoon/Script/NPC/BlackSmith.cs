@@ -94,19 +94,21 @@ public class BlackSmith : MonoBehaviour
 
     public void Weapon_Stat()
     {
-        int Weapon_Level = Player.Instance.stat._level;
+        int Sword_Level = Player.Instance.stat._level[PlayerWeaponType.Sword];
+        int Dagger_Level = Player.Instance.stat._level[PlayerWeaponType.Dagger];
+        int Axe_Level = Player.Instance.stat._level[PlayerWeaponType.Axe];
 
         if (Weapon.transform.GetChild(0).gameObject.activeSelf == true)
         {
-            SwordLevel_Text.text = "" + Weapon_Level;
+            SwordLevel_Text.text = "" + Sword_Level;
 
-            Sword_AttackDamage.text = "" + (10 + (10 * Weapon_Level));
-            Sword_AttackDamage_Upgrade.text = "" + (10 + (10 * (Weapon_Level + 1)));
+            Sword_AttackDamage.text = "" + (10 + (10 * Sword_Level));
+            Sword_AttackDamage_Upgrade.text = "" + (10 + (10 * (Sword_Level + 1)));
 
-            Sword_MaxHp.text = "" + (10 + (10 * Weapon_Level));
-            Sword_MaxHp_Upgrade.text = "" + (10 + (10 * (Weapon_Level + 1)));
+            Sword_MaxHp.text = "" + (10 + (10 * Sword_Level));
+            Sword_MaxHp_Upgrade.text = "" + (10 + (10 * (Sword_Level + 1)));
 
-            Sword_Required_Gold_Price.text = "" + (400 + (200 * Weapon_Level));
+            Sword_Required_Gold_Price.text = "" + (400 + (200 * Sword_Level));
 
             Purchase_Btn.SetActive(false);
             Enhance_Btn.SetActive(true);
@@ -123,7 +125,7 @@ public class BlackSmith : MonoBehaviour
                 Jang_cak_Btn.SetActive(true);
             }
 
-            switch (Weapon_Level)
+            switch (Sword_Level)
             {
                 case 1:
                     Sword_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
@@ -141,15 +143,15 @@ public class BlackSmith : MonoBehaviour
 
         if (Weapon.transform.GetChild(1).gameObject.activeSelf == true)
         {
-            DaggerLevel_Text.text = "" + Weapon_Level;
+            DaggerLevel_Text.text = "" + Dagger_Level;
 
-            Dagger_AttackDamage.text = "" + (8 + (8 * Weapon_Level));
-            Dagger_AttackDamage_Upgrade.text = "" + (8 + (8 * (Weapon_Level + 1)));
+            Dagger_AttackDamage.text = "" + (8 + (8 * Dagger_Level));
+            Dagger_AttackDamage_Upgrade.text = "" + (8 + (8 * (Dagger_Level + 1)));
 
-            Dagger_Critical.text = "" + (0 + (2 * Weapon_Level));
-            Dagger_Critical_Upgrade.text = "" + (0 + (2 * (Weapon_Level + 1)));
+            Dagger_Critical.text = "" + (0 + (2 * Dagger_Level));
+            Dagger_Critical_Upgrade.text = "" + (0 + (2 * (Dagger_Level + 1)));
 
-            Dagger_Required_Gold_Price.text = "" + (400 + (200 * Weapon_Level));
+            Dagger_Required_Gold_Price.text = "" + (400 + (200 * Dagger_Level));
 
             if (Dagger_Required_Gold.activeSelf == true)
             {
@@ -173,7 +175,7 @@ public class BlackSmith : MonoBehaviour
                 Enhance_Btn.SetActive(false);
             }
 
-            switch (Weapon_Level)
+            switch (Dagger_Level)
             {
                 case 1:
                     Dagger_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
@@ -191,15 +193,15 @@ public class BlackSmith : MonoBehaviour
 
         if (Weapon.transform.GetChild(2).gameObject.activeSelf == true)
         {
-            AxeLevel_Text.text = "" + Weapon_Level;
+            AxeLevel_Text.text = "" + Axe_Level;
 
-            Axe_AttackDamage.text = "" + (20 + (15 * Weapon_Level));
-            Axe_AttackDamage_Upgrade.text = "" + (20 + (15 * (Weapon_Level + 1)));
+            Axe_AttackDamage.text = "" + (20 + (15 * Axe_Level));
+            Axe_AttackDamage_Upgrade.text = "" + (20 + (15 * (Axe_Level + 1)));
 
-            Axe_Defense.text = "" + (400 + (200 * Weapon_Level));
-            Axe_Defense_Upgrade.text = "" + (400 + (200 * (Weapon_Level + 1)));
+            Axe_Defense.text = "" + (400 + (200 * Axe_Level));
+            Axe_Defense_Upgrade.text = "" + (400 + (200 * (Axe_Level + 1)));
 
-            Axe_Required_Gold_Price.text = "" + (400 + (200 * Weapon_Level));
+            Axe_Required_Gold_Price.text = "" + (400 + (200 * Axe_Level));
 
             if (Axe_Required_Gold.activeSelf == true)
             {
@@ -223,7 +225,7 @@ public class BlackSmith : MonoBehaviour
                 Enhance_Btn.SetActive(false);
             }
 
-            switch (Weapon_Level)
+            switch (Axe_Level)
             {
                 case 1:
                     Axe_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
@@ -304,21 +306,23 @@ public class BlackSmith : MonoBehaviour
 
     public void Enhance_Click()
     {
-        //if (UI_Manager.Inst.Gold >= (400 + (200 * Player.Instance.stat)
+        switch (Player.Instance.stat.weaponType)
+        {
+            case PlayerWeaponType.Sword:
+                if (Weapon.transform.GetChild(0).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= (400 + (200 * Player.Instance.stat._level[PlayerWeaponType.Sword])))
+                    Player.Instance.stat._level[PlayerWeaponType.Sword]++;
+                break;
 
-            if (Weapon.transform.GetChild(0).gameObject.activeSelf == true && Player.Instance.stat.weaponType == PlayerWeaponType.Sword)
-            {
-                UI_Manager.Inst.Gold -= 400 + (200 * Player.Instance.stat._level);
-                Player.Instance.stat._level++;
-            }
-            else if (Weapon.transform.GetChild(1).gameObject.activeSelf == true && Player.Instance.stat.weaponType == PlayerWeaponType.Dagger)
-            {
-                UI_Manager.Inst.Gold -= 400 + (200 * Player.Instance.stat._level);
-                Player.Instance.stat._level++;
-            }
-            else if (Weapon.transform.GetChild(2).gameObject.activeSelf == true && Player.Instance.stat.weaponType == PlayerWeaponType.Axe)
-                Player.Instance.stat._level++;
+            case PlayerWeaponType.Dagger:
+                if (Weapon.transform.GetChild(1).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= (400 + (200 * Player.Instance.stat._level[PlayerWeaponType.Dagger])))
+                    Player.Instance.stat._level[PlayerWeaponType.Dagger]++;
+                break;
 
+            case PlayerWeaponType.Axe:
+                if (Weapon.transform.GetChild(2).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= (400 + (200 * Player.Instance.stat._level[PlayerWeaponType.Axe])))
+                    Player.Instance.stat._level[PlayerWeaponType.Axe]++;
+                break;
+        }
     }
     #endregion
 

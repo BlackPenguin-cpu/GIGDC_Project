@@ -101,9 +101,6 @@ public class Stop_Manager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad8))
-            Player.Instance.stat._level++;
-
         Item_Log();
         WeaponType();
         Resolution_Size();
@@ -432,21 +429,22 @@ public class Stop_Manager : MonoBehaviour
     #region ¹«±â Ã¢
     public void WeaponType()
     {
-        int Weapon_Level = Player.Instance.stat._level;
-        Player.Instance.stat.weaponType = PlayerWeaponType.Sword;
+        int Sword_Level =  Player.Instance.stat._level[PlayerWeaponType.Sword];
+        int Dagger_Level =  Player.Instance.stat._level[PlayerWeaponType.Dagger];
+        int Axe_Level =  Player.Instance.stat._level[PlayerWeaponType.Axe];
 
         switch (Player.Instance.stat.weaponType)
         {
             case PlayerWeaponType.Sword:
-                SwordLevel_Text.text = "" + Weapon_Level;
+                SwordLevel_Text.text = "" + Sword_Level;
 
-                Sword_AttackDamage.text = "" + (10 + (10 * Weapon_Level));
-                Sword_AttackDamage_Upgrade.text = "" + (10 + (10 * (Weapon_Level + 1)));
+                Sword_AttackDamage.text = "" + (10 + (10 * Sword_Level));
+                Sword_AttackDamage_Upgrade.text = "" + (10 + (10 * (Sword_Level + 1)));
 
-                Sword_MaxHp.text = "" + (10 + (10 * Weapon_Level));
-                Sword_MaxHp_Upgrade.text = "" + (10 + (10 * (Weapon_Level + 1)));
+                Sword_MaxHp.text = "" + (10 + (10 * Sword_Level));
+                Sword_MaxHp_Upgrade.text = "" + (10 + (10 * (Sword_Level + 1)));
 
-                switch (Weapon_Level)
+                switch (Sword_Level)
                 {
                     case 1:
                         Sword_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
@@ -467,15 +465,15 @@ public class Stop_Manager : MonoBehaviour
                 break;
 
             case PlayerWeaponType.Dagger:
-                DaggerLevel_Text.text = "" + Weapon_Level;
+                DaggerLevel_Text.text = "" + Dagger_Level;
 
-                Dagger_AttackDamage.text = "" + (8 + (8 * Weapon_Level));
-                Dagger_AttackDamage_Upgrade.text = "" + (8 + (8 * (Weapon_Level + 1)));
+                Dagger_AttackDamage.text = "" + (8 + (8 * Dagger_Level));
+                Dagger_AttackDamage_Upgrade.text = "" + (8 + (8 * (Dagger_Level + 1)));
 
-                Dagger_Critical.text = "" + (0 + (2 * Weapon_Level));
-                Dagger_Critical_Upgrade.text = "" + (0 + (2 * (Weapon_Level + 1)));
+                Dagger_Critical.text = "" + (0 + (2 * Dagger_Level));
+                Dagger_Critical_Upgrade.text = "" + (0 + (2 * (Dagger_Level + 1)));
 
-                switch (Weapon_Level)
+                switch (Dagger_Level)
                 {
                     case 1:
                         Dagger_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
@@ -496,15 +494,15 @@ public class Stop_Manager : MonoBehaviour
                 break;
 
             case PlayerWeaponType.Axe:
-                AxeLevel_Text.text = "" + Weapon_Level;
+                AxeLevel_Text.text = "" + Axe_Level;
 
-                Axe_AttackDamage.text = "" + (20 + (15 * Weapon_Level));
-                Axe_AttackDamage_Upgrade.text = "" + (20 + (15 * (Weapon_Level + 1)));
+                Axe_AttackDamage.text = "" + (20 + (15 * Axe_Level));
+                Axe_AttackDamage_Upgrade.text = "" + (20 + (15 * (Axe_Level + 1)));
 
-                Axe_Defense.text = "" + (400 + (200 * Weapon_Level));
-                Axe_Defense_Upgrade.text = "" + (400 + (200 * (Weapon_Level + 1)));
+                Axe_Defense.text = "" + (400 + (200 * Axe_Level));
+                Axe_Defense_Upgrade.text = "" + (400 + (200 * (Axe_Level + 1)));
 
-                switch (Weapon_Level)
+                switch (Axe_Level)
                 {
                     case 1:
                         Axe_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
