@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -23,11 +25,9 @@ public class UI_Manager : MonoBehaviour
     public float HP;
     public GameObject Bar;
 
-    Player player;
-
     void Start()
     {
-        player = Player.Instance;
+
     }
 
     void Update()
@@ -35,6 +35,7 @@ public class UI_Manager : MonoBehaviour
         Timer_System();
         Money_System();
         HP_System();
+        Cheats();
     }
 
     #region 타이머
@@ -68,10 +69,27 @@ public class UI_Manager : MonoBehaviour
     #region 체력
     public void HP_System()
     {
-        HP = player.stat._hp;
+        HP = Player.Instance.stat._hp;
 
         if (HP >= 0 && HP <= 100)
             Bar.transform.localScale = new Vector3(100, HP, 1);
     }
     #endregion
+
+    #region Cheat
+    public void Cheats()
+    {
+        if (Input.GetKeyDown(KeyCode.Keypad7))
+        {
+            DOTween.PauseAll();
+            SceneManager.LoadScene("test");
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad8))
+        {
+            DOTween.PauseAll();
+            SceneManager.LoadScene("Dimension");
+
+        }
+        #endregion
+    }
 }

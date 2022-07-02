@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -43,7 +43,6 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (malyeog == Malyeog.Magic)
         {
-            Debug.Log("sdf");
             Foundation.Inst.Price_obj.SetActive(true);
             Foundation.Inst.Close_Btn.SetActive(false);
             switch (Malyeog_Num)
