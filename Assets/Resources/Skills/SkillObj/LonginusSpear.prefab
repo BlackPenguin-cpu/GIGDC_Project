@@ -97,5 +97,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dimensionType: 0
   SkillInfo: {fileID: 11400000, guid: d0fefc4c4bfc7d84595508500426998e, type: 2}
-  StartPosY: 2
+  StartPosY: 1
   spear: {fileID: 6714966605293544527, guid: 310ee783df49d8f43b120a3eaaacce9a, type: 3}
