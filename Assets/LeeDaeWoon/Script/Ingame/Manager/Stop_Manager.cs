@@ -12,7 +12,25 @@ public class Stop_Manager : MonoBehaviour
     public float timer = 0f;
     public Image Fade_Background;
     private bool InPause = false;
-    public bool Pause_Check = true;
+
+    bool PauseWindow_Open = false;
+    bool PauseWindow_Close = false;
+
+    bool BackBtn_Check = false;
+
+    bool SettingWindow_Open = false;
+    bool SettingWindow_Close = false;
+
+    bool PlayerWindow_Open = false;
+    bool PlayerWindow_Close = false;
+    bool PlayerWindow_Check = false;
+
+    bool MainWindow_Open = false;
+    bool MainWindow_Close = false;
+
+    bool GameExitWindow_Open = false;
+    bool GameExitWindow_Close = false;
+
 
     public List<Item> ItemDA_Have = new List<Item>();
 
@@ -94,7 +112,6 @@ public class Stop_Manager : MonoBehaviour
 
     void Start()
     {
-        Pause_Check = true;
         WI_Check = true;
         InPause = false;
     }
@@ -108,18 +125,29 @@ public class Stop_Manager : MonoBehaviour
         // ESC 키를 누르면 일시정지 창이 열린다.
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Pause_Check == true)
+            if (PauseWindow_Open == false && SettingWindow_Open == false && MainWindow_Open == false && GameExitWindow_Open == false && PlayerWindow_Open == false)
             {
-                Pause_Check = false;
+                PauseWindow_Open = true;
                 Pause_Window_Canvas.SetActive(true);
                 Fade_Background.DOFade(0.5f, 0.5f);
                 StartCoroutine(Pause_Window_Open());
             }
-            else if (Pause_Check == false)
-            {
-                Pause_Check = true;
+
+            if (PauseWindow_Close == true && SettingWindow_Open == false && MainWindow_Open == false && GameExitWindow_Open == false && PlayerWindow_Open == false)
                 Back_Btn();
-            }
+
+            if (SettingWindow_Open == true)
+                Setting_Close_Btn();
+
+            if (MainWindow_Open == true)
+                Main_No_Btn();
+
+            if (GameExitWindow_Open == true)
+                Exit_No_Btn();
+
+            if (PlayerWindow_Open == true && PlayerWindow_Check == true)
+                Player_Close_Btn();
+
         }
     }
 
@@ -140,6 +168,9 @@ public class Stop_Manager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.2f);
         Time.timeScale = 0f;
+
+        PauseWindow_Close = true;
+        BackBtn_Check = true;
     }
     #endregion
 
@@ -148,23 +179,27 @@ public class Stop_Manager : MonoBehaviour
 
     public IEnumerator Back_Window_Coroutine() // 돌아가기 버튼
     {
-        timer = 0;
-        Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
-        Pause_Pole01.transform.DOLocalMoveY(48f, 0.5f).SetUpdate(true);
-        Pause_Pole02.transform.DOLocalMoveY(-36, 0.5f).SetUpdate(true);
-
-        while (timer < 1)
+        if (BackBtn_Check == true)
         {
-            Pause_Window.sizeDelta = new Vector2(610f, Mathf.Lerp(772.4f, 5f, timer));
+            BackBtn_Check = false;
+            PauseWindow_Close = false;
+            timer = 0;
+            Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
+            Pause_Pole01.transform.DOLocalMoveY(48f, 0.5f).SetUpdate(true);
+            Pause_Pole02.transform.DOLocalMoveY(-36, 0.5f).SetUpdate(true);
 
-            timer += Time.unscaledDeltaTime * 2.5f;
-            yield return null;
+            while (timer < 1)
+            {
+                Pause_Window.sizeDelta = new Vector2(610f, Mathf.Lerp(772.4f, 5f, timer));
+
+                timer += Time.unscaledDeltaTime * 2.5f;
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(0.1f);
+            Pause_Window_Canvas.SetActive(false);
+            PauseWindow_Open = false;
+            Time.timeScale = 1f;
         }
-        yield return new WaitForSecondsRealtime(0.1f);
-        Pause_Window_Canvas.SetActive(false);
-        Pause_Check = true;
-
-        Time.timeScale = 1f;
     }
     #endregion
 
@@ -175,22 +210,26 @@ public class Stop_Manager : MonoBehaviour
 
     public IEnumerator Setting_Window_Coroutine01() // 설정버튼을 클릭했을 떄
     {
-        timer = 0;
-        Pause_Pole01.transform.DOLocalMoveY(48f, 0.5f).SetUpdate(true);
-        Pause_Pole02.transform.DOLocalMoveY(-36, 0.5f).SetUpdate(true);
-
-        while (timer < 1)
+        if (SettingWindow_Open == false)
         {
-            Pause_Window.sizeDelta = new Vector2(557.1f, Mathf.Lerp(772.4f, 5f, timer));
+            SettingWindow_Open = true;
+            timer = 0;
+            Pause_Pole01.transform.DOLocalMoveY(48f, 0.5f).SetUpdate(true);
+            Pause_Pole02.transform.DOLocalMoveY(-36, 0.5f).SetUpdate(true);
 
-            timer += Time.unscaledDeltaTime * 2.5f;
-            yield return null;
+            while (timer < 1)
+            {
+                Pause_Window.sizeDelta = new Vector2(557.1f, Mathf.Lerp(772.4f, 5f, timer));
+
+                timer += Time.unscaledDeltaTime * 2.5f;
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(0.1f);
+            Pause_Window_Canvas.SetActive(false);
+            yield return new WaitForSecondsRealtime(0.1f);
+            Setting_Window_Canvas.SetActive(true);
+            StartCoroutine(Setting_Window_Coroutine02());
         }
-        yield return new WaitForSecondsRealtime(0.1f);
-        Pause_Window_Canvas.SetActive(false);
-        yield return new WaitForSecondsRealtime(0.1f);
-        Setting_Window_Canvas.SetActive(true);
-        StartCoroutine(Setting_Window_Coroutine02());
     }
 
     public IEnumerator Setting_Window_Coroutine02() // 설정 창 열림
@@ -205,26 +244,31 @@ public class Stop_Manager : MonoBehaviour
             timer += Time.unscaledDeltaTime * 3f;
             yield return null;
         }
+        SettingWindow_Close = true;
     }
 
     public IEnumerator Setting_Window_Close() // 설정 창 닫힘
     {
-        timer = 0;
-        Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
-        Setting_Pole01.transform.DOLocalMoveY(30, 0.48f).SetUpdate(true);
-        Setting_Pole02.transform.DOLocalMoveY(-30, 0.48f).SetUpdate(true);
-
-        while (timer < 1)
+        if (SettingWindow_Close == true)
         {
-            Setting_Window.sizeDelta = new Vector2(1732.5f, Mathf.Lerp(916.9f, 0f, timer));
+            SettingWindow_Close = false;
+            timer = 0;
+            Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
+            Setting_Pole01.transform.DOLocalMoveY(30, 0.48f).SetUpdate(true);
+            Setting_Pole02.transform.DOLocalMoveY(-30, 0.48f).SetUpdate(true);
 
-            timer += Time.unscaledDeltaTime * 3f;
-            yield return null;
+            while (timer < 1)
+            {
+                Setting_Window.sizeDelta = new Vector2(1732.5f, Mathf.Lerp(916.9f, 0f, timer));
+
+                timer += Time.unscaledDeltaTime * 3f;
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(0.1f);
+            Setting_Window_Canvas.SetActive(false);
+            Time.timeScale = 1f;
+            SettingWindow_Open = false;
         }
-        yield return new WaitForSecondsRealtime(0.1f);
-        Setting_Window_Canvas.SetActive(false);
-        Pause_Check = true;
-        Time.timeScale = 1f;
     }
 
     public void Resolution_Size()
@@ -287,22 +331,26 @@ public class Stop_Manager : MonoBehaviour
 
     public IEnumerator Player_Window_Coroutine01() // 플레이어버튼을 클릭했을 떄
     {
-        timer = 0;
-        Pause_Pole01.transform.DOLocalMoveY(48f, 0.5f).SetUpdate(true);
-        Pause_Pole02.transform.DOLocalMoveY(-36, 0.5f).SetUpdate(true);
-
-        while (timer < 1)
+        if (PlayerWindow_Open == false)
         {
-            Pause_Window.sizeDelta = new Vector2(557.1f, Mathf.Lerp(772.4f, 5f, timer));
+            PlayerWindow_Open = true;
+            timer = 0;
+            Pause_Pole01.transform.DOLocalMoveY(48f, 0.5f).SetUpdate(true);
+            Pause_Pole02.transform.DOLocalMoveY(-36, 0.5f).SetUpdate(true);
 
-            timer += Time.unscaledDeltaTime * 2.5f;
-            yield return null;
+            while (timer < 1)
+            {
+                Pause_Window.sizeDelta = new Vector2(557.1f, Mathf.Lerp(772.4f, 5f, timer));
+
+                timer += Time.unscaledDeltaTime * 2.5f;
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(0.1f);
+            Pause_Window_Canvas.SetActive(false);
+            yield return new WaitForSecondsRealtime(0.1f);
+            Player_Window_Canvas.SetActive(true);
+            StartCoroutine(Player_Window_Coroutine02());
         }
-        yield return new WaitForSecondsRealtime(0.1f);
-        Pause_Window_Canvas.SetActive(false);
-        yield return new WaitForSecondsRealtime(0.1f);
-        Player_Window_Canvas.SetActive(true);
-        StartCoroutine(Player_Window_Coroutine02());
     }
 
     public IEnumerator Player_Window_Coroutine02() // 플레이어 창 열림
@@ -317,26 +365,32 @@ public class Stop_Manager : MonoBehaviour
             timer += Time.unscaledDeltaTime * 3f;
             yield return null;
         }
+        PlayerWindow_Close = true;
     }
 
     public IEnumerator Player_Window_Close() // 플레이어 창 닫힘
     {
-        timer = 0;
-        Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
-        Player_Pole01.transform.DOLocalMoveY(30, 0.48f).SetUpdate(true);
-        Player_Pole02.transform.DOLocalMoveY(-30, 0.48f).SetUpdate(true);
-
-        while (timer < 1)
+        if (PlayerWindow_Close == true)
         {
-            Player_Window.sizeDelta = new Vector2(1732.5f, Mathf.Lerp(916.9f, 0f, timer));
+            PlayerWindow_Close = false;
+            timer = 0;
+            Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
+            Player_Pole01.transform.DOLocalMoveY(30, 0.48f).SetUpdate(true);
+            Player_Pole02.transform.DOLocalMoveY(-30, 0.48f).SetUpdate(true);
 
-            timer += Time.unscaledDeltaTime * 3f;
-            yield return null;
+            while (timer < 1)
+            {
+                Player_Window.sizeDelta = new Vector2(1732.5f, Mathf.Lerp(916.9f, 0f, timer));
+
+                timer += Time.unscaledDeltaTime * 3f;
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(0.1f);
+            Player_Window_Canvas.SetActive(false);
+            PauseWindow_Open = true;
+            Time.timeScale = 1f;
+            PlayerWindow_Open = false;
         }
-        yield return new WaitForSecondsRealtime(0.1f);
-        Player_Window_Canvas.SetActive(false);
-        Pause_Check = true;
-        Time.timeScale = 1f;
     }
 
     #region 플레이어 -> 무기 창 & 아이템 창
@@ -344,35 +398,44 @@ public class Stop_Manager : MonoBehaviour
     public void Player_WeaPon_Btn() // 무기 버튼을 눌렀을 떄
     {
         if (WI_Check == false)
+        {
+            PlayerWindow_Check = false;
             StartCoroutine(Player_Weapon_Open01());
+        }
     }
 
     public void Player_Item_Btn() // 아이템 버튼을 눌렀을 때
     {
         if (WI_Check == true)
+        {
+            PlayerWindow_Check = false;
             StartCoroutine(Player_Item_Open01());
+        }
     }
 
     public IEnumerator Player_Weapon_Open01()
     {
-        WI_Check = true;
-        timer = 0;
-        Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
-        Player_Pole01.transform.DOLocalMoveY(30, 0.48f).SetUpdate(true);
-        Player_Pole02.transform.DOLocalMoveY(-30, 0.48f).SetUpdate(true);
-
-        while (timer < 1)
+        if (PlayerWindow_Check == false)
         {
-            Player_Window.sizeDelta = new Vector2(1732.5f, Mathf.Lerp(916.9f, 0f, timer));
+            WI_Check = true;
+            timer = 0;
+            Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
+            Player_Pole01.transform.DOLocalMoveY(30, 0.48f).SetUpdate(true);
+            Player_Pole02.transform.DOLocalMoveY(-30, 0.48f).SetUpdate(true);
 
-            timer += Time.unscaledDeltaTime * 3f;
-            yield return null;
+            while (timer < 1)
+            {
+                Player_Window.sizeDelta = new Vector2(1732.5f, Mathf.Lerp(916.9f, 0f, timer));
+
+                timer += Time.unscaledDeltaTime * 3f;
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(0.1f);
+            Player_Weapon_Window.SetActive(true);
+            Player_Item_Window.SetActive(false);
+            yield return new WaitForSecondsRealtime(0.1f);
+            StartCoroutine(Player_Weapon_Open02());
         }
-        yield return new WaitForSecondsRealtime(0.1f);
-        Player_Weapon_Window.SetActive(true);
-        Player_Item_Window.SetActive(false);
-        yield return new WaitForSecondsRealtime(0.1f);
-        StartCoroutine(Player_Weapon_Open02());
     }
 
     public IEnumerator Player_Weapon_Open02()
@@ -387,28 +450,32 @@ public class Stop_Manager : MonoBehaviour
             timer += Time.unscaledDeltaTime * 3f;
             yield return null;
         }
+        PlayerWindow_Check = true;
     }
 
     public IEnumerator Player_Item_Open01()
     {
-        WI_Check = false;
-        timer = 0;
-        Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
-        Player_Pole01.transform.DOLocalMoveY(30, 0.48f).SetUpdate(true);
-        Player_Pole02.transform.DOLocalMoveY(-30, 0.48f).SetUpdate(true);
-
-        while (timer < 1)
+        if (PlayerWindow_Check == false)
         {
-            Player_Window.sizeDelta = new Vector2(1732.5f, Mathf.Lerp(916.9f, 0f, timer));
+            WI_Check = false;
+            timer = 0;
+            Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
+            Player_Pole01.transform.DOLocalMoveY(30, 0.48f).SetUpdate(true);
+            Player_Pole02.transform.DOLocalMoveY(-30, 0.48f).SetUpdate(true);
 
-            timer += Time.unscaledDeltaTime * 3f;
-            yield return null;
+            while (timer < 1)
+            {
+                Player_Window.sizeDelta = new Vector2(1732.5f, Mathf.Lerp(916.9f, 0f, timer));
+
+                timer += Time.unscaledDeltaTime * 3f;
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(0.1f);
+            Player_Weapon_Window.SetActive(false);
+            Player_Item_Window.SetActive(true);
+            yield return new WaitForSecondsRealtime(0.1f);
+            StartCoroutine(Player_Item_Open02());
         }
-        yield return new WaitForSecondsRealtime(0.1f);
-        Player_Weapon_Window.SetActive(false);
-        Player_Item_Window.SetActive(true);
-        yield return new WaitForSecondsRealtime(0.1f);
-        StartCoroutine(Player_Item_Open02());
     }
 
     public IEnumerator Player_Item_Open02()
@@ -423,15 +490,16 @@ public class Stop_Manager : MonoBehaviour
             timer += Time.unscaledDeltaTime * 3f;
             yield return null;
         }
+        PlayerWindow_Check = true;
     }
     #endregion
 
     #region 무기 창
     public void WeaponType()
     {
-        int Sword_Level =  Player.Instance.stat._level[PlayerWeaponType.Sword];
-        int Dagger_Level =  Player.Instance.stat._level[PlayerWeaponType.Dagger];
-        int Axe_Level =  Player.Instance.stat._level[PlayerWeaponType.Axe];
+        int Sword_Level = Player.Instance.stat._level[PlayerWeaponType.Sword];
+        int Dagger_Level = Player.Instance.stat._level[PlayerWeaponType.Dagger];
+        int Axe_Level = Player.Instance.stat._level[PlayerWeaponType.Axe];
 
         switch (Player.Instance.stat.weaponType)
         {
@@ -536,22 +604,26 @@ public class Stop_Manager : MonoBehaviour
 
     public IEnumerator Main_Window_Coroutine01() // 메인버튼을 클릭했을 떄
     {
-        timer = 0;
-        Pause_Pole01.transform.DOLocalMoveY(48f, 0.5f).SetUpdate(true);
-        Pause_Pole02.transform.DOLocalMoveY(-36, 0.5f).SetUpdate(true);
-
-        while (timer < 1)
+        if (MainWindow_Open == false)
         {
-            Pause_Window.sizeDelta = new Vector2(557.1f, Mathf.Lerp(772.4f, 5f, timer));
+            MainWindow_Open = true;
+            timer = 0;
+            Pause_Pole01.transform.DOLocalMoveY(48f, 0.5f).SetUpdate(true);
+            Pause_Pole02.transform.DOLocalMoveY(-36, 0.5f).SetUpdate(true);
 
-            timer += Time.unscaledDeltaTime * 2.5f;
-            yield return null;
+            while (timer < 1)
+            {
+                Pause_Window.sizeDelta = new Vector2(557.1f, Mathf.Lerp(772.4f, 5f, timer));
+
+                timer += Time.unscaledDeltaTime * 2.5f;
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(0.1f);
+            Pause_Window_Canvas.SetActive(false);
+            yield return new WaitForSecondsRealtime(0.1f);
+            Main_Window_Canvas.SetActive(true);
+            StartCoroutine(Main_Window_Coroutine02());
         }
-        yield return new WaitForSecondsRealtime(0.1f);
-        Pause_Window_Canvas.SetActive(false);
-        yield return new WaitForSecondsRealtime(0.1f);
-        Main_Window_Canvas.SetActive(true);
-        StartCoroutine(Main_Window_Coroutine02());
     }
 
     public IEnumerator Main_Window_Coroutine02() // 메인 창 열림
@@ -566,26 +638,32 @@ public class Stop_Manager : MonoBehaviour
             timer += Time.unscaledDeltaTime * 4f;
             yield return null;
         }
+        MainWindow_Close = true;
     }
 
     public IEnumerator Main_Window_Close()
     {
-        timer = 0;
-        Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
-        Main_Pole01.transform.DOLocalMoveY(30f, 0.42f).SetUpdate(true);
-        Main_Pole02.transform.DOLocalMoveY(-30f, 0.3f).SetUpdate(true);
-
-        while (timer < 1)
+        if (MainWindow_Close == true)
         {
-            Main_Window.sizeDelta = new Vector2(1730f, Mathf.Lerp(520f, 0f, timer));
+            MainWindow_Close = false;
+            timer = 0;
+            Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
+            Main_Pole01.transform.DOLocalMoveY(30f, 0.42f).SetUpdate(true);
+            Main_Pole02.transform.DOLocalMoveY(-30f, 0.3f).SetUpdate(true);
 
-            timer += Time.unscaledDeltaTime * 4.5f;
-            yield return null;
+            while (timer < 1)
+            {
+                Main_Window.sizeDelta = new Vector2(1730f, Mathf.Lerp(520f, 0f, timer));
+
+                timer += Time.unscaledDeltaTime * 4.5f;
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(0.1f);
+            Main_Window_Canvas.SetActive(false);
+            PauseWindow_Open = true;
+            Time.timeScale = 1f;
+            MainWindow_Open = false;
         }
-        yield return new WaitForSecondsRealtime(0.1f);
-        Main_Window_Canvas.SetActive(false);
-        Pause_Check = true;
-        Time.timeScale = 1f;
     }
     #endregion
 
@@ -598,22 +676,26 @@ public class Stop_Manager : MonoBehaviour
 
     public IEnumerator Exit_Window_Coroutine01() //게임종료 버튼을 클릭했을 떄
     {
-        timer = 0;
-        Pause_Pole01.transform.DOLocalMoveY(48f, 0.5f).SetUpdate(true);
-        Pause_Pole02.transform.DOLocalMoveY(-36, 0.5f).SetUpdate(true);
-
-        while (timer < 1)
+        if (GameExitWindow_Open == false)
         {
-            Pause_Window.sizeDelta = new Vector2(557.1f, Mathf.Lerp(772.4f, 5f, timer));
+            GameExitWindow_Open = true;
+            timer = 0;
+            Pause_Pole01.transform.DOLocalMoveY(48f, 0.5f).SetUpdate(true);
+            Pause_Pole02.transform.DOLocalMoveY(-36, 0.5f).SetUpdate(true);
 
-            timer += Time.unscaledDeltaTime * 2.5f;
-            yield return null;
+            while (timer < 1)
+            {
+                Pause_Window.sizeDelta = new Vector2(557.1f, Mathf.Lerp(772.4f, 5f, timer));
+
+                timer += Time.unscaledDeltaTime * 2.5f;
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(0.1f);
+            Pause_Window_Canvas.SetActive(false);
+            yield return new WaitForSecondsRealtime(0.1f);
+            Exit_Window_Canvas.SetActive(true);
+            StartCoroutine(Exit_Window_Coroutine02());
         }
-        yield return new WaitForSecondsRealtime(0.1f);
-        Pause_Window_Canvas.SetActive(false);
-        yield return new WaitForSecondsRealtime(0.1f);
-        Exit_Window_Canvas.SetActive(true);
-        StartCoroutine(Exit_Window_Coroutine02());
     }
 
     public IEnumerator Exit_Window_Coroutine02() //게임종료 창 열림
@@ -628,26 +710,32 @@ public class Stop_Manager : MonoBehaviour
             timer += Time.unscaledDeltaTime * 4f;
             yield return null;
         }
+        GameExitWindow_Close = true;
     }
 
     public IEnumerator Exit_Window_Close()
     {
-        timer = 0;
-        Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
-        Exit_Pole01.transform.DOLocalMoveY(30f, 0.42f).SetUpdate(true);
-        Exit_Pole02.transform.DOLocalMoveY(-30f, 0.3f).SetUpdate(true);
-
-        while (timer < 1)
+        if (GameExitWindow_Close == true)
         {
-            Exit_Window.sizeDelta = new Vector2(1730f, Mathf.Lerp(520f, 0f, timer));
+            GameExitWindow_Close = false;
+            timer = 0;
+            Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
+            Exit_Pole01.transform.DOLocalMoveY(30f, 0.42f).SetUpdate(true);
+            Exit_Pole02.transform.DOLocalMoveY(-30f, 0.3f).SetUpdate(true);
 
-            timer += Time.unscaledDeltaTime * 4.5f;
-            yield return null;
+            while (timer < 1)
+            {
+                Exit_Window.sizeDelta = new Vector2(1730f, Mathf.Lerp(520f, 0f, timer));
+
+                timer += Time.unscaledDeltaTime * 4.5f;
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(0.1f);
+            Exit_Window_Canvas.SetActive(false);
+            PauseWindow_Open = true;
+            Time.timeScale = 1f;
+            GameExitWindow_Open = false;
         }
-        yield return new WaitForSecondsRealtime(0.1f);
-        Exit_Window_Canvas.SetActive(false);
-        Pause_Check = true;
-        Time.timeScale = 1f;
     }
     #endregion
 }

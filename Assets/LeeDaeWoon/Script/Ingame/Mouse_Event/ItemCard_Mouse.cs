@@ -1,182 +1,540 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.EventSystems;
-//using UnityEngine.UI;
-//using DG.Tweening;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using DG.Tweening;
 
-//public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
-//{
-//    public enum Direction
-//    {
-//        Left,
-//        Among,
-//        Right
-//    }
+public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+{
+    public enum Direction
+    {
+        Left,
+        Among,
+        Right
+    }
 
-//    public Direction direction;
-//    float timer = 0;
+    public Direction direction;
+    float timer = 0;
 
-//    [Header("확인")]
-//    int LeftClick_Check = 1;
-//    bool LeftCloseWindow_Check = true;
+    [Header("확인")]
+    int LeftClick_Check = 1;
+    bool LeftCloseWindow_Check = true;
 
-//    int AmongClick_Check = 1;
-//    bool AmongCloseWindow_Check = true;
+    int AmongClick_Check = 1;
+    bool AmongCloseWindow_Check = true;
 
-//    int RightClick_Check = 1;
-//    bool RightCloseWindow_Check = true;
+    int RightClick_Check = 1;
+    bool RightCloseWindow_Check = true;
 
-//    [Header("빛")]
-//    public Image Left_Light;
-//    public Image Among_Light;
-//    public Image Right_Light;
+    [Header("빛")]
+    public Image Left_Light;
+    public Image Among_Light;
+    public Image Right_Light;
 
-//    public bool Left_Pick = true;
-//    public bool Among_Pick = true;
-//    public bool Right_Pick = true;
+    [Header("아이템 창")]
+    public GameObject Left_Window;
+    public GameObject Among_Window;
+    public GameObject Right_Window;
 
-//    [Header("아이템 창")]
-//    public GameObject Left_Window;
-//    public RectTransform Among_Window;
-//    public RectTransform Right_Window;
+    [Header("아이템 봉 / 배경")]
+    //왼쪽
+    public GameObject Left_Pole_01;
+    public GameObject Left_Pole_02;
+    public RectTransform Left_Rect;
 
-//    [Header("아이템 봉 / 배경")]
-//    //왼쪽
-//    public GameObject Left_Pole_01;
-//    public GameObject Left_Pole_02;
-//    public RectTransform Left_Rect;
+    // 가운데
+    public GameObject Among_Pole_01;
+    public GameObject Among_Pole_02;
+    public RectTransform Among_Rect;
 
-//    // 가운데
-//    public GameObject Among_Pole_01;
-//    public GameObject Among_Pole_02;
-//    public RectTransform Among_Rect;
+    // 오른쪽
+    public GameObject Right_Pole_01;
+    public GameObject Right_Pole_02;
+    public RectTransform Right_Rect;
 
-//    // 오른쪽
-//    public GameObject Right_Pole_01;
-//    public GameObject Right_Pole_02;
-//    public RectTransform Right_Rect;
+    void Start()
+    {
+        Card_Manager.Inst.Left_Pick = true;
+        Card_Manager.Inst.Among_Pick = true;
+        Card_Manager.Inst.Right_Pick = true;
+    }
+
+    void Update()
+    {
+
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        switch (direction)
+        {
+            case Direction.Left:
+                if (Card_Manager.Inst.Among_Pick == true && Card_Manager.Inst.Right_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
+                    Left_Light.DOFade(1f, 0.5f);
+                break;
+
+            case Direction.Among:
+                if (Card_Manager.Inst.Left_Pick == true && Card_Manager.Inst.Right_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
+                    Among_Light.DOFade(1f, 0.5f);
+                break;
+
+            case Direction.Right:
+                if (Card_Manager.Inst.Left_Pick == true && Card_Manager.Inst.Among_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
+                    Right_Light.DOFade(1f, 0.5f);
+                break;
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (direction == Direction.Left)
+            Left_Light.DOFade(0f, 0.5f);
+
+        if (direction == Direction.Among)
+            Among_Light.DOFade(0f, 0.5f);
+
+        if (direction == Direction.Right)
+            Right_Light.DOFade(0f, 0.5f);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (direction == Direction.Left)
+        {
+            if (Card_Manager.Inst.Left_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
+            {
+                Card_Manager.Inst.Left_Pick = false;
+                Card_Manager.Inst.Right_Pick = false;
+                Card_Manager.Inst.Among_Pick = false;
+
+                // 방어구 및 장신구를 선택했을 때
+                if (Card_Manager.Inst.DA_Left == false) // 마정석을 클릭했을 경우
+                {
+                    for (int i = 0; i < Card_Manager.Inst.DABuffer.Count; i++)
+                    {
+                        if (Card_Manager.Inst.DABuffer[i].Itme_Name == Card_Manager.Inst.ItemDA_LeftCheck[0].Itme_Name)
+                        {
+                            Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.DABuffer[i]);
+                            Card_Manager.Inst.DABuffer.RemoveAt(i);
+                        }
+                    }
+
+                    switch (Card_Manager.Inst.ItemDA_LeftCheck[0].Itme_Name)
+                    {
+                        case "바람의 귀걸이":
+                            Player.Instance.stat.PlayerDATypeList.WindEarRing = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.WindEarRing);
+                            break;
+
+                        case "가시견갑":
+                            Player.Instance.stat.PlayerDATypeList.NeedleArmour = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.NeedleArmour);
+                            break;
+
+                        case "칼날망토":
+                            Player.Instance.stat.PlayerDATypeList.KnifeCape = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.KnifeCape);
+                            break;
+
+                        case "저주받은 단검":
+                            Player.Instance.stat.PlayerDATypeList.CurseKnife = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.CurseKnife);
+                            break;
+
+                        case "피의 장갑":
+                            Player.Instance.stat.PlayerDATypeList.BloodGauntlet = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.BloodGauntlet);
+                            break;
+
+                        case "수정구":
+                            Player.Instance.stat.PlayerDATypeList.CrystalOrb = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.CrystalOrb);
+                            break;
+
+                        case "절대반지":
+                            Player.Instance.stat.PlayerDATypeList.TheOneRing = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.TheOneRing);
+                            break;
+
+                    }
+
+                }
+
+                // 마정석을 선택했을 때
+                if (Card_Manager.Inst.DA_Left == true)
+                {
+                    switch (Card_Manager.Inst.ItemDA_LeftCheck[0].Itme_Name)
+                    {
+                        case "힘의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.POWER]++;
+                            break;
+
+                        case "신속의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.SPEED]++;
+                            break;
+
+                        case "연속의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.ATTACKSPEED]++;
+                            break;
+
+                        case "체력의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.HEALTH]++;
+                            break;
+
+                        case "시간의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.TIME]++;
+                            break;
+
+                        case "방어의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.DEFFENCE]++;
+                            break;
+                    }
+                }
+
+                if (Card_Manager.Inst.Item_Left == false)
+                    Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.ItemDA_LeftCheck[0]);
+
+                if (Card_Manager.Inst.Item_bool == true)
+                    Card_Manager.Inst.Item_bool = false;
+
+                else if (Card_Manager.Inst.Item_bool == false)
+                    Card_Manager.Inst.Item_Check += LeftClick_Check;
 
 
+                if (Card_Manager.Inst.TimeItem_Count <= 2)
+                {
+                    Card_Manager.Inst.Time_Item_Limit.Add(Card_Manager.Inst.ItemDA_LeftCheck[0]);
+                    for (int i = 0; i < Card_Manager.Inst.Time_Item_Limit.Count; i++)
+                    {
+                        if (Card_Manager.Inst.Time_Item_Limit[i].Itme_Name.Contains(Card_Manager.Inst.ItemBuffer[4].Itme_Name))
+                        {
+                            Card_Manager.Inst.TimeItem_Count++;
+                            Card_Manager.Inst.Time_Item_Limit.Clear();
+                        }
+                    }
+                }
+
+                Left_Light.DOFade(1f, 0.1f);
+                Left_Window.transform.DOLocalMoveY(1100, 0.5f).SetEase(Ease.InQuad);
+                StartCoroutine(Close_Dot());
+            }
+        }
+
+        if (direction == Direction.Among)
+        {
+            if (Card_Manager.Inst.Among_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
+            {
+                Card_Manager.Inst.Among_Pick = false;
+                Card_Manager.Inst.Left_Pick = false;
+                Card_Manager.Inst.Right_Pick = false;
+
+                // 방어구 및 장신구를 선택했을 때
+                if (Card_Manager.Inst.DA_Among == false)
+                {
+                    for (int i = 0; i < Card_Manager.Inst.DABuffer.Count; i++)
+                    {
+                        if (Card_Manager.Inst.DABuffer[i].Itme_Name == Card_Manager.Inst.ItemDA_AmongCheck[0].Itme_Name)
+                        {
+                            Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.DABuffer[i]);
+                            Card_Manager.Inst.DABuffer.RemoveAt(i);
+                        }
+                    }
+
+                    switch (Card_Manager.Inst.ItemDA_AmongCheck[0].Itme_Name)
+                    {
+                        case "바람의 귀걸이":
+                            Player.Instance.stat.PlayerDATypeList.WindEarRing = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.WindEarRing);
+                            break;
+
+                        case "가시견갑":
+                            Player.Instance.stat.PlayerDATypeList.NeedleArmour = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.NeedleArmour);
+                            break;
+
+                        case "칼날망토":
+                            Player.Instance.stat.PlayerDATypeList.KnifeCape = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.KnifeCape);
+                            break;
+
+                        case "저주받은 단검":
+                            Player.Instance.stat.PlayerDATypeList.CurseKnife = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.CurseKnife);
+                            break;
+
+                        case "피의 장갑":
+                            Player.Instance.stat.PlayerDATypeList.BloodGauntlet = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.BloodGauntlet);
+                            break;
+
+                        case "수정구":
+                            Player.Instance.stat.PlayerDATypeList.CrystalOrb = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.CrystalOrb);
+                            break;
+
+                        case "절대반지":
+                            Player.Instance.stat.PlayerDATypeList.TheOneRing = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.TheOneRing);
+                            break;
+
+                    }
+                }
+
+                // 마정석을 선택했을 때
+                if (Card_Manager.Inst.DA_Among == true)
+                {
+                    switch (Card_Manager.Inst.ItemDA_AmongCheck[0].Itme_Name)
+                    {
+                        case "힘의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.POWER]++;
+                            break;
+
+                        case "신속의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.SPEED]++;
+                            break;
+
+                        case "연속의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.ATTACKSPEED]++;
+                            break;
+
+                        case "체력의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.HEALTH]++;
+                            break;
+
+                        case "시간의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.TIME]++;
+                            break;
+
+                        case "방어의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.DEFFENCE]++;
+                            break;
+                    }
+                }
+
+                if (Card_Manager.Inst.Item_Among == false)
+                    Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.ItemDA_AmongCheck[0]);
 
 
-//    void Start()
-//    {
+                if (Card_Manager.Inst.Item_bool == true)
+                    Card_Manager.Inst.Item_bool = false;
 
-//    }
+                else if (Card_Manager.Inst.Item_bool == false)
+                    Card_Manager.Inst.Item_Check += AmongClick_Check;
 
-//    void Update()
-//    {
+                if (Card_Manager.Inst.TimeItem_Count <= 2)
+                {
+                    Card_Manager.Inst.Time_Item_Limit.Add(Card_Manager.Inst.ItemDA_AmongCheck[0]);
+                    for (int i = 0; i < Card_Manager.Inst.Time_Item_Limit.Count; i++)
+                    {
+                        if (Card_Manager.Inst.Time_Item_Limit[i].Itme_Name.Contains(Card_Manager.Inst.ItemBuffer[4].Itme_Name))
+                        {
+                            Card_Manager.Inst.TimeItem_Count++;
+                            Card_Manager.Inst.Time_Item_Limit.Clear();
+                        }
+                    }
+                }
 
-//    }
+                Among_Light.DOFade(1f, 0.1f);
+                Among_Window.transform.DOLocalMoveY(1150, 0.5f).SetEase(Ease.InQuad);
+                StartCoroutine(Close_Dot());
+            }
 
-//    public void OnPointerEnter(PointerEventData eventData)
-//    {
-//        switch (direction)
-//        {
-//            case Direction.Left:
-//                if (Among_Pick == true && Right_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
-//                    Left_Light.DOFade(1f, 0.5f);
-//                break;
+        }
 
-//            case Direction.Among:
-//                if (Left_Pick == true && Right_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
-//                    Among_Light.DOFade(1f, 0.5f);
-//                break;
+        if (direction == Direction.Right)
+        {
+            if (Card_Manager.Inst.Right_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
+            {
+                Card_Manager.Inst.Right_Pick = false;
+                Card_Manager.Inst.Left_Pick = false;
+                Card_Manager.Inst.Among_Pick = false;
 
-//            case Direction.Right:
-//                if (Left_Pick == true && Among_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
-//                    Right_Light.DOFade(1f, 0.5f);
-//                break;
-//        }
-//    }
+                // 방어구 및 장신구를 선택했을 때
+                if (Card_Manager.Inst.DA_Right == false) 
+                {
+                    for (int i = 0; i < Card_Manager.Inst.DABuffer.Count; i++)
+                    {
+                        if (Card_Manager.Inst.DABuffer[i].Itme_Name == Card_Manager.Inst.ItemDA_RightCheck[0].Itme_Name)
+                        {
+                            Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.DABuffer[i]);
+                            Card_Manager.Inst.DABuffer.RemoveAt(i);
+                        }
+                    }
 
-//    public void OnPointerExit(PointerEventData eventData)
-//    {
-//        if (direction == Direction.Left)
-//            Left_Light.DOFade(0f, 0.5f);
+                    switch (Card_Manager.Inst.ItemDA_RightCheck[0].Itme_Name)
+                    {
+                        case "바람의 귀걸이":
+                            Player.Instance.stat.PlayerDATypeList.WindEarRing = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.WindEarRing);
+                            break;
 
-//        if (direction == Direction.Among)
-//            Among_Light.DOFade(0f, 0.5f);
+                        case "가시견갑":
+                            Player.Instance.stat.PlayerDATypeList.NeedleArmour = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.NeedleArmour);
+                            break;
 
-//        if (direction == Direction.Right)
-//            Right_Light.DOFade(0f, 0.5f);
-//    }
+                        case "칼날망토":
+                            Player.Instance.stat.PlayerDATypeList.KnifeCape = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.KnifeCape);
+                            break;
 
-//    public void OnPointerClick(PointerEventData eventData)
-//    {
-//        if (Left_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
-//        {
-//            Left_Pick = false;
-//            Among_Pick = false;
-//            Right_Pick = false;
+                        case "저주받은 단검":
+                            Player.Instance.stat.PlayerDATypeList.CurseKnife = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.CurseKnife);
+                            break;
 
-//            if (Card_Manager.Inst.DA_Left == false)
-//            {
-//                for (int i = 0; i < Card_Manager.Inst.DABuffer.Count; i++)
-//                {
-//                    if (Card_Manager.Inst.DABuffer[i].Itme_Name == Card_Manager.Inst.ItemDA_LeftCheck[0].Itme_Name)
-//                    {
-//                        Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.DABuffer[i]);
-//                        Card_Manager.Inst.DABuffer.RemoveAt(i);
-//                    }
-//                }
-//            }
+                        case "피의 장갑":
+                            Player.Instance.stat.PlayerDATypeList.BloodGauntlet = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.BloodGauntlet);
+                            break;
 
-//            if (Card_Manager.Inst.Item_Left == false)
-//                Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.ItemDA_LeftCheck[0]);
+                        case "수정구":
+                            Player.Instance.stat.PlayerDATypeList.CrystalOrb = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.CrystalOrb);
+                            break;
 
-//            if (Card_Manager.Inst.Item_bool == true)
-//                Card_Manager.Inst.Item_bool = false;
+                        case "절대반지":
+                            Player.Instance.stat.PlayerDATypeList.TheOneRing = true;
+                            Debug.Log(Player.Instance.stat.PlayerDATypeList.TheOneRing);
+                            break;
 
-//            else if (Card_Manager.Inst.Item_bool == false)
-//                Card_Manager.Inst.Item_Check += LeftClick_Check;
+                    }
+                }
 
+                // 마정석을 선택했을 때
+                if (Card_Manager.Inst.DA_Right == true)
+                {
+                    switch (Card_Manager.Inst.ItemDA_RightCheck[0].Itme_Name)
+                    {
+                        case "힘의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.POWER]++;
+                            break;
 
-//            if (Card_Manager.Inst.TimeItem_Count <= 2)
-//            {
-//                Card_Manager.Inst.Time_Item_Limit.Add(Card_Manager.Inst.ItemDA_LeftCheck[0]);
-//                for (int i = 0; i < Card_Manager.Inst.Time_Item_Limit.Count; i++)
-//                {
-//                    if (Card_Manager.Inst.Time_Item_Limit[i].Itme_Name.Contains(Card_Manager.Inst.ItemBuffer[4].Itme_Name))
-//                    {
-//                        Card_Manager.Inst.TimeItem_Count++;
-//                        Card_Manager.Inst.Time_Item_Limit.Clear();
-//                    }
-//                }
-//            }
+                        case "신속의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.SPEED]++;
+                            break;
 
-//            Left_Light.DOFade(1f, 0.1f);
-//            Left_Window.transform.DOLocalMoveY(1100, 0.5f).SetEase(Ease.InQuad);
-//            StartCoroutine(Close_Dot());
-//        }
-//    }
+                        case "연속의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.ATTACKSPEED]++;
+                            break;
 
-//    public IEnumerator Close_Dot()
-//    {
-//        timer = 0;
-//        if (direction == Direction.Left)
-//        {
-//            Among_Pole_01.transform.DOLocalMoveY(-53f, 0.5f);
-//            Among_Pole_02.transform.DOLocalMoveY(-125f, 0.5f);
+                        case "체력의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.HEALTH]++;
+                            break;
 
-//            Right_Pole_01.transform.DOLocalMoveY(-32f, 0.5f);
-//            Right_Pole_02.transform.DOLocalMoveY(-108f, 0.5f);
+                        case "시간의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.TIME]++;
+                            break;
 
-//            while (timer < 1)
-//            {
-//                Among_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, -20, timer));
-//                Right_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, -20, timer));
-//                timer += Time.deltaTime * 3f;
-//                yield return null;
-//            }
+                        case "방어의 마정석":
+                            Player.Instance.stat.Crystals[(int)CrystalsType.DEFFENCE]++;
+                            break;
+                    }
+                }
 
-//            LeftCloseWindow_Check = false;
-//            if (LeftCloseWindow_Check == false)
-//            {
-//                yield return new WaitForSeconds(0.2f);
-//                Destroy(GameObject.Find("Item_Window(Clone)"));
-//            }
-//        }
-//    }
-//}
+                if (Card_Manager.Inst.Item_Right == false)
+                    Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.ItemDA_RightCheck[0]);
+
+                if (Card_Manager.Inst.Item_bool == true)
+                    Card_Manager.Inst.Item_bool = false;
+
+                else if (Card_Manager.Inst.Item_bool == false)
+                    Card_Manager.Inst.Item_Check += RightClick_Check;
+
+                if (Card_Manager.Inst.TimeItem_Count <= 2)
+                {
+                    Card_Manager.Inst.Time_Item_Limit.Add(Card_Manager.Inst.ItemDA_RightCheck[0]);
+                    for (int i = 0; i < Card_Manager.Inst.Time_Item_Limit.Count; i++)
+                    {
+                        if (Card_Manager.Inst.Time_Item_Limit[i].Itme_Name.Contains(Card_Manager.Inst.ItemBuffer[4].Itme_Name))
+                        {
+                            Card_Manager.Inst.TimeItem_Count++;
+                            Card_Manager.Inst.Time_Item_Limit.Clear();
+                        }
+                    }
+                }
+
+                Right_Light.DOFade(1f, 0.1f);
+                Right_Window.transform.DOLocalMoveY(1150, 0.5f).SetEase(Ease.InQuad);
+                StartCoroutine(Close_Dot());
+            }
+        }
+    }
+
+    public IEnumerator Close_Dot()
+    {
+        timer = 0;
+        if (direction == Direction.Left)
+        {
+            Among_Pole_01.transform.DOLocalMoveY(-53f, 0.5f);
+            Among_Pole_02.transform.DOLocalMoveY(-125f, 0.5f);
+
+            Right_Pole_01.transform.DOLocalMoveY(-32f, 0.5f);
+            Right_Pole_02.transform.DOLocalMoveY(-108f, 0.5f);
+
+            while (timer < 1)
+            {
+                Among_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, -20, timer));
+                Right_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, -20, timer));
+                timer += Time.deltaTime * 3f;
+                yield return null;
+            }
+
+            LeftCloseWindow_Check = false;
+            if (LeftCloseWindow_Check == false)
+            {
+                yield return new WaitForSeconds(0.2f);
+                Destroy(GameObject.Find("Item_Window(Clone)"));
+            }
+        }
+
+        if (direction == Direction.Among)
+        {
+            Left_Pole_01.transform.DOLocalMoveY(50f, 0.5f);
+            Left_Pole_02.transform.DOLocalMoveY(-26f, 0.5f);
+
+            Right_Pole_01.transform.DOLocalMoveY(-32f, 0.5f);
+            Right_Pole_02.transform.DOLocalMoveY(-108f, 0.5f);
+
+            while (timer < 1)
+            {
+                Left_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, -20, timer));
+                Right_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, -20, timer));
+                timer += Time.deltaTime * 3f;
+                yield return null;
+            }
+
+            AmongCloseWindow_Check = false;
+            if (AmongCloseWindow_Check == false)
+            {
+                yield return new WaitForSeconds(0.2f);
+                Destroy(GameObject.Find("Item_Window(Clone)"));
+            }
+        }
+
+        if (direction == Direction.Right)
+        {
+            Left_Pole_01.transform.DOLocalMoveY(50f, 0.5f);
+            Left_Pole_02.transform.DOLocalMoveY(-26f, 0.5f);
+
+            Among_Pole_01.transform.DOLocalMoveY(-53f, 0.5f);
+            Among_Pole_02.transform.DOLocalMoveY(-125f, 0.5f);
+
+            while (timer < 1)
+            {
+                Left_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, -20, timer));
+                Among_Rect.sizeDelta = new Vector2(522.6044f, Mathf.Lerp(824.77f, -20, timer));
+                timer += Time.deltaTime * 3f;
+                yield return null;
+            }
+
+            RightCloseWindow_Check = false;
+            if (RightCloseWindow_Check == false)
+            {
+                yield return new WaitForSeconds(0.2f);
+                Destroy(GameObject.Find("Item_Window(Clone)"));
+            }
+        }
+    }
+}

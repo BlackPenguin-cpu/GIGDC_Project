@@ -25,7 +25,8 @@ public class Foundation : MonoBehaviour
     public GameObject Pole_01; // 봉_01
     public GameObject Pole_02; // 봉_02
     public GameObject Malyeog_Window; // 창 오브젝트
-    public RectTransform MalyeogRect_Window; // 창
+    public RectTransform MalyeogRect_Window; // 창2
+    bool WindowOpen_Check = false;
 
     public Text Title; // 마력 이름
     public Text Explanation; // 마력 설명
@@ -55,9 +56,10 @@ public class Foundation : MonoBehaviour
 
     public void Foundation_Click()
     {
-        if (Input.GetKeyDown(KeyCode.F) && Collision_Check == false)
+        if (Input.GetKeyDown(KeyCode.F) && Collision_Check == false && WindowOpen_Check == false)
         {
             StartCoroutine(Open_Window());
+            WindowOpen_Check = true;
         }
     }
 
@@ -92,6 +94,7 @@ public class Foundation : MonoBehaviour
             yield return null;
         }
         Malyeog_Window.SetActive(false);
+        WindowOpen_Check = false;
     }
     #endregion
 

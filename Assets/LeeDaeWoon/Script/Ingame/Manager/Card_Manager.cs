@@ -9,6 +9,10 @@ public class Card_Manager : MonoBehaviour
 
     public int RandomMix;
 
+    public bool Left_Pick = true;
+    public bool Among_Pick = true;
+    public bool Right_Pick = true;
+
     [SerializeField] ItemSo itemSo;
     [SerializeField] GameObject CardPrefab;
 
@@ -48,6 +52,7 @@ public class Card_Manager : MonoBehaviour
     {
         AddList();
         Item_bool = true;
+
     }
 
     private void Update()
