@@ -192,15 +192,17 @@ public class Skill_Manager : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.S) && isCoolDown_01 == false && AS_Limit == false)
         {
+            A_Skill_CoolTime = Skill_Up[0]._cooldown;
             A_Skill_Text_Object.SetActive(true);
             FillAmount_Skill_A.fillAmount = 1f;
+            A_Current_CoolTime = S_Skill_CoolTime;
             StartCoroutine(A_CoolTime());
 
             A_Skill_Text.text = "" + A_Current_CoolTime;
 
             StartCoroutine(A_CoolTimeCounter());
 
-            Debug.Log("asd");
+            skillManager.UseSkill(Skill_Down[0].name, DimensionType.UNDER);
             isCoolDown_01 = true;
         }
     }
@@ -251,12 +253,15 @@ public class Skill_Manager : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.A) && isCoolDown_02 == false && AS_Limit_02 == false)
         {
+            S_Skill_CoolTime = Skill_Down[0]._cooldown;
             S_Skill_Text_Object.SetActive(true);
             FillAmount_Skill_S.fillAmount = 1f;
+            S_Current_CoolTime = A_Skill_CoolTime;
             StartCoroutine(S_CoolTime());
 
             S_Skill_Text.text = "" + S_Current_CoolTime;
 
+            skillManager.UseSkill(Skill_Up[0].name, DimensionType.OVER);
             StartCoroutine(S_CoolTimeCounter());
 
             isCoolDown_02 = true;
