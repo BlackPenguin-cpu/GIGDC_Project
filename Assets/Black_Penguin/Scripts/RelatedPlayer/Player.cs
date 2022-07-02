@@ -93,34 +93,39 @@ public class MagicPower
 [System.Serializable]
 public class PlayerInfo
 {
-    private int level;
+    private Dictionary<PlayerWeaponType, int> level;
     public PlayerWeaponSkillInfo skillInfo = new PlayerWeaponSkillInfo();
     public MagicPower magicPower = new MagicPower();
     private StartStat startStat = new StartStat();
-    public int _level
+    public Dictionary<PlayerWeaponType, int> _level
     {
         get { return level; }
         set
         {
-            switch (weaponType)
-            {
-                case PlayerWeaponType.Sword:
-                    attackDamage = (10 * value) + 10 + startStat.originalAttackDamage;
-                    maxHp = (10 * value) + 10 + startStat.originalMaxHp;
-                    skillInfo.SwordSkillCheck(value);
-                    break;
-                case PlayerWeaponType.Dagger:
-                    attackDamage = (8 * value) + 8 + startStat.originalAttackDamage;
-                    crit = (value * 2) + startStat.originalCrit;
-                    skillInfo.DaggerSkillCheck(value);
-                    break;
-                case PlayerWeaponType.Axe:
-                    attackDamage = (15 * value) + 20 + startStat.originalAttackDamage;
-                    def = (value * 5) + 5 + startStat.originalDef;
-                    skillInfo.AxeSkillCheck(value);
-                    break;
-            }
             level = value;
+            LevelStat();
+        }
+    }
+
+    public void LevelStat()
+    {
+        switch (weaponType)
+        {
+            case PlayerWeaponType.Sword:
+                attackDamage = (10 * level[PlayerWeaponType.Sword]) + 10 + startStat.originalAttackDamage;
+                maxHp = (10 * level[PlayerWeaponType.Sword]) + 10 + startStat.originalMaxHp;
+                skillInfo.SwordSkillCheck(level[PlayerWeaponType.Sword]);
+                break;
+            case PlayerWeaponType.Dagger:
+                attackDamage = (8 * level[PlayerWeaponType.Dagger]) + 8 + startStat.originalAttackDamage;
+                crit = (level[PlayerWeaponType.Dagger] * 2) + startStat.originalCrit;
+                skillInfo.DaggerSkillCheck(level[PlayerWeaponType.Dagger]);
+                break;
+            case PlayerWeaponType.Axe:
+                attackDamage = (15 * level[PlayerWeaponType.Axe]) + 20 + startStat.originalAttackDamage;
+                def = (level[PlayerWeaponType.Axe] * 5) + 5 + startStat.originalDef;
+                skillInfo.AxeSkillCheck(level[PlayerWeaponType.Axe]);
+                break;
         }
     }
 
