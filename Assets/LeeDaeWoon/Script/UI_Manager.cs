@@ -23,11 +23,11 @@ public class UI_Manager : MonoBehaviour
     public float HP;
     public GameObject Bar;
 
-    Player player = new Player();
+    Player player;
 
     void Start()
     {
-
+        player = Player.Instance;
     }
 
     void Update()

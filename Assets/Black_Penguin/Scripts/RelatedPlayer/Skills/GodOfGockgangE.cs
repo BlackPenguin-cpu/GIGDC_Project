@@ -13,7 +13,7 @@ public class GodOfGockgangE : BaseSkill
         foreach (BaseEnemy enemy in enemies)
         {
             float distance = Vector2.Distance(player.transform.position, enemy.transform.position);
-            if (maxDistance < distance)
+            if (maxDistance < distance && enemy.dimensionType == dimensionType)
             {
                 target = enemy;
                 maxDistance = distance;
