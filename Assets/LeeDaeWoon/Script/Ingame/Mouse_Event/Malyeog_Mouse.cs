@@ -43,6 +43,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (malyeog == Malyeog.Magic)
         {
+            Debug.Log("sdf");
             Foundation.Inst.Price_obj.SetActive(true);
             Foundation.Inst.Close_Btn.SetActive(false);
             switch (Malyeog_Num)
