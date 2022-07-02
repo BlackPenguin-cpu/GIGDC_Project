@@ -12,17 +12,20 @@ public class Title_Manager : MonoBehaviour
     public GameObject Title_Circle01;
     public GameObject Title_Circle02;
     public Text Fade_Text;
+
+    public Image Team_BackGround;
+    private bool Team_BackGround_Check;
     bool MoveMent_Check = true;
 
     void Start()
     {
-        
+        StartCoroutine(TeamLogo_BackGround());
     }
 
     void Update()
     {
         if (Input.anyKeyDown)
-            StartCoroutine(Stop_Coroutine());
+            StartCoroutine(Change_Scene());
     }
 
     private void Awake()
@@ -36,11 +39,16 @@ public class Title_Manager : MonoBehaviour
         StartCoroutine(FadeText_Full());
     }
 
-    public IEnumerator Stop_Coroutine()
+    public IEnumerator Change_Scene()
     {
-        DOTween.PauseAll();
-        yield return new WaitForSeconds(0.1f);
-        SceneManager.LoadScene("Main");
+        if (Team_BackGround_Check == true)
+        {
+
+            //DOTween.timeScale = 0f;
+            yield return new WaitForSeconds(0.1f);
+            SceneManager.LoadScene("Main");
+        }
+
     }
 
     #region 타이틀 원
@@ -75,5 +83,18 @@ public class Title_Manager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(FadeText_Full());
     }
+    #endregion
+
+    #region 팀 배경
+    public IEnumerator TeamLogo_BackGround()
+    {
+        yield return new WaitForSeconds(3f);
+        Team_BackGround.DOFade(0f, 3f);
+        yield return new WaitForSeconds(4f);
+        Team_BackGround_Check = true;
+    }
+
+
+
     #endregion
 }

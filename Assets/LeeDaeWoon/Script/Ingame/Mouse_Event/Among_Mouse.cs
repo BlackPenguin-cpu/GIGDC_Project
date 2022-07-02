@@ -43,9 +43,7 @@ public class Among_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (Left_Mouse.Inst.Left_Pick == true && Right_Mouse.Inst.Right_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
-        {
             Among_Light.DOFade(1f, 0.5f);
-        }
 
     }
 
