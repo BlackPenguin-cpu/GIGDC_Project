@@ -93,7 +93,8 @@ public class MagicPower
 [System.Serializable]
 public class PlayerInfo
 {
-    private Dictionary<PlayerWeaponType, int> level = new Dictionary<PlayerWeaponType, int>();
+    private Dictionary<PlayerWeaponType, int> level = new Dictionary<PlayerWeaponType, int>()
+    { [PlayerWeaponType.Axe] = 0, [PlayerWeaponType.Dagger] = 0, [PlayerWeaponType.Sword] = 0 };
     public PlayerWeaponSkillInfo skillInfo = new PlayerWeaponSkillInfo();
     public MagicPower magicPower = new MagicPower();
     private StartStat startStat = new StartStat();
