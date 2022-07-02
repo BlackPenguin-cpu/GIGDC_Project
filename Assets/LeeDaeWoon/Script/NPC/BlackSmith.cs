@@ -9,28 +9,22 @@ public class BlackSmith : MonoBehaviour
     public static BlackSmith Inst { get; private set; }
     void Awake() => Inst = this;
 
-    [Header("제단")]
-    public float Speed; // 마법진 돌아가는 속도
-    public GameObject Magic_Circle; // 마법진
-
-    [Header("업그레이드 버튼")]
+    [Header("상호작용 버튼")]
     public Image F_Button; // 상호작용 버튼
     public GameObject Upgrade; // 상호작용 오브젝트
     public Text Upgrade_Text; // 상호작용 텍스트
     public bool Collision_Check = true; // 충돌 했는지 체크
 
-    [Header("마력강화 창")]
+    [Header("무기 구매 및 강화 창")]
     private float timer; // 창 열리는 속도
     public GameObject Pole_01; // 봉_01
     public GameObject Pole_02; // 봉_02
     public GameObject Malyeog_Window; // 창 오브젝트
     public RectTransform MalyeogRect_Window; // 창
 
-    public Text Title; // 마력 이름
-    public Text Explanation; // 마력 설명
-    public GameObject Close_Btn; // 닫기 버튼
-    public GameObject Price_obj; // 가격 오브젝트
-    public Text Dimensional_Price; // 마력 가격
+    public GameObject Weapon;
+    public GameObject[] Weapon_Check = new GameObject[2];
+    
 
     void Start()
     {
@@ -40,22 +34,30 @@ public class BlackSmith : MonoBehaviour
 
     void Update()
     {
-        MagicCircle_Rotation();
-        Foundation_Click();
+        BlackSmith_Click();
         #region 월드 좌표를 스크린 좌표로 변경을 해준다.
-        Upgrade.transform.localPosition = Camera.main.WorldToScreenPoint(this.gameObject.transform.localPosition + new Vector3(-5.2f, -4.4f, 0));
+        Upgrade.transform.localPosition = Camera.main.WorldToScreenPoint(this.gameObject.transform.localPosition + new Vector3(-3f, 0.3f, 0));
         #endregion
     }
 
-    public void MagicCircle_Rotation() => Magic_Circle.transform.Rotate(new Vector3(0, 0, Speed * Time.deltaTime));
 
-    public void Foundation_Click()
+    #region 버튼 클릭
+    public void BlackSmith_Click()
     {
         if (Input.GetKeyDown(KeyCode.F) && Collision_Check == false)
-        {
             StartCoroutine(Open_Window());
-        }
     }
+
+    public void Left_Arrow()
+    {
+        //Weapon_Check[0]
+    }
+
+    public void Right_Arrow()
+    {
+
+    }
+    #endregion
 
     #region 창 연출
     public void Close() => StartCoroutine(Close_Window());
