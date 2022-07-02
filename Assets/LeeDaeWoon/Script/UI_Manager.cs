@@ -23,6 +23,8 @@ public class UI_Manager : MonoBehaviour
     public float HP;
     public GameObject Bar;
 
+    Player player = new Player();
+
     void Start()
     {
 
@@ -66,7 +68,7 @@ public class UI_Manager : MonoBehaviour
     #region Ã¼·Â
     public void HP_System()
     {
-        HP = Player.Instance.stat._hp;
+        HP = player.stat._hp;
 
         if (HP >= 0 && HP <= 100)
             Bar.transform.localScale = new Vector3(100, HP, 1);

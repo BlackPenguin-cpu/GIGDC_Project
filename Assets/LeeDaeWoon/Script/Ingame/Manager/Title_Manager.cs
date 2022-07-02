@@ -39,9 +39,8 @@ public class Title_Manager : MonoBehaviour
     public IEnumerator Stop_Coroutine()
     {
         DOTween.PauseAll();
-        //yield return new WaitForSeconds(0.1f);
-        yield return null;
-        //SceneManager.LoadScene("Main");
+        yield return new WaitForSeconds(0.1f);
+        SceneManager.LoadScene("Main");
     }
 
     #region 타이틀 원
