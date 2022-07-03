@@ -511,19 +511,22 @@ public class Player : Entity, ITypePlayer
     //플레이어 인풋
     void InputManager()
     {
-        if (state == PlayerState.Die) return;
-        Move();
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (UI_Manager.Inst.PlayerMove_control == true) return;
         {
-            Dash();
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            OnAttack();
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Jump();
+            if (state == PlayerState.Die) return;
+            Move();
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                Dash();
+            }
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                OnAttack();
+            }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                Jump();
+            }
         }
     }
     private void Dash()

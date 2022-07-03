@@ -7,6 +7,8 @@ using DG.Tweening;
 
 public class Title_Manager : MonoBehaviour
 {
+    public static Title_Manager Inst { get; private set; }
+
     [Header("타이틀")]
     public GameObject Title_Logo;
     public GameObject Title_Circle01;
@@ -15,7 +17,15 @@ public class Title_Manager : MonoBehaviour
 
     public Image Team_BackGround;
     private bool Team_BackGround_Check;
-    bool MoveMent_Check = true;
+
+    public bool MouseCheck;
+
+    [Header("크레딧")]
+    public Image FadeInout;
+    public Image Credit_BackGround;
+    public GameObject Credit_Text;
+    public bool click_Check;
+    public bool Skip_Check;
 
     void Start()
     {
@@ -25,11 +35,18 @@ public class Title_Manager : MonoBehaviour
     void Update()
     {
         if (Input.anyKeyDown)
-            StartCoroutine(Change_Scene());
+        {
+            if (MouseCheck == false && Skip_Check!= true)
+                Change_Scene();
+
+            if (Skip_Check == true)
+                StartCoroutine(Credit_ESC());
+        }
     }
 
     private void Awake()
     {
+        Inst = this;
         Sart_Coroutine();
     }
 
@@ -39,16 +56,28 @@ public class Title_Manager : MonoBehaviour
         StartCoroutine(FadeText_Full());
     }
 
-    public IEnumerator Change_Scene()
+    public void Change_Scene()
     {
         if (Team_BackGround_Check == true)
         {
-
-            //DOTween.timeScale = 0f;
-            yield return new WaitForSeconds(0.1f);
+            DOTween.PauseAll();
             SceneManager.LoadScene("Main");
         }
 
+    }
+
+    public IEnumerator Credit_ESC()
+    {
+        FadeInout.DOFade(1f, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        Credit_Text.transform.DOPause();
+        Credit_BackGround.DOFade(0f, 0f);
+        Credit_Text.transform.localPosition = new Vector3(0f, -4764f, 0f);
+        MouseCheck = false;
+        click_Check = false;
+        Skip_Check = false;
+        Credit_BackGround.raycastTarget = false;
+        FadeInout.DOFade(0f, 0.5f);
     }
 
     #region 타이틀 원
@@ -88,13 +117,13 @@ public class Title_Manager : MonoBehaviour
     #region 팀 배경
     public IEnumerator TeamLogo_BackGround()
     {
+        Credit_BackGround.raycastTarget = true;
         yield return new WaitForSeconds(3f);
         Team_BackGround.DOFade(0f, 3f);
         yield return new WaitForSeconds(4f);
+        Credit_BackGround.raycastTarget = false;
         Team_BackGround_Check = true;
     }
-
-
-
     #endregion
+
 }

@@ -52,8 +52,6 @@ public class Skill_Window : MonoBehaviour
     public int RandomTest;
 
     public bool MoreThanOnce_Purchase = true; // 1번 이상 스킬을 구매할 시
-    private bool UP_MoreThanOnce_Purchase = true; // 윗 스킬에 1번 이상 스킬을 적용할 시
-    private bool Down_MoreThanOnce_Purchase = true; // 아랫 스킬에 1번 이상 스킬을 적용할 시
 
     SkillScript SeletSkill;
 
@@ -88,7 +86,7 @@ public class Skill_Window : MonoBehaviour
     void ScreentoWorld()
     {
         #region 월드 좌표를 스크린 좌표로 변경을 해준다.
-        transform.localPosition = Camera.main.WorldToScreenPoint(Skill_Shop.gameObject.transform.position + new Vector3(-17.5f, -4.5f, 0));
+        transform.localPosition = Camera.main.WorldToScreenPoint(Skill_Shop.gameObject.transform.position + new Vector3(-17.5f, -4.4f, 0));
         #endregion
     }
 
@@ -106,6 +104,8 @@ public class Skill_Window : MonoBehaviour
             // 스킬구매
             if (Purchase == true && SkillColider_Check == true && (UI_Manager.Inst.Gold >= Skill_List.Inst.Left_Gold || UI_Manager.Inst.Gold >= Skill_List.Inst.Among_Gold || UI_Manager.Inst.Gold >= Skill_List.Inst.Right_Gold))
             {
+                UI_Manager.Inst.PlayerMove_control = true;
+
                 SeletSkill = Skill_Manager.Inst.Skill[SkillNum];
                 AfterPurchase_Skill.GetComponent<Image>().sprite = SeletSkill.sprite;
 
@@ -147,6 +147,7 @@ public class Skill_Window : MonoBehaviour
                 AfterPurchase_Key.gameObject.SetActive(false);
                 StartCoroutine(SkillHave()); // SkillHave 코루틴을 실행시킨다.
                 Purchase = true; // 이것을 통하여 스킬적용 -> 스킬구매로 넘겨준다.
+                UI_Manager.Inst.PlayerMove_control = false;
             }
         }
     }
@@ -193,7 +194,6 @@ public class Skill_Window : MonoBehaviour
             {
                 AfterPurchase_Window.SetActive(false);
                 MoreThanOnce_Purchase = false;
-                UP_MoreThanOnce_Purchase = false;
             }
 
             // 한 번 이상 스킬을 적용시킬 시 실행시킨다.
@@ -240,7 +240,6 @@ public class Skill_Window : MonoBehaviour
             {
                 AfterPurchase_Window.SetActive(false);
                 MoreThanOnce_Purchase = false;
-                Down_MoreThanOnce_Purchase = false;
             }
 
             // 한 번 이상 스킬을 적용시킬 시 실행시킨다.

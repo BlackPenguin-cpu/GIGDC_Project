@@ -102,7 +102,7 @@ public class Salesman : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.GetComponent<ITypePlayer>() != null)
         {
             Collision_Check = false;
             Different_Product_Text.DOFade(1f, 0.5f);
@@ -114,7 +114,7 @@ public class Salesman : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.GetComponent<ITypePlayer>() != null)
         {
             Collision_Check = true;
             Different_Product_Text.DOFade(0f, 0.5f);
