@@ -15,7 +15,7 @@ public class Title_Manager : MonoBehaviour
 
     public Image Team_BackGround;
     private bool Team_BackGround_Check;
-    bool MoveMent_Check = true;
+    //bool MoveMent_Check = true;
 
     void Start()
     {
@@ -43,8 +43,7 @@ public class Title_Manager : MonoBehaviour
     {
         if (Team_BackGround_Check == true)
         {
-
-            //DOTween.timeScale = 0f;
+            DOTween.PauseAll();
             yield return new WaitForSeconds(0.1f);
             SceneManager.LoadScene("Main");
         }
@@ -93,8 +92,5 @@ public class Title_Manager : MonoBehaviour
         yield return new WaitForSeconds(4f);
         Team_BackGround_Check = true;
     }
-
-
-
     #endregion
 }

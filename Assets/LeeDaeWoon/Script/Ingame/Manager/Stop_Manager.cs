@@ -11,7 +11,7 @@ public class Stop_Manager : MonoBehaviour
 
     public float timer = 0f;
     public Image Fade_Background;
-    private bool InPause = false;
+    public bool InPause = false;
 
     bool PauseWindow_Open = false;
     bool PauseWindow_Close = false;

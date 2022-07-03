@@ -17,6 +17,10 @@ public class Healing : MonoBehaviour
     public RectTransform Healing_RectTransform;
     public Text Healing_Gold_Text;
 
+    [Header("Èú ÀÌÆåÆ®")]
+    public GameObject Player_Position;
+    public GameObject Healing_Effect;
+
     public float Healing_Gold = 0;
     public float Heal = 0;
 
@@ -29,6 +33,7 @@ public class Healing : MonoBehaviour
         Healing_Window.SetActive(false);
         Healing_Price();
 
+        Player_Position = GameObject.Find("Player");
     }
 
     void Update()
@@ -65,36 +70,55 @@ public class Healing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && Healing_Colider_Check == false && UI_Manager.Inst.Gold >= Healing_Gold && Healing_Purchase_Check == true)
         {
             UI_Manager.Inst.Gold -= Healing_Gold;
+            UI_Manager.Inst.PlayerMove_control = true;
+            StartCoroutine(HealingWindow_Close_Coroutine());
+
             if (100 >= Player.Instance.stat._hp + Heal)
             {
+                StartCoroutine(HealingEffect());
                 this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+
                 for (int i = 0; i <= Heal; i++)
                 {
                     Player.Instance.stat._hp += 1;
                     yield return new WaitForSeconds(0.05f);
                 }
+                UI_Manager.Inst.PlayerMove_control = false;
             }
 
             else
             {
+                StartCoroutine(HealingEffect());
                 this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+
                 for (int i = 0; i <= Heal; i++)
                 {
                     Player.Instance.stat._hp += 1;
                     yield return new WaitForSeconds(0.05f);
                 }
                 Player.Instance.stat._hp = 100;
+                UI_Manager.Inst.PlayerMove_control = false;
             }
 
-            StartCoroutine(HealingWindow_Close_Coroutine());
             Healing_Purchase_Check = false;
 
-            this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-            this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
-
         }
+    }
+
+    IEnumerator HealingEffect()
+    {
+        Healing_Effect.SetActive(true);
+        Healing_Effect.transform.localPosition = new Vector3(Player_Position.transform.localPosition.x, -0.18f, 0f);
+        yield return new WaitForSeconds(2f);
+        Healing_Effect.SetActive(false);
     }
 
     #region ½Å¼º Ã¢

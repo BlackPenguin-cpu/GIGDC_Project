@@ -10,11 +10,14 @@ public class UI_Manager : MonoBehaviour
     public static UI_Manager Inst { get; private set; }
     void Awake() => Inst = this;
 
+    public bool PlayerMove_control = false;
+
     [Header("재화")]
-    public Text Gold_Text;
-    public Text Dimensional_Text;
-    public int Dimensional;
     public float Gold;
+    public Text Gold_Text;
+    public int Dimensional;
+    public Text Dimensional_Text;
+
 
     [Header("타이머")]
     public Text Timer_Text;
@@ -25,13 +28,17 @@ public class UI_Manager : MonoBehaviour
     public float HP;
     public GameObject Bar;
 
+    [Header("마우스 포인터")]
+    public Texture2D MousePointer;
+
     void Start()
     {
-
     }
 
     void Update()
     {
+        Cursor.SetCursor(MousePointer, Vector2.zero, CursorMode.ForceSoftware);
+
         Timer_System();
         Money_System();
         HP_System();

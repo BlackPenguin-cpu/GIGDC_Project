@@ -6,8 +6,7 @@ using DG.Tweening;
 
 public class BlackSmith : MonoBehaviour
 {
-    public static BlackSmith Inst { get; private set; }
-    void Awake() => Inst = this;
+    bool BlackSmithWindow_Close = false;
 
     [Header("상호작용 버튼")]
     public Image F_Button; // 상호작용 버튼
@@ -21,6 +20,8 @@ public class BlackSmith : MonoBehaviour
     public GameObject Pole_02; // 봉_02
     public GameObject Weapon_Purchase_Window; // 창 오브젝트
     public RectTransform WeaponPurchase_RectWindow; // 창
+
+    public Image FadeInout;
 
     private bool WindowOpen_Check = false;
 
@@ -274,8 +275,15 @@ public class BlackSmith : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && Collision_Check == false && WindowOpen_Check == false)
         {
+            UI_Manager.Inst.PlayerMove_control = true;
+            FadeInout.DOFade(0.5f, 1f);
             StartCoroutine(Open_Window());
             WindowOpen_Check = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && BlackSmithWindow_Close == true)
+        {
+            Close();
         }
     }
 
@@ -371,29 +379,37 @@ public class BlackSmith : MonoBehaviour
             timer += Time.deltaTime * 3f;
             yield return null;
         }
+        BlackSmithWindow_Close = true;
     }
 
     public IEnumerator Close_Window()
     {
-        timer = 0f;
-        Pole_01.transform.DOLocalMoveY(30, 0.5f);
-        Pole_02.transform.DOLocalMoveY(-30, 0.5f);
-
-        while (timer < 1)
+        if (BlackSmithWindow_Close == true)
         {
-            WeaponPurchase_RectWindow.sizeDelta = new Vector2(1696.425f, Mathf.Lerp(931.6482f, 0, timer));
-            timer += Time.deltaTime * 3f;
-            yield return null;
+            BlackSmithWindow_Close = false;
+            FadeInout.DOFade(0f, 1f);
+
+            timer = 0f;
+            Pole_01.transform.DOLocalMoveY(30, 0.5f);
+            Pole_02.transform.DOLocalMoveY(-30, 0.5f);
+
+            while (timer < 1)
+            {
+                WeaponPurchase_RectWindow.sizeDelta = new Vector2(1696.425f, Mathf.Lerp(931.6482f, 0, timer));
+                timer += Time.deltaTime * 3f;
+                yield return null;
+            }
+            UI_Manager.Inst.PlayerMove_control = false;
+            Weapon_Purchase_Window.SetActive(false);
+            WindowOpen_Check = false;
         }
-        Weapon_Purchase_Window.SetActive(false);
-        WindowOpen_Check = false;
     }
     #endregion
 
     #region 충돌 체크
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.GetComponent<ITypePlayer>() != null)
+        if (collision.GetComponent<ITypePlayer>() != null)
         {
             Collision_Check = false;
             Upgrade_Text.DOFade(1f, 0.5f);
@@ -403,7 +419,7 @@ public class BlackSmith : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.GetComponent<ITypePlayer>() != null)
+        if (collision.GetComponent<ITypePlayer>() != null)
         {
             Collision_Check = true;
             Upgrade_Text.DOFade(0f, 0.5f);

@@ -28,6 +28,8 @@ public class Foundation : MonoBehaviour
     public RectTransform MalyeogRect_Window; // 창2
     bool WindowOpen_Check = false;
 
+    public Image FadeInout;
+
     public Text Title; // 마력 이름
     public Text Explanation; // 마력 설명
     public GameObject Close_Btn; // 닫기 버튼
@@ -58,6 +60,8 @@ public class Foundation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && Collision_Check == false && WindowOpen_Check == false)
         {
+            FadeInout.DOFade(0.5f, 1f);
+            UI_Manager.Inst.PlayerMove_control = true;
             StartCoroutine(Open_Window());
             WindowOpen_Check = true;
         }
@@ -86,13 +90,14 @@ public class Foundation : MonoBehaviour
         timer = 0f;
         Pole_01.transform.DOLocalMoveY(30, 0.5f);
         Pole_02.transform.DOLocalMoveY(-30, 0.5f);
-
+        FadeInout.DOFade(0f, 1f);
         while (timer < 1)
         {
             MalyeogRect_Window.sizeDelta = new Vector2(1696.425f, Mathf.Lerp(931.6482f, 0, timer));
             timer += Time.deltaTime * 3f;
             yield return null;
         }
+        UI_Manager.Inst.PlayerMove_control = false;
         Malyeog_Window.SetActive(false);
         WindowOpen_Check = false;
     }
