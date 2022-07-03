@@ -52,8 +52,6 @@ public class Skill_Window : MonoBehaviour
     public int RandomTest;
 
     public bool MoreThanOnce_Purchase = true; // 1번 이상 스킬을 구매할 시
-    private bool UP_MoreThanOnce_Purchase = true; // 윗 스킬에 1번 이상 스킬을 적용할 시
-    private bool Down_MoreThanOnce_Purchase = true; // 아랫 스킬에 1번 이상 스킬을 적용할 시
 
     SkillScript SeletSkill;
 
@@ -196,7 +194,6 @@ public class Skill_Window : MonoBehaviour
             {
                 AfterPurchase_Window.SetActive(false);
                 MoreThanOnce_Purchase = false;
-                UP_MoreThanOnce_Purchase = false;
             }
 
             // 한 번 이상 스킬을 적용시킬 시 실행시킨다.
@@ -243,7 +240,6 @@ public class Skill_Window : MonoBehaviour
             {
                 AfterPurchase_Window.SetActive(false);
                 MoreThanOnce_Purchase = false;
-                Down_MoreThanOnce_Purchase = false;
             }
 
             // 한 번 이상 스킬을 적용시킬 시 실행시킨다.
