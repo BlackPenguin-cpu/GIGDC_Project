@@ -49,8 +49,8 @@ public class Foundation : MonoBehaviour
         #region 월드 좌표를 스크린 좌표로 변경을 해준다.
         if (SceneManager.GetActiveScene().name == "Dimension")
             Upgrade.transform.localPosition = Camera.main.WorldToScreenPoint(this.gameObject.transform.localPosition + new Vector3(-5.2f, -4.4f, 0));
-        if(SceneManager.GetActiveScene().name == "Main")
-            Upgrade.transform.localPosition = Camera.main.WorldToScreenPoint(this.gameObject.transform.localPosition + new Vector3(-10.8f, -7f, 0));
+        //if(SceneManager.GetActiveScene().name == "Main")
+            //Upgrade.transform.localPosition = Camera.main.WorldToScreenPoint(this.gameObject.transform.localPosition + new Vector3(-10.8f, -7f, 0));
         #endregion
     }
 

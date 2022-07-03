@@ -379,7 +379,7 @@ public class Player : Entity, ITypePlayer
     [HideInInspector] public SpriteRenderer sprite;
     [HideInInspector] public AttackCollision[] attackCollisions;
 
-    [SerializeField] PlayerState state;
+    [SerializeField] public PlayerState state;
     PlayerState _state
     {
         get { return state; }
