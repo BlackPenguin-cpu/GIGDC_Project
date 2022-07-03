@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 5480381259379552756}
   - component: {fileID: 5281084326537119660}
   - component: {fileID: 8599301267161710096}
-  - component: {fileID: 6600427119936215010}
+  - component: {fileID: 563359470335774854}
   m_Layer: 5
   m_Name: RightLight_Tool
   m_TagString: Untagged
@@ -566,7 +566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 622, y: 0.4473877}
+  m_AnchoredPosition: {x: 643, y: 0.4473877}
   m_SizeDelta: {x: 478.7146, y: 857.4294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5480381259379552756
@@ -633,7 +633,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 477.18387, y: 852.5265}
   m_EdgeRadius: 0
---- !u!114 &6600427119936215010
+--- !u!114 &563359470335774854
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -642,13 +642,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1851735834647276063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abf4927bef88e104c8629704d3200c3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2de229a1da7f12445a42baf5e153ab51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RightClick_Check: 1
-  RightCloseWindow_Check: 1
-  Right_Pick: 1
+  direction: 2
+  Left_Light: {fileID: 4395482343802413563}
+  Among_Light: {fileID: 7393044987876570912}
   Right_Light: {fileID: 8251208463909198636}
+  Left_Pick: 1
+  Among_Pick: 1
+  Right_Pick: 1
+  Left_Window: {fileID: 196263142699776956}
+  Among_Window: {fileID: 966359459737049938}
   Right_Window: {fileID: 1841103067523789101}
   Left_Pole_01: {fileID: 6711820591804276996}
   Left_Pole_02: {fileID: 6711820591650917767}
@@ -656,6 +661,9 @@ MonoBehaviour:
   Among_Pole_01: {fileID: 9169888672536676352}
   Among_Pole_02: {fileID: 3398648256875321448}
   Among_Rect: {fileID: 7867462963340296186}
+  Right_Pole_01: {fileID: 4718920491508994295}
+  Right_Pole_02: {fileID: 2853423432931276456}
+  Right_Rect: {fileID: 7249007563178934599}
 --- !u!1 &2164474646534516480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,8 +1214,8 @@ GameObject:
   - component: {fileID: 12805863155299904}
   - component: {fileID: 6859209549742261695}
   - component: {fileID: 570415083660945460}
-  - component: {fileID: 5566116197725082133}
   - component: {fileID: 2621430238160310105}
+  - component: {fileID: 7884440419483788936}
   m_Layer: 5
   m_Name: LeftLight_Tool
   m_TagString: Untagged
@@ -1231,7 +1239,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -614.1178, y: 0.4473877}
+  m_AnchoredPosition: {x: -627, y: 0.4473877}
   m_SizeDelta: {x: 478.7146, y: 857.4294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6859209549742261695
@@ -1272,31 +1280,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5566116197725082133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3609135485878843694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9943fa92b99a9da4bbb8588e81a5c623, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LeftClick_Check: 1
-  LeftCloseWindow_Check: 1
-  Left_Pick: 1
-  Left_Light: {fileID: 4395482343802413563}
-  Left_Window: {fileID: 196263142699776956}
-  Among_Window: {fileID: 2408928780418664263}
-  Right_Window: {fileID: 1653535212901622179}
-  Among_Pole_01: {fileID: 9169888672536676352}
-  Among_Pole_02: {fileID: 3398648256875321448}
-  Among_Rect: {fileID: 7867462963340296186}
-  Right_Pole_01: {fileID: 4718920491508994295}
-  Right_Pole_02: {fileID: 2853423432931276456}
-  Right_Rect: {fileID: 7249007563178934599}
 --- !u!61 &2621430238160310105
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1323,6 +1306,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 477.18387, y: 852.5265}
   m_EdgeRadius: 0
+--- !u!114 &7884440419483788936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3609135485878843694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de229a1da7f12445a42baf5e153ab51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
+  Left_Light: {fileID: 4395482343802413563}
+  Among_Light: {fileID: 7393044987876570912}
+  Right_Light: {fileID: 8251208463909198636}
+  Left_Pick: 1
+  Among_Pick: 1
+  Right_Pick: 1
+  Left_Window: {fileID: 196263142699776956}
+  Among_Window: {fileID: 966359459737049938}
+  Right_Window: {fileID: 1841103067523789101}
+  Left_Pole_01: {fileID: 6711820591804276996}
+  Left_Pole_02: {fileID: 6711820591650917767}
+  Left_Rect: {fileID: 3871949029389661784}
+  Among_Pole_01: {fileID: 9169888672536676352}
+  Among_Pole_02: {fileID: 3398648256875321448}
+  Among_Rect: {fileID: 7867462963340296186}
+  Right_Pole_01: {fileID: 4718920491508994295}
+  Right_Pole_02: {fileID: 2853423432931276456}
+  Right_Rect: {fileID: 7249007563178934599}
 --- !u!1 &3730976119544588051
 GameObject:
   m_ObjectHideFlags: 0
@@ -2555,7 +2569,7 @@ GameObject:
   - component: {fileID: 9188946782689193993}
   - component: {fileID: 6419608604733574138}
   - component: {fileID: 7520073695719759236}
-  - component: {fileID: 3757331872724226763}
+  - component: {fileID: 509837276574919164}
   m_Layer: 5
   m_Name: AmongLight_Tool
   m_TagString: Untagged
@@ -2646,7 +2660,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 477.18387, y: 852.5265}
   m_EdgeRadius: 0
---- !u!114 &3757331872724226763
+--- !u!114 &509837276574919164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2655,17 +2669,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8583290387850317301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aba903402f1db8b489f53ee7b08d6afc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2de229a1da7f12445a42baf5e153ab51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmongClick_Check: 1
-  AmongCloseWindow_Check: 1
-  Among_Pick: 1
+  direction: 1
+  Left_Light: {fileID: 4395482343802413563}
   Among_Light: {fileID: 7393044987876570912}
+  Right_Light: {fileID: 8251208463909198636}
+  Left_Pick: 1
+  Among_Pick: 1
+  Right_Pick: 1
+  Left_Window: {fileID: 196263142699776956}
   Among_Window: {fileID: 966359459737049938}
+  Right_Window: {fileID: 1841103067523789101}
   Left_Pole_01: {fileID: 6711820591804276996}
   Left_Pole_02: {fileID: 6711820591650917767}
   Left_Rect: {fileID: 3871949029389661784}
+  Among_Pole_01: {fileID: 9169888672536676352}
+  Among_Pole_02: {fileID: 3398648256875321448}
+  Among_Rect: {fileID: 7867462963340296186}
   Right_Pole_01: {fileID: 4718920491508994295}
   Right_Pole_02: {fileID: 2853423432931276456}
   Right_Rect: {fileID: 7249007563178934599}

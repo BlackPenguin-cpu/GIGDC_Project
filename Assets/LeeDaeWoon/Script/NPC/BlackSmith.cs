@@ -19,8 +19,10 @@ public class BlackSmith : MonoBehaviour
     private float timer; // 창 열리는 속도
     public GameObject Pole_01; // 봉_01
     public GameObject Pole_02; // 봉_02
-    public GameObject Malyeog_Window; // 창 오브젝트
-    public RectTransform MalyeogRect_Window; // 창
+    public GameObject Weapon_Purchase_Window; // 창 오브젝트
+    public RectTransform WeaponPurchase_RectWindow; // 창
+
+    private bool WindowOpen_Check = false;
 
     [Header("구매 및 강화 버튼")]
     public GameObject Purchase_Btn;
@@ -47,6 +49,7 @@ public class BlackSmith : MonoBehaviour
     public GameObject Axe_Price;
     public GameObject Axe_Required_Gold;
     public Text Axe_Required_Gold_Price;
+    public GameObject Axe_MaxEnhance;
 
     [Header("검 수칫값")]
     public Text SwordLevel_Text;
@@ -60,6 +63,7 @@ public class BlackSmith : MonoBehaviour
     [Space(10)]
     public GameObject Sword_Required_Gold;
     public Text Sword_Required_Gold_Price;
+    public GameObject Sword_MaxEnhance;
 
 
     [Header("단검 수칫값")]
@@ -75,6 +79,7 @@ public class BlackSmith : MonoBehaviour
     public GameObject Dagger_Price;
     public GameObject Dagger_Required_Gold;
     public Text Dagger_Required_Gold_Price;
+    public GameObject Dagger_MaxEnhance;
 
     void Start()
     {
@@ -98,9 +103,16 @@ public class BlackSmith : MonoBehaviour
         int Dagger_Level = Player.Instance.stat._level[PlayerWeaponType.Dagger];
         int Axe_Level = Player.Instance.stat._level[PlayerWeaponType.Axe];
 
-        if (Weapon.transform.GetChild(0).gameObject.activeSelf == true)
+        if (Weapon.transform.GetChild(0).gameObject.activeSelf == true && Sword_Level <= 5)
         {
-            SwordLevel_Text.text = "" + Sword_Level;
+            if (Sword_Level == 5)
+            {
+                SwordLevel_Text.text = "Max";
+                Sword_Required_Gold.SetActive(false);
+                Sword_MaxEnhance.SetActive(true);
+            }
+            else
+                SwordLevel_Text.text = "" + Sword_Level;
 
             Sword_AttackDamage.text = "" + (10 + (10 * Sword_Level));
             Sword_AttackDamage_Upgrade.text = "" + (10 + (10 * (Sword_Level + 1)));
@@ -141,9 +153,16 @@ public class BlackSmith : MonoBehaviour
             }
         }
 
-        if (Weapon.transform.GetChild(1).gameObject.activeSelf == true)
+        if (Weapon.transform.GetChild(1).gameObject.activeSelf == true && Dagger_Level < 5)
         {
-            DaggerLevel_Text.text = "" + Dagger_Level;
+            if (Dagger_Level == 5)
+            {
+                DaggerLevel_Text.text = "Max";
+                Dagger_Required_Gold.SetActive(false);
+                Dagger_MaxEnhance.SetActive(true);
+            }
+            else
+                DaggerLevel_Text.text = "" + Dagger_Level;
 
             Dagger_AttackDamage.text = "" + (8 + (8 * Dagger_Level));
             Dagger_AttackDamage_Upgrade.text = "" + (8 + (8 * (Dagger_Level + 1)));
@@ -191,9 +210,16 @@ public class BlackSmith : MonoBehaviour
             }
         }
 
-        if (Weapon.transform.GetChild(2).gameObject.activeSelf == true)
+        if (Weapon.transform.GetChild(2).gameObject.activeSelf == true && Axe_Level < 5)
         {
-            AxeLevel_Text.text = "" + Axe_Level;
+            if (Axe_Level == 5)
+            {
+                AxeLevel_Text.text = "Max";
+                Axe_Required_Gold.SetActive(false);
+                Axe_MaxEnhance.SetActive(true);
+            }
+            else
+                AxeLevel_Text.text = "" + Axe_Level;
 
             Axe_AttackDamage.text = "" + (20 + (15 * Axe_Level));
             Axe_AttackDamage_Upgrade.text = "" + (20 + (15 * (Axe_Level + 1)));
@@ -246,8 +272,11 @@ public class BlackSmith : MonoBehaviour
     #region 버튼 클릭
     public void BlackSmith_Click()
     {
-        if (Input.GetKeyDown(KeyCode.F) && Collision_Check == false)
+        if (Input.GetKeyDown(KeyCode.F) && Collision_Check == false && WindowOpen_Check == false)
+        {
             StartCoroutine(Open_Window());
+            WindowOpen_Check = true;
+        }
     }
 
     public void Left_Arrow()
@@ -331,14 +360,14 @@ public class BlackSmith : MonoBehaviour
 
     public IEnumerator Open_Window()
     {
-        Malyeog_Window.SetActive(true);
+        Weapon_Purchase_Window.SetActive(true);
         timer = 0f;
         Pole_01.transform.DOLocalMoveY(452, 0.5f);
         Pole_02.transform.DOLocalMoveY(-452, 0.5f);
 
         while (timer < 1)
         {
-            MalyeogRect_Window.sizeDelta = new Vector2(1696.425f, Mathf.Lerp(0, 931.6482f, timer));
+            WeaponPurchase_RectWindow.sizeDelta = new Vector2(1696.425f, Mathf.Lerp(0, 931.6482f, timer));
             timer += Time.deltaTime * 3f;
             yield return null;
         }
@@ -352,11 +381,12 @@ public class BlackSmith : MonoBehaviour
 
         while (timer < 1)
         {
-            MalyeogRect_Window.sizeDelta = new Vector2(1696.425f, Mathf.Lerp(931.6482f, 0, timer));
+            WeaponPurchase_RectWindow.sizeDelta = new Vector2(1696.425f, Mathf.Lerp(931.6482f, 0, timer));
             timer += Time.deltaTime * 3f;
             yield return null;
         }
-        Malyeog_Window.SetActive(false);
+        Weapon_Purchase_Window.SetActive(false);
+        WindowOpen_Check = false;
     }
     #endregion
 
