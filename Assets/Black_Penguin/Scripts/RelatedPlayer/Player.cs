@@ -572,9 +572,8 @@ public class Player : Entity, ITypePlayer
     void DashShadowCreate()
     {
         ObjectPool.Instance.CreateObj(DashShadow, transform.position, Quaternion.identity);
-        DashShadow shadow = ObjectPool.Instance.CreateObj(DashShadow, DarkPlayer.Instance.transform.position, Quaternion.identity).GetComponent<DashShadow>();
+        ObjectPool.Instance.CreateObj(DashShadow, DarkPlayer.Instance.transform.position, Quaternion.identity).GetComponent<SpriteRenderer>().flipY = true;
 
-        shadow.isDark = true;
     }
 
     private void Jump()

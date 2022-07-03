@@ -60,7 +60,9 @@ public class CameraManager : MonoBehaviour
 
             nowTime = Time.time;
             yield return new WaitForSeconds(delay);
-            transform.position = pos;
+
+            if (state != CameraState.ONPLAYER)
+                transform.position = pos;
         }
     }
     public IEnumerator ScreenFadeCoroutine(float duration, float alpha)

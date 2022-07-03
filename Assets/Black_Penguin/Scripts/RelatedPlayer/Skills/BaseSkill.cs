@@ -8,15 +8,18 @@ public abstract class BaseSkill : MonoBehaviour, IObjectPoolingObj
     public SkillScript SkillInfo;
     public float StartPosY;
 
-    protected SpriteRenderer sprite;
+    public SpriteRenderer sprite;
     protected Player player;
     public virtual void OnObjCreate()
     {
         sprite = GetComponent<SpriteRenderer>();
         player = Player.Instance;
 
-        sprite.flipY = dimensionType == DimensionType.UNDER;
+    }
+    public void Init()
+    {
         sprite.material = (dimensionType == DimensionType.OVER ? GameManager.Instance.OverMaterial : GameManager.Instance.UnderMaterial);
+        sprite.flipY = dimensionType == DimensionType.UNDER;
     }
     public float DefaultReturnDamage()
     {

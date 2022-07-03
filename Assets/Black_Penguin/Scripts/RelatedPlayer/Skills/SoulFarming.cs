@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class SoulFarming : BaseSkill
 {
     [SerializeField] private Image image;
-    [SerializeField] private Material material;
     [SerializeField] private GameObject AttackParticle;
+    [SerializeField] private Material material;
     private BoxCollider2D boxCollider2D;
     private Animator animator;
     protected override void Action()
@@ -36,24 +36,40 @@ public class SoulFarming : BaseSkill
         while (value < 0.5f)
         {
             value += Time.deltaTime;
-            image.color = new Color(1, 1, 1, value);
+            image.color = new Color(0, 0, 0, value);
             yield return null;
         }
     }
     IEnumerator OnActive()
     {
+        yield return null;
+        sprite.material = material;
+        Time.timeScale = 0.4f;
+        CameraManager.Instance.CameraShake(2, 0.1f, 0.1f);
+
         StartCoroutine(ImageFade());
-        float value = 1;
+        float value = 0.8f;
         while (value > 0)
         {
-            material.SetFloat("_FadeAmout", value);
+            material.SetFloat("_FadeAmount", value);
             value -= Time.deltaTime;
             yield return null;
         }
+        yield return new WaitForSeconds(0.3f);
 
         image.color = Color.clear;
         animator.Play("Attack");
         yield return new WaitForSeconds(0.1f);
         Action();
+        Time.timeScale = 1f;
+
+        value = 0;
+        while (value < 1)
+        {
+            material.SetFloat("_FadeAmount", value);
+            value += Time.deltaTime;
+            yield return null;
+        }
+        ObjectPool.Instance.DeleteObj(gameObject);
     }
 }

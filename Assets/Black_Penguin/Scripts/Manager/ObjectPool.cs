@@ -50,6 +50,7 @@ public class ObjectPool : MonoBehaviour
             Debug.Log("오브젝트풀 오류 발생 (오브젝트풀 인터페이스 상속 없음)");
         }
     }
+
     public GameObject CreateObj(GameObject obj, bool isNotStartFunc = false)
     {
         if (ParentObj.ContainsKey(obj.name) == false)
@@ -80,11 +81,23 @@ public class ObjectPool : MonoBehaviour
             return returnObj;
         }
     }
+
     public GameObject CreateObj(GameObject obj, Vector3 pos, Quaternion quaternion)
     {
         GameObject returnObj = CreateObj(obj, true);
         returnObj.transform.position = pos;
         returnObj.transform.rotation = quaternion;
+        OnObjCreate(returnObj);
+
+        return returnObj;
+    }
+    public GameObject CreateObj<T>(GameObject obj, Vector3 pos, Quaternion quaternion, T component)
+    {
+        GameObject returnObj = CreateObj(obj, true);
+        returnObj.transform.position = pos;
+        returnObj.transform.rotation = quaternion;
+        returnObj.TryGetComponent(out T t);
+        t = component;
         OnObjCreate(returnObj);
 
         return returnObj;
