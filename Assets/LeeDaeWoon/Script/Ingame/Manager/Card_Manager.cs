@@ -25,13 +25,16 @@ public class Card_Manager : MonoBehaviour
     public List<Item> ItemDA_AmongCheck = new List<Item>();
     public List<Item> ItemDA_RightCheck = new List<Item>();
 
-    public bool DAClick_Check = true;
+    [Space(10)]
     public int Item_Check;
+    public bool DAClick_Check = true;
 
+    [Space(10)]
     public bool DA_Left = true;
     public bool DA_Among = true;
     public bool DA_Right = true;
 
+    [Space(10)]
     public bool Item_Left = true;
     public bool Item_Among = true;
     public bool Item_Right = true;
@@ -94,9 +97,9 @@ public class Card_Manager : MonoBehaviour
 
     public void AddCard()
     {
+        // 아이템 카드 소환
         int itemIndex = 0;
         List<Item> item = new List<Item>();
-        // 아이템 카드 소환
         var cardObject = Instantiate(CardPrefab, this.transform.position, Quaternion.identity, GameObject.Find("Item_Canvas").transform);
         var card = cardObject.GetComponent<Item_CardList>();
         ItemDA_LeftCheck.Clear();

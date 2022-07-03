@@ -100,6 +100,7 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        // 왼쪽 카드를 선택 했을 때
         if (direction == Direction.Left)
         {
             if (Card_Manager.Inst.Left_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
@@ -109,7 +110,7 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                 Card_Manager.Inst.Among_Pick = false;
 
                 // 방어구 및 장신구를 선택했을 때
-                if (Card_Manager.Inst.DA_Left == false) // 마정석을 클릭했을 경우
+                if (Card_Manager.Inst.DA_Left == false)
                 {
                     for (int i = 0; i < Card_Manager.Inst.DABuffer.Count; i++)
                     {
@@ -192,6 +193,7 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                     }
                 }
 
+
                 if (Card_Manager.Inst.Item_Left == false)
                     Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.ItemDA_LeftCheck[0]);
 
@@ -221,6 +223,7 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             }
         }
 
+        // 가운데 카드를 선택 했을 때
         if (direction == Direction.Among)
         {
             if (Card_Manager.Inst.Among_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
@@ -312,9 +315,9 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                     }
                 }
 
+
                 if (Card_Manager.Inst.Item_Among == false)
                     Stop_Manager.Inst.ItemDA_Have.Add(Card_Manager.Inst.ItemDA_AmongCheck[0]);
-
 
                 if (Card_Manager.Inst.Item_bool == true)
                     Card_Manager.Inst.Item_bool = false;
@@ -342,6 +345,7 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         }
 
+        // 오른쪽 카드를 선택 했을 때
         if (direction == Direction.Right)
         {
             if (Card_Manager.Inst.Right_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
@@ -351,7 +355,7 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                 Card_Manager.Inst.Among_Pick = false;
 
                 // 방어구 및 장신구를 선택했을 때
-                if (Card_Manager.Inst.DA_Right == false) 
+                if (Card_Manager.Inst.DA_Right == false)
                 {
                     for (int i = 0; i < Card_Manager.Inst.DABuffer.Count; i++)
                     {
@@ -485,6 +489,7 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             if (LeftCloseWindow_Check == false)
             {
                 yield return new WaitForSeconds(0.2f);
+                DOTween.PauseAll();
                 Destroy(GameObject.Find("Item_Window(Clone)"));
             }
         }
@@ -509,6 +514,7 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             if (AmongCloseWindow_Check == false)
             {
                 yield return new WaitForSeconds(0.2f);
+                DOTween.PauseAll();
                 Destroy(GameObject.Find("Item_Window(Clone)"));
             }
         }
@@ -533,6 +539,7 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             if (RightCloseWindow_Check == false)
             {
                 yield return new WaitForSeconds(0.2f);
+                DOTween.PauseAll();
                 Destroy(GameObject.Find("Item_Window(Clone)"));
             }
         }
