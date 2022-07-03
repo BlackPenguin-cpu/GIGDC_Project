@@ -27,6 +27,7 @@ public class SoulFarming : BaseSkill
         base.OnObjCreate();
         boxCollider2D = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        sprite.material = material;
 
         StartCoroutine(OnActive());
     }
@@ -42,8 +43,6 @@ public class SoulFarming : BaseSkill
     }
     IEnumerator OnActive()
     {
-        yield return null;
-        sprite.material = material;
         Time.timeScale = 0.4f;
         CameraManager.Instance.CameraShake(2, 0.1f, 0.1f);
 

@@ -127,6 +127,7 @@ MonoBehaviour:
   dimensionType: 1
   SkillInfo: {fileID: 11400000, guid: 5b22fc45c535d6349a76c0d6006e0965, type: 2}
   StartPosY: 2.5
+  sprite: {fileID: 0}
   image: {fileID: 5096556213203749638}
   AttackParticle: {fileID: 6705395474818625261, guid: bf1ac6f4da240b4418e6992fd62a44ab, type: 3}
   material: {fileID: 2100000, guid: ec92797d096fdb54bb6f09e4781b1269, type: 2}
@@ -140,7 +141,7 @@ Animator:
   m_GameObject: {fileID: 6292102905443254464}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3c1c8f7ad24f83d4c9add7753c04f198, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7852d28993ed5cf46bc7b8f42fa6313b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
