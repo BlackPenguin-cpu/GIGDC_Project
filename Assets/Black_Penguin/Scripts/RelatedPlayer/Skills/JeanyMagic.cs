@@ -8,7 +8,11 @@ public class JeanyMagic : BaseSkill
     private float duration;
     protected override void Action()
     {
-        RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + new Vector2(boxCollider2D.offset.x * (sprite.flipX ? -1 : 1), boxCollider2D.offset.y), boxCollider2D.size, 0, Vector2.right, 0);
+        Debug.Log(dimensionType);
+        RaycastHit2D[] rays = Physics2D.BoxCastAll
+            ((Vector2)transform.position + new Vector2(boxCollider2D.offset.x * (sprite.flipX ? -1 : 1)
+            , dimensionType == DimensionType.OVER ? boxCollider2D.offset.y : -boxCollider2D.offset.y)
+            , boxCollider2D.size, 0, Vector2.right, 0);
 
         for (int i = 0; i < rays.Length; i++)
         {
@@ -27,7 +31,7 @@ public class JeanyMagic : BaseSkill
         duration = 1;
         sprite.flipX = player.sprite.flipX;
         boxCollider2D = GetComponent<BoxCollider2D>();
-        Action();
+        Invoke("Action",0.01f);
     }
     private void Update()
     {

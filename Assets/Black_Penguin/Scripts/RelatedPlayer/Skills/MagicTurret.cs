@@ -16,7 +16,9 @@ public class MagicTurret : BaseSkill
     protected override void Action()
     {
         AttackProjectile projectile = ObjectPool.Instance.CreateObj
-                  (Bullet, new Vector3((sprite.flipX ? -1 : 1) * posGameObject.localPosition.x, posGameObject.localPosition.y) + transform.position, Quaternion.Euler(0, 0, sprite.flipX ? 180 : 0)).GetComponent<AttackProjectile>();
+                  (Bullet, new Vector3((sprite.flipX ? -1 : 1) * posGameObject.localPosition.x
+                  , dimensionType == DimensionType.OVER ? posGameObject.localPosition.y : -posGameObject.localPosition.y) + transform.position
+                  , Quaternion.Euler(0, 0, sprite.flipX ? 180 : 0)).GetComponent<AttackProjectile>();
         projectile.Init(player, DefaultReturnDamage(), 15, 0, ProjectileType.Basic);
     }
 

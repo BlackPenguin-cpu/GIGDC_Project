@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4673491649326305399}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.57, y: 0.02, z: 0}
+  m_LocalPosition: {x: 1.61, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6332897776496744862}
@@ -149,6 +149,7 @@ MonoBehaviour:
   dimensionType: 0
   SkillInfo: {fileID: 11400000, guid: e8beb6b7c1dd8044eaaad99dd6e026fd, type: 2}
   StartPosY: 0
+  sprite: {fileID: 0}
   Bullet: {fileID: 7975638247759443625, guid: 9229b68fd41ee554ab98d8570f1e62be, type: 3}
   posGameObject: {fileID: 182370776077816898}
   AttackSpeed: 1.3
