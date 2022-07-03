@@ -15,10 +15,13 @@ public abstract class BaseSkill : MonoBehaviour, IObjectPoolingObj
         sprite = GetComponent<SpriteRenderer>();
         player = Player.Instance;
 
+        sprite.material = (dimensionType == DimensionType.OVER ? GameManager.Instance.OverMaterial : GameManager.Instance.UnderMaterial);
+        sprite.flipY = dimensionType == DimensionType.UNDER;
     }
     public void Init()
     {
-        sprite.material = (dimensionType == DimensionType.OVER ? GameManager.Instance.OverMaterial : GameManager.Instance.UnderMaterial);
+        if (!gameObject.GetComponent<SoulFarming>())
+            sprite.material = (dimensionType == DimensionType.OVER ? GameManager.Instance.OverMaterial : GameManager.Instance.UnderMaterial);
         sprite.flipY = dimensionType == DimensionType.UNDER;
     }
     public float DefaultReturnDamage()

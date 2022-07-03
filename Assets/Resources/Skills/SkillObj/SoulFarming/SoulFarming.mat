@@ -138,10 +138,10 @@ Material:
     - _DistortTexYSpeed: 5
     - _DstBlend: 0
     - _EditorDrawers: 6
-    - _FadeAmount: -0.08
-    - _FadeBurnGlow: 2
-    - _FadeBurnTransition: 0.075
-    - _FadeBurnWidth: 0.025
+    - _FadeAmount: 0.98430765
+    - _FadeBurnGlow: 11
+    - _FadeBurnTransition: 0.014
+    - _FadeBurnWidth: 0.104
     - _FishEyeUvAmount: 0.35
     - _FlickerAlpha: 0
     - _FlickerFreq: 0.2
@@ -263,7 +263,7 @@ Material:
     - _ColorSwapGreen: {r: 1, g: 1, b: 1, a: 1}
     - _ColorSwapRed: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FadeBurnColor: {r: 1, g: 0, b: 0.70585346, a: 1}
+    - _FadeBurnColor: {r: 0.13743496, g: 0, b: 1, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
     - _GradBotRightCol: {r: 0, g: 1, b: 0, a: 1}

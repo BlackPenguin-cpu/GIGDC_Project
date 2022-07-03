@@ -91,17 +91,6 @@ public class ObjectPool : MonoBehaviour
 
         return returnObj;
     }
-    public GameObject CreateObj<T>(GameObject obj, Vector3 pos, Quaternion quaternion, T component)
-    {
-        GameObject returnObj = CreateObj(obj, true);
-        returnObj.transform.position = pos;
-        returnObj.transform.rotation = quaternion;
-        returnObj.TryGetComponent(out T t);
-        t = component;
-        OnObjCreate(returnObj);
-
-        return returnObj;
-    }
     public void DeleteObj(GameObject obj)
     {
         if (ParentObj.ContainsKey(textCloneRemove(obj.name)))
