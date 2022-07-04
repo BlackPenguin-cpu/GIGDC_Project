@@ -45,6 +45,13 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
             }
             transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
+        else if (projectileType == ProjectileType.Homing)
+        {
+            Vector2 len = target.transform.position - transform.position;
+            float z = Mathf.Atan2(len.y, len.x) * Mathf.Rad2Deg;
+            transform.Rotate(new Vector3(0, 0, z) * Time.deltaTime);
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+        }
         else if (projectileType == ProjectileType.Basic)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
@@ -99,7 +106,6 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
         sprite.material = dimensionType == DimensionType.OVER ? GameManager.Instance.OverMaterial : GameManager.Instance.UnderMaterial;
 
         duration = 3;
-        startWaitTime = 1;
         isRotateSet = false;
     }
 }

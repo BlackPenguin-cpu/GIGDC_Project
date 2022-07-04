@@ -512,7 +512,7 @@ public class Player : Entity, ITypePlayer
     void InputManager()
     {
         if (UI_Manager.Inst != null && UI_Manager.Inst.PlayerMove_control == true) return;
-        
+
         if (state == PlayerState.Die) return;
         Move();
         if (Input.GetKeyDown(KeyCode.Z))
@@ -574,7 +574,8 @@ public class Player : Entity, ITypePlayer
     void DashShadowCreate()
     {
         ObjectPool.Instance.CreateObj(DashShadow, transform.position, Quaternion.identity);
-        ObjectPool.Instance.CreateObj(DashShadow, DarkPlayer.Instance.transform.position, Quaternion.identity).GetComponent<SpriteRenderer>().flipY = true;
+        if (DarkPlayer.Instance != null)
+            ObjectPool.Instance.CreateObj(DashShadow, DarkPlayer.Instance.transform.position, Quaternion.identity).GetComponent<SpriteRenderer>().flipY = true;
 
     }
 
@@ -696,7 +697,8 @@ public class Player : Entity, ITypePlayer
     }
     public void AnimAttackFunc(int index)
     {
-        DarkPlayer.Instance.OnAttack(stat.weaponType, index);
+        if (DarkPlayer.Instance != null)
+            DarkPlayer.Instance.OnAttack(stat.weaponType, index);
         foreach (AttackCollision attackCollision in attackCollisions)
         {
             if (attackCollision.index == index && attackCollision.weaponType == stat.weaponType)
