@@ -1848,9 +1848,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 317714124, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 795640464, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4292358680094731019, guid: 3347620cf43abce4e94701bb9f74aa40, type: 3}
+    - target: {fileID: 825726957, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1055929143, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653808004, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982870615, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8909996912513122982, guid: 47aa01e71bf14b4409c00008f07eb2bd, type: 3}
       propertyPath: m_RootOrder

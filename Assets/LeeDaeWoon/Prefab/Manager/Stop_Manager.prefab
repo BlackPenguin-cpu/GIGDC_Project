@@ -913,7 +913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &98914676
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2856,8 +2856,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "40\uCD08\uB9C8\uB2E4 \uAC70\uB300\uD55C \uD3ED\uBC1C\uC744 \uC77C\uC73C\uD0A4\uB294
-    \uC544\uD3EC\uCE7C\uB9BD\uC2A4\uAC00 \uBC1C\uB3D9\uD569\uB2C8\uB2E4."
+  m_Text: 
 --- !u!1 &369887352
 GameObject:
   m_ObjectHideFlags: 0
@@ -3147,7 +3146,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBAA8\uC2DC\uAE7D\uC774"
+  m_Text: 
 --- !u!1 &456806161
 GameObject:
   m_ObjectHideFlags: 0
@@ -6287,7 +6286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1055929144
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11852,7 +11851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   Fade_Background: {fileID: 508741050}
-  Pause_Check: 1
+  InPause: 0
   ItemDA_Have: []
   Pause_Pole01: {fileID: 620534056}
   Pause_Pole02: {fileID: 234875678}
