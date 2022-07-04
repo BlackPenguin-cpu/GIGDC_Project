@@ -10,7 +10,7 @@ public class King : MonoBehaviour
     void Awake() => Inst = this;
 
     [Header("왕의 사념")]
-    public Sprite King_NPC;
+    public SpriteRenderer King_NPC;
 
     [Header("대화 시작 시 필요없는 오브젝트")]
     public GameObject Player_HP;
@@ -27,17 +27,16 @@ public class King : MonoBehaviour
     public int Sequence_Text = 0;
 
     [Header("충돌 확인")]
-    public bool KingCollision_Check;
-
     public BoxCollider2D Area01_Box;
     public BoxCollider2D Area02_Box;
     public BoxCollider2D Area03_Box;
     public BoxCollider2D Area04_Box;
 
+    public bool Dialogue_Skip = false;
+
 
     void Start()
     {
-
     }
 
     void Update()
@@ -88,8 +87,8 @@ public class King : MonoBehaviour
             Camera.main.orthographicSize = i;
             yield return new WaitForSeconds(0.05f);
         }
-
         Camera_obj.GetComponent<CameraManager>().enabled = true; // CameraManager를 켜둔다.
+        yield return new WaitForSeconds(0.5f);
         UI_Manager.Inst.PlayerMove_control = false; // 플레이어의 움직임을 정상작동 시킨다.
 
     }
