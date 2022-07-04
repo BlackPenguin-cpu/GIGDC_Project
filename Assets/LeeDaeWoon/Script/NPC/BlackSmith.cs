@@ -154,7 +154,7 @@ public class BlackSmith : MonoBehaviour
             }
         }
 
-        if (Weapon.transform.GetChild(1).gameObject.activeSelf == true && Dagger_Level < 5)
+        if (Weapon.transform.GetChild(1).gameObject.activeSelf == true && Dagger_Level <= 5)
         {
             if (Dagger_Level == 5)
             {
@@ -173,13 +173,15 @@ public class BlackSmith : MonoBehaviour
 
             Dagger_Required_Gold_Price.text = "" + (400 + (200 * Dagger_Level));
 
-            if (Dagger_Required_Gold.activeSelf == true)
+            if (Dagger_Required_Gold.activeSelf == true || Dagger_MaxEnhance.activeSelf == true)
             {
                 No_Soyu.SetActive(false);
                 if (Player.Instance.stat.weaponType == PlayerWeaponType.Dagger)
                 {
                     Jang_cak.SetActive(true);
                     Jang_cak_Btn.SetActive(false);
+                    Purchase_Btn.SetActive(false);
+                    Enhance_Btn.SetActive(true);
                 }
                 else
                 {
@@ -187,10 +189,12 @@ public class BlackSmith : MonoBehaviour
                     Jang_cak_Btn.SetActive(true);
                 }
             }
+
             else
             {
                 No_Soyu.SetActive(true);
                 Jang_cak.SetActive(false);
+                Jang_cak_Btn.SetActive(false);
                 Purchase_Btn.SetActive(true);
                 Enhance_Btn.SetActive(false);
             }
@@ -211,7 +215,7 @@ public class BlackSmith : MonoBehaviour
             }
         }
 
-        if (Weapon.transform.GetChild(2).gameObject.activeSelf == true && Axe_Level < 5)
+        if (Weapon.transform.GetChild(2).gameObject.activeSelf == true && Axe_Level <= 5)
         {
             if (Axe_Level == 5)
             {
@@ -230,13 +234,15 @@ public class BlackSmith : MonoBehaviour
 
             Axe_Required_Gold_Price.text = "" + (400 + (200 * Axe_Level));
 
-            if (Axe_Required_Gold.activeSelf == true)
+            if (Axe_Required_Gold.activeSelf == true || Axe_MaxEnhance.activeSelf == true)
             {
                 No_Soyu.SetActive(false);
                 if (Player.Instance.stat.weaponType == PlayerWeaponType.Axe)
                 {
                     Jang_cak.SetActive(true);
                     Jang_cak_Btn.SetActive(false);
+                    Purchase_Btn.SetActive(false);
+                    Enhance_Btn.SetActive(true);
                 }
                 else
                 {
@@ -248,6 +254,7 @@ public class BlackSmith : MonoBehaviour
             {
                 No_Soyu.SetActive(true);
                 Jang_cak.SetActive(false);
+                Jang_cak_Btn.SetActive(false);
                 Purchase_Btn.SetActive(true);
                 Enhance_Btn.SetActive(false);
             }
@@ -320,12 +327,13 @@ public class BlackSmith : MonoBehaviour
             Enhance_Btn.SetActive(true); // 강화 버튼 true
         }
 
+        //도끼
         if (Weapon.transform.GetChild(2).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= Gold)
         {
             UI_Manager.Inst.Gold -= Gold; // 골드 차감
             Axe_Price.SetActive(false); // 구매가격 false
             Axe_Required_Gold.SetActive(true); // 강화 가격 true
-            Player.Instance.stat.weaponType = PlayerWeaponType.Axe; // 무기 단검으로 바뀜
+            Player.Instance.stat.weaponType = PlayerWeaponType.Axe; // 무기 도끼으로 바뀜
             Purchase_Btn.SetActive(false); // 구매 버튼 false
             Enhance_Btn.SetActive(true); // 강화 버튼 true
         }
@@ -343,21 +351,43 @@ public class BlackSmith : MonoBehaviour
 
     public void Enhance_Click()
     {
+        int Sword_Level = Player.Instance.stat._level[PlayerWeaponType.Sword];
+        int Dagger_Level = Player.Instance.stat._level[PlayerWeaponType.Dagger];
+        int Axe_Level = Player.Instance.stat._level[PlayerWeaponType.Axe];
+
         switch (Player.Instance.stat.weaponType)
         {
             case PlayerWeaponType.Sword:
-                if (Weapon.transform.GetChild(0).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= (400 + (200 * Player.Instance.stat._level[PlayerWeaponType.Sword])))
-                    Player.Instance.stat._level[PlayerWeaponType.Sword]++;
+                if (Weapon.transform.GetChild(0).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= (400 + (200 * Sword_Level)))
+                {
+                    if (Sword_Level < 5)
+                    {
+                        UI_Manager.Inst.Gold -= (400 + (200 * Sword_Level));
+                        Player.Instance.stat._level[PlayerWeaponType.Sword]++;
+                    }
+                }
                 break;
 
             case PlayerWeaponType.Dagger:
-                if (Weapon.transform.GetChild(1).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= (400 + (200 * Player.Instance.stat._level[PlayerWeaponType.Dagger])))
-                    Player.Instance.stat._level[PlayerWeaponType.Dagger]++;
+                if (Weapon.transform.GetChild(1).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= (400 + (200 * Dagger_Level)))
+                {
+                    if (Dagger_Level < 5)
+                    {
+                        UI_Manager.Inst.Gold -= (400 + (200 * Dagger_Level));
+                        Player.Instance.stat._level[PlayerWeaponType.Dagger]++;
+                    }
+                }
                 break;
 
             case PlayerWeaponType.Axe:
-                if (Weapon.transform.GetChild(2).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= (400 + (200 * Player.Instance.stat._level[PlayerWeaponType.Axe])))
-                    Player.Instance.stat._level[PlayerWeaponType.Axe]++;
+                if (Weapon.transform.GetChild(2).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= (400 + (200 * Axe_Level)))
+                {
+                    if (Axe_Level < 5)
+                    {
+                        UI_Manager.Inst.Gold -= (400 + (200 * Axe_Level));
+                        Player.Instance.stat._level[PlayerWeaponType.Axe]++;
+                    }
+                }
                 break;
         }
     }
