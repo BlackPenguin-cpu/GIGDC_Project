@@ -38,6 +38,7 @@ public class EnemySpawnInfo
 [System.Serializable]
 public class EnemySpawnPattern
 {
+    //TODO: 정적배열로 고치기
     public List<EnemySpawnInfo> EnemySpawnInfos;
 }
 [System.Serializable]
@@ -47,10 +48,10 @@ public class WavePattern
 }
 public class WaveManager : MonoBehaviour
 {
-    readonly baseEnemySpawnPos enemySpawnPos;
     public List<WavePattern> wavePatterns;
     public int m_WaveNum;
-    public List<GameObject> SummonedEnemies;
+    readonly baseEnemySpawnPos enemySpawnPos;
+    private List<GameObject> SummonedEnemies;
 
     public IEnumerator WaveProcessing(int waveNum)
     {
