@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3221280315979504150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.5081701, y: 1.6354767, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -118,7 +118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dimensionType: 2
   SkillInfo: {fileID: 11400000, guid: 7abc6d28ce620594397a18ebc928454f, type: 2}
-  StartPosY: 2.5
+  StartPosY: 3
+  sprite: {fileID: 0}
 --- !u!61 &6209296774643290268
 BoxCollider2D:
   m_ObjectHideFlags: 0

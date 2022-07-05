@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Threading.Tasks;
 public class SoulFarming : BaseSkill
 {
     [SerializeField] private Image image;
@@ -11,16 +12,23 @@ public class SoulFarming : BaseSkill
     private Animator animator;
     protected override void Action()
     {
+        ActionCoroutine();
+    }
+    async void ActionCoroutine()
+    {
         RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxCollider2D.offset, boxCollider2D.size, 0, Vector2.right, 0);
 
         for (int i = 0; i < rays.Length; i++)
         {
-            if (rays[i].collider.TryGetComponent(out BaseEnemy enemy) && enemy.dimensionType == dimensionType)
+            if (rays[i].collider != null && rays[i].collider.TryGetComponent(out BaseEnemy enemy) && enemy.dimensionType == dimensionType)
             {
+                CameraManager.Instance.ScreenFade(0.05f, 0.5f);
                 ObjectPool.Instance.CreateObj(AttackParticle, enemy.transform.position, Quaternion.identity);
                 player.Attack(enemy, DefaultReturnDamage());
+                await Task.Delay(100);
             }
         }
+
     }
     public override void OnObjCreate()
     {
@@ -58,6 +66,7 @@ public class SoulFarming : BaseSkill
 
         image.color = Color.clear;
         animator.Play("Attack");
+        CameraManager.Instance.ScreenFade(0.1f, 0.5f);
         yield return new WaitForSeconds(0.1f);
         Action();
         Time.timeScale = 1f;
