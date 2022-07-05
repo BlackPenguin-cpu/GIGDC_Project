@@ -73,40 +73,20 @@ public class Healing : MonoBehaviour
             UI_Manager.Inst.PlayerMove_control = true;
             StartCoroutine(HealingWindow_Close_Coroutine());
 
-            if (100 >= Player.Instance.stat._hp + Heal)
-            {
-                StartCoroutine(HealingEffect());
-                this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                yield return new WaitForSeconds(1f);
-                this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+            StartCoroutine(HealingEffect());
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
 
-                for (int i = 0; i <= Heal; i++)
-                {
-                    Player.Instance.stat._hp += 1;
-                    yield return new WaitForSeconds(0.05f);
-                }
+            if (Player.Instance.stat._hp + Heal <= Player.Instance.stat._maxHp)
+            {
+                Player.Instance.stat._hp += Heal;
                 UI_Manager.Inst.PlayerMove_control = false;
             }
-
             else
-            {
-                StartCoroutine(HealingEffect());
-                this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                yield return new WaitForSeconds(1f);
-                this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
-
-                for (int i = 0; i <= Heal; i++)
-                {
-                    Player.Instance.stat._hp += 1;
-                    yield return new WaitForSeconds(0.05f);
-                }
-                Player.Instance.stat._hp = 100;
-                UI_Manager.Inst.PlayerMove_control = false;
-            }
+                Player.Instance.stat._hp = Player.Instance.stat._maxHp;
 
             Healing_Purchase_Check = false;
 

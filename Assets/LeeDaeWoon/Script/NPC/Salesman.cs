@@ -36,6 +36,7 @@ public class Salesman : MonoBehaviour
         AfterObject = GameObject.Find("After_Purchase");
         #endregion
 
+        
         //if (Wave가 5일 경우)
         //{
         Gold_Num = 600;

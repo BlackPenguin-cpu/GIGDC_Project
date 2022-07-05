@@ -18,6 +18,10 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public int Malyeog_Upgrade; // 마력 강화 업그레이드
     public Text MalyeogUp_Text; // 마력 강화 텍스트
 
+    [Header("스킬 잠금해제")]
+    public bool BodyOpen_Check = false;
+    public bool MagicOpen_Check = false;
+
     void Start()
     {
 
@@ -298,8 +302,9 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 0:
                     if (UI_Manager.Inst.Dimensional >= (700 + Malyeog_Upgrade * 150) && Foundation.Inst.Dimensional_Price.text != "Max")
                     {
-                        Malyeog_Upgrade++;
                         UI_Manager.Inst.Dimensional -= (700 + Malyeog_Upgrade * 150);
+
+                        Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
                         Player.Instance.stat.magicPower.invisibleHand += 10;
                         switch (Malyeog_Upgrade)
@@ -324,14 +329,19 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                                 Foundation.Inst.Explanation.text = "보이지 않는 손들이 함께 공격해 공격 속도가 " + "\n" + "<color=#877D78>" + "10%" + "</color>" + " / " + "<color=#877D78>" + "20%" + "</color>" + " / " + "<color=#877D78>" + "30%" + "</color>" + " / " + "40%" + " 증가한다.";
                                 break;
                         }
+
+                        MagicOpen_Check = true;
+                        if (MagicOpen_Check == true && Foundation.Inst.Magic_Open == Malyeog_Num)
+                            Foundation.Inst.Magic_Open++;
                     }
                     break;
 
                 case 1:
-                    if (UI_Manager.Inst.Dimensional >= (1100 + Malyeog_Upgrade * 200) && Foundation.Inst.Dimensional_Price.text != "Max")
+                    if (UI_Manager.Inst.Dimensional >= (1100 + Malyeog_Upgrade * 200) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
                     {
-                        Malyeog_Upgrade++;
                         UI_Manager.Inst.Dimensional -= (1100 + Malyeog_Upgrade * 200);
+
+                        Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
                         switch (Malyeog_Upgrade)
                         {
@@ -359,14 +369,19 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                                 Foundation.Inst.Explanation.text = "눈으로 상대의 약점을 꿰뚫어봐 치명타 확률이 " + "\n" + "<color=#877D78>" + "3%" + "</color>" + " / " + "<color=#877D78>" + "5%" + "</color>" + " / " + "<color=#877D78>" + "7%" + "</color>" + " / " + "10%" + " 상승한다.";
                                 break;
                         }
+
+                        MagicOpen_Check = true;
+                        if (MagicOpen_Check == true && Foundation.Inst.Magic_Open == Malyeog_Num)
+                            Foundation.Inst.Magic_Open++;
                     }
                     break;
 
                 case 2:
-                    if (UI_Manager.Inst.Dimensional >= (1700 + Malyeog_Upgrade * 250) && Foundation.Inst.Dimensional_Price.text != "Max")
+                    if (UI_Manager.Inst.Dimensional >= (1700 + Malyeog_Upgrade * 250) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
                     {
-                        Malyeog_Upgrade++;
                         UI_Manager.Inst.Dimensional -= (1700 + Malyeog_Upgrade * 250);
+
+                        Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
                         Player.Instance.stat.magicPower.timeQuick += 5;
                         switch (Malyeog_Upgrade)
@@ -391,14 +406,19 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                                 Foundation.Inst.Explanation.text = "시간을 가속 시켜서 쿨타임이 " + "<color=#877D78>" + "5%" + "</color>" + " / " + "<color=#877D78>" + "10%" + "</color>" + " / " + "<color=#877D78>" + "15%" + "</color>" + " / " + "20%" + " 감소한다.";
                                 break;
                         }
+
+                        MagicOpen_Check = true;
+                        if (MagicOpen_Check == true && Foundation.Inst.Magic_Open == Malyeog_Num)
+                            Foundation.Inst.Magic_Open++;
                     }
                     break;
 
                 case 3:
-                    if (UI_Manager.Inst.Dimensional >= (3300 + Malyeog_Upgrade * 3000) && Foundation.Inst.Dimensional_Price.text != "Max")
+                    if (UI_Manager.Inst.Dimensional >= (3300 + Malyeog_Upgrade * 3000) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
                     {
-                        Malyeog_Upgrade++;
                         UI_Manager.Inst.Dimensional -= (3300 + Malyeog_Upgrade * 3000);
+
+                        Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/2";
                         Player.Instance.stat.magicPower.thaumcraft += 20;
                         switch (Malyeog_Upgrade)
@@ -425,8 +445,9 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 0:
                     if (UI_Manager.Inst.Dimensional >= (600 + Malyeog_Upgrade * 150) && Foundation.Inst.Dimensional_Price.text != "Max")
                     {
-                        Malyeog_Upgrade++;
                         UI_Manager.Inst.Dimensional -= (600 + Malyeog_Upgrade * 150);
+
+                        Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
                         Player.Instance.stat.magicPower.silpidLeap += 10;
                         switch (Malyeog_Upgrade)
@@ -451,14 +472,19 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                                 Foundation.Inst.Explanation.text = "실피드의 도약력으로 대쉬횟수가 1 증가하고 이동 속도가 " + "<color=#877D78>" + "10%" + "</color>" + " / " + "<color=#877D78>" + "20%" + "</color>" + " / " + "<color=#877D78>" + "30%" + "</color>" + " / " + "40%" + " 상승한다.";
                                 break;
                         }
+
+                        BodyOpen_Check = true;
+                        if (BodyOpen_Check == true && Foundation.Inst.Body_Open == Malyeog_Num)
+                            Foundation.Inst.Body_Open++;
                     }
                     break;
 
                 case 1:
-                    if (UI_Manager.Inst.Dimensional >= (1000 + Malyeog_Upgrade * 200) && Foundation.Inst.Dimensional_Price.text != "Max")
+                    if (UI_Manager.Inst.Dimensional >= (1000 + Malyeog_Upgrade * 200) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
                     {
-                        Malyeog_Upgrade++;
                         UI_Manager.Inst.Dimensional -= (1000 + Malyeog_Upgrade * 200);
+
+                        Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
                         Player.Instance.stat.magicPower.giantPower += 15;
                         switch (Malyeog_Upgrade)
@@ -483,14 +509,19 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                                 Foundation.Inst.Explanation.text = "거인의 힘을 받아 공격력이 " + "<color=#877D78>" + "15%" + "</color>" + " / " + "<color=#877D78>" + "30%" + "</color>" + " / " + "<color=#877D78>" + "45%" + "</color>" + " / " + "60%" + " 상승한다.";
                                 break;
                         }
+
+                        BodyOpen_Check = true;
+                        if (BodyOpen_Check == true && Foundation.Inst.Body_Open == Malyeog_Num)
+                            Foundation.Inst.Body_Open++;
                     }
                     break;
 
                 case 2:
-                    if (UI_Manager.Inst.Dimensional >= (1500 + Malyeog_Upgrade * 250) && Foundation.Inst.Dimensional_Price.text != "Max")
+                    if (UI_Manager.Inst.Dimensional >= (1500 + Malyeog_Upgrade * 250) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
                     {
-                        Malyeog_Upgrade++;
                         UI_Manager.Inst.Dimensional -= (1500 + Malyeog_Upgrade * 250);
+
+                        Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
                         Player.Instance.stat.magicPower.ironSkin += 5;
                         switch (Malyeog_Upgrade)
@@ -515,14 +546,19 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                                 Foundation.Inst.Explanation.text = "강철같은 피부를 얻어 방어력이 " + "<color=#877D78>" + "5" + "</color>" + " / " + "<color=#877D78>" + "10" + "</color>" + " / " + "<color=#877D78>" + "15" + "</color>" + " / " + "20" + " 상승한다.";
                                 break;
                         }
+
+                        BodyOpen_Check = true;
+                        if (BodyOpen_Check == true && Foundation.Inst.Body_Open == Malyeog_Num)
+                            Foundation.Inst.Body_Open++;
                     }
                     break;
 
                 case 3:
-                    if (UI_Manager.Inst.Dimensional >= (3000 + Malyeog_Upgrade * 3000) && Foundation.Inst.Dimensional_Price.text != "Max")
+                    if (UI_Manager.Inst.Dimensional >= (3000 + Malyeog_Upgrade * 3000) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
                     {
-                        Malyeog_Upgrade++;
                         UI_Manager.Inst.Dimensional -= (3000 + Malyeog_Upgrade * 3000);
+
+                        Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/2";
                         switch (Malyeog_Upgrade)
                         {

@@ -12,7 +12,7 @@ public class Foundation : MonoBehaviour
 
     [Header("제단")]
     public float Speed; // 마법진 돌아가는 속도
-    public GameObject Magic_Circle; // 마법진
+    public SpriteRenderer Magic_Circle; // 마법진
 
     [Header("업그레이드 버튼")]
     public Image F_Button; // 상호작용 버튼
@@ -36,25 +36,39 @@ public class Foundation : MonoBehaviour
     public GameObject Price_obj; // 가격 오브젝트
     public Text Dimensional_Price; // 마력 가격
 
+    public int Magic_Open;
+    public int Body_Open;
+
     void Start()
     {
         Upgrade_Text.DOFade(0f, 0f);
         F_Button.DOFade(0f, 0f);
+
+
     }
 
     void Update()
     {
-        MagicCircle_Rotation();
         Foundation_Click();
+
+        if (SceneManager.GetActiveScene().name == "Dimension")
+            MagicCircle_Rotation();
+
         #region 월드 좌표를 스크린 좌표로 변경을 해준다.
         if (SceneManager.GetActiveScene().name == "Dimension")
             Upgrade.transform.localPosition = Camera.main.WorldToScreenPoint(this.gameObject.transform.localPosition + new Vector3(-5.2f, -4.4f, 0));
-        //if(SceneManager.GetActiveScene().name == "Main")
-            //Upgrade.transform.localPosition = Camera.main.WorldToScreenPoint(this.gameObject.transform.localPosition + new Vector3(-10.8f, -7f, 0));
+        if (SceneManager.GetActiveScene().name == "Main")
+            Upgrade.transform.localPosition = Camera.main.WorldToScreenPoint(this.gameObject.transform.localPosition + new Vector3(-10.8f, -7f, 0));
         #endregion
     }
 
-    public void MagicCircle_Rotation() => Magic_Circle.transform.Rotate(new Vector3(0, 0, Speed * Time.deltaTime));
+    public void MagicCircle_Rotation()
+    {
+        if (SceneManager.GetActiveScene().name == "Main")
+            Magic_Circle.DOFade(1f, 1f);
+
+        Magic_Circle.transform.Rotate(new Vector3(0, 0, Speed * Time.deltaTime));
+    }
 
     public void Foundation_Click()
     {

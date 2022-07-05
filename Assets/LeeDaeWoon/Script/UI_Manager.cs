@@ -25,6 +25,8 @@ public class UI_Manager : MonoBehaviour
     float Sec;
 
     [Header("체력")]
+    public float HP_Bar;
+
     public float HP;
     public GameObject Bar;
 
@@ -33,12 +35,11 @@ public class UI_Manager : MonoBehaviour
 
     void Start()
     {
+        Cursor.SetCursor(MousePointer, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     void Update()
     {
-        Cursor.SetCursor(MousePointer, Vector2.zero, CursorMode.ForceSoftware);
-
         Timer_System();
         Money_System();
         HP_System();
@@ -76,10 +77,14 @@ public class UI_Manager : MonoBehaviour
     #region 체력
     public void HP_System()
     {
-        HP = Player.Instance.stat._hp;
+        HP_Bar = Bar.transform.localScale.y;
+        HP = Player.Instance.stat._hp / Player.Instance.stat._maxHp;
 
-        if (HP >= 0 && HP <= 100)
-            Bar.transform.localScale = new Vector3(100, HP, 1);
+        Bar.transform.localScale = new Vector3(1, Mathf.Lerp(HP_Bar, HP, Time.deltaTime), 1);
+
+        if (HP_Bar > HP)
+            Bar.transform.localScale = new Vector3(1, Mathf.Lerp(HP_Bar, HP - 0.00001f, Time.deltaTime), 1);
+
     }
     #endregion
 
