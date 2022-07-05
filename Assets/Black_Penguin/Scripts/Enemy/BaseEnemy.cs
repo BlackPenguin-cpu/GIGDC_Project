@@ -194,8 +194,6 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     /// </summary>
     public override void Die()
     {
-
-
         onDie.Invoke();
     }
 

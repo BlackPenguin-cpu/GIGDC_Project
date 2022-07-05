@@ -49,7 +49,12 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
         {
             Vector2 len = target.transform.position - transform.position;
             float z = Mathf.Atan2(len.y, len.x) * Mathf.Rad2Deg;
-            transform.Rotate(new Vector3(0, 0, z) * Time.deltaTime);
+            if (isRotateSet == false)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, z);
+                isRotateSet = true;
+            }
+            transform.Rotate(new Vector3(0, 0, Mathf.Lerp(transform.rotation.z, z + 90, Time.deltaTime)));
             transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
         else if (projectileType == ProjectileType.Basic)
@@ -81,7 +86,7 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
                 ObjectPool.Instance.DeleteObj(gameObject);
         }
     }
-    public void Init(Entity shootSelf, float damage, float speed, float startWaitTime, ProjectileType projectileType, GameObject target = null)
+    public void Init(Entity shootSelf, float damage, float speed, float startWaitTime, ProjectileType projectileType, GameObject target = null, float duration = 3)
     {
         this.shootSelf = shootSelf;
         this.damage = damage;
@@ -89,6 +94,7 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
         this.startWaitTime = startWaitTime;
         this.target = target;
         this.projectileType = projectileType;
+        this.duration = duration;
     }
 
     public void OnObjCreate()
