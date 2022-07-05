@@ -1,0 +1,852 @@
+fileFormatVersion: 2
+guid: 9827724ffadd167439cef61ccfd3db73
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 355042131547486305
+    second: E_Anim_02_Attack_0
+  - first:
+      213: -6843142496079825052
+    second: E_Anim_02_Attack_1
+  - first:
+      213: -5989713575057027091
+    second: E_Anim_02_Attack_2
+  - first:
+      213: -3734810634584055821
+    second: E_Anim_02_Attack_3
+  - first:
+      213: -1172601335517600624
+    second: E_Anim_02_Attack_4
+  - first:
+      213: 8049984069475230835
+    second: E_Anim_02_Attack_5
+  - first:
+      213: 6945385395558452164
+    second: E_Anim_02_Attack_6
+  - first:
+      213: -7587982581970559348
+    second: E_Anim_02_Attack_7
+  - first:
+      213: 2741890930250935471
+    second: E_Anim_02_Attack_8
+  - first:
+      213: 1924887973674091698
+    second: E_Anim_02_Attack_9
+  - first:
+      213: -3991338881232379211
+    second: E_Anim_02_Attack_10
+  - first:
+      213: 8917167920738741997
+    second: E_Anim_02_Attack_11
+  - first:
+      213: 5453662980791485217
+    second: E_Anim_02_Attack_12
+  - first:
+      213: -11922060550805957
+    second: E_Anim_02_Attack_13
+  - first:
+      213: -9084272061846965792
+    second: E_Anim_02_Attack_14
+  - first:
+      213: -4051419412179348383
+    second: E_Anim_02_Attack_15
+  - first:
+      213: -4549439292446430817
+    second: E_Anim_02_Attack_16
+  - first:
+      213: 6639499062510418684
+    second: E_Anim_02_Attack_17
+  - first:
+      213: 5535769688906495133
+    second: E_Anim_02_Attack_18
+  - first:
+      213: -3230846348531482015
+    second: E_Anim_02_Attack_19
+  - first:
+      213: 351393507030783667
+    second: E_Anim_02_Attack_20
+  - first:
+      213: 8144868301734391177
+    second: E_Anim_02_Attack_21
+  - first:
+      213: -3877814109488559375
+    second: E_Anim_02_Attack_22
+  - first:
+      213: -1790289377359946541
+    second: E_Anim_02_Attack_23
+  - first:
+      213: 7205367512694336970
+    second: E_Anim_02_Attack_24
+  - first:
+      213: -4046545583103241545
+    second: E_Anim_02_Attack_25
+  - first:
+      213: 6797722788896144547
+    second: E_Anim_02_Attack_26
+  - first:
+      213: 979369083918290365
+    second: E_Anim_02_Attack_27
+  - first:
+      213: -5054426704700658098
+    second: E_Anim_02_Attack_28
+  - first:
+      213: -7515852167906637132
+    second: E_Anim_02_Attack_29
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1687f2300fc5de400800000000000000
+      internalID: 355042131547486305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46738c508264801a0800000000000000
+      internalID: -6843142496079825052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: def04640d3340eca0800000000000000
+      internalID: -5989713575057027091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ff144604894b2cc0800000000000000
+      internalID: -3734810634584055821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_4
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094235d4c451abfe0800000000000000
+      internalID: -1172601335517600624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 374ef9c4cd947bf60800000000000000
+      internalID: 8049984069475230835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_6
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb82721837f26060800000000000000
+      internalID: 6945385395558452164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_7
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8e1bc76b0212b690800000000000000
+      internalID: -7587982581970559348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_8
+      rect:
+        serializedVersion: 2
+        x: 1952
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: face87e16472d0620800000000000000
+      internalID: 2741890930250935471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_9
+      rect:
+        serializedVersion: 2
+        x: 2196
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b4044fd96396ba10800000000000000
+      internalID: 1924887973674091698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_10
+      rect:
+        serializedVersion: 2
+        x: 2440
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b260fd3f6aeb98c0800000000000000
+      internalID: -3991338881232379211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_11
+      rect:
+        serializedVersion: 2
+        x: 2684
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dee242e8af420cb70800000000000000
+      internalID: 8917167920738741997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_12
+      rect:
+        serializedVersion: 2
+        x: 2928
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12346c6169d4fab40800000000000000
+      internalID: 5453662980791485217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_13
+      rect:
+        serializedVersion: 2
+        x: 3172
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b36e0e7f2f4a5dff0800000000000000
+      internalID: -11922060550805957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_14
+      rect:
+        serializedVersion: 2
+        x: 3416
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e13b96b0be2ee180800000000000000
+      internalID: -9084272061846965792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_15
+      rect:
+        serializedVersion: 2
+        x: 3660
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1649dec828776c7c0800000000000000
+      internalID: -4051419412179348383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_16
+      rect:
+        serializedVersion: 2
+        x: 3904
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f99a68641152dd0c0800000000000000
+      internalID: -4549439292446430817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_17
+      rect:
+        serializedVersion: 2
+        x: 4148
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfaf873483d342c50800000000000000
+      internalID: 6639499062510418684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_18
+      rect:
+        serializedVersion: 2
+        x: 4392
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9475a9c33103dc40800000000000000
+      internalID: 5535769688906495133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_19
+      rect:
+        serializedVersion: 2
+        x: 4636
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 162c9ef1d5ab923d0800000000000000
+      internalID: -3230846348531482015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_20
+      rect:
+        serializedVersion: 2
+        x: 4880
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b6d2fa688660e400800000000000000
+      internalID: 351393507030783667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_21
+      rect:
+        serializedVersion: 2
+        x: 5124
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98da73b2192680170800000000000000
+      internalID: 8144868301734391177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_22
+      rect:
+        serializedVersion: 2
+        x: 5368
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1facfeaec9c3f2ac0800000000000000
+      internalID: -3877814109488559375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_23
+      rect:
+        serializedVersion: 2
+        x: 5612
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dc1e41fb4d9727e0800000000000000
+      internalID: -1790289377359946541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_24
+      rect:
+        serializedVersion: 2
+        x: 5856
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acd294eb39b9ef360800000000000000
+      internalID: 7205367512694336970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_25
+      rect:
+        serializedVersion: 2
+        x: 6100
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b294bf4b38c7d7c0800000000000000
+      internalID: -4046545583103241545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_26
+      rect:
+        serializedVersion: 2
+        x: 6344
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ac7bb15cdc565e50800000000000000
+      internalID: 6797722788896144547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_27
+      rect:
+        serializedVersion: 2
+        x: 6588
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbd03fe2efa679d00800000000000000
+      internalID: 979369083918290365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_28
+      rect:
+        serializedVersion: 2
+        x: 6832
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ea11b01b11bd9b0800000000000000
+      internalID: -5054426704700658098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E_Anim_02_Attack_29
+      rect:
+        serializedVersion: 2
+        x: 7076
+        y: 0
+        width: 244
+        height: 264
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ba4393264452b790800000000000000
+      internalID: -7515852167906637132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
