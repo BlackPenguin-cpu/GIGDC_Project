@@ -26,11 +26,8 @@ public class DamageText : MonoBehaviour, IObjectPoolingObj
     {
         OnObjCreate();
     }
-    public void OnObjCreate()
+    public void Init()
     {
-        rigid = GetComponent<Rigidbody2D>();
-        textMesh = GetComponent<TextMesh>();
-
         textString = ((int)damageValue).ToString();
 
         textMesh.text = textString;
@@ -54,5 +51,11 @@ public class DamageText : MonoBehaviour, IObjectPoolingObj
         {
             rigid.AddForce(new Vector3(Random.Range(-30, 30), -100, 0));
         }
+
+    }
+    public void OnObjCreate()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+        textMesh = GetComponent<TextMesh>();
     }
 }
