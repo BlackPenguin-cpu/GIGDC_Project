@@ -54,28 +54,405 @@ MonoBehaviour:
         enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
       - time: 1.25
         posIndex: 2
-        enemyObj: {fileID: 0}
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
       - time: 1
         posIndex: 3
         enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
     - EnemySpawnInfos:
       - time: 0
-        posIndex: 0
-        enemyObj: {fileID: 0}
+        posIndex: 3
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 1
+        posIndex: 2
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.5
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+    - EnemySpawnInfos:
+      - time: 0
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0
+        posIndex: 3
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 1
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+    - EnemySpawnInfos:
+      - time: 1
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1
+        posIndex: 3
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1.5
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+    - EnemySpawnInfos:
+      - time: 1
+        posIndex: 2
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+  - EnemySpawnPatterns:
+    - EnemySpawnInfos:
+      - time: 0
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0
+        posIndex: 3
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 2
+        posIndex: 3
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 3
+        posIndex: 4
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+    - EnemySpawnInfos:
+      - time: 0
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 2
+        posIndex: 3
+        enemyObj: {fileID: 9068815753638589938, guid: 86989ff48d0abbc4c9d51bf78a71823d, type: 3}
+      - time: 0
+        posIndex: 2
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 1.5
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+    - EnemySpawnInfos:
+      - time: 1
+        posIndex: 3
+        enemyObj: {fileID: 6548145856063870524, guid: 27b682e1a0709364e861e4292f934802, type: 3}
+      - time: 2
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1
+        posIndex: 3
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
       - time: 0
         posIndex: 0
         enemyObj: {fileID: 0}
+    - EnemySpawnInfos:
       - time: 0
+        posIndex: 2
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0
+        posIndex: 4
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 1
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.5
+        posIndex: 1
+        enemyObj: {fileID: 9068815753638589938, guid: 86989ff48d0abbc4c9d51bf78a71823d, type: 3}
+    - EnemySpawnInfos:
+      - time: 0
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1
+        posIndex: 2
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+  - EnemySpawnPatterns:
+    - EnemySpawnInfos:
+      - time: 0
+        posIndex: 3
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0
+        posIndex: 4
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 2
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0
+        posIndex: 2
+        enemyObj: {fileID: 6548145856063870524, guid: 27b682e1a0709364e861e4292f934802, type: 3}
+      - time: 3
+        posIndex: 3
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1
+        posIndex: 4
+        enemyObj: {fileID: 9068815753638589938, guid: 86989ff48d0abbc4c9d51bf78a71823d, type: 3}
+    - EnemySpawnInfos:
+      - time: 1
+        posIndex: 1
+        enemyObj: {fileID: 9068815753638589938, guid: 86989ff48d0abbc4c9d51bf78a71823d, type: 3}
+      - time: 0
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1
+        posIndex: 3
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1
+        posIndex: 3
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0
+        posIndex: 2
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+    - EnemySpawnInfos:
+      - time: 0
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.25
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.25
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.25
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.25
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 2
+        posIndex: 3
+        enemyObj: {fileID: 9068815753638589938, guid: 86989ff48d0abbc4c9d51bf78a71823d, type: 3}
+    - EnemySpawnInfos:
+      - time: 1
+        posIndex: 3
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.25
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.25
+        posIndex: 3
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.25
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.25
+        posIndex: 4
+        enemyObj: {fileID: 6548145856063870524, guid: 27b682e1a0709364e861e4292f934802, type: 3}
+    - EnemySpawnInfos:
+      - time: 0.5
+        posIndex: 2
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.5
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 1
+        posIndex: 3
+        enemyObj: {fileID: 9068815753638589938, guid: 86989ff48d0abbc4c9d51bf78a71823d, type: 3}
+      - time: 3
+        posIndex: 2
+        enemyObj: {fileID: 9068815753638589938, guid: 86989ff48d0abbc4c9d51bf78a71823d, type: 3}
+  - EnemySpawnPatterns:
+    - EnemySpawnInfos:
+      - time: 0
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.5
+        posIndex: 2
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.5
+        posIndex: 2
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.25
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.25
+        posIndex: 1
+        enemyObj: {fileID: 6548145856063870524, guid: 27b682e1a0709364e861e4292f934802, type: 3}
+      - time: 0.5
+        posIndex: 3
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.5
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.5
+        posIndex: 2
+        enemyObj: {fileID: 9114087186975932003, guid: c932c67895cca6047a7cc3fdfffb95bf, type: 3}
+    - EnemySpawnInfos:
+      - time: 1
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0
+        posIndex: 2
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.5
+        posIndex: 3
+        enemyObj: {fileID: 9068815753638589938, guid: 86989ff48d0abbc4c9d51bf78a71823d, type: 3}
+      - time: 0
+        posIndex: 4
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 1.5
+        posIndex: 2
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.25
+        posIndex: 2
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 3.5
+        posIndex: 2
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+    - EnemySpawnInfos:
+      - time: 1
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.5
+        posIndex: 2
+        enemyObj: {fileID: 9068815753638589938, guid: 86989ff48d0abbc4c9d51bf78a71823d, type: 3}
+      - time: 0.5
+        posIndex: 3
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0
+        posIndex: 2
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.5
+        posIndex: 4
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 1.5
+        posIndex: 3
+        enemyObj: {fileID: 6548145856063870524, guid: 27b682e1a0709364e861e4292f934802, type: 3}
+    - EnemySpawnInfos:
+      - time: 1
+        posIndex: 2
+        enemyObj: {fileID: 6548145856063870524, guid: 27b682e1a0709364e861e4292f934802, type: 3}
+      - time: 0.5
+        posIndex: 2
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 2.5
+        posIndex: 1
+        enemyObj: {fileID: 9114087186975932003, guid: c932c67895cca6047a7cc3fdfffb95bf, type: 3}
+      - time: 0
+        posIndex: 3
+        enemyObj: {fileID: 9114087186975932003, guid: c932c67895cca6047a7cc3fdfffb95bf, type: 3}
+    - EnemySpawnInfos:
+      - time: 1
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1
+        posIndex: 2
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 2
+        posIndex: 3
+        enemyObj: {fileID: 6548145856063870524, guid: 27b682e1a0709364e861e4292f934802, type: 3}
+  - EnemySpawnPatterns:
+    - EnemySpawnInfos:
+      - time: 0
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0
+        posIndex: 3
+        enemyObj: {fileID: 9068815753638589938, guid: 86989ff48d0abbc4c9d51bf78a71823d, type: 3}
+      - time: 0.5
+        posIndex: 2
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.5
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1.5
+        posIndex: 3
+        enemyObj: {fileID: 6548145856063870524, guid: 27b682e1a0709364e861e4292f934802, type: 3}
+      - time: 1
+        posIndex: 2
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 1
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.5
+        posIndex: 2
+        enemyObj: {fileID: 6548145856063870524, guid: 27b682e1a0709364e861e4292f934802, type: 3}
+      - time: 5
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+    - EnemySpawnInfos:
+      - time: 1
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.25
+        posIndex: 3
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.25
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.25
+        posIndex: 3
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.25
         posIndex: 0
         enemyObj: {fileID: 0}
+      - time: 0.25
+        posIndex: 3
+        enemyObj: {fileID: 6548145856063870524, guid: 27b682e1a0709364e861e4292f934802, type: 3}
+      - time: 2.75
+        posIndex: 2
+        enemyObj: {fileID: 8059583011390592629, guid: 7b50210487ae1354696995a51cca1c5c, type: 3}
+    - EnemySpawnInfos:
+      - time: 1
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.5
+        posIndex: 1
+        enemyObj: {fileID: 6548145856063870524, guid: 27b682e1a0709364e861e4292f934802, type: 3}
+      - time: 0.5
+        posIndex: 2
+        enemyObj: {fileID: 9114087186975932003, guid: c932c67895cca6047a7cc3fdfffb95bf, type: 3}
       - time: 0
-        posIndex: 0
-        enemyObj: {fileID: 0}
-    - EnemySpawnInfos: []
-    - EnemySpawnInfos: []
-    - EnemySpawnInfos: []
-  - EnemySpawnPatterns: []
-  - EnemySpawnPatterns: []
-  - EnemySpawnPatterns: []
-  - EnemySpawnPatterns: []
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.5
+        posIndex: 4
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 0.5
+        posIndex: 3
+        enemyObj: {fileID: 9114087186975932003, guid: c932c67895cca6047a7cc3fdfffb95bf, type: 3}
+      - time: 2
+        posIndex: 1
+        enemyObj: {fileID: 8059583011390592629, guid: 7b50210487ae1354696995a51cca1c5c, type: 3}
+    - EnemySpawnInfos:
+      - time: 1
+        posIndex: 4
+        enemyObj: {fileID: 6548145856063870524, guid: 27b682e1a0709364e861e4292f934802, type: 3}
+      - time: 0.5
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.5
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 1
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 1
+        posIndex: 2
+        enemyObj: {fileID: 4367862497914151025, guid: 9dee328ee4f934245acb4cb78008ee3f, type: 3}
+    - EnemySpawnInfos:
+      - time: 1
+        posIndex: 1
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.5
+        posIndex: 1
+        enemyObj: {fileID: 7957250693435453323, guid: 8ba31ea6ff305e04fafc3fbe0dfe2697, type: 3}
+      - time: 1.5
+        posIndex: 2
+        enemyObj: {fileID: 9055143270326299191, guid: 52e1541e0d7580e4f8503545ce5c5aa7, type: 3}
+      - time: 0.5
+        posIndex: 2
+        enemyObj: {fileID: 8059583011390592629, guid: 7b50210487ae1354696995a51cca1c5c, type: 3}
+      - time: 1.5
+        posIndex: 3
+        enemyObj: {fileID: 4367862497914151025, guid: 9dee328ee4f934245acb4cb78008ee3f, type: 3}
   m_WaveNum: 0
