@@ -8,7 +8,6 @@ public class SolarGodLight : BaseSkill
     private Animator animator;
     protected override void Action()
     {
-        CameraManager.Instance.ScreenFade(0.2f, 0.3f);
         RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxCollider2D.offset, boxCollider2D.size, 0, Vector2.right, 0);
 
         for (int i = 0; i < rays.Length; i++)
@@ -27,6 +26,7 @@ public class SolarGodLight : BaseSkill
     public override void OnObjCreate()
     {
         base.OnObjCreate();
+        CameraManager.Instance.ScreenFade(1.5f, 0.5f);
         animator = GetComponent<Animator>();
         boxCollider2D = GetComponent<BoxCollider2D>();
 
