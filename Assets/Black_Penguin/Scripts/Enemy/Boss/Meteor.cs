@@ -27,6 +27,7 @@ public class Meteor : MonoBehaviour, IObjectPoolingObj
         if (transform.position.y < 0)
         {
             rigid.gravityScale = -rigid.gravityScale;
+            transform.rotation = Quaternion.Euler(0,0,180);
         }
     }
 }

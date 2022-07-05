@@ -115,5 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1013fa9b253f3f647923144f1e3f5cad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createObj: {fileID: 8332530148675281806, guid: aa352824beae1bc4aa5e28e5f1ca54eb, type: 3}
+  createObj: {fileID: 8192019840458599385, guid: 2a2da9f01c836974394f8b5dbecf277d, type: 3}
   createObjPos: {x: 0, y: 0, z: 0}
+  dimensionType: 0

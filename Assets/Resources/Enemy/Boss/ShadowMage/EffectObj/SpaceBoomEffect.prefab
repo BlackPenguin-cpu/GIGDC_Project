@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2912364136840031470}
   - component: {fileID: 467144631125799140}
   - component: {fileID: 6535017112871507028}
-  - component: {fileID: 3969212567210245591}
+  - component: {fileID: 1493825204748533181}
+  - component: {fileID: 7655633727221101409}
   m_Layer: 0
   m_Name: SpaceBoomEffect
   m_TagString: Untagged
@@ -103,7 +104,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3969212567210245591
+--- !u!114 &1493825204748533181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,6 +113,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 8192019840458599385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4ea70a0d03e6c64b9798aaa02d413bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 4771bd0724d9f6d4887f08583cb995ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shadowMage: {fileID: 6505051380586823677, guid: e00fdf5a45dfd6e44b00a2056cbd8b64, type: 3}
+--- !u!61 &7655633727221101409
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8192019840458599385}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.65, y: 2.2}
+    newSize: {x: 2.65, y: 2.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.65, y: 2.2}
+  m_EdgeRadius: 0

@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceBoom : MonoBehaviour
+public class SpaceBoom : MonoBehaviour, IObjectPoolingObj
 {
-    // Start is called before the first frame update
-    void Start()
+    private BoxCollider2D boxCollider2D;
+    public ShadowMage shadowMage;
+    public void OnObjCreate()
     {
-        
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        RaycastHit2D[] rays = Physics2D.BoxCastAll(transform.position, boxCollider2D.size, 0, Vector2.right, 0);
+        foreach (RaycastHit2D ray in rays)
+        {
+            if (ray.collider.GetComponent<ITypePlayer>() != null)
+            {
+                shadowMage.Attack(Player.Instance, 15);
+            }
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    void DeleteThis()
     {
-        
+        ObjectPool.Instance.DeleteObj(gameObject);
     }
 }
