@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShadowMage : BaseEnemy
 {
-    bool isShielding = false;
+    public bool isShielding = false;
     [SerializeField] GameObject ShieldObj;
     [SerializeField] GameObject meteorObj;
     [SerializeField] GameObject SpaceBoomObj;
@@ -14,14 +14,14 @@ public class ShadowMage : BaseEnemy
         get => base._hp;
         set
         {
-            if (isShielding) value = 0;
+            if (isShielding) return;
             base._hp = value;
         }
     }
     protected override void Start()
     {
-        base.Start();
         BaseStatSet(2000, 0, 0, 3, 0, 0, 0, 0);
+        base.Start();
     }
     protected override void Update()
     {
@@ -91,7 +91,7 @@ public class ShadowMage : BaseEnemy
 
             _state = EnemyState.ATTACK;
             int PatternValue = Random.Range(0, 100);
-            if (PatternValue > 70)
+            if (PatternValue > 70 && isShielding == false)
             {
                 yield return StartCoroutine(Shield());
             }
@@ -156,5 +156,11 @@ public class ShadowMage : BaseEnemy
             transform.localScale = new Vector3(1, value, 1);
             yield return null;
         }
+    }
+    public override void OnHit(Entity atkEntity, float Damage)
+    {
+        if (isShielding) return;
+        rigid.AddForce(new Vector3(transform.position.x > atkEntity.transform.position.x ? 40 : -40, 0, 0));
+        StartCoroutine(HitEffectCoroutine());
     }
 }

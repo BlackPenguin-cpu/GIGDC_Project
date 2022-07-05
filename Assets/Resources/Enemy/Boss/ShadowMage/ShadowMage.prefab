@@ -252,7 +252,8 @@ MonoBehaviour:
   attackSpeed: 1
   attackDelay: 0
   attackDamage: 0
-  ShieldObj: {fileID: 0}
+  isShielding: 0
+  ShieldObj: {fileID: 8279138678801979409, guid: 556aae5a2bf5d1d4aa179245ac9c894f, type: 3}
   meteorObj: {fileID: 358660074950923744, guid: 4dead18cdbfdf4a44bae2c67e75cdb44, type: 3}
   SpaceBoomObj: {fileID: 7652513191121189056, guid: 4b3ce477e6f007741a82b5016ff48f20, type: 3}
   HommingProjectile: {fileID: -5710992840278562948, guid: f8880834be3f4db4f8cc9eebb04f2cb7, type: 3}
