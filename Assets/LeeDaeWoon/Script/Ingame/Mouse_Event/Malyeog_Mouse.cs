@@ -473,14 +473,14 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                                 break;
                         }
 
-                        MagicOpen_Check = true;
-                        if (MagicOpen_Check == true && Foundation.Inst.Magic_Open == Malyeog_Num)
-                            Foundation.Inst.Magic_Open++;
+                        BodyOpen_Check = true;
+                        if (BodyOpen_Check == true && Foundation.Inst.Body_Open == Malyeog_Num)
+                            Foundation.Inst.Body_Open++;
                     }
                     break;
 
                 case 1:
-                    if (UI_Manager.Inst.Dimensional >= (1000 + Malyeog_Upgrade * 200) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
+                    if (UI_Manager.Inst.Dimensional >= (1000 + Malyeog_Upgrade * 200) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
                     {
                         UI_Manager.Inst.Dimensional -= (1000 + Malyeog_Upgrade * 200);
 
@@ -510,14 +510,14 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                                 break;
                         }
 
-                        MagicOpen_Check = true;
-                        if (MagicOpen_Check == true && Foundation.Inst.Magic_Open == Malyeog_Num)
-                            Foundation.Inst.Magic_Open++;
+                        BodyOpen_Check = true;
+                        if (BodyOpen_Check == true && Foundation.Inst.Body_Open == Malyeog_Num)
+                            Foundation.Inst.Body_Open++;
                     }
                     break;
 
                 case 2:
-                    if (UI_Manager.Inst.Dimensional >= (1500 + Malyeog_Upgrade * 250) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
+                    if (UI_Manager.Inst.Dimensional >= (1500 + Malyeog_Upgrade * 250) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
                     {
                         UI_Manager.Inst.Dimensional -= (1500 + Malyeog_Upgrade * 250);
 
@@ -547,14 +547,14 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                                 break;
                         }
 
-                        MagicOpen_Check = true;
-                        if (MagicOpen_Check == true && Foundation.Inst.Magic_Open == Malyeog_Num)
-                            Foundation.Inst.Magic_Open++;
+                        BodyOpen_Check = true;
+                        if (BodyOpen_Check == true && Foundation.Inst.Body_Open == Malyeog_Num)
+                            Foundation.Inst.Body_Open++;
                     }
                     break;
 
                 case 3:
-                    if (UI_Manager.Inst.Dimensional >= (3000 + Malyeog_Upgrade * 3000) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
+                    if (UI_Manager.Inst.Dimensional >= (3000 + Malyeog_Upgrade * 3000) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
                     {
                         UI_Manager.Inst.Dimensional -= (3000 + Malyeog_Upgrade * 3000);
 
