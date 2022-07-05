@@ -32,6 +32,9 @@ public class King : MonoBehaviour
     public BoxCollider2D Area03_Box;
     public BoxCollider2D Area04_Box;
 
+    [Header("마법진 생성")]
+    public bool Magic_Creation = false;
+
     public bool Dialogue_Skip = false;
 
 

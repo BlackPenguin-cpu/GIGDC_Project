@@ -33,11 +33,12 @@ public class UI_Manager : MonoBehaviour
 
     void Start()
     {
+        Cursor.SetCursor(MousePointer, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     void Update()
     {
-        Cursor.SetCursor(MousePointer, Vector2.zero, CursorMode.ForceSoftware);
+
 
         Timer_System();
         Money_System();

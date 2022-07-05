@@ -31,6 +31,11 @@ public class King_Collision : MonoBehaviour
     void Update()
     {
         NextDialogue_F();
+
+        if (King.Inst.Magic_Creation == true)
+        {
+            Foundation.Inst.MagicCircle_Rotation();
+        }
     }
 
     public void NextDialogue_F()
@@ -289,7 +294,7 @@ public class King_Collision : MonoBehaviour
                             King.Inst.Area04_Box.enabled = false;
 
                             yield return new WaitForSeconds(1f);
-
+                            King.Inst.Magic_Creation = true;
                             King.Inst.Zoom_Shrinking();
                         }
                     }

@@ -1463,6 +1463,8 @@ MonoBehaviour:
   Malyeog_Num: 1
   Malyeog_Upgrade: 0
   MalyeogUp_Text: {fileID: 1647357649}
+  BodyOpen_Check: 0
+  MagicOpen_Check: 0
 --- !u!114 &242195660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5116,7 +5118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720925089}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30.51, y: 0, z: -10}
+  m_LocalPosition: {x: 48.49, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5224,7 +5226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: -10
-  Magic_Circle: {fileID: 717887001}
+  Magic_Circle: {fileID: 717887002}
   F_Button: {fileID: 806538701}
   Upgrade: {fileID: 225275279}
   Upgrade_Text: {fileID: 308306408}
@@ -5239,6 +5241,8 @@ MonoBehaviour:
   Close_Btn: {fileID: 1001446933}
   Price_obj: {fileID: 1594466374}
   Dimensional_Price: {fileID: 1436679608}
+  Magic_Open: 0
+  Body_Open: 0
 --- !u!61 &733044160
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5386,6 +5390,8 @@ MonoBehaviour:
   Malyeog_Num: 2
   Malyeog_Upgrade: 0
   MalyeogUp_Text: {fileID: 319092040}
+  BodyOpen_Check: 0
+  MagicOpen_Check: 0
 --- !u!114 &737903163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7059,6 +7065,8 @@ MonoBehaviour:
   Malyeog_Num: 1
   Malyeog_Upgrade: 0
   MalyeogUp_Text: {fileID: 950157560}
+  BodyOpen_Check: 0
+  MagicOpen_Check: 0
 --- !u!114 &928888480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7767,6 +7775,8 @@ MonoBehaviour:
   Malyeog_Num: 3
   Malyeog_Upgrade: 0
   MalyeogUp_Text: {fileID: 612221574}
+  BodyOpen_Check: 0
+  MagicOpen_Check: 0
 --- !u!114 &995056723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12078,6 +12088,8 @@ MonoBehaviour:
   Malyeog_Num: 2
   Malyeog_Upgrade: 0
   MalyeogUp_Text: {fileID: 1952688467}
+  BodyOpen_Check: 0
+  MagicOpen_Check: 0
 --- !u!114 &1578202526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13306,6 +13318,8 @@ MonoBehaviour:
   Malyeog_Num: 0
   Malyeog_Upgrade: 0
   MalyeogUp_Text: {fileID: 801680820}
+  BodyOpen_Check: 0
+  MagicOpen_Check: 0
 --- !u!114 &1740663108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14545,6 +14559,8 @@ MonoBehaviour:
   Malyeog_Num: 3
   Malyeog_Upgrade: 0
   MalyeogUp_Text: {fileID: 2041747448}
+  BodyOpen_Check: 0
+  MagicOpen_Check: 0
 --- !u!114 &1894730033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15450,6 +15466,8 @@ MonoBehaviour:
   Malyeog_Num: 0
   Malyeog_Upgrade: 0
   MalyeogUp_Text: {fileID: 414635762}
+  BodyOpen_Check: 0
+  MagicOpen_Check: 0
 --- !u!114 &2052249130
 MonoBehaviour:
   m_ObjectHideFlags: 0
