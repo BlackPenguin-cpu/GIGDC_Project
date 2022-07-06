@@ -40,6 +40,7 @@ public class King : MonoBehaviour
 
     void Start()
     {
+
     }
 
     void Update()

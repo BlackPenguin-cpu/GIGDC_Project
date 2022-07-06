@@ -34,12 +34,17 @@ public class Credit_Click : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
 
     #region Å©·¹µ÷ ¹öÆ°
-    public void LogoClick() => StartCoroutine(Logo_Credit());
+    public void LogoClick()
+    {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
+        StartCoroutine(Logo_Credit());
+    }
 
     public IEnumerator Logo_Credit()
     {
         if (Title_Manager.Inst.MouseCheck == true)
         {
+            SoundManager.instance.PlaySoundClip("BGM_Editor", SoundType.BGM);
             Title_Manager.Inst.click_Check = true;
             Title_Manager.Inst.Credit_BackGround.DOFade(1f, 0.5f);
             Title_Manager.Inst.Credit_BackGround.raycastTarget = true;

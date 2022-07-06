@@ -48,6 +48,9 @@ public class WavePattern
 }
 public class WaveManager : MonoBehaviour
 {
+    public static WaveManager Instance { get; private set; }
+    void Awake() => Instance = this;
+
     public List<WavePattern> wavePatterns;
     public int m_WaveNum;
     readonly baseEnemySpawnPos enemySpawnPos;

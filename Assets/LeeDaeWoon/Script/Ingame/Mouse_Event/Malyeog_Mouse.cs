@@ -41,6 +41,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             switch (Malyeog_Num)
             {
                 case 0:
+                    SoundManager.instance.PlaySoundClip("SFX_Button_Over", SoundType.SFX);
                     Foundation.Inst.Title.text = "보이지 않는 손";
                     MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
                     switch (Malyeog_Upgrade)
@@ -73,6 +74,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     break;
 
                 case 1:
+                    SoundManager.instance.PlaySoundClip("SFX_Button_Over", SoundType.SFX);
                     Foundation.Inst.Title.text = "꿰뚫어보는 눈";
                     MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
                     switch (Malyeog_Upgrade)
@@ -105,6 +107,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     break;
 
                 case 2:
+                    SoundManager.instance.PlaySoundClip("SFX_Button_Over", SoundType.SFX);
                     Foundation.Inst.Title.text = "시간가속";
                     MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
                     switch (Malyeog_Upgrade)
@@ -137,6 +140,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     break;
 
                 case 3:
+                    SoundManager.instance.PlaySoundClip("SFX_Button_Over", SoundType.SFX);
                     Foundation.Inst.Title.text = "연금술";
                     MalyeogUp_Text.text = Malyeog_Upgrade + "/2";
                     switch (Malyeog_Upgrade)
@@ -167,6 +171,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             switch (Malyeog_Num)
             {
                 case 0:
+                    SoundManager.instance.PlaySoundClip("SFX_Button_Over", SoundType.SFX);
                     Foundation.Inst.Title.text = "실피드의 도약";
                     MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
                     switch (Malyeog_Upgrade)
@@ -199,6 +204,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     break;
 
                 case 1:
+                    SoundManager.instance.PlaySoundClip("SFX_Button_Over", SoundType.SFX);
                     Foundation.Inst.Title.text = "거인의 힘";
                     MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
                     switch (Malyeog_Upgrade)
@@ -231,6 +237,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     break;
 
                 case 2:
+                    SoundManager.instance.PlaySoundClip("SFX_Button_Over", SoundType.SFX);
                     Foundation.Inst.Title.text = "강철 피부";
                     MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
                     switch (Malyeog_Upgrade)
@@ -263,6 +270,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     break;
 
                 case 3:
+                    SoundManager.instance.PlaySoundClip("SFX_Button_Over", SoundType.SFX);
                     Foundation.Inst.Title.text = "마공학 심장";
                     MalyeogUp_Text.text = Malyeog_Upgrade + "/2";
                     switch (Malyeog_Upgrade)
@@ -295,6 +303,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
+
         if (malyeog == Malyeog.Magic)
         {
             switch (Malyeog_Num)
@@ -302,6 +311,8 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 0:
                     if (UI_Manager.Inst.Dimensional >= (700 + Malyeog_Upgrade * 150) && Foundation.Inst.Dimensional_Price.text != "Max")
                     {
+                        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
+
                         UI_Manager.Inst.Dimensional -= (700 + Malyeog_Upgrade * 150);
 
                         Malyeog_Upgrade++;
@@ -339,6 +350,8 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 1:
                     if (UI_Manager.Inst.Dimensional >= (1100 + Malyeog_Upgrade * 200) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
                     {
+                        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
+
                         UI_Manager.Inst.Dimensional -= (1100 + Malyeog_Upgrade * 200);
 
                         Malyeog_Upgrade++;
@@ -379,6 +392,8 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 2:
                     if (UI_Manager.Inst.Dimensional >= (1700 + Malyeog_Upgrade * 250) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
                     {
+                        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
+
                         UI_Manager.Inst.Dimensional -= (1700 + Malyeog_Upgrade * 250);
 
                         Malyeog_Upgrade++;
@@ -416,6 +431,8 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 3:
                     if (UI_Manager.Inst.Dimensional >= (3300 + Malyeog_Upgrade * 3000) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
                     {
+                        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
+
                         UI_Manager.Inst.Dimensional -= (3300 + Malyeog_Upgrade * 3000);
 
                         Malyeog_Upgrade++;
@@ -445,6 +462,8 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 0:
                     if (UI_Manager.Inst.Dimensional >= (600 + Malyeog_Upgrade * 150) && Foundation.Inst.Dimensional_Price.text != "Max")
                     {
+                        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
+
                         UI_Manager.Inst.Dimensional -= (600 + Malyeog_Upgrade * 150);
 
                         Malyeog_Upgrade++;
@@ -482,6 +501,8 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 1:
                     if (UI_Manager.Inst.Dimensional >= (1000 + Malyeog_Upgrade * 200) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
                     {
+                        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
+
                         UI_Manager.Inst.Dimensional -= (1000 + Malyeog_Upgrade * 200);
 
                         Malyeog_Upgrade++;
@@ -519,6 +540,8 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 2:
                     if (UI_Manager.Inst.Dimensional >= (1500 + Malyeog_Upgrade * 250) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
                     {
+                        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
+
                         UI_Manager.Inst.Dimensional -= (1500 + Malyeog_Upgrade * 250);
 
                         Malyeog_Upgrade++;
@@ -556,6 +579,8 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 case 3:
                     if (UI_Manager.Inst.Dimensional >= (3000 + Malyeog_Upgrade * 3000) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
                     {
+                        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
+
                         UI_Manager.Inst.Dimensional -= (3000 + Malyeog_Upgrade * 3000);
 
                         Malyeog_Upgrade++;

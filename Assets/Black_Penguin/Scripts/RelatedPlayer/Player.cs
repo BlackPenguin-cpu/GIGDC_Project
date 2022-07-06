@@ -651,6 +651,7 @@ public class Player : Entity, ITypePlayer
         }
         else
         {
+
             _state = PlayerState.Attack;
         }
         if (nowAttackAction != null)
@@ -659,6 +660,7 @@ public class Player : Entity, ITypePlayer
     }
     public override void Attack(Entity target, float atkDmg)
     {
+
         Attack(target.GetComponent<BaseEnemy>(), atkDmg);
     }
     public void Attack(BaseEnemy target, float atkDmg)

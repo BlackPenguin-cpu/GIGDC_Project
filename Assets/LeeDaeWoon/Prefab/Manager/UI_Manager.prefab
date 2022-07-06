@@ -136,7 +136,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3157611432992786235}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 980.0148, y: 535.9365, z: -644.7719}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -162,11 +162,13 @@ MonoBehaviour:
   Gold_Text: {fileID: 1272140075250453603}
   Dimensional: 0
   Dimensional_Text: {fileID: 3974177440768734973}
+  Wave_Text: {fileID: 4129189006980683382}
   Timer_Text: {fileID: 296586128572278085}
   HP_Bar: 1
   HP: 0
   Bar: {fileID: 8098893948647789191}
   MousePointer: {fileID: 2800000, guid: 868a7bab8939d2846999eba7d90f704f, type: 3}
+  Cursor_Fade: 0
 --- !u!1 &4510556971345596239
 GameObject:
   m_ObjectHideFlags: 0

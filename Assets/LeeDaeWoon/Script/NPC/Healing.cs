@@ -30,6 +30,8 @@ public class Healing : MonoBehaviour
 
     void Start()
     {
+        SoundManager.instance.PlaySoundClip("BGM_Store", SoundType.BGM);
+
         Healing_Window.SetActive(false);
         Healing_Price();
 
@@ -69,6 +71,8 @@ public class Healing : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && Healing_Colider_Check == false && UI_Manager.Inst.Gold >= Healing_Gold && Healing_Purchase_Check == true)
         {
+            SoundManager.instance.PlaySoundClip("SFX_God_healling", SoundType.SFX);
+
             UI_Manager.Inst.Gold -= Healing_Gold;
             UI_Manager.Inst.PlayerMove_control = true;
             StartCoroutine(HealingWindow_Close_Coroutine());

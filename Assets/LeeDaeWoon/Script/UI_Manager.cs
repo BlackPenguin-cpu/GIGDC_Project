@@ -7,8 +7,7 @@ using DG.Tweening;
 
 public class UI_Manager : MonoBehaviour
 {
-    public static UI_Manager Inst { get; private set; }
-    void Awake() => Inst = this;
+    public static UI_Manager Inst;
 
     public bool PlayerMove_control = false;
 
@@ -18,6 +17,8 @@ public class UI_Manager : MonoBehaviour
     public int Dimensional;
     public Text Dimensional_Text;
 
+    [Header("웨이브")]
+    public Text Wave_Text;
 
     [Header("타이머")]
     public Text Timer_Text;
@@ -32,6 +33,8 @@ public class UI_Manager : MonoBehaviour
 
     [Header("마우스 포인터")]
     public Texture2D MousePointer;
+    public bool Cursor_Fade;
+
 
     void Start()
     {
@@ -40,10 +43,26 @@ public class UI_Manager : MonoBehaviour
 
     void Update()
     {
+        Cursor.visible = Cursor_Fade;
+
         Timer_System();
         Money_System();
         HP_System();
+        Wave();
         Cheats();
+    }
+
+    private void Awake()
+    {
+        if (Inst == null)
+        {
+            Inst = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     #region 타이머
@@ -74,6 +93,23 @@ public class UI_Manager : MonoBehaviour
 
     #endregion
 
+    #region 웨이브
+    public void Wave()
+    {
+        // 인게임
+        if (SceneManager.GetActiveScene().name == "test")
+            Wave_Text.text = "Wave." + WaveManager.Instance.m_WaveNum;
+
+        // 차원의 틈새
+        else if (SceneManager.GetActiveScene().name == "Dimension")
+            Wave_Text.text = "차원의 틈새";
+
+        // 폐허가된 성
+        else if (SceneManager.GetActiveScene().name == "Main")
+            Wave_Text.text = "폐허가된 성";
+    }
+    #endregion
+
     #region 체력
     public void HP_System()
     {
@@ -102,6 +138,6 @@ public class UI_Manager : MonoBehaviour
             SceneManager.LoadScene("Dimension");
 
         }
-        #endregion
     }
+    #endregion
 }

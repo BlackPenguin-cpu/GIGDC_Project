@@ -27,20 +27,20 @@ public class Title_Manager : MonoBehaviour
     public bool click_Check;
     public bool Skip_Check;
 
-    void Start()
-    {
-        StartCoroutine(TeamLogo_BackGround());
-    }
+    void Start() => StartCoroutine(TeamLogo_BackGround());
 
     void Update()
     {
         if (Input.anyKeyDown)
         {
-            if (MouseCheck == false && Skip_Check!= true)
+            if (MouseCheck == false && Skip_Check != true)
                 Change_Scene();
 
             if (Skip_Check == true)
+            {
+                SoundManager.instance.PlaySoundClip("BGM_Title (1)", SoundType.BGM);
                 StartCoroutine(Credit_ESC());
+            }
         }
     }
 
@@ -60,6 +60,7 @@ public class Title_Manager : MonoBehaviour
     {
         if (Team_BackGround_Check == true)
         {
+            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
             DOTween.PauseAll();
             SceneManager.LoadScene("Main");
         }

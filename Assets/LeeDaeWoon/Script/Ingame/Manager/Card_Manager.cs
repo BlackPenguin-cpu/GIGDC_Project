@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Card_Manager : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class Card_Manager : MonoBehaviour
     public bool Item_Among = true;
     public bool Item_Right = true;
 
+    public Image Fade;
 
     [Header("시간의 마정석 제한")]
     public List<Item> Time_Item_Limit = new List<Item>();

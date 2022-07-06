@@ -103,6 +103,9 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         // 왼쪽 카드를 선택 했을 때
         if (direction == Direction.Left)
         {
+            Card_Manager.Inst.Fade.DOFade(0f, 0.5f);
+            UI_Manager.Inst.Cursor_Fade = false;
+
             if (Card_Manager.Inst.Left_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
             {
                 Card_Manager.Inst.Left_Pick = false;
@@ -226,6 +229,9 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         // 가운데 카드를 선택 했을 때
         if (direction == Direction.Among)
         {
+            Card_Manager.Inst.Fade.DOFade(0f, 0.5f);
+            UI_Manager.Inst.Cursor_Fade = false;
+
             if (Card_Manager.Inst.Among_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
             {
                 Card_Manager.Inst.Among_Pick = false;
@@ -348,6 +354,9 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         // 오른쪽 카드를 선택 했을 때
         if (direction == Direction.Right)
         {
+            Card_Manager.Inst.Fade.DOFade(0f, 0.5f);
+            UI_Manager.Inst.Cursor_Fade = false;
+
             if (Card_Manager.Inst.Right_Pick == true && Card_Manager.Inst.ItemCard_OpenCheck == false)
             {
                 Card_Manager.Inst.Right_Pick = false;

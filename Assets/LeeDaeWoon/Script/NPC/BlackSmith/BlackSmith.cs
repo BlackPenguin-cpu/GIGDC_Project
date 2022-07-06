@@ -6,7 +6,11 @@ using DG.Tweening;
 
 public class BlackSmith : MonoBehaviour
 {
-    bool BlackSmithWindow_Close = false;
+    public static BlackSmith Inst { get; private set; }
+    void Awake() => Inst = this;
+
+
+    public bool BlackSmithWindow_Close = false;
 
     [Header("상호작용 버튼")]
     public Image F_Button; // 상호작용 버튼
@@ -23,7 +27,7 @@ public class BlackSmith : MonoBehaviour
 
     public Image FadeInout;
 
-    private bool WindowOpen_Check = false;
+    public bool WindowOpen_Check = false;
 
     [Header("구매 및 강화 버튼")]
     public GameObject Purchase_Btn;
@@ -282,6 +286,7 @@ public class BlackSmith : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && Collision_Check == false && WindowOpen_Check == false)
         {
+            UI_Manager.Inst.Cursor_Fade = true;
             UI_Manager.Inst.PlayerMove_control = true;
             FadeInout.DOFade(0.5f, 1f);
             StartCoroutine(Open_Window());
@@ -293,111 +298,18 @@ public class BlackSmith : MonoBehaviour
             Close();
         }
     }
-
-    public void Left_Arrow()
-    {
-        int Save_BlackSmiths = BlackSmiths.Count;
-        BlackSmiths[0].SetActive(false);
-
-        BlackSmiths.Insert(0, BlackSmiths[Save_BlackSmiths - 1]);
-        BlackSmiths.RemoveAt(Save_BlackSmiths);
-        BlackSmiths[0].SetActive(true);
-    }
-
-    public void Right_Arrow()
-    {
-        BlackSmiths[0].SetActive(false);
-
-        BlackSmiths.Add(BlackSmiths[0]);
-        BlackSmiths.RemoveAt(0);
-        BlackSmiths[0].SetActive(true);
-    }
-
-    public void Purchase_Click()
-    {
-        int Gold = 300;
-        //단검
-        if (Weapon.transform.GetChild(1).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= Gold)
-        {
-            UI_Manager.Inst.Gold -= Gold; // 골드 차감
-            Dagger_Price.SetActive(false); // 구매가격 false
-            Dagger_Required_Gold.SetActive(true); // 강화 가격 true
-            Player.Instance.stat.weaponType = PlayerWeaponType.Dagger; // 무기 단검으로 바뀜
-            Purchase_Btn.SetActive(false); // 구매 버튼 false
-            Enhance_Btn.SetActive(true); // 강화 버튼 true
-        }
-
-        //도끼
-        if (Weapon.transform.GetChild(2).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= Gold)
-        {
-            UI_Manager.Inst.Gold -= Gold; // 골드 차감
-            Axe_Price.SetActive(false); // 구매가격 false
-            Axe_Required_Gold.SetActive(true); // 강화 가격 true
-            Player.Instance.stat.weaponType = PlayerWeaponType.Axe; // 무기 도끼으로 바뀜
-            Purchase_Btn.SetActive(false); // 구매 버튼 false
-            Enhance_Btn.SetActive(true); // 강화 버튼 true
-        }
-    }
-
-    public void JangCak_Click()
-    {
-        if (Weapon.transform.GetChild(0).gameObject.activeSelf == true)
-            Player.Instance.stat.weaponType = PlayerWeaponType.Sword;
-        else if (Weapon.transform.GetChild(1).gameObject.activeSelf == true)
-            Player.Instance.stat.weaponType = PlayerWeaponType.Dagger;
-        else if (Weapon.transform.GetChild(2).gameObject.activeSelf == true)
-            Player.Instance.stat.weaponType = PlayerWeaponType.Axe;
-    }
-
-    public void Enhance_Click()
-    {
-        int Sword_Level = Player.Instance.stat._level[PlayerWeaponType.Sword];
-        int Dagger_Level = Player.Instance.stat._level[PlayerWeaponType.Dagger];
-        int Axe_Level = Player.Instance.stat._level[PlayerWeaponType.Axe];
-
-        switch (Player.Instance.stat.weaponType)
-        {
-            case PlayerWeaponType.Sword:
-                if (Weapon.transform.GetChild(0).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= (400 + (200 * Sword_Level)))
-                {
-                    if (Sword_Level < 5)
-                    {
-                        UI_Manager.Inst.Gold -= (400 + (200 * Sword_Level));
-                        Player.Instance.stat._level[PlayerWeaponType.Sword]++;
-                    }
-                }
-                break;
-
-            case PlayerWeaponType.Dagger:
-                if (Weapon.transform.GetChild(1).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= (400 + (200 * Dagger_Level)))
-                {
-                    if (Dagger_Level < 5)
-                    {
-                        UI_Manager.Inst.Gold -= (400 + (200 * Dagger_Level));
-                        Player.Instance.stat._level[PlayerWeaponType.Dagger]++;
-                    }
-                }
-                break;
-
-            case PlayerWeaponType.Axe:
-                if (Weapon.transform.GetChild(2).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= (400 + (200 * Axe_Level)))
-                {
-                    if (Axe_Level < 5)
-                    {
-                        UI_Manager.Inst.Gold -= (400 + (200 * Axe_Level));
-                        Player.Instance.stat._level[PlayerWeaponType.Axe]++;
-                    }
-                }
-                break;
-        }
-    }
     #endregion
 
     #region 창 연출
-    public void Close() => StartCoroutine(Close_Window());
+    public void Close()
+    {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
+        StartCoroutine(Close_Window());
+    }
 
     public IEnumerator Open_Window()
     {
+        UI_Manager.Inst.Cursor_Fade = true;
         Weapon_Purchase_Window.SetActive(true);
         timer = 0f;
         Pole_01.transform.DOLocalMoveY(452, 0.5f);
@@ -416,6 +328,7 @@ public class BlackSmith : MonoBehaviour
     {
         if (BlackSmithWindow_Close == true)
         {
+            UI_Manager.Inst.Cursor_Fade = false;
             BlackSmithWindow_Close = false;
             FadeInout.DOFade(0f, 1f);
 

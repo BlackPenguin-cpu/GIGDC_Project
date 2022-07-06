@@ -48,6 +48,9 @@ public class Item_Window : MonoBehaviour
 
     private IEnumerator itemWindow()
     {
+        Card_Manager.Inst.Fade.DOFade(0.5f, 0.5f);
+        UI_Manager.Inst.Cursor_Fade = true;
+
         Card_Manager.Inst.ItemCard_OpenCheck = true;
         Window_timer = 0;
 

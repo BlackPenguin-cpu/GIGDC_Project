@@ -130,6 +130,7 @@ public class Stop_Manager : MonoBehaviour
                 PauseWindow_Open = true;
                 Pause_Window_Canvas.SetActive(true);
                 Fade_Background.DOFade(0.5f, 0.5f);
+                UI_Manager.Inst.Cursor_Fade = true;
                 StartCoroutine(Pause_Window_Open());
             }
 
@@ -195,6 +196,7 @@ public class Stop_Manager : MonoBehaviour
                 timer += Time.unscaledDeltaTime * 2.5f;
                 yield return null;
             }
+            UI_Manager.Inst.Cursor_Fade = false;
             yield return new WaitForSecondsRealtime(0.1f);
             Pause_Window_Canvas.SetActive(false);
             PauseWindow_Open = false;
@@ -268,6 +270,7 @@ public class Stop_Manager : MonoBehaviour
             Setting_Window_Canvas.SetActive(false);
             Time.timeScale = 1f;
             SettingWindow_Open = false;
+            UI_Manager.Inst.Cursor_Fade = false;
         }
     }
 
@@ -390,6 +393,7 @@ public class Stop_Manager : MonoBehaviour
             PauseWindow_Open = true;
             Time.timeScale = 1f;
             PlayerWindow_Open = false;
+            UI_Manager.Inst.Cursor_Fade = false;
         }
     }
 
@@ -441,6 +445,7 @@ public class Stop_Manager : MonoBehaviour
     public IEnumerator Player_Weapon_Open02()
     {
         timer = 0;
+        Fade_Background.DOFade(0.5f, 0.5f).SetUpdate(true);
         Player_Pole01.transform.DOLocalMoveY(447.5388f, 0.48f).SetUpdate(true);
         Player_Pole02.transform.DOLocalMoveY(-445.16f, 0.48f).SetUpdate(true);
 
@@ -481,6 +486,7 @@ public class Stop_Manager : MonoBehaviour
     public IEnumerator Player_Item_Open02()
     {
         timer = 0;
+        Fade_Background.DOFade(0.5f, 0.5f).SetUpdate(true);
         Player_Pole01.transform.DOLocalMoveY(447.5388f, 0.48f).SetUpdate(true);
         Player_Pole02.transform.DOLocalMoveY(-445.16f, 0.48f).SetUpdate(true);
 
@@ -663,6 +669,7 @@ public class Stop_Manager : MonoBehaviour
             PauseWindow_Open = true;
             Time.timeScale = 1f;
             MainWindow_Open = false;
+            UI_Manager.Inst.Cursor_Fade = false;
         }
     }
     #endregion
@@ -735,6 +742,7 @@ public class Stop_Manager : MonoBehaviour
             PauseWindow_Open = true;
             Time.timeScale = 1f;
             GameExitWindow_Open = false;
+            UI_Manager.Inst.Cursor_Fade = false;
         }
     }
     #endregion
