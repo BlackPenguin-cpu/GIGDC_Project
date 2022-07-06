@@ -14,6 +14,8 @@ public class ZeusFury : BaseSkill
         skill.dimensionType = dimensionType;
         skill.Init();
         ObjectPool.Instance.DeleteObj(gameObject);
+
+        SoundManager.instance.PlaySoundClip("SFX_Skill_Lightning", SoundType.SFX);
     }
     private void OnLighting()
     {

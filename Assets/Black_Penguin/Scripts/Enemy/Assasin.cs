@@ -46,6 +46,7 @@ public class Assasin : BaseEnemy
     //본 함수들은 애니매이터에서 발동함
     void AnimAttack()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Assassination", SoundType.SFX);
         attackCollisions[1].OnAttack(this);
     }
     void AnimAttackEnd()

@@ -21,6 +21,9 @@ public class Potal : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<ITypePlayer>() != null)
+        {
+            SoundManager.instance.PlaySoundClip("SFX_Potal", SoundType.SFX);
             SceneManager.LoadScene("test");
+        }
     }
 }

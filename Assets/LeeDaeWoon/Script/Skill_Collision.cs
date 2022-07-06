@@ -25,6 +25,7 @@ public class Skill_Collision : MonoBehaviour
     {
         if ((collision.CompareTag("Player") || collision.GetComponent<ITypePlayer>() != null ) && Skill_Window.Inst.Purchase == true && Skill_Window.Inst.SkillWindow == true)
         {
+            SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
             Skill_Window.Inst.SkillColider_Check = true;
             Skill_Window.Inst.SkillNum = LeftRight_Nun;
             Skill_List.Inst.Skill_Num(LeftRight_Nun);
@@ -36,6 +37,7 @@ public class Skill_Collision : MonoBehaviour
     {
         if ((collision.CompareTag("Player") || collision.GetComponent<ITypePlayer>() != null) && Skill_Window.Inst.Purchase == true && Skill_Window.Inst.SkillWindow == false)
         {
+            SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
             Skill_Window.Inst.SkillColider_Check = false;
             StartCoroutine(Skill_Window.Inst.SkillWindowClose_Coroutine());
         }

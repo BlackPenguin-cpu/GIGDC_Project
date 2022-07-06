@@ -8,6 +8,7 @@ public class SpaceBang : BaseSkill
     private List<BaseEnemy> baseEnemies;
     protected override void Action()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Skill_Expansion", SoundType.SFX);
         StartCoroutine(OnStart());
     }
     IEnumerator OnStart()

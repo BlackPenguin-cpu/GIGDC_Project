@@ -22,6 +22,8 @@ public class LonginusSpear : BaseSkill, IObjectPoolingObj
         AttackProjectile projectile = ObjectPool.Instance.CreateObj(spear, transform.position, Quaternion.Euler(0, 0, player.sprite.flipX ? 180 : 0)).GetComponent<AttackProjectile>();
         projectile.Init(player, DefaultReturnDamage(), 30, 0, ProjectileType.Basic);
         projectile.canPierce = true;
+
+        SoundManager.instance.PlaySoundClip("SFX_Skill_longginus", SoundType.SFX);
     }
     private void Update()
     {

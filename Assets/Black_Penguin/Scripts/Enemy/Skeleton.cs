@@ -31,6 +31,9 @@ public class Skeleton : BaseEnemy
     {
         _state = EnemyState.IDLE;
     }
+
+    void Attack_Sound_Play() => SoundManager.instance.PlaySoundClip("SFX_Blunt", SoundType.SFX);
+
     public override void OnHit(Entity atkEntity, float Damage)
     {
         StartCoroutine(HitAnim());

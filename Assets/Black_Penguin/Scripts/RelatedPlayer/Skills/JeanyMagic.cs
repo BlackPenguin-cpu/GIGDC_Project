@@ -8,11 +8,16 @@ public class JeanyMagic : BaseSkill
     private float duration;
     protected override void Action()
     {
+        float Jini_volume = 0.05f;
+
         Debug.Log(dimensionType);
         RaycastHit2D[] rays = Physics2D.BoxCastAll
             ((Vector2)transform.position + new Vector2(boxCollider2D.offset.x * (sprite.flipX ? -1 : 1)
             , dimensionType == DimensionType.OVER ? boxCollider2D.offset.y : -boxCollider2D.offset.y)
             , boxCollider2D.size, 0, Vector2.right, 0);
+
+        SoundManager.instance.PlaySoundClip("SFX_Skill_Jini", SoundType.SFX, Jini_volume);
+
 
         for (int i = 0; i < rays.Length; i++)
         {

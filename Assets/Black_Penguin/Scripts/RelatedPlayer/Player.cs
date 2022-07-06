@@ -503,6 +503,7 @@ public class Player : Entity, ITypePlayer
     {
         if (_state == PlayerState.Dash) return;
         hpView.onHit();
+        SoundManager.instance.PlaySoundClip("SFX_Hit", SoundType.SFX);
         OnHitEffect.Instance.OnHitFunc();
         rigid.AddForce(new Vector3(entity.transform.position.x > transform.position.x ? -100 : 100, 0));
         if (stat.PlayerDATypeList.NeedleArmour && Random.Range(0, 10) == 0) needleArmourAction(entity);
@@ -544,7 +545,7 @@ public class Player : Entity, ITypePlayer
     private IEnumerator DashAction()
     {
         _state = PlayerState.Dash;
-
+        DashSoundPlay();
         float originGravity = rigid.gravityScale;
         rigid.gravityScale = 0;
         Vector3 dir = Vector3.right * (!sprite.flipX ? 1 : -1) / 2;
@@ -571,6 +572,9 @@ public class Player : Entity, ITypePlayer
         rigid.gravityScale = originGravity;
         _state = PlayerState.Idle;
     }
+
+    public void DashSoundPlay() => SoundManager.instance.PlaySoundClip("SFX_Dash", SoundType.SFX);
+
     void DashShadowCreate()
     {
         ObjectPool.Instance.CreateObj(DashShadow, transform.position, Quaternion.identity);
@@ -583,6 +587,8 @@ public class Player : Entity, ITypePlayer
     {
         if (_state == PlayerState.Dash || _state == PlayerState.Attack) return;
         if (canJump == false) return;
+
+        SoundManager.instance.PlaySoundClip("SFX_Jump", SoundType.SFX);
 
         _state = PlayerState.Jump;
         canJump = false;
@@ -703,11 +709,12 @@ public class Player : Entity, ITypePlayer
     {
         if (DarkPlayer.Instance != null)
             DarkPlayer.Instance.OnAttack(stat.weaponType, index);
+        Debug.Log("asd");
+        //AttackSoundPlay();
         foreach (AttackCollision attackCollision in attackCollisions)
         {
             if (attackCollision.index == index && attackCollision.weaponType == stat.weaponType)
             {
-                //WORK: 대운
                 if (stat.weaponType == PlayerWeaponType.Dagger && Input.GetAxisRaw("Horizontal") == (sprite.flipX ? -1 : 1) && stateOnAir == PlayerStateOnAir.NONE)
                 {
                     rigid.AddForce(Vector2.right * (sprite.flipX ? -1 : 1) * 5, ForceMode2D.Impulse);
@@ -718,6 +725,23 @@ public class Player : Entity, ITypePlayer
                 }
                 attackCollision.OnAttack(this);
             }
+        }
+    }
+    public void AttackSoundPlay()
+    {
+        switch (stat.weaponType)
+        {
+            case PlayerWeaponType.Sword:
+                SoundManager.instance.PlaySoundClip("SFX_Weapon_Sword", SoundType.SFX);
+                break;
+            case PlayerWeaponType.Dagger:
+                SoundManager.instance.PlaySoundClip("SFX_Weapon_Dagger", SoundType.SFX);
+                break;
+            case PlayerWeaponType.Axe:
+                SoundManager.instance.PlaySoundClip("SFX_Weapon_", SoundType.SFX);
+                break;
+            default:
+                break;
         }
     }
 
@@ -748,6 +772,7 @@ public class Player : Entity, ITypePlayer
         if (curWindEarRingDashCooldown > windEarRingDashCooldown)
         {
             curWindEarRingDashCooldown = 0;
+            SoundManager.instance.PlaySoundClip("SFX_Dash_Levitation", SoundType.SFX);
             StartCoroutine(DashAction());
         }
     }
@@ -778,6 +803,8 @@ public class Player : Entity, ITypePlayer
         BaseEnemy[] enemies = FindObjectsOfType<BaseEnemy>();
         BaseEnemy target = null;
         float maxDistance = 0;
+
+        SoundManager.instance.PlaySoundClip("SFX_Item_Curse", SoundType.SFX);
 
         foreach (BaseEnemy enemy in enemies)
         {

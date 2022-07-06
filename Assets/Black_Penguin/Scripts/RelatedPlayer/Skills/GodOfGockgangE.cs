@@ -10,6 +10,10 @@ public class GodOfGockgangE : BaseSkill
         BaseEnemy[] enemies = FindObjectsOfType<BaseEnemy>();
         BaseEnemy target = null;
         float maxDistance = 0;
+
+        SoundManager.instance.PlaySoundClip("SFX_Skill_Pick", SoundType.SFX);
+
+
         foreach (BaseEnemy enemy in enemies)
         {
             float distance = Vector2.Distance(player.transform.position, enemy.transform.position);

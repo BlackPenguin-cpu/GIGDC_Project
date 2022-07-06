@@ -29,6 +29,7 @@ public class Magician : BaseEnemy
     }
     public void shootFireball()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Fire_Boom", SoundType.SFX);
         float shootYPosition = dimensionType == DimensionType.OVER ? 1 : -1;
         GameObject Target = dimensionType == DimensionType.OVER ? player.gameObject : DarkPlayer.Instance.gameObject;
 

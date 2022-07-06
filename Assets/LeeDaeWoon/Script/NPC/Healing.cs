@@ -109,6 +109,7 @@ public class Healing : MonoBehaviour
     IEnumerator HealingWindow_Coroutine()
     {
         Timer = 0;
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX);
         while (Timer < 1)
         {
             Healing_RectTransform.localPosition = new Vector2(-1.995371f, Mathf.Lerp(-22.25f, -244f, Timer));

@@ -100,6 +100,8 @@ public class Card_Manager : MonoBehaviour
     public void AddCard()
     {
         // 아이템 카드 소환
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
+
         int itemIndex = 0;
         List<Item> item = new List<Item>();
         var cardObject = Instantiate(CardPrefab, this.transform.position, Quaternion.identity, GameObject.Find("Item_Canvas").transform);

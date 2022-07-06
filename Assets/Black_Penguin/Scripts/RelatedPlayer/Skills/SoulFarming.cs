@@ -17,6 +17,7 @@ public class SoulFarming : BaseSkill
     async void ActionCoroutine()
     {
         RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxCollider2D.offset, boxCollider2D.size, 0, Vector2.right, 0);
+        SoundManager.instance.PlaySoundClip("SFX_Skill_Reaper_Attack", SoundType.SFX);
 
         for (int i = 0; i < rays.Length; i++)
         {

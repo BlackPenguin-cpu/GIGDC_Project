@@ -9,6 +9,8 @@ public class SolarGodLight : BaseSkill
     protected override void Action()
     {
         RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxCollider2D.offset, boxCollider2D.size, 0, Vector2.right, 0);
+        SoundManager.instance.PlaySoundClip("SFX_Blunt", SoundType.SFX);
+
 
         for (int i = 0; i < rays.Length; i++)
         {

@@ -15,6 +15,8 @@ public class MagicTurret : BaseSkill
     private float curAttackSpeed;
     protected override void Action()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Skill_Shot", SoundType.SFX);
+
         AttackProjectile projectile = ObjectPool.Instance.CreateObj
                   (Bullet, new Vector3((sprite.flipX ? -1 : 1) * posGameObject.localPosition.x
                   , dimensionType == DimensionType.OVER ? posGameObject.localPosition.y : -posGameObject.localPosition.y) + transform.position

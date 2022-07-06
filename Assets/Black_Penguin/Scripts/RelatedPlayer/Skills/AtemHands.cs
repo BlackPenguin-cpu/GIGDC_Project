@@ -9,8 +9,9 @@ public class AtemHands : BaseSkill
     private float duration;
     protected override void Action()
     {
-        RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxCollider2D.offset, boxCollider2D.size, 0, Vector2.right, 0);
+        SoundManager.instance.PlaySoundClip("SFX_Skill_hand", SoundType.SFX);
 
+        RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxCollider2D.offset, boxCollider2D.size, 0, Vector2.right, 0);
         for (int i = 0; i < rays.Length; i++)
         {
             if (rays[i].collider.TryGetComponent(out BaseEnemy enemy))

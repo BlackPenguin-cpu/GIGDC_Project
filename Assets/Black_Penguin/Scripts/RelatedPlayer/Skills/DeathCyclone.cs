@@ -10,7 +10,7 @@ public class DeathCyclone : BaseSkill
     private int value;
     protected override void Action()
     {
-
+        SoundManager.instance.PlaySoundClip("SFX_Skill_Tornado", SoundType.SFX);
     }
     public override void OnObjCreate()
     {

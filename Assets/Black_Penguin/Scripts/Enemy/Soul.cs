@@ -20,6 +20,7 @@ public class Soul : BaseEnemy
             curAttackDelay = 0;
         }
     }
+
     public override void Move()
     {
         if (_state != EnemyState.MOVE) return;

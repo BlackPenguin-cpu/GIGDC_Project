@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class Stop_Manager : MonoBehaviour
@@ -127,6 +128,7 @@ public class Stop_Manager : MonoBehaviour
         {
             if (PauseWindow_Open == false && SettingWindow_Open == false && MainWindow_Open == false && GameExitWindow_Open == false && PlayerWindow_Open == false)
             {
+                SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
                 PauseWindow_Open = true;
                 Pause_Window_Canvas.SetActive(true);
                 Fade_Background.DOFade(0.5f, 0.5f);
@@ -176,7 +178,12 @@ public class Stop_Manager : MonoBehaviour
     #endregion
 
     #region 돌아가기 버튼
-    public void Back_Btn() => StartCoroutine(Back_Window_Coroutine());
+    public void Back_Btn()
+    {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
+        StartCoroutine(Back_Window_Coroutine());
+    }
 
     public IEnumerator Back_Window_Coroutine() // 돌아가기 버튼
     {
@@ -206,12 +213,23 @@ public class Stop_Manager : MonoBehaviour
     #endregion
 
     #region 설정 버튼
-    public void Setting_Btn() => StartCoroutine(Setting_Window_Coroutine01());
+    public void Setting_Btn()
+    {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
+        StartCoroutine(Setting_Window_Coroutine01());
+    }
 
-    public void Setting_Close_Btn() => StartCoroutine(Setting_Window_Close());
+    public void Setting_Close_Btn()
+    {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
+        StartCoroutine(Setting_Window_Close());
+    }
 
     public IEnumerator Setting_Window_Coroutine01() // 설정버튼을 클릭했을 떄
     {
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
+
         if (SettingWindow_Open == false)
         {
             SettingWindow_Open = true;
@@ -236,6 +254,8 @@ public class Stop_Manager : MonoBehaviour
 
     public IEnumerator Setting_Window_Coroutine02() // 설정 창 열림
     {
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
+
         timer = 0;
         Setting_Pole01.transform.DOLocalMoveY(447.5388f, 0.48f).SetUpdate(true);
         Setting_Pole02.transform.DOLocalMoveY(-428f, 0.48f).SetUpdate(true);
@@ -300,20 +320,31 @@ public class Stop_Manager : MonoBehaviour
 
     public void ResolutionSize_Left()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
         if (Resolution_Num > 0)
             Resolution_Num--;
     }
 
     public void ResolutionSize_Right()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
         if (Resolution_Num < 3)
             Resolution_Num++;
     }
     #endregion
 
     #region 플레이어 버튼
-    public void Player_Btn() => StartCoroutine(Player_Window_Coroutine01());
-    public void Player_Close_Btn() => StartCoroutine(Player_Window_Close());
+    public void Player_Btn()
+    {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
+        StartCoroutine(Player_Window_Coroutine01());
+    }
+    public void Player_Close_Btn()
+    {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
+        StartCoroutine(Player_Window_Close());
+    }
 
     public void Item_Log()
     {
@@ -334,6 +365,7 @@ public class Stop_Manager : MonoBehaviour
 
     public IEnumerator Player_Window_Coroutine01() // 플레이어버튼을 클릭했을 떄
     {
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
         if (PlayerWindow_Open == false)
         {
             PlayerWindow_Open = true;
@@ -358,6 +390,7 @@ public class Stop_Manager : MonoBehaviour
 
     public IEnumerator Player_Window_Coroutine02() // 플레이어 창 열림
     {
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
         timer = 0;
         Player_Pole01.transform.DOLocalMoveY(447.5388f, 0.48f).SetUpdate(true);
         Player_Pole02.transform.DOLocalMoveY(-445.16f, 0.48f).SetUpdate(true);
@@ -403,6 +436,7 @@ public class Stop_Manager : MonoBehaviour
     {
         if (WI_Check == false)
         {
+            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
             PlayerWindow_Check = false;
             StartCoroutine(Player_Weapon_Open01());
         }
@@ -412,6 +446,7 @@ public class Stop_Manager : MonoBehaviour
     {
         if (WI_Check == true)
         {
+            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
             PlayerWindow_Check = false;
             StartCoroutine(Player_Item_Open01());
         }
@@ -421,6 +456,7 @@ public class Stop_Manager : MonoBehaviour
     {
         if (PlayerWindow_Check == false)
         {
+            SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
             WI_Check = true;
             timer = 0;
             Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
@@ -444,6 +480,7 @@ public class Stop_Manager : MonoBehaviour
 
     public IEnumerator Player_Weapon_Open02()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
         timer = 0;
         Fade_Background.DOFade(0.5f, 0.5f).SetUpdate(true);
         Player_Pole01.transform.DOLocalMoveY(447.5388f, 0.48f).SetUpdate(true);
@@ -462,6 +499,7 @@ public class Stop_Manager : MonoBehaviour
     {
         if (PlayerWindow_Check == false)
         {
+            SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
             WI_Check = false;
             timer = 0;
             Fade_Background.DOFade(0, 0.5f).SetUpdate(true);
@@ -485,6 +523,7 @@ public class Stop_Manager : MonoBehaviour
 
     public IEnumerator Player_Item_Open02()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
         timer = 0;
         Fade_Background.DOFade(0.5f, 0.5f).SetUpdate(true);
         Player_Pole01.transform.DOLocalMoveY(447.5388f, 0.48f).SetUpdate(true);
@@ -602,16 +641,30 @@ public class Stop_Manager : MonoBehaviour
     #endregion
 
     #region 메인화면 버튼
-    public void Main_Btn() => StartCoroutine(Main_Window_Coroutine01());
+    public void Main_Btn()
+    {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
+        StartCoroutine(Main_Window_Coroutine01());
+    }
 
-    public void Main_Yes_Btn() => StartCoroutine(Main_Window_Close());
+    public void Main_Yes_Btn()
+    {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
+        SceneManager.LoadScene("Main");
+    }
 
-    public void Main_No_Btn() => StartCoroutine(Main_Window_Close());
+    public void Main_No_Btn()
+    {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
+        StartCoroutine(Main_Window_Close());
+    }
 
     public IEnumerator Main_Window_Coroutine01() // 메인버튼을 클릭했을 떄
     {
         if (MainWindow_Open == false)
         {
+            SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
             MainWindow_Open = true;
             timer = 0;
             Pause_Pole01.transform.DOLocalMoveY(48f, 0.5f).SetUpdate(true);
@@ -634,6 +687,7 @@ public class Stop_Manager : MonoBehaviour
 
     public IEnumerator Main_Window_Coroutine02() // 메인 창 열림
     {
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
         timer = 0;
         Main_Pole01.transform.DOLocalMoveY(222f, 0.42f).SetUpdate(true);
         Main_Pole02.transform.DOLocalMoveY(-194f, 0.3f).SetUpdate(true);
@@ -675,16 +729,30 @@ public class Stop_Manager : MonoBehaviour
     #endregion
 
     #region 게임종료 버튼
-    public void Exit_Btn() => StartCoroutine(Exit_Window_Coroutine01());
+    public void Exit_Btn()
+    {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
+        StartCoroutine(Exit_Window_Coroutine01());
+    }
 
-    public void Exit_Yes_Btn() => StartCoroutine(Exit_Window_Close());
+    public void Exit_Yes_Btn()
+    {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
+        StartCoroutine(Exit_Window_Close());
+    }
 
-    public void Exit_No_Btn() => StartCoroutine(Exit_Window_Close());
+    public void Exit_No_Btn()
+    {
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
+        StartCoroutine(Exit_Window_Close());
+    }
 
     public IEnumerator Exit_Window_Coroutine01() //게임종료 버튼을 클릭했을 떄
     {
         if (GameExitWindow_Open == false)
         {
+            SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
             GameExitWindow_Open = true;
             timer = 0;
             Pause_Pole01.transform.DOLocalMoveY(48f, 0.5f).SetUpdate(true);
@@ -707,6 +775,7 @@ public class Stop_Manager : MonoBehaviour
 
     public IEnumerator Exit_Window_Coroutine02() //게임종료 창 열림
     {
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
         timer = 0;
         Exit_Pole01.transform.DOLocalMoveY(222f, 0.3f).SetUpdate(true);
         Exit_Pole02.transform.DOLocalMoveY(-211, 0.3f).SetUpdate(true);
