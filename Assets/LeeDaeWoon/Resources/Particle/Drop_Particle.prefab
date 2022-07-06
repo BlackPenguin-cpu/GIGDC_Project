@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2630811969839523219}
   - component: {fileID: 2630811969839523218}
   - component: {fileID: 2630811969839523217}
-  m_Layer: 23
+  m_Layer: 11
   m_Name: Gold_Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2630811969839523229}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.21900123, y: 3.1999998, z: -0.64}
+  m_LocalPosition: {x: 0.21900123, y: 0, z: -0.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5694552530704781556}
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -285,7 +285,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -338,7 +338,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.8
+      scalar: 0.4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4833,7 +4833,7 @@ GameObject:
   - component: {fileID: 2630811970439626715}
   - component: {fileID: 2630811970439626714}
   - component: {fileID: 2630811970439626713}
-  m_Layer: 23
+  m_Layer: 11
   m_Name: Dimension_Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4848,7 +4848,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2630811970439626709}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.21900123, y: 3.1999998, z: -0.64}
+  m_LocalPosition: {x: 0.21900123, y: 0, z: -0.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5694552530704781556}
@@ -4937,7 +4937,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5106,7 +5106,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9651,7 +9651,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5694552530704781556}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Drop_Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9666,7 +9666,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5694552530704781557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.08, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2630811969839523216}
@@ -9686,7 +9686,7 @@ GameObject:
   - component: {fileID: 5694552531482117639}
   - component: {fileID: 5694552531482117637}
   - component: {fileID: 5694552531482117638}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Effect_Enermy_died_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9701,7 +9701,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5694552531482117632}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.08, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5694552530704781556}
