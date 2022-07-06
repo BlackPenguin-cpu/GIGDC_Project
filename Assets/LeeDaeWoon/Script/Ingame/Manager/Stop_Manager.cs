@@ -46,6 +46,8 @@ public class Stop_Manager : MonoBehaviour
     public GameObject Setting_Pole02; // 설정 창의 아랫 봉 
     public RectTransform Setting_Window; // 설정 창의 중간 
     public GameObject Setting_Window_Canvas; // 설정 창
+    public Slider Effect_Slider;
+    public Slider BGM_Slider;
 
     public Text Resolution;
     public int Resolution_Num;
@@ -122,6 +124,7 @@ public class Stop_Manager : MonoBehaviour
         Item_Log();
         WeaponType();
         Resolution_Size();
+        Sound_Control();
 
         // ESC 키를 누르면 일시정지 창이 열린다.
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -323,6 +326,14 @@ public class Stop_Manager : MonoBehaviour
     {
         if (Resolution_Num < 3)
             Resolution_Num++;
+    }
+
+    public void Start_Sound() =>
+        BGM_Slider.value = SoundManager.instance.audioSourceClasses[SoundType.BGM].audioVolume;
+
+    public void Sound_Control()
+    {
+        BGM_Slider.value = SoundManager.instance.audioSourceClasses[SoundType.BGM].audioVolume;
     }
     #endregion
 
@@ -709,7 +720,7 @@ public class Stop_Manager : MonoBehaviour
     #region 게임종료 버튼
     public void Exit_Btn() => StartCoroutine(Exit_Window_Coroutine01());
 
-    public void Exit_Yes_Btn() => StartCoroutine(Exit_Window_Close());
+    public void Exit_Yes_Btn() => Application.Quit();
 
     public void Exit_No_Btn()
     {

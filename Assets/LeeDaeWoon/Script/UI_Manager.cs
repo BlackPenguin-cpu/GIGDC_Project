@@ -46,7 +46,10 @@ public class UI_Manager : MonoBehaviour
 
     void Update()
     {
-        Cursor.visible = Cursor_Fade;
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+            SoundManager.instance.PlaySoundClip("BGM_Title (1)", SoundType.BGM);
+
+        //Cursor.visible = Cursor_Fade;
 
         Timer_System();
         Money_System();
