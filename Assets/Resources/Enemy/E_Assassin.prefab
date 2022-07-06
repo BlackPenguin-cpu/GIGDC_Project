@@ -250,6 +250,7 @@ MonoBehaviour:
     Max: 0
   buffList:
     stun: 0
+  HealingOrbChance: 3
   attackSpeed: 3
   attackDelay: 0
   attackDamage: 0

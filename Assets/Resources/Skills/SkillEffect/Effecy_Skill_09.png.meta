@@ -148,10 +148,10 @@ TextureImporter:
       name: Effecy_Skill_09_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 450
-        height: 150
+        x: 35
+        y: 14
+        width: 380
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,10 +169,10 @@ TextureImporter:
       name: Effecy_Skill_09_1
       rect:
         serializedVersion: 2
-        x: 450
-        y: 0
-        width: 450
-        height: 150
+        x: 484
+        y: 14
+        width: 382
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +190,10 @@ TextureImporter:
       name: Effecy_Skill_09_2
       rect:
         serializedVersion: 2
-        x: 900
-        y: 0
-        width: 450
-        height: 150
+        x: 935
+        y: 14
+        width: 380
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,10 +211,10 @@ TextureImporter:
       name: Effecy_Skill_09_3
       rect:
         serializedVersion: 2
-        x: 1350
-        y: 0
-        width: 450
-        height: 150
+        x: 1384
+        y: 14
+        width: 382
+        height: 81
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,10 +232,10 @@ TextureImporter:
       name: Effecy_Skill_09_4
       rect:
         serializedVersion: 2
-        x: 1800
-        y: 0
-        width: 450
-        height: 150
+        x: 1835
+        y: 14
+        width: 380
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,10 +253,10 @@ TextureImporter:
       name: Effecy_Skill_09_5
       rect:
         serializedVersion: 2
-        x: 2250
-        y: 0
-        width: 450
-        height: 150
+        x: 2285
+        y: 14
+        width: 380
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -274,10 +274,10 @@ TextureImporter:
       name: Effecy_Skill_09_6
       rect:
         serializedVersion: 2
-        x: 2700
-        y: 0
-        width: 450
-        height: 150
+        x: 2734
+        y: 14
+        width: 382
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -295,10 +295,10 @@ TextureImporter:
       name: Effecy_Skill_09_7
       rect:
         serializedVersion: 2
-        x: 3150
-        y: 0
-        width: 450
-        height: 150
+        x: 3185
+        y: 14
+        width: 380
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,10 +316,10 @@ TextureImporter:
       name: Effecy_Skill_09_8
       rect:
         serializedVersion: 2
-        x: 3600
-        y: 0
-        width: 450
-        height: 150
+        x: 3634
+        y: 14
+        width: 382
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -337,10 +337,10 @@ TextureImporter:
       name: Effecy_Skill_09_9
       rect:
         serializedVersion: 2
-        x: 4050
-        y: 0
-        width: 450
-        height: 150
+        x: 4085
+        y: 14
+        width: 380
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
