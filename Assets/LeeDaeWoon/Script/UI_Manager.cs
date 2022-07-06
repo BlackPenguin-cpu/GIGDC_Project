@@ -12,7 +12,7 @@ public class UI_Manager : MonoBehaviour
     public bool PlayerMove_control = false;
 
     [Header("재화")]
-    public float Gold;
+    public int Gold;
     public Text Gold_Text;
     public int Dimensional;
     public Text Dimensional_Text;
@@ -34,6 +34,9 @@ public class UI_Manager : MonoBehaviour
     [Header("마우스 포인터")]
     public Texture2D MousePointer;
     public bool Cursor_Fade;
+
+    [Header("페이드인아웃")]
+    public Image FadeInOut;
 
 
     void Start()
@@ -82,6 +85,9 @@ public class UI_Manager : MonoBehaviour
     #region 재화
     public void Money_System()
     {
+        GameManager.Instance._coin = Gold;
+        GameManager.Instance.crystal = Dimensional;
+
         Gold_Text.text = "" + Gold;
         Dimensional_Text.text = "" + Dimensional;
 

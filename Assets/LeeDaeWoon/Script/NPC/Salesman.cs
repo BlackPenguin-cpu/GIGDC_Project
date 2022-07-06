@@ -18,7 +18,7 @@ public class Salesman : MonoBehaviour
     public Image Gold_Image;
     public Image F_Button;
 
-    private float Gold_Num;
+    private int Gold_Num;
     public bool Apply_Check = true;
     private bool Re_Roll_Check = true;
     private bool Collision_Check = true;
@@ -62,14 +62,14 @@ public class Salesman : MonoBehaviour
 
     private void Re_Roll()
     {
-        if (UI_Manager.Inst.Gold >= Gold_Num)
+        if (GameManager.Instance._coin >= Gold_Num)
         {
             if (Input.GetKeyDown(KeyCode.F) && Collision_Check == false)
             {
                 AfterObject.SetActive(true);
                 Destroy(GameObject.Find("Skill_Shop(Clone)"));
                 Apply_Check = false;
-                UI_Manager.Inst.Gold -= Gold_Num;
+                GameManager.Instance._coin -= Gold_Num;
                 Gold_Text.text = "" + (Gold_Num += 200);
 
 

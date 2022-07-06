@@ -389,13 +389,14 @@ MonoBehaviour:
   AS_Limit: 1
   AS_Limit_02: 1
   Limit: 1
+  Chang_Check: 0
   RandomTest: 0
   SkillSo: {fileID: 11400000, guid: 8d468ff0d005a91428acefcbdfc86778, type: 2}
   SkillPrefab: {fileID: 2583938370413519097, guid: 548ccebbac879ad449874255e02c2f91, type: 3}
   Skill_Up:
-  - {fileID: 11400000, guid: d0fefc4c4bfc7d84595508500426998e, type: 2}
+  - {fileID: 11400000, guid: 0f4e2b86977d153489f3757710d4141f, type: 2}
   Skill_Down:
-  - {fileID: 11400000, guid: 7a7d32e824dce4a4d9d6bf0fc158d2f7, type: 2}
+  - {fileID: 11400000, guid: 31c6fd39acb342a4d8e3d9d9cb9507cf, type: 2}
   Skill_Have: []
   Skill: []
   Skill_Shop: []

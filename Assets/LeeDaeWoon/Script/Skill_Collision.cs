@@ -15,11 +15,6 @@ public class Skill_Collision : MonoBehaviour
     {
     }
 
-    public void asdf()
-    {
-
-    }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

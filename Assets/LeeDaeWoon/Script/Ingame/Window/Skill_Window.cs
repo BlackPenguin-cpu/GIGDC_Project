@@ -102,7 +102,7 @@ public class Skill_Window : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             // 스킬구매
-            if (Purchase == true && SkillColider_Check == true && (UI_Manager.Inst.Gold >= Skill_List.Inst.Left_Gold || UI_Manager.Inst.Gold >= Skill_List.Inst.Among_Gold || UI_Manager.Inst.Gold >= Skill_List.Inst.Right_Gold))
+            if (Purchase == true && SkillColider_Check == true && (GameManager.Instance._coin >= Skill_List.Inst.Left_Gold || GameManager.Instance._coin >= Skill_List.Inst.Among_Gold || GameManager.Instance._coin >= Skill_List.Inst.Right_Gold))
             {
                 SoundManager.instance.PlaySoundClip("SFX_Buy", SoundType.SFX, 5f);
                 UI_Manager.Inst.PlayerMove_control = true;
@@ -112,7 +112,7 @@ public class Skill_Window : MonoBehaviour
 
                 //if (Wave가 5일 경우)
                 //{
-                UI_Manager.Inst.Gold -= SeletSkill.price[0];
+                GameManager.Instance._coin -= SeletSkill.price[0];
                 //}
                 //else if (Wave가 10일 경우)
                 //{
