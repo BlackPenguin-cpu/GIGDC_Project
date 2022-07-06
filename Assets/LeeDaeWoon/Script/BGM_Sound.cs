@@ -32,6 +32,9 @@ public class BGM_Sound : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "test")
             SoundManager.instance.PlaySoundClip("BGM_Ingame_01", SoundType.BGM);
+
+        if (SceneManager.GetActiveScene().name == "보스스테이지")
+            SoundManager.instance.PlaySoundClip("BGM_Boss_01", SoundType.BGM);
     }
 
     void Update()

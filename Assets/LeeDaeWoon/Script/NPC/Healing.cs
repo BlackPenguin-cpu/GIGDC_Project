@@ -85,10 +85,7 @@ public class Healing : MonoBehaviour
             this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
 
             if (Player.Instance.stat._hp + Heal <= Player.Instance.stat._maxHp)
-            {
                 Player.Instance.stat._hp += Heal;
-                UI_Manager.Inst.PlayerMove_control = false;
-            }
             else
                 Player.Instance.stat._hp = Player.Instance.stat._maxHp;
 
@@ -103,6 +100,7 @@ public class Healing : MonoBehaviour
         Healing_Effect.transform.localPosition = new Vector3(Player_Position.transform.localPosition.x, -0.18f, 0f);
         yield return new WaitForSeconds(2f);
         Healing_Effect.SetActive(false);
+        UI_Manager.Inst.PlayerMove_control = false;
     }
 
     #region ½Å¼º Ã¢
@@ -123,6 +121,7 @@ public class Healing : MonoBehaviour
     IEnumerator HealingWindow_Close_Coroutine()
     {
         Timer = 0;
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX);
         while (Timer < 1)
         {
             Healing_RectTransform.anchoredPosition = new Vector2(-1.995371f, Mathf.Lerp(-244f, -22.25f, Timer));

@@ -501,9 +501,9 @@ public class Player : Entity, ITypePlayer
 
     public override void OnHit(Entity entity, float Damage = 0)
     {
+        SoundManager.instance.PlaySoundClip("SFX_Hit", SoundType.SFX, 1f);
         if (_state == PlayerState.Dash) return;
         hpView.onHit();
-        SoundManager.instance.PlaySoundClip("SFX_Hit", SoundType.SFX);
         OnHitEffect.Instance.OnHitFunc();
         rigid.AddForce(new Vector3(entity.transform.position.x > transform.position.x ? -100 : 100, 0));
         if (stat.PlayerDATypeList.NeedleArmour && Random.Range(0, 10) == 0) needleArmourAction(entity);
@@ -738,7 +738,7 @@ public class Player : Entity, ITypePlayer
                 SoundManager.instance.PlaySoundClip("SFX_Weapon_Dagger", SoundType.SFX);
                 break;
             case PlayerWeaponType.Axe:
-                SoundManager.instance.PlaySoundClip("SFX_Weapon_", SoundType.SFX);
+                SoundManager.instance.PlaySoundClip("SFX_Weapon_Axe", SoundType.SFX);
                 break;
             default:
                 break;

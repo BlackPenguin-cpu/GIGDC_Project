@@ -38,7 +38,6 @@ public class Title_Manager : MonoBehaviour
 
             if (Skip_Check == true)
             {
-                SoundManager.instance.PlaySoundClip("BGM_Title (1)", SoundType.BGM);
                 StartCoroutine(Credit_ESC());
             }
         }
@@ -60,7 +59,6 @@ public class Title_Manager : MonoBehaviour
     {
         if (Team_BackGround_Check == true)
         {
-            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
             DOTween.PauseAll();
             SceneManager.LoadScene("Main");
         }

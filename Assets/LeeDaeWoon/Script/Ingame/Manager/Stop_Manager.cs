@@ -128,7 +128,6 @@ public class Stop_Manager : MonoBehaviour
         {
             if (PauseWindow_Open == false && SettingWindow_Open == false && MainWindow_Open == false && GameExitWindow_Open == false && PlayerWindow_Open == false)
             {
-                SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
                 PauseWindow_Open = true;
                 Pause_Window_Canvas.SetActive(true);
                 Fade_Background.DOFade(0.5f, 0.5f);
@@ -137,7 +136,7 @@ public class Stop_Manager : MonoBehaviour
             }
 
             if (PauseWindow_Close == true && SettingWindow_Open == false && MainWindow_Open == false && GameExitWindow_Open == false && PlayerWindow_Open == false)
-                Back_Btn();
+                StartCoroutine(Back_Window_Coroutine());
 
             if (SettingWindow_Open == true)
                 Setting_Close_Btn();
@@ -157,6 +156,7 @@ public class Stop_Manager : MonoBehaviour
     #region 일시정지 창
     public IEnumerator Pause_Window_Open()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
         timer = 0;
         // 일시정지 창 봉
         Pause_Pole01.transform.DOLocalMoveY(374f, 0.5f);
@@ -180,8 +180,8 @@ public class Stop_Manager : MonoBehaviour
     #region 돌아가기 버튼
     public void Back_Btn()
     {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
         SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
+        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
         StartCoroutine(Back_Window_Coroutine());
     }
 
@@ -189,6 +189,7 @@ public class Stop_Manager : MonoBehaviour
     {
         if (BackBtn_Check == true)
         {
+            SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
             BackBtn_Check = false;
             PauseWindow_Close = false;
             timer = 0;

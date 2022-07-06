@@ -35,10 +35,6 @@ public class Player_Vector : MonoBehaviour
     }
 
     #region 필요없을 듯
-    //private void OnLevelWasLoaded(int level)
-    //{
-    //    Player.transform.localPosition = new Vector3(0, 0, 0);
-    //}
 
     public void Scene_Vector()
     {

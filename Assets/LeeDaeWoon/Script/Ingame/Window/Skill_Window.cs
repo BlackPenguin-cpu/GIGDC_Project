@@ -104,7 +104,7 @@ public class Skill_Window : MonoBehaviour
             // 스킬구매
             if (Purchase == true && SkillColider_Check == true && (UI_Manager.Inst.Gold >= Skill_List.Inst.Left_Gold || UI_Manager.Inst.Gold >= Skill_List.Inst.Among_Gold || UI_Manager.Inst.Gold >= Skill_List.Inst.Right_Gold))
             {
-                SoundManager.instance.PlaySoundClip("SFX_Buy", SoundType.SFX);
+                SoundManager.instance.PlaySoundClip("SFX_Buy", SoundType.SFX, 5f);
                 UI_Manager.Inst.PlayerMove_control = true;
 
                 SeletSkill = Skill_Manager.Inst.Skill[SkillNum];

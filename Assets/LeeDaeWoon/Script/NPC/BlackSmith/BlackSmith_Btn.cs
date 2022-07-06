@@ -66,7 +66,7 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
             if (BlackSmith.Inst.Weapon.transform.GetChild(1).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= Gold)
             {
                 SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
-                SoundManager.instance.PlaySoundClip("SFX_Buy", SoundType.SFX);
+                SoundManager.instance.PlaySoundClip("SFX_Buy", SoundType.SFX, 5f);
                 UI_Manager.Inst.Gold -= Gold; // 골드 차감
                 BlackSmith.Inst.Dagger_Price.SetActive(false); // 구매가격 false
                 BlackSmith.Inst.Dagger_Required_Gold.SetActive(true); // 강화 가격 true
@@ -74,7 +74,7 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
                 BlackSmith.Inst.Purchase_Btn.SetActive(false); // 구매 버튼 false
                 BlackSmith.Inst.Enhance_Btn.SetActive(true); // 강화 버튼 true
             }
-            else
+            else if (UI_Manager.Inst.Gold < Gold)
                 SoundManager.instance.PlaySoundClip("SFX_Error", SoundType.SFX);
 
 
@@ -82,7 +82,7 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
             if (BlackSmith.Inst.Weapon.transform.GetChild(2).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= Gold)
             {
                 SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
-                SoundManager.instance.PlaySoundClip("SFX_Buy", SoundType.SFX);
+                SoundManager.instance.PlaySoundClip("SFX_Buy", SoundType.SFX, 5f);
                 UI_Manager.Inst.Gold -= Gold; // 골드 차감
                 BlackSmith.Inst.Axe_Price.SetActive(false); // 구매가격 false
                 BlackSmith.Inst.Axe_Required_Gold.SetActive(true); // 강화 가격 true
@@ -90,6 +90,8 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
                 BlackSmith.Inst.Purchase_Btn.SetActive(false); // 구매 버튼 false
                 BlackSmith.Inst.Enhance_Btn.SetActive(true); // 강화 버튼 true
             }
+            else if(UI_Manager.Inst.Gold < Gold)
+                SoundManager.instance.PlaySoundClip("SFX_Error", SoundType.SFX);
         }
 
     }

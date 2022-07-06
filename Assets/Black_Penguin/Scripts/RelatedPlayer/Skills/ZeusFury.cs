@@ -9,13 +9,14 @@ public class ZeusFury : BaseSkill
     private float duration = 10;
     protected override void Action()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Skill_Lightning", SoundType.SFX);
+
         BaseSkill skill = ObjectPool.Instance.CreateObj
             (Field, gameObject.transform.position + (dimensionType == DimensionType.OVER ? Vector3.up : Vector3.down) * 0.25f, Quaternion.identity).GetComponent<BaseSkill>();
         skill.dimensionType = dimensionType;
         skill.Init();
         ObjectPool.Instance.DeleteObj(gameObject);
 
-        SoundManager.instance.PlaySoundClip("SFX_Skill_Lightning", SoundType.SFX);
     }
     private void OnLighting()
     {
