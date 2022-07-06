@@ -486,6 +486,8 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public IEnumerator Close_Dot()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX);
+
         timer = 0;
         if (direction == Direction.Left)
         {

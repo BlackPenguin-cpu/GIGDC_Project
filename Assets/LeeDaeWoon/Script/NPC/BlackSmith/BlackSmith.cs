@@ -144,29 +144,39 @@ public class BlackSmith : MonoBehaviour
 
             switch (Sword_Level)
             {
+                case 0:
+                    Sword_Skill_Text.text = "<color=#747474>강철의 마음: 고정적으로 데미지가 5감소한다. \n\n</color>" +
+                                            "<color=#747474>집념: 체력이 30%이하가 될 시 공격력, \n</color>" +
+                                            "<color=#747474>      방어력이 30% 상승한다. \n\n</color>" +
+                                            "<color=#747474>신의 가호: 체력이 0이 되는 공격을 받을 때 \n</color>" +
+                                            "<color=#747474>           한번 버틴다. (1만 남고 버팀)</color>";
+                    break;
+
                 case 1:
+                    Sword_Skill_Text.text = "강철의 마음: 고정적으로 데미지가 5감소한다. \n\n" +
+                                            "<color=#747474>집념: 체력이 30%이하가 될 시 공격력, \n</color>" +
+                                            "<color=#747474>      방어력이 30% 상승한다. \n\n</color>" +
+                                            "<color=#747474>신의 가호: 체력이 0이 되는 공격을 받을 때 \n</color>" +
+                                            "<color=#747474>           한번 버틴다. (1만 남고 버팀)</color>";
+                    Sword_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
+                    break;
+
+                case 3:
+                    Sword_Skill_Text.text = "강철의 마음: 고정적으로 데미지가 5감소한다. \n\n" +
+                                            "집념: 체력이 30%이하가 될 시 공격력, \n" +
+                                            "      방어력이 30% 상승한다. \n\n" +
+                                            "<color=#747474>신의 가호: 체력이 0이 되는 공격을 받을 때 \n</color>" +
+                                            "<color=#747474>           한번 버틴다. (1만 남고 버팀)</color>";
+                    Sword_Skill_Text.transform.GetChild(1).gameObject.SetActive(false);
+                    break;
+
+                case 5:
                     Sword_Skill_Text.text = "강철의 마음: 고정적으로 데미지가 5감소한다. \n\n" +
                                             "집념: 체력이 30%이하가 될 시 공격력, \n" +
                                             "      방어력이 30% 상승한다. \n\n" +
                                             "신의 가호: 체력이 0이 되는 공격을 받을 때 \n" +
                                             "           한번 버틴다. (1만 남고 버팀)";
-                    Sword_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
-                    break;
-
-                case 3:
-                    Sword_Skill_Text.transform.GetChild(1).gameObject.SetActive(false);
-                    break;
-
-                case 5:
                     Sword_Skill_Text.transform.GetChild(2).gameObject.SetActive(false);
-                    break;
-
-                default:
-                    Sword_Skill_Text.text = "강철의 마음: 고정적으로 데미지가 5감소한다. \n\n" +
-                        "집념: 체력이 30%이하가 될 시 공격력, \n" +
-                        "      방어력이 30% 상승한다. \n\n" +
-                        "신의 가호: 체력이 0이 되는 공격을 받을 때 \n" +
-                        "           한번 버틴다. (1만 남고 버팀)";
                     break;
             }
         }
@@ -218,15 +228,40 @@ public class BlackSmith : MonoBehaviour
 
             switch (Dagger_Level)
             {
+                case 0:
+                    Dagger_Skill_Text.text ="<color=#747474>신속: 이동속도가 10% 증가하고 대쉬 \n</color>" +
+                                            "<color=#747474>      횟수가 1회 추가된다. \n\n</color>" +
+                                            "<color=#747474>연쇄 공격: 적 처치 후 5초간 이동속도, \n</color>" +
+                                            "<color=#747474>           공격속도 5%증가(최대 5중첩) \n\n</color>"+
+                                            "<color=#747474>비장의 패: 3타에 한 번씩 수리검을 던진다.</color>";
+                    break;
+
                 case 1:
+                    Dagger_Skill_Text.text ="신속: 이동속도가 10% 증가하고 대쉬 \n" +
+                                            "      횟수가 1회 추가된다. \n\n" +
+                                            "<color=#747474>연쇄 공격: 적 처치 후 5초간 이동속도, \n</color>" +
+                                            "<color=#747474>           공격속도 5%증가(최대 5중첩) \n\n</color>" +
+                                            "<color=#747474>비장의 패: 3타에 한 번씩 수리검을 던진다.</color>";
+
                     Dagger_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
                     break;
 
                 case 3:
+                    Dagger_Skill_Text.text ="신속: 이동속도가 10% 증가하고 대쉬 \n" +
+                                            "      횟수가 1회 추가된다. \n\n" +
+                                            "연쇄 공격: 적 처치 후 5초간 이동속도, \n" +
+                                            "           공격속도 5%증가(최대 5중첩) \n\n" +
+                                            "<color=#747474>비장의 패: 3타에 한 번씩 수리검을 던진다.</color>";
+
                     Dagger_Skill_Text.transform.GetChild(1).gameObject.SetActive(false);
                     break;
 
                 case 5:
+                    Dagger_Skill_Text.text = "신속: 이동속도가 10% 증가하고 대쉬 \n" +
+                                            "      횟수가 1회 추가된다. \n\n" +
+                                            "연쇄 공격: 적 처치 후 5초간 이동속도, \n" +
+                                            "           공격속도 5%증가(최대 5중첩) \n\n" +
+                                            "비장의 패: 3타에 한 번씩 수리검을 던진다.";
                     Dagger_Skill_Text.transform.GetChild(2).gameObject.SetActive(false);
                     break;
             }
@@ -278,15 +313,37 @@ public class BlackSmith : MonoBehaviour
 
             switch (Axe_Level)
             {
+                case 0:
+                    Axe_Skill_Text.text = "<color=#747474>부딪히기: 대쉬에 공격판정이 생긴다. \n\n</color>" +
+                                            "<color=#747474>지진: 공격을 맞으면 2초동안 기절한다. \n\n</color>" +
+                                            "<color=#747474>분화 : 2번째타를 공격 시 화염구들이 \n</color>" +
+                                            "<color=#747474>       소환돼 모두를 공격</color>";
+                    break;
+
                 case 1:
+                    Axe_Skill_Text.text = "부딪히기: 대쉬에 공격판정이 생긴다. \n\n" +
+                                            "<color=#747474>지진: 공격을 맞으면 2초동안 기절한다. \n\n</color>" +
+                                            "<color=#747474>분화 : 2번째타를 공격 시 화염구들이 \n</color>" +
+                                            "<color=#747474>       소환돼 모두를 공격</color>";
+
                     Axe_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
                     break;
 
                 case 3:
+                    Axe_Skill_Text.text ="부딪히기: 대쉬에 공격판정이 생긴다. \n\n" +
+                                            "지진: 공격을 맞으면 2초동안 기절한다. \n\n" +
+                                            "<color=#747474>분화 : 2번째타를 공격 시 화염구들이 \n</color>" +
+                                            "<color=#747474>       소환돼 모두를 공격</color>";
+
                     Axe_Skill_Text.transform.GetChild(1).gameObject.SetActive(false);
                     break;
 
                 case 5:
+                    Axe_Skill_Text.text ="부딪히기: 대쉬에 공격판정이 생긴다. \n\n" +
+                                            "지진: 공격을 맞으면 2초동안 기절한다. \n\n" +
+                                            "분화 : 2번째타를 공격 시 화염구들이 \n" +
+                                            "       소환돼 모두를 공격";
+
                     Axe_Skill_Text.transform.GetChild(2).gameObject.SetActive(false);
                     break;
             }

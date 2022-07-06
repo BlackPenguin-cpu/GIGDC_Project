@@ -35,6 +35,7 @@ public class Skill_Manager : MonoBehaviour
     public bool AS_Limit = true;
     public bool AS_Limit_02 = true;
     public bool Limit = true;
+    public bool Chang_Check = false;
 
     [Header("스클 획득 체크")]
     public Dictionary<SkillScript, bool> haveSkillInfo = new Dictionary<SkillScript, bool>();
@@ -60,7 +61,6 @@ public class Skill_Manager : MonoBehaviour
         FillAmount_Skill_A.fillAmount = 0f;
         AddList();
         AddSkill();
-        
     }
 
     private void Update()
@@ -288,7 +288,7 @@ public class Skill_Manager : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             S_Current_CoolTime -= 1f;
-            S_Skill_Text.text =  S_Current_CoolTime.ToString();
+            S_Skill_Text.text = S_Current_CoolTime.ToString();
         }
         yield break;
     }
@@ -297,10 +297,8 @@ public class Skill_Manager : MonoBehaviour
     #region 스킬 A, S키 위치 설정
     public void AS_Location()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Chang_Check == false)
             StartCoroutine(Skill_Change());
-        }
     }
 
     public IEnumerator Skill_Change()

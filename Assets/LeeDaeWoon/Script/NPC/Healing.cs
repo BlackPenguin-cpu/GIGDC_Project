@@ -21,7 +21,7 @@ public class Healing : MonoBehaviour
     public GameObject Player_Position;
     public GameObject Healing_Effect;
 
-    public float Healing_Gold = 0;
+    public int Healing_Gold = 0;
     public float Heal = 0;
 
     bool Healing_Colider_Check = true;
@@ -53,7 +53,7 @@ public class Healing : MonoBehaviour
     public void Healing_Price()
     {
         //if (Wave啊 5老版快)
-        Healing_Gold = 560f;
+        Healing_Gold = 560;
         Heal = 50f;
         //else if (Wave啊 10老版快)
         //{
@@ -69,11 +69,11 @@ public class Healing : MonoBehaviour
     }
     IEnumerator Healing_Purchase()
     {
-        if (Input.GetKeyDown(KeyCode.F) && Healing_Colider_Check == false && UI_Manager.Inst.Gold >= Healing_Gold && Healing_Purchase_Check == true)
+        if (Input.GetKeyDown(KeyCode.F) && Healing_Colider_Check == false && GameManager.Instance._coin >= Healing_Gold && Healing_Purchase_Check == true)
         {
             SoundManager.instance.PlaySoundClip("SFX_God_healling", SoundType.SFX);
 
-            UI_Manager.Inst.Gold -= Healing_Gold;
+            GameManager.Instance._coin -= Healing_Gold;
             UI_Manager.Inst.PlayerMove_control = true;
             StartCoroutine(HealingWindow_Close_Coroutine());
 

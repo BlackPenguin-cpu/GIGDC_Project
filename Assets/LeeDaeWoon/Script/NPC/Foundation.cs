@@ -82,14 +82,11 @@ public class Foundation : MonoBehaviour
     }
 
     #region Ã¢ ¿¬Ãâ
-    public void Close()
-    {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
-        StartCoroutine(Close_Window());
-    }
-
+    public void Close() => StartCoroutine(Close_Window());
+    
     public IEnumerator Open_Window()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX);
         UI_Manager.Inst.Cursor_Fade = true;
         Malyeog_Window.SetActive(true);
         timer = 0f;
@@ -106,6 +103,7 @@ public class Foundation : MonoBehaviour
 
     public IEnumerator Close_Window()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX);
         UI_Manager.Inst.Cursor_Fade = false;
         timer = 0f;
         Pole_01.transform.DOLocalMoveY(30, 0.5f);

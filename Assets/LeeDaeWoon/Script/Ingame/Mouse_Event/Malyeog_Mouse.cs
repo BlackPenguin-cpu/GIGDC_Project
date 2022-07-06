@@ -309,11 +309,11 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             switch (Malyeog_Num)
             {
                 case 0:
-                    if (UI_Manager.Inst.Dimensional >= (700 + Malyeog_Upgrade * 150) && Foundation.Inst.Dimensional_Price.text != "Max")
+                    if (GameManager.Instance.crystal >= (700 + Malyeog_Upgrade * 150) && Foundation.Inst.Dimensional_Price.text != "Max")
                     {
                         SoundManager.instance.PlaySoundClip("SFX_Enforce", SoundType.SFX);
 
-                        UI_Manager.Inst.Dimensional -= (700 + Malyeog_Upgrade * 150);
+                        GameManager.Instance.crystal -= (700 + Malyeog_Upgrade * 150);
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
@@ -350,12 +350,12 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     break;
 
                 case 1:
-                    if (UI_Manager.Inst.Dimensional >= (1100 + Malyeog_Upgrade * 200) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
+                    if (GameManager.Instance.crystal >= (1100 + Malyeog_Upgrade * 200) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
                     {
                         SoundManager.instance.PlaySoundClip("SFX_Enforce", SoundType.SFX);
 
 
-                        UI_Manager.Inst.Dimensional -= (1100 + Malyeog_Upgrade * 200);
+                        GameManager.Instance.crystal -= (1100 + Malyeog_Upgrade * 200);
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
@@ -395,12 +395,12 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     break;
 
                 case 2:
-                    if (UI_Manager.Inst.Dimensional >= (1700 + Malyeog_Upgrade * 250) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
+                    if (GameManager.Instance.crystal >= (1700 + Malyeog_Upgrade * 250) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
                     {
                         SoundManager.instance.PlaySoundClip("SFX_Enforce", SoundType.SFX);
 
 
-                        UI_Manager.Inst.Dimensional -= (1700 + Malyeog_Upgrade * 250);
+                        GameManager.Instance.crystal -= (1700 + Malyeog_Upgrade * 250);
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
@@ -437,12 +437,12 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     break;
 
                 case 3:
-                    if (UI_Manager.Inst.Dimensional >= (3300 + Malyeog_Upgrade * 3000) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
+                    if (GameManager.Instance.crystal >= (3300 + Malyeog_Upgrade * 3000) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Magic_Open >= Malyeog_Num)
                     {
                         SoundManager.instance.PlaySoundClip("SFX_Enforce", SoundType.SFX);
 
 
-                        UI_Manager.Inst.Dimensional -= (3300 + Malyeog_Upgrade * 3000);
+                        GameManager.Instance.crystal -= (3300 + Malyeog_Upgrade * 3000);
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/2";
@@ -471,12 +471,12 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             switch (Malyeog_Num)
             {
                 case 0:
-                    if (UI_Manager.Inst.Dimensional >= (600 + Malyeog_Upgrade * 150) && Foundation.Inst.Dimensional_Price.text != "Max")
+                    if (GameManager.Instance.crystal >= (600 + Malyeog_Upgrade * 150) && Foundation.Inst.Dimensional_Price.text != "Max")
                     {
                         SoundManager.instance.PlaySoundClip("SFX_Enforce", SoundType.SFX);
 
 
-                        UI_Manager.Inst.Dimensional -= (600 + Malyeog_Upgrade * 150);
+                        GameManager.Instance.crystal -= (600 + Malyeog_Upgrade * 150);
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
@@ -513,12 +513,12 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     break;
 
                 case 1:
-                    if (UI_Manager.Inst.Dimensional >= (1000 + Malyeog_Upgrade * 200) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
+                    if (GameManager.Instance.crystal >= (1000 + Malyeog_Upgrade * 200) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
                     {
                         SoundManager.instance.PlaySoundClip("SFX_Enforce", SoundType.SFX);
 
 
-                        UI_Manager.Inst.Dimensional -= (1000 + Malyeog_Upgrade * 200);
+                        GameManager.Instance.crystal -= (1000 + Malyeog_Upgrade * 200);
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
@@ -555,11 +555,11 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     break;
 
                 case 2:
-                    if (UI_Manager.Inst.Dimensional >= (1500 + Malyeog_Upgrade * 250) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
+                    if (GameManager.Instance.crystal >= (1500 + Malyeog_Upgrade * 250) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
                     {
                         SoundManager.instance.PlaySoundClip("SFX_Enforce", SoundType.SFX);
 
-                        UI_Manager.Inst.Dimensional -= (1500 + Malyeog_Upgrade * 250);
+                        GameManager.Instance.crystal -= (1500 + Malyeog_Upgrade * 250);
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
@@ -596,11 +596,11 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     break;
 
                 case 3:
-                    if (UI_Manager.Inst.Dimensional >= (3000 + Malyeog_Upgrade * 3000) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
+                    if (GameManager.Instance.crystal >= (3000 + Malyeog_Upgrade * 3000) && Foundation.Inst.Dimensional_Price.text != "Max" && Foundation.Inst.Body_Open >= Malyeog_Num)
                     {
                         SoundManager.instance.PlaySoundClip("SFX_Enforce", SoundType.SFX);
 
-                        UI_Manager.Inst.Dimensional -= (3000 + Malyeog_Upgrade * 3000);
+                        GameManager.Instance.crystal -= (3000 + Malyeog_Upgrade * 3000);
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/2";

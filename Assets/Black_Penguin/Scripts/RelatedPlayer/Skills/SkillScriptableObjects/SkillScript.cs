@@ -13,7 +13,7 @@ public class SkillScript : ScriptableObject
     /// <summary>
     /// 레벨마다 다른 가격을 표기
     /// </summary>
-    public float[] price = new float[3];
+    public int[] price = new int[3];
 
     /// <summary>
     /// 데미지 배울 
