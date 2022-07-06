@@ -10,10 +10,10 @@ public class OnHitEffect : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
     }
     private void Start()
     {
+        Instance = this;
         hitImage = GetComponent<Image>();
         hitImage.color = Color.clear;
     }

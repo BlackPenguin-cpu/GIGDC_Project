@@ -5,10 +5,10 @@ using System.Linq;
 
 public class baseEnemySpawnPos
 {
-    readonly public Vector3 OverLeft = new Vector3(-90, 3);
-    readonly public Vector3 UnderLeft = new Vector3(-90, -3);
-    readonly public Vector3 OverRight = new Vector3(90, 3);
-    readonly public Vector3 UnderRight = new Vector3(90, -3);
+    readonly public Vector3 OverLeft = new Vector3(-50, 3);
+    readonly public Vector3 UnderLeft = new Vector3(-50, -3);
+    readonly public Vector3 OverRight = new Vector3(50, 3);
+    readonly public Vector3 UnderRight = new Vector3(50, -3);
 
     public Vector3 returnPos(int index)
     {
@@ -52,9 +52,14 @@ public class WaveManager : MonoBehaviour
     void Awake() => Instance = this;
 
     public List<WavePattern> wavePatterns;
-    public int m_WaveNum;
-    readonly baseEnemySpawnPos enemySpawnPos;
-    private List<GameObject> SummonedEnemies;
+    public int m_WaveNum = 1;
+    readonly baseEnemySpawnPos enemySpawnPos = new baseEnemySpawnPos();
+    private List<GameObject> SummonedEnemies = new List<GameObject>();
+
+    private void Start()
+    {
+        StartCoroutine(WaveProcessing(m_WaveNum - 1));
+    }
 
     public IEnumerator WaveProcessing(int waveNum)
     {
@@ -70,11 +75,17 @@ public class WaveManager : MonoBehaviour
             }
             SummonedEnemies.Clear();
         }
+        Card_Manager.Inst.AddCard();
+        if (waveNum == 3 || waveNum == 5)
+        {
+            StartCoroutine(Potal.Inst.Potal_Move());
+        }
     }
     IEnumerator WaveSpawn(List<EnemySpawnInfo> enemySpawnInfos)
     {
         foreach (EnemySpawnInfo enemySpawnInfo in enemySpawnInfos)
         {
+            Debug.Log(enemySpawnInfo.enemyObj);
             SummonedEnemies.Add(ObjectPool.Instance.CreateObj(enemySpawnInfo.enemyObj, enemySpawnPos.returnPos(enemySpawnInfo.posIndex), Quaternion.identity));
             yield return new WaitForSeconds(enemySpawnInfo.time);
         }

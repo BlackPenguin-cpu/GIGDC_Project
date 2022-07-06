@@ -125,10 +125,17 @@ public class BaseEnemy : Entity, IObjectPoolingObj
         sprite.color = Color.white;
         if (transform.position.y < 0)
         {
-            rigid.gravityScale = -rigid.gravityScale;
+            rigid.gravityScale = -1;
             sprite.flipY = true;
             dimensionType = DimensionType.UNDER;
 
+            sprite.material = dimensionType == DimensionType.OVER ? GameManager.Instance.OverMaterial : GameManager.Instance.UnderMaterial;
+        }
+        else
+        {
+            dimensionType = DimensionType.OVER;
+            rigid.gravityScale = 1;
+            sprite.flipY = false;
             sprite.material = dimensionType == DimensionType.OVER ? GameManager.Instance.OverMaterial : GameManager.Instance.UnderMaterial;
         }
         if (HealthBarObj == null)

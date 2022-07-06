@@ -889,6 +889,12 @@ public class Player : Entity, ITypePlayer
         originalGravityValue = rigid.gravityScale;
         rigid.velocity = Vector2.zero;
         rigid.gravityScale = -1f;
+
+        Invoke("delayOriginalValue", 1);
+    }
+    void delayOriginalValue()
+    {
+        rigid.gravityScale = originalGravityValue;
     }
     void AxeStomp()
     {
