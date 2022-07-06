@@ -385,7 +385,7 @@ public class Player : Entity, ITypePlayer
         get { return state; }
         set
         {
-            if (stat.weaponType == PlayerWeaponType.Axe && stateOnAir == PlayerStateOnAir.JUMPATTACK)
+            if (stat.weaponType == PlayerWeaponType.Axe && stateOnAir == PlayerStateOnAir.JUMPATTACK && value != PlayerState.Die)
             {
                 return;
             }
@@ -454,6 +454,10 @@ public class Player : Entity, ITypePlayer
         AnimationController();
         PlayerItemContoroller();
 
+        if (hp <= 0)
+        {
+            _state = PlayerState.Die;
+        }
         if (stat._dashCount != stat._curDashCount)
             curDashCooltime += Time.deltaTime;
         if (curDashCooltime > stat.dashCooldown && stat._dashCount > stat._curDashCount)
@@ -897,11 +901,10 @@ public class Player : Entity, ITypePlayer
         while (_stateOnAir != PlayerStateOnAir.NONE)
         {
             rigid.velocity = dir;
-            _stateOnAir = PlayerStateOnAir.JUMPATTACK;
-            AnimAttackFunc(10);
             yield return null;
         }
         CameraManager.Instance.CameraShake(0.1f, 0.2f, 0.03f);
+        AnimAttackFunc(10);
         rigid.gravityScale = originalValue;
     }
     void AxeSkill1(List<BaseEnemy> enemies)
