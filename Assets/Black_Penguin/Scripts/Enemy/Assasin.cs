@@ -56,7 +56,9 @@ public class Assasin : BaseEnemy
     }
     public void Teleport()
     {
-        transform.position = player.transform.position + (player.sprite.flipX ? Vector3.right : Vector3.left);
+        Vector3 pos = dimensionType == DimensionType.OVER ? player.transform.position : DarkPlayer.Instance.transform.position;
+
+        transform.position = pos + (player.sprite.flipX ? Vector3.right : Vector3.left);
         sprite.color = Color.clear;
         StartCoroutine(FadeOut());
     }

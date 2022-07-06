@@ -25,6 +25,7 @@ public class AttackCollision : MonoBehaviour
 
     RaycastHit2D[] DetectEntity()
     {
+        if (transform.parent == null) return null;
         return Physics2D.BoxCastAll(transform.parent.position + new Vector3((parentSpriteRenderer.flipX ? -1 : 1) * collider2D.offset.x, collider2D.offset.y), collider2D.size, 0, parentSpriteRenderer.flipX ? Vector2.left : Vector2.right, 0); ;
     }
     /// <summary>
