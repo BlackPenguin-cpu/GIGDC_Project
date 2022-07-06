@@ -125,9 +125,9 @@ public class ObjectPool : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        foreach (Transform obj in transform.GetComponentInChildren<Transform>())
+        for (int i = 0; i < transform.childCount; i++)
         {
-            Destroy(obj);
+            Destroy(transform.GetChild(i));
         }
     }
 }

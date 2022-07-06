@@ -385,12 +385,22 @@ public class Player : Entity, ITypePlayer
         get { return state; }
         set
         {
+            if (stat.weaponType == PlayerWeaponType.Axe && stateOnAir == PlayerStateOnAir.JUMPATTACK)
+            {
+                return;
+            }
             if (state == PlayerState.Die)
                 return;
             state = value;
         }
     }
     [SerializeField] PlayerStateOnAir stateOnAir;
+
+    PlayerStateOnAir _stateOnAir
+    {
+        get { return stateOnAir; }
+        set { stateOnAir = value; }
+    }
     public PlayerInfo stat;
     public float JumpPower;
 
@@ -470,12 +480,12 @@ public class Player : Entity, ITypePlayer
     }
     void AnimationController()
     {
-        if (stateOnAir != PlayerStateOnAir.NONE && state != PlayerState.Dash)
+        if (_stateOnAir != PlayerStateOnAir.NONE && state != PlayerState.Dash)
         {
             state = PlayerState.Jump;
         }
         animator.SetInteger("State", (int)_state);
-        animator.SetInteger("StateOnAir", (int)stateOnAir);
+        animator.SetInteger("StateOnAir", (int)_stateOnAir);
         animator.SetInteger("Weapon", (int)stat.weaponType);
         animator.SetBool("isAttack", isAttack);
         animator.SetFloat("AttackSpeed", stat._attackSpeed);
@@ -605,30 +615,30 @@ public class Player : Entity, ITypePlayer
                 if (!ray.transform.gameObject.tag.Contains("Platform")) continue;
                 if (rigid.velocity.y <= 0.1f)
                 {
-                    if (_state == PlayerState.Jump || stateOnAir != PlayerStateOnAir.NONE)
+                    if (_state == PlayerState.Jump || _stateOnAir != PlayerStateOnAir.NONE)
                     {
                         _state = PlayerState.Idle;
                     }
                     canJump = true;
                 }
-                if (stateOnAir == PlayerStateOnAir.FALLING || stateOnAir == PlayerStateOnAir.JUMPATTACK)
+                if (_stateOnAir == PlayerStateOnAir.FALLING || _stateOnAir == PlayerStateOnAir.JUMPATTACK)
                 {
-                    stateOnAir = PlayerStateOnAir.NONE;
+                    _stateOnAir = PlayerStateOnAir.NONE;
                 }
             }
-            if (stateOnAir != PlayerStateOnAir.JUMPATTACK && raycasts.Length == 1 && raycasts.FirstOrDefault().transform.gameObject == gameObject)
+            if (_stateOnAir != PlayerStateOnAir.JUMPATTACK && raycasts.Length == 1 && raycasts.FirstOrDefault().transform.gameObject == gameObject)
             {
-                stateOnAir = PlayerStateOnAir.FALLING;
+                _stateOnAir = PlayerStateOnAir.FALLING;
             }
         }
     }
     private void Move()
     {
-        if (_state == PlayerState.Dash || (_state == PlayerState.Attack && stateOnAir != PlayerStateOnAir.JUMPATTACK))
-        {
+        if (_state == PlayerState.Dash || (_state == PlayerState.Attack && _stateOnAir != PlayerStateOnAir.JUMPATTACK))
             return;
-        }
-        if (stateOnAir == PlayerStateOnAir.NONE && state != PlayerState.Jump && stateOnAir != PlayerStateOnAir.JUMPATTACK)
+        if (stat.weaponType == PlayerWeaponType.Axe && _stateOnAir == PlayerStateOnAir.JUMPATTACK)
+            return;
+        if (_stateOnAir == PlayerStateOnAir.NONE && state != PlayerState.Jump && _stateOnAir != PlayerStateOnAir.JUMPATTACK)
             _state = PlayerState.Walk;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -651,18 +661,17 @@ public class Player : Entity, ITypePlayer
         {
             return;
         }
-        if (stateOnAir == PlayerStateOnAir.FALLING || state == PlayerState.Jump)
+        if (_stateOnAir == PlayerStateOnAir.FALLING || state == PlayerState.Jump)
         {
-            stateOnAir = PlayerStateOnAir.JUMPATTACK;
+            _stateOnAir = PlayerStateOnAir.JUMPATTACK;
         }
         else
         {
-
             _state = PlayerState.Attack;
         }
         if (nowAttackAction != null)
             StopCoroutine(nowAttackAction);
-        nowAttackAction = StartCoroutine(AttackAction(stateOnAir));
+        nowAttackAction = StartCoroutine(AttackAction(_stateOnAir));
     }
     public override void Attack(Entity target, float atkDmg)
     {
@@ -698,7 +707,7 @@ public class Player : Entity, ITypePlayer
     }
     public void AnimEndJumpAttack()
     {
-        stateOnAir = PlayerStateOnAir.FALLING;
+        _stateOnAir = PlayerStateOnAir.FALLING;
     }
     public void AnimNotAttack()
     {
@@ -714,7 +723,7 @@ public class Player : Entity, ITypePlayer
         {
             if (attackCollision.index == index && attackCollision.weaponType == stat.weaponType)
             {
-                if (stat.weaponType == PlayerWeaponType.Dagger && Input.GetAxisRaw("Horizontal") == (sprite.flipX ? -1 : 1) && stateOnAir == PlayerStateOnAir.NONE)
+                if (stat.weaponType == PlayerWeaponType.Dagger && Input.GetAxisRaw("Horizontal") == (sprite.flipX ? -1 : 1) && _stateOnAir == PlayerStateOnAir.NONE)
                 {
                     rigid.AddForce(Vector2.right * (sprite.flipX ? -1 : 1) * 5, ForceMode2D.Impulse);
                 }
@@ -750,7 +759,7 @@ public class Player : Entity, ITypePlayer
         yield return new WaitForSeconds(1 / stat._attackSpeed);
         if (onAirState != PlayerStateOnAir.NONE)
         {
-            stateOnAir = PlayerStateOnAir.FALLING;
+            _stateOnAir = PlayerStateOnAir.FALLING;
         }
         else
         {
@@ -870,6 +879,31 @@ public class Player : Entity, ITypePlayer
     }
     #endregion
     #region 도끼
+    private float originalGravityValue;
+    void AxeStompReady()
+    {
+        originalGravityValue = rigid.gravityScale;
+        rigid.velocity = Vector2.zero;
+        rigid.gravityScale = -1f;
+    }
+    void AxeStomp()
+    {
+        StartCoroutine(AxeStompCoroutine(originalGravityValue));
+    }
+    IEnumerator AxeStompCoroutine(float originalValue)
+    {
+        Vector2 dir = new Vector2(0, -originalValue * 10);
+
+        while (_stateOnAir != PlayerStateOnAir.NONE)
+        {
+            rigid.velocity = dir;
+            _stateOnAir = PlayerStateOnAir.JUMPATTACK;
+            AnimAttackFunc(10);
+            yield return null;
+        }
+        CameraManager.Instance.CameraShake(0.1f, 0.2f, 0.03f);
+        rigid.gravityScale = originalValue;
+    }
     void AxeSkill1(List<BaseEnemy> enemies)
     {
         float forcePower = 30;

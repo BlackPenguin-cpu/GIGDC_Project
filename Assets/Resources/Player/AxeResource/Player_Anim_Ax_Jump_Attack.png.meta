@@ -213,7 +213,7 @@ TextureImporter:
         serializedVersion: 2
         x: 636
         y: 0
-        width: 212
+        width: 211
         height: 344
       alignment: 9
       pivot: {x: 0.4, y: 0.2}
@@ -232,9 +232,9 @@ TextureImporter:
       name: Player_Anim_Ax_Jump_Attack_4
       rect:
         serializedVersion: 2
-        x: 848
+        x: 847
         y: 0
-        width: 212
+        width: 213
         height: 344
       alignment: 9
       pivot: {x: 0.4, y: 0.2}
@@ -253,9 +253,9 @@ TextureImporter:
       name: Player_Anim_Ax_Jump_Attack_5
       rect:
         serializedVersion: 2
-        x: 1059
+        x: 1060
         y: 0
-        width: 212
+        width: 213
         height: 344
       alignment: 9
       pivot: {x: 0.4, y: 0.2}
@@ -274,9 +274,9 @@ TextureImporter:
       name: Player_Anim_Ax_Jump_Attack_6
       rect:
         serializedVersion: 2
-        x: 1272
+        x: 1276
         y: 0
-        width: 212
+        width: 209
         height: 344
       alignment: 9
       pivot: {x: 0.4, y: 0.2}

@@ -5,8 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class DamageText : MonoBehaviour, IObjectPoolingObj
 {
+    private TextMesh textMesh;
     [SerializeField] private Rigidbody2D rigid;
-    [SerializeField] private TextMesh textMesh;
+    [SerializeField] private TextMesh childTextMesh;
 
     private string textString;
     [SerializeField] private float duration;
@@ -31,12 +32,13 @@ public class DamageText : MonoBehaviour, IObjectPoolingObj
         textString = ((int)damageValue).ToString();
 
         textMesh.text = textString;
+        childTextMesh.text = textMesh.text;
         duration = 0.5f;
 
         if (isCrit)
         {
             textMesh.color = new Color(1, 1, 0, 0.8f);
-            textMesh.fontStyle = FontStyle.Bold;
+
         }
         else
         {
