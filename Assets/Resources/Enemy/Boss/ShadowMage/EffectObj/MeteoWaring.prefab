@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1013fa9b253f3f647923144f1e3f5cad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dimensionType: 0
   createObj: {fileID: 6280827378885562631, guid: 076d2ab7ae8386c489f2bade95b34840, type: 3}
   createObjPos: {x: 0, y: 6, z: 0}
-  dimensionType: 0
+  startScale: {x: 1, y: 1}

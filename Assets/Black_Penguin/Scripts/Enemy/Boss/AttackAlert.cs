@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class AttackAlert : MonoBehaviour, IObjectPoolingObj
 {
+    public DimensionType dimensionType;
     [SerializeField] private GameObject createObj;
     [SerializeField] private Vector3 createObjPos;
-    public DimensionType dimensionType;
     private SpriteRenderer sprite;
+    [SerializeField] private Vector2 startScale;
     public void OnObjCreate()
     {
+        if (startScale.x != 0)
+            startScale = transform.localScale;
+        else
+            transform.localScale = startScale;
         sprite = GetComponent<SpriteRenderer>();
         StartCoroutine(StartAlert());
     }
@@ -18,7 +23,7 @@ public class AttackAlert : MonoBehaviour, IObjectPoolingObj
         //본래크기 보다 0.4정도 작게
         float value = transform.localScale.x * 0.6f;
         //본래크기보다 0.1더 크게 
-        float targetValue = transform.localScale.x + 0.1f;
+        float targetValue = transform.localScale.x;
         while (value < targetValue)
         {
             transform.localScale = new Vector2(value, value);
@@ -26,7 +31,7 @@ public class AttackAlert : MonoBehaviour, IObjectPoolingObj
             value += Time.deltaTime;
             yield return null;
         }
-        ObjectPool.Instance.CreateObj(createObj, transform.position + createObjPos * (dimensionType == DimensionType.OVER ? 1 : -1), transform.rotation);
+        ObjectPool.Instance.CreateObj(createObj, transform.position + createObjPos * (dimensionType == DimensionType.OVER ? 1 : -1), Quaternion.Euler(0, 0, sprite.flipY ? 180 : 0));
         ObjectPool.Instance.DeleteObj(gameObject);
     }
 }

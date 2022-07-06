@@ -128,14 +128,15 @@ public class ShadowMage : BaseEnemy
     IEnumerator HommingMissile()
     {
         AttackProjectile attackProjectile = ObjectPool.Instance.CreateObj(HommingProjectile.gameObject, transform.position, Quaternion.identity).GetComponent<AttackProjectile>();
-        attackProjectile.Init(this, 10, 10, 1, ProjectileType.Homing, dimensionType == DimensionType.OVER ? Player.Instance.gameObject : DarkPlayer.Instance.gameObject, 10);
-        yield return new WaitForSeconds(1);
+        attackProjectile.Init(this, 10, 10, 1, ProjectileType.Homming, dimensionType == DimensionType.OVER ? Player.Instance.gameObject : DarkPlayer.Instance.gameObject, 10);
+        yield return null;
     }
     IEnumerator Shield()
     {
-        Instantiate(ShieldObj, transform);
+        GameObject obj = Instantiate(ShieldObj, transform);
+        obj.GetComponent<SpriteRenderer>().flipY = dimensionType == DimensionType.UNDER;
         isShielding = true;
-        yield return new WaitForSeconds(2);
+        yield return null;
     }
     IEnumerator DimensionLeapCoroutine()
     {

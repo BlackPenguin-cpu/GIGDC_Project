@@ -16,7 +16,7 @@ public class Meteor : MonoBehaviour, IObjectPoolingObj
         }
         if (collision.CompareTag("Platform"))
         {
-            ObjectPool.Instance.CreateObj(ExplosionEffect, new Vector3(transform.position.x, 0), Quaternion.identity);
+            ObjectPool.Instance.CreateObj(ExplosionEffect, new Vector3(transform.position.x, 0), transform.rotation);
             ObjectPool.Instance.DeleteObj(gameObject);
         }
     }
@@ -27,7 +27,7 @@ public class Meteor : MonoBehaviour, IObjectPoolingObj
         if (transform.position.y < 0)
         {
             rigid.gravityScale = -rigid.gravityScale;
-            transform.rotation = Quaternion.Euler(0,0,180);
+            transform.rotation = Quaternion.Euler(0, 0, 180);
         }
     }
 }

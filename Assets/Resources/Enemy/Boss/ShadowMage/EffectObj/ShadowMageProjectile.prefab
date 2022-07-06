@@ -123,7 +123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6981106317681630882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.61311, y: 1.740053, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8337668639282370110}
@@ -228,3 +228,4 @@ MonoBehaviour:
   canPierce: 0
   projectileType: 0
   dimensionType: 2
+  onDestroyObj: {fileID: 6219000470892983170, guid: a54bfe179eac1e94987cefe160b45596, type: 3}
