@@ -3269,6 +3269,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ManagerPackage
       objectReference: {fileID: 0}
+    - target: {fileID: 4992396103262175384, guid: 6dca2c64dbfa11b46bb696ac29a0488c, type: 3}
+      propertyPath: Skill_Up.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d9f100c8b1f93ba4ba4d3a7fd067e1d4, type: 2}
     - target: {fileID: 5025156722862097626, guid: 6dca2c64dbfa11b46bb696ac29a0488c, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -4931,6 +4935,9 @@ MonoBehaviour:
   Potal_obj: {fileID: 1562944009}
   Player: {fileID: 1778768263}
   Dark_Player: {fileID: 26112610}
+  F_Button: {fileID: 0}
+  Upgrade: {fileID: 0}
+  Upgrade_Text: {fileID: 0}
 --- !u!1 &2049317332
 GameObject:
   m_ObjectHideFlags: 0
