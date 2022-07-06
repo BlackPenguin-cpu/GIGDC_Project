@@ -49,7 +49,10 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     public Range coinDropValueRange;
     public Range crystalDropValueRange;
     public EnemyBuffList buffList = new EnemyBuffList();
+    public int HealingOrbChance;
+
     protected EnemyState state;
+    private GameObject HealingOrbObj;
     public virtual EnemyState _state
     {
         get
@@ -96,8 +99,18 @@ public class BaseEnemy : Entity, IObjectPoolingObj
         onDie += () => Player.Instance.DaggerSkill2(); // HOLY SHIT
         onDie += () => CameraManager.Instance.CameraShake(0.1f, 0.4f, 0.05f);
         onDie += () => player.BloodGauntletAction(this);
-        onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
         onDie += () => _state = EnemyState.DIE;
+        onDie += () => DropHealingOrbObj();
+        onDie += () => ObjectPool.Instance.DeleteObj(gameObject);
+    }
+    protected void DropHealingOrbObj()
+    {
+        if (Random.Range(0, 100) < HealingOrbChance)
+        {
+            GameObject obj = ObjectPool.Instance.CreateObj(HealingOrbObj, transform.position, Quaternion.identity);
+            obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 0), ForceMode2D.Impulse);
+            obj.GetComponent<SpriteRenderer>().flipY = sprite.flipY;
+        }
     }
     public virtual void OnObjCreate()
     {

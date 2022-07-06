@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  dimensionType: 0
   maxHp: 0
   hp: 0
   coinDropValueRange:
@@ -321,8 +322,7 @@ MonoBehaviour:
     Max: 0
   buffList:
     stun: 0
-  state: 0
+  HealingOrbChance: 3
   attackSpeed: 0.5
   attackDelay: 0
   attackDamage: 0
-  isUnder: 0

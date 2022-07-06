@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &826732548900178298
+--- !u!1 &2727326796007477499
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6234190370288590668}
-  - component: {fileID: 5848995217549161583}
-  - component: {fileID: 5679466324460072494}
-  - component: {fileID: -1009310002504772610}
-  - component: {fileID: 2171400556294715646}
+  - component: {fileID: 7188574363391044903}
+  - component: {fileID: 1520774455102391263}
+  - component: {fileID: 5762705666639998088}
+  - component: {fileID: -176411910987195057}
   m_Layer: 0
-  m_Name: AtemHand
+  m_Name: HealingOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6234190370288590668
+--- !u!4 &7188574363391044903
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826732548900178298}
+  m_GameObject: {fileID: 2727326796007477499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.5769, y: 0.8644, z: 0}
-  m_LocalScale: {x: 0.42222226, y: 0.9733155, z: 1}
+  m_LocalPosition: {x: 1494.1122, y: 191.02592, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5848995217549161583
+--- !u!212 &1520774455102391263
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826732548900178298}
+  m_GameObject: {fileID: 2727326796007477499}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,28 +73,28 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8318746515270324892, guid: e89ac726f93a4c54da4317eae7117d0d, type: 3}
+  m_Sprite: {fileID: 6539601180568807532, guid: 46b99153d1fb43e448e15a936b5de9f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
-  m_Size: {x: 20.898739, y: 1}
-  m_AdaptiveModeThreshold: 1
-  m_SpriteTileMode: 1
+  m_DrawMode: 0
+  m_Size: {x: 1.5, y: 1.5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5679466324460072494
+--- !u!95 &5762705666639998088
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826732548900178298}
+  m_GameObject: {fileID: 2727326796007477499}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 73ece1abde6b0b7439e7a57bcdc9260f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 90e1c42c5857f4b4d8d0f0520200343c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -104,45 +103,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-1009310002504772610
+--- !u!114 &-176411910987195057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826732548900178298}
+  m_GameObject: {fileID: 2727326796007477499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65b42d96e93f70e48b1778b191199e3d, type: 3}
+  m_Script: {fileID: 11500000, guid: ebe021914275658449ad253c15f790be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dimensionType: 2
-  SkillInfo: {fileID: 11400000, guid: 69c5d74652a776d45b57965e6ee23b9b, type: 2}
-  StartPosY: 0.65
-  sprite: {fileID: 0}
---- !u!61 &2171400556294715646
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826732548900178298}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.07859802, y: -0.08976084}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.8000002, y: 0.9733155}
-    newSize: {x: 20.898739, y: 1}
-    adaptiveTilingThreshold: 1
-    drawMode: 2
-    adaptiveTiling: 1
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 20.688965, y: 1.029548}
-  m_EdgeRadius: 0

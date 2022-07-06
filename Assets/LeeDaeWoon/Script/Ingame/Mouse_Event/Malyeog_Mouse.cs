@@ -317,7 +317,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
-                        Player.Instance.stat.magicPower.invisibleHand += 10;
+                        Player.Instance.stat.magicPower.invisibleHand++;
                         switch (Malyeog_Upgrade)
                         {
                             case 1:
@@ -362,25 +362,25 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                         switch (Malyeog_Upgrade)
                         {
                             case 1:
-                                Player.Instance.stat.magicPower.sharpEye = 3;
+                                Player.Instance.stat.magicPower.sharpEye = 1;
                                 Foundation.Inst.Dimensional_Price.text = "" + (1100 + Malyeog_Upgrade * 200);
-                                Foundation.Inst.Explanation.text = "´«À¸·Î »ó´ëÀÇ ¾àÁ¡À» ²ç¶Õ¾îºÁ Ä¡¸íÅ¸ È®·üÀÌ " + "\n" +  "3% / " + "<color=#877D78>" + "5%" + "</color>" + " / " + "<color=#877D78>" + "7%" + "</color>" + " / " + "<color=#877D78>" + "10%" + "</color>" + " »ó½ÂÇÑ´Ù.";
+                                Foundation.Inst.Explanation.text = "´«À¸·Î »ó´ëÀÇ ¾àÁ¡À» ²ç¶Õ¾îºÁ Ä¡¸íÅ¸ È®·üÀÌ " + "\n" + "3% / " + "<color=#877D78>" + "5%" + "</color>" + " / " + "<color=#877D78>" + "7%" + "</color>" + " / " + "<color=#877D78>" + "10%" + "</color>" + " »ó½ÂÇÑ´Ù.";
                                 break;
 
                             case 2:
-                                Player.Instance.stat.magicPower.sharpEye = 5;
+                                Player.Instance.stat.magicPower.sharpEye = 2;
                                 Foundation.Inst.Dimensional_Price.text = "" + (1100 + Malyeog_Upgrade * 200);
                                 Foundation.Inst.Explanation.text = "´«À¸·Î »ó´ëÀÇ ¾àÁ¡À» ²ç¶Õ¾îºÁ Ä¡¸íÅ¸ È®·üÀÌ " + "\n" + "<color=#877D78>" + "3%" + "</color>" + " / " + "5% / " + "<color=#877D78>" + "7%" + "</color>" + " / " + "<color=#877D78>" + "10%" + "</color>" + " »ó½ÂÇÑ´Ù.";
                                 break;
 
                             case 3:
-                                Player.Instance.stat.magicPower.sharpEye = 7;
+                                Player.Instance.stat.magicPower.sharpEye = 3;
                                 Foundation.Inst.Dimensional_Price.text = "" + (1100 + Malyeog_Upgrade * 200);
                                 Foundation.Inst.Explanation.text = "´«À¸·Î »ó´ëÀÇ ¾àÁ¡À» ²ç¶Õ¾îºÁ Ä¡¸íÅ¸ È®·üÀÌ " + "\n" + "<color=#877D78>" + "3%" + "</color>" + " / " + "<color=#877D78>" + "5%" + "</color>" + " / " + "7% / " + "<color=#877D78>" + "10%" + "</color>" + " »ó½ÂÇÑ´Ù.";
                                 break;
 
                             case 4:
-                                Player.Instance.stat.magicPower.sharpEye = 10;
+                                Player.Instance.stat.magicPower.sharpEye = 4;
                                 Foundation.Inst.Dimensional_Price.text = "Max";
                                 Foundation.Inst.Explanation.text = "´«À¸·Î »ó´ëÀÇ ¾àÁ¡À» ²ç¶Õ¾îºÁ Ä¡¸íÅ¸ È®·üÀÌ " + "\n" + "<color=#877D78>" + "3%" + "</color>" + " / " + "<color=#877D78>" + "5%" + "</color>" + " / " + "<color=#877D78>" + "7%" + "</color>" + " / " + "10%" + " »ó½ÂÇÑ´Ù.";
                                 break;
@@ -404,7 +404,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
-                        Player.Instance.stat.magicPower.timeQuick += 5;
+                        Player.Instance.stat.magicPower.timeQuick++;
                         switch (Malyeog_Upgrade)
                         {
                             case 1:
@@ -446,7 +446,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/2";
-                        Player.Instance.stat.magicPower.thaumcraft += 20;
+                        Player.Instance.stat.magicPower.thaumcraft++;
                         switch (Malyeog_Upgrade)
                         {
                             case 1:
@@ -480,7 +480,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
-                        Player.Instance.stat.magicPower.silpidLeap += 10;
+                        Player.Instance.stat.magicPower.silpidLeap++;
                         switch (Malyeog_Upgrade)
                         {
                             case 1:
@@ -522,7 +522,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
-                        Player.Instance.stat.magicPower.giantPower += 15;
+                        Player.Instance.stat.magicPower.giantPower++;
                         switch (Malyeog_Upgrade)
                         {
                             case 1:
@@ -563,7 +563,7 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
                         Malyeog_Upgrade++;
                         MalyeogUp_Text.text = Malyeog_Upgrade + "/4";
-                        Player.Instance.stat.magicPower.ironSkin += 5;
+                        Player.Instance.stat.magicPower.ironSkin++;
                         switch (Malyeog_Upgrade)
                         {
                             case 1:
@@ -607,13 +607,13 @@ public class Malyeog_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                         switch (Malyeog_Upgrade)
                         {
                             case 1:
-                                Player.Instance.stat.magicPower.magicHeart += 20;
+                                Player.Instance.stat.magicPower.magicHeart++;
                                 Foundation.Inst.Dimensional_Price.text = "" + (3000 + Malyeog_Upgrade * 3000);
                                 Foundation.Inst.Explanation.text = "¸¶Á¤¼® ½ÉÀåÀÌ µÎ¹øÂ° ±âÈ¸¸¦ Áà ÃÖ´ëÃ¼·ÂÀÇ 20% / " + "<color=#877D78>" + "50%" + "</color>" + " »ó½ÂÇÑ´Ù.";
                                 break;
 
                             case 2:
-                                Player.Instance.stat.magicPower.magicHeart += 50;
+                                Player.Instance.stat.magicPower.magicHeart++;
                                 Foundation.Inst.Dimensional_Price.text = "Max";
                                 Foundation.Inst.Explanation.text = "¸¶Á¤¼® ½ÉÀåÀÌ µÎ¹øÂ° ±âÈ¸¸¦ Áà ÃÖ´ëÃ¼·ÂÀÇ " + "<color=#877D78>" + "20%" + "</color>" + " / " + "50%" + " »ó½ÂÇÑ´Ù.";
                                 break;
