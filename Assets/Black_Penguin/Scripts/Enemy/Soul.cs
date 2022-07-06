@@ -48,6 +48,7 @@ public class Soul : BaseEnemy
     }
     public void AnimAttack()
     {
+        SoundManager.instance.PlaySoundClip("SFX_Fire_Boom", SoundType.SFX);
         attackCollisions[0].OnAttack(this);
         Die();
     }

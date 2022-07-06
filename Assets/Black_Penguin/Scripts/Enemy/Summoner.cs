@@ -64,7 +64,6 @@ public class Summoner : BaseEnemy
     //해당 함수는 애니메이터에서 발동함
     public void Summon()
     {
-        SoundManager.instance.PlaySoundClip("SFX_Fire_Boom", SoundType.SFX);
         SoundManager.instance.PlaySoundClip("SFX_Summon", SoundType.SFX);
 
         for (int i = -1; i < 2; i += 2)
