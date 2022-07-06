@@ -74,12 +74,11 @@ public class WaveManager : MonoBehaviour
                 yield return null;
             }
             SummonedEnemies.Clear();
-
-            Card_Manager.Inst.AddCard();
-            if (waveNum == 3 || waveNum == 5)
-            {
-                StartCoroutine(Potal.Inst.Potal_Move());
-            }
+        }
+        Card_Manager.Inst.AddCard();
+        if (waveNum == 3 || waveNum == 5)
+        {
+            StartCoroutine(Potal.Inst.Potal_Move());
         }
     }
     IEnumerator WaveSpawn(List<EnemySpawnInfo> enemySpawnInfos)
