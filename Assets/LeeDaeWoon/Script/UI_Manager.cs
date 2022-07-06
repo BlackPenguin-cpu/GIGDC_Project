@@ -119,7 +119,8 @@ public class UI_Manager : MonoBehaviour
 
         if (HP_Bar > HP)
             Bar.transform.localScale = new Vector3(1, Mathf.Lerp(HP_Bar, HP - 0.00001f, Time.deltaTime * 20), 1);
-
+        else
+            Bar.transform.localScale = new Vector3(1, Mathf.Lerp(HP_Bar, HP, Time.deltaTime * 20), 1);
     }
     #endregion
 

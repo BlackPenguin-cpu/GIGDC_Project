@@ -145,6 +145,11 @@ public class BlackSmith : MonoBehaviour
             switch (Sword_Level)
             {
                 case 1:
+                    Sword_Skill_Text.text = "강철의 마음: 고정적으로 데미지가 5감소한다. \n\n" +
+                                            "집념: 체력이 30%이하가 될 시 공격력, \n" +
+                                            "      방어력이 30% 상승한다. \n\n" +
+                                            "신의 가호: 체력이 0이 되는 공격을 받을 때 \n" +
+                                            "           한번 버틴다. (1만 남고 버팀)";
                     Sword_Skill_Text.transform.GetChild(0).gameObject.SetActive(false);
                     break;
 
@@ -154,6 +159,14 @@ public class BlackSmith : MonoBehaviour
 
                 case 5:
                     Sword_Skill_Text.transform.GetChild(2).gameObject.SetActive(false);
+                    break;
+
+                default:
+                    Sword_Skill_Text.text = "강철의 마음: 고정적으로 데미지가 5감소한다. \n\n" +
+                        "집념: 체력이 30%이하가 될 시 공격력, \n" +
+                        "      방어력이 30% 상승한다. \n\n" +
+                        "신의 가호: 체력이 0이 되는 공격을 받을 때 \n" +
+                        "           한번 버틴다. (1만 남고 버팀)";
                     break;
             }
         }
@@ -303,7 +316,6 @@ public class BlackSmith : MonoBehaviour
     #region 창 연출
     public void Close()
     {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
         StartCoroutine(Close_Window());
     }
 

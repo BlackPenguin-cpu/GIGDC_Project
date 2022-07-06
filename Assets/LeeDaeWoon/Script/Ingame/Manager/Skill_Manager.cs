@@ -310,8 +310,10 @@ public class Skill_Manager : MonoBehaviour
         Skill_Up.RemoveAt(0);
         Skill_Down.RemoveAt(0);
 
+
         if (AS_Limit == true && Limit == true)
         {
+            SoundManager.instance.PlaySoundClip("SFX_Skill_Swap", SoundType.SFX);
             Limit = false;
             A_Skill.DOAnchorPos3DY(-133.78f, 0.5f);
             S_Skill.DOAnchorPos3DY(134.3f, 0.5f);
@@ -322,6 +324,7 @@ public class Skill_Manager : MonoBehaviour
 
         else if (AS_Limit == false && Limit == false)
         {
+            SoundManager.instance.PlaySoundClip("SFX_Skill_Swap", SoundType.SFX);
             Limit = true;
             A_Skill.DOAnchorPos3DY(0f, 0.5f);
             S_Skill.DOAnchorPos3DY(0f, 0.5f);

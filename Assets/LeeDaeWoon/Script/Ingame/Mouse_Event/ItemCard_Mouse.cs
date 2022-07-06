@@ -112,8 +112,6 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         // 왼쪽 카드를 선택 했을 때
         if (direction == Direction.Left)
         {
-            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
-
             Card_Manager.Inst.Fade.DOFade(0f, 0.5f);
             UI_Manager.Inst.Cursor_Fade = false;
 
@@ -240,8 +238,6 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         // 가운데 카드를 선택 했을 때
         if (direction == Direction.Among)
         {
-            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
-
             Card_Manager.Inst.Fade.DOFade(0f, 0.5f);
             UI_Manager.Inst.Cursor_Fade = false;
 
@@ -367,8 +363,6 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         // 오른쪽 카드를 선택 했을 때
         if (direction == Direction.Right)
         {
-            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
-
             Card_Manager.Inst.Fade.DOFade(0f, 0.5f);
             UI_Manager.Inst.Cursor_Fade = false;
 

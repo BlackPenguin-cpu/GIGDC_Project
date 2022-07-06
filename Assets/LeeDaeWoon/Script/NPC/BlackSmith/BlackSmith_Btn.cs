@@ -34,7 +34,6 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
     {
         if (mouseover_UI == MouseOver_UI.MouseOver)
         {
-            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
             int Save_BlackSmiths = BlackSmith.Inst.BlackSmiths.Count;
             BlackSmith.Inst.BlackSmiths[0].SetActive(false);
 
@@ -48,7 +47,6 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
     {
         if (mouseover_UI == MouseOver_UI.MouseOver)
         {
-            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
             BlackSmith.Inst.BlackSmiths[0].SetActive(false);
 
             BlackSmith.Inst.BlackSmiths.Add(BlackSmith.Inst.BlackSmiths[0]);
@@ -65,7 +63,6 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
             //단검
             if (BlackSmith.Inst.Weapon.transform.GetChild(1).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= Gold)
             {
-                SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
                 SoundManager.instance.PlaySoundClip("SFX_Buy", SoundType.SFX, 5f);
                 UI_Manager.Inst.Gold -= Gold; // 골드 차감
                 BlackSmith.Inst.Dagger_Price.SetActive(false); // 구매가격 false
@@ -81,7 +78,6 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
             //도끼
             if (BlackSmith.Inst.Weapon.transform.GetChild(2).gameObject.activeSelf == true && UI_Manager.Inst.Gold >= Gold)
             {
-                SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
                 SoundManager.instance.PlaySoundClip("SFX_Buy", SoundType.SFX, 5f);
                 UI_Manager.Inst.Gold -= Gold; // 골드 차감
                 BlackSmith.Inst.Axe_Price.SetActive(false); // 구매가격 false
@@ -101,20 +97,11 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
         if (mouseover_UI == MouseOver_UI.MouseOver)
         {
             if (BlackSmith.Inst.Weapon.transform.GetChild(0).gameObject.activeSelf == true)
-            {
-                SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
                 Player.Instance.stat.weaponType = PlayerWeaponType.Sword;
-            }
             else if (BlackSmith.Inst.Weapon.transform.GetChild(1).gameObject.activeSelf == true)
-            {
-                SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
                 Player.Instance.stat.weaponType = PlayerWeaponType.Dagger;
-            }
             else if (BlackSmith.Inst.Weapon.transform.GetChild(2).gameObject.activeSelf == true)
-            {
-                SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
                 Player.Instance.stat.weaponType = PlayerWeaponType.Axe;
-            }
         }
 
     }
@@ -134,7 +121,6 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
                         if (Sword_Level < 5)
                         {
                             SoundManager.instance.PlaySoundClip("SFX_Enforce", SoundType.SFX);
-                            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
                             UI_Manager.Inst.Gold -= (400 + (200 * Sword_Level));
                             Player.Instance.stat._level[PlayerWeaponType.Sword]++;
                         }
@@ -143,6 +129,7 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
                     }
                     else if (UI_Manager.Inst.Gold < (400 + (200 * Sword_Level)))
                         SoundManager.instance.PlaySoundClip("SFX_Error", SoundType.SFX);
+
                     break;
 
                 case PlayerWeaponType.Dagger:
@@ -151,7 +138,6 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
                         if (Dagger_Level < 5)
                         {
                             SoundManager.instance.PlaySoundClip("SFX_Enforce", SoundType.SFX);
-                            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
                             UI_Manager.Inst.Gold -= (400 + (200 * Dagger_Level));
                             Player.Instance.stat._level[PlayerWeaponType.Dagger]++;
                         }
@@ -168,7 +154,6 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
                         if (Axe_Level < 5)
                         {
                             SoundManager.instance.PlaySoundClip("SFX_Enforce", SoundType.SFX);
-                            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
                             UI_Manager.Inst.Gold -= (400 + (200 * Axe_Level));
                             Player.Instance.stat._level[PlayerWeaponType.Axe]++;
                         }
@@ -184,11 +169,7 @@ public class BlackSmith_Btn : MonoBehaviour, IPointerEnterHandler
     }
     #endregion
 
-    public void Close()
-    {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX);
-        StartCoroutine(BlackSmith.Inst.Close_Window());
-    }
+    public void Close() => StartCoroutine(BlackSmith.Inst.Close_Window());
 
     public void OnPointerEnter(PointerEventData eventDatas)
     {

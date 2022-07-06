@@ -181,7 +181,6 @@ public class Stop_Manager : MonoBehaviour
     public void Back_Btn()
     {
         SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
         StartCoroutine(Back_Window_Coroutine());
     }
 
@@ -214,15 +213,10 @@ public class Stop_Manager : MonoBehaviour
     #endregion
 
     #region 설정 버튼
-    public void Setting_Btn()
-    {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
-        StartCoroutine(Setting_Window_Coroutine01());
-    }
+    public void Setting_Btn() => StartCoroutine(Setting_Window_Coroutine01());
 
     public void Setting_Close_Btn()
     {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
         SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
         StartCoroutine(Setting_Window_Close());
     }
@@ -321,28 +315,22 @@ public class Stop_Manager : MonoBehaviour
 
     public void ResolutionSize_Left()
     {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
         if (Resolution_Num > 0)
             Resolution_Num--;
     }
 
     public void ResolutionSize_Right()
     {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
         if (Resolution_Num < 3)
             Resolution_Num++;
     }
     #endregion
 
     #region 플레이어 버튼
-    public void Player_Btn()
-    {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
-        StartCoroutine(Player_Window_Coroutine01());
-    }
+    public void Player_Btn() => StartCoroutine(Player_Window_Coroutine01());
+
     public void Player_Close_Btn()
     {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
         SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
         StartCoroutine(Player_Window_Close());
     }
@@ -437,7 +425,6 @@ public class Stop_Manager : MonoBehaviour
     {
         if (WI_Check == false)
         {
-            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
             PlayerWindow_Check = false;
             StartCoroutine(Player_Weapon_Open01());
         }
@@ -447,7 +434,6 @@ public class Stop_Manager : MonoBehaviour
     {
         if (WI_Check == true)
         {
-            SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
             PlayerWindow_Check = false;
             StartCoroutine(Player_Item_Open01());
         }
@@ -642,21 +628,12 @@ public class Stop_Manager : MonoBehaviour
     #endregion
 
     #region 메인화면 버튼
-    public void Main_Btn()
-    {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
-        StartCoroutine(Main_Window_Coroutine01());
-    }
+    public void Main_Btn() => StartCoroutine(Main_Window_Coroutine01());
 
-    public void Main_Yes_Btn()
-    {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
-        SceneManager.LoadScene("Main");
-    }
+    public void Main_Yes_Btn() => SceneManager.LoadScene("Main");
 
     public void Main_No_Btn()
     {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
         SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
         StartCoroutine(Main_Window_Close());
     }
@@ -730,21 +707,12 @@ public class Stop_Manager : MonoBehaviour
     #endregion
 
     #region 게임종료 버튼
-    public void Exit_Btn()
-    {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
-        StartCoroutine(Exit_Window_Coroutine01());
-    }
+    public void Exit_Btn() => StartCoroutine(Exit_Window_Coroutine01());
 
-    public void Exit_Yes_Btn()
-    {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
-        StartCoroutine(Exit_Window_Close());
-    }
+    public void Exit_Yes_Btn() => StartCoroutine(Exit_Window_Close());
 
     public void Exit_No_Btn()
     {
-        SoundManager.instance.PlaySoundClip("SFX_Button_Click", SoundType.SFX, 1f);
         SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.SFX, 1f);
         StartCoroutine(Exit_Window_Close());
     }
