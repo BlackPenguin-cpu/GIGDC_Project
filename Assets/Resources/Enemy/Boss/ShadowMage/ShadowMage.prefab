@@ -1,5 +1,77 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &970095994555140629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8340588952946358925}
+  - component: {fileID: 2663942460041482580}
+  - component: {fileID: 4233356915602054620}
+  m_Layer: 9
+  m_Name: AttackCollision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8340588952946358925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970095994555140629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6938915837740362929}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2663942460041482580
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970095994555140629}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4, y: -0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8, y: 2}
+  m_EdgeRadius: 0
+--- !u!114 &4233356915602054620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970095994555140629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e1c2967acab2c47aedb3d3ef0fbbd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponType: 0
+  index: 0
 --- !u!1 &7889676720889529069
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +83,10 @@ GameObject:
   - component: {fileID: 6938915837740362929}
   - component: {fileID: 4701612240658711756}
   - component: {fileID: 845175918249915367}
-  m_Layer: 0
+  - component: {fileID: 1386938858951504102}
+  - component: {fileID: 3570524298962145977}
+  - component: {fileID: 6505051380586823677}
+  m_Layer: 9
   m_Name: ShadowMage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +103,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.9023821, y: 2.4396534, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8340588952946358925}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -93,7 +169,7 @@ Animator:
   m_GameObject: {fileID: 7889676720889529069}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8428dfe7fa1f38b41bf1a95ad6877249, type: 2}
+  m_Controller: {fileID: 9100000, guid: f786f9ef71961f54c945ae0bd00b0c9a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -102,3 +178,82 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &1386938858951504102
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7889676720889529069}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.4, y: 4.44}
+    newSize: {x: 2.4, y: 4.44}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.4, y: 4.44}
+  m_EdgeRadius: 0
+--- !u!50 &3570524298962145977
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7889676720889529069}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &6505051380586823677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7889676720889529069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7921e33452e25545ad77adc42cf3d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  dimensionType: 0
+  maxHp: 0
+  hp: 0
+  coinDropValueRange:
+    Min: 0
+    Max: 0
+  crystalDropValueRange:
+    Min: 0
+    Max: 0
+  buffList:
+    stun: 0
+  attackSpeed: 1
+  attackDelay: 0
+  attackDamage: 0
+  isShielding: 0
+  ShieldObj: {fileID: 8279138678801979409, guid: 556aae5a2bf5d1d4aa179245ac9c894f, type: 3}
+  meteorObj: {fileID: 358660074950923744, guid: 4dead18cdbfdf4a44bae2c67e75cdb44, type: 3}
+  SpaceBoomObj: {fileID: 7652513191121189056, guid: 4b3ce477e6f007741a82b5016ff48f20, type: 3}
+  HommingProjectile: {fileID: -5710992840278562948, guid: f8880834be3f4db4f8cc9eebb04f2cb7, type: 3}

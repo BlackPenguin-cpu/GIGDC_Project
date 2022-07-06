@@ -698,6 +698,7 @@ public class Player : Entity, ITypePlayer
     {
         isAttack = false;
     }
+    //해당 함수는 애니메이터에서 호출
     public void AnimAttackFunc(int index)
     {
         if (DarkPlayer.Instance != null)
@@ -706,6 +707,7 @@ public class Player : Entity, ITypePlayer
         {
             if (attackCollision.index == index && attackCollision.weaponType == stat.weaponType)
             {
+                //WORK: 대운
                 if (stat.weaponType == PlayerWeaponType.Dagger && Input.GetAxisRaw("Horizontal") == (sprite.flipX ? -1 : 1) && stateOnAir == PlayerStateOnAir.NONE)
                 {
                     rigid.AddForce(Vector2.right * (sprite.flipX ? -1 : 1) * 5, ForceMode2D.Impulse);
