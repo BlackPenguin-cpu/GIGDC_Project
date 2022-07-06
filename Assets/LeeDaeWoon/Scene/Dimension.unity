@@ -12767,9 +12767,17 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 720925095}
+    - target: {fileID: 1200240743, guid: 6dca2c64dbfa11b46bb696ac29a0488c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1427270743262643259, guid: 6dca2c64dbfa11b46bb696ac29a0488c, type: 3}
       propertyPath: m_Name
       value: ManagerPackage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189494906135194329, guid: 6dca2c64dbfa11b46bb696ac29a0488c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5025156722862097626, guid: 6dca2c64dbfa11b46bb696ac29a0488c, type: 3}
       propertyPath: m_RootOrder
@@ -12813,6 +12821,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5025156722862097626, guid: 6dca2c64dbfa11b46bb696ac29a0488c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631395407191935380, guid: 6dca2c64dbfa11b46bb696ac29a0488c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

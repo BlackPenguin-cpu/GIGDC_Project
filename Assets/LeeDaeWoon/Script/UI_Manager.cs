@@ -38,6 +38,7 @@ public class UI_Manager : MonoBehaviour
     [Header("페이드인아웃")]
     public Image FadeInOut;
 
+    public bool King_Check = false;
 
     void Start()
     {
@@ -46,8 +47,17 @@ public class UI_Manager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad0))
-            SoundManager.instance.PlaySoundClip("BGM_Title (1)", SoundType.BGM);
+        if (Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            SceneManager.LoadScene("test");
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad6))
+        {
+            SceneManager.LoadScene("Main");
+        }
+
+        //if (Input.GetKeyDown(KeyCode.Keypad0))
+        //    SoundManager.instance.PlaySoundClip("BGM_Title (1)", SoundType.BGM);
 
         //Cursor.visible = Cursor_Fade;
 

@@ -33,9 +33,10 @@ public class King_Collision : MonoBehaviour
         NextDialogue_F();
 
         if (King.Inst.Magic_Creation == true)
-        {
             Foundation.Inst.MagicCircle_Rotation();
-        }
+
+        if (UI_Manager.Inst.King_Check == true)
+            King.Inst.King_NPC.DOFade(0f, 0f);
     }
 
     public void NextDialogue_F()
@@ -203,6 +204,7 @@ public class King_Collision : MonoBehaviour
                             yield return new WaitForSeconds(1f);
                             King.Inst.Magic_Creation = true;
                             King.Inst.Zoom_Shrinking();
+                            UI_Manager.Inst.King_Check = true;
                         }
                     }
 
@@ -212,6 +214,8 @@ public class King_Collision : MonoBehaviour
                         King.Inst.Dialogue_Text.DOPause();
                         King.Inst.Dialogue_Text.DOText(King.Inst.Dialogue[King.Inst.Sequence_Text], 0, richTextEnabled = true, scrambleMode = ScrambleMode.None, scrambleChars_Tool = null);
                     }
+
+                   
                 }
                 break;
         }
@@ -220,7 +224,7 @@ public class King_Collision : MonoBehaviour
 
     public IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<ITypePlayer>() != null)
+        if (collision.GetComponent<ITypePlayer>() != null && UI_Manager.Inst.King_Check == false)
         {
             King.Inst.Zoom_Expansion(); // 카메라 확대 시킨다.
             switch (area)
