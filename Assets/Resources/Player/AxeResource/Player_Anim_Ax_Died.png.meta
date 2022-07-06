@@ -1,0 +1,1092 @@
+fileFormatVersion: 2
+guid: b904d97c5b176ff4686946e74daa13bb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3330517194729422498
+    second: Player_Anim_Ax_Died_0
+  - first:
+      213: -528553498824694812
+    second: Player_Anim_Ax_Died_1
+  - first:
+      213: 8363644100748135552
+    second: Player_Anim_Ax_Died_2
+  - first:
+      213: -1177300215178619802
+    second: Player_Anim_Ax_Died_3
+  - first:
+      213: -199664417890687944
+    second: Player_Anim_Ax_Died_4
+  - first:
+      213: 4459616319060091037
+    second: Player_Anim_Ax_Died_5
+  - first:
+      213: 2086021191658953385
+    second: Player_Anim_Ax_Died_6
+  - first:
+      213: -8218129722078863623
+    second: Player_Anim_Ax_Died_7
+  - first:
+      213: -2901459779749742715
+    second: Player_Anim_Ax_Died_8
+  - first:
+      213: 5788799905293407875
+    second: Player_Anim_Ax_Died_9
+  - first:
+      213: 3462571012830582513
+    second: Player_Anim_Ax_Died_10
+  - first:
+      213: 4350219126549165765
+    second: Player_Anim_Ax_Died_11
+  - first:
+      213: -8295959640736054974
+    second: Player_Anim_Ax_Died_12
+  - first:
+      213: 9215233904548603437
+    second: Player_Anim_Ax_Died_13
+  - first:
+      213: 8820724487575613693
+    second: Player_Anim_Ax_Died_14
+  - first:
+      213: 6035113370435151832
+    second: Player_Anim_Ax_Died_15
+  - first:
+      213: 6464320221590530623
+    second: Player_Anim_Ax_Died_16
+  - first:
+      213: -7494167019228155297
+    second: Player_Anim_Ax_Died_17
+  - first:
+      213: -7844045563654985727
+    second: Player_Anim_Ax_Died_18
+  - first:
+      213: 7997572664854192470
+    second: Player_Anim_Ax_Died_19
+  - first:
+      213: 3579383600271564243
+    second: Player_Anim_Ax_Died_20
+  - first:
+      213: -6091505397645440691
+    second: Player_Anim_Ax_Died_21
+  - first:
+      213: -7753366465109044549
+    second: Player_Anim_Ax_Died_22
+  - first:
+      213: -7261208437045217713
+    second: Player_Anim_Ax_Died_23
+  - first:
+      213: 2763141267467123041
+    second: Player_Anim_Ax_Died_24
+  - first:
+      213: 5123859255958778556
+    second: Player_Anim_Ax_Died_25
+  - first:
+      213: 6458635186470065171
+    second: Player_Anim_Ax_Died_26
+  - first:
+      213: 2515955601960187468
+    second: Player_Anim_Ax_Died_27
+  - first:
+      213: -6434257957497428581
+    second: Player_Anim_Ax_Died_28
+  - first:
+      213: -3376483846293065874
+    second: Player_Anim_Ax_Died_29
+  - first:
+      213: -5842009713637612501
+    second: Player_Anim_Ax_Died_30
+  - first:
+      213: -8271853413613861507
+    second: Player_Anim_Ax_Died_31
+  - first:
+      213: 8102979652279082624
+    second: Player_Anim_Ax_Died_32
+  - first:
+      213: -3053035304568471776
+    second: Player_Anim_Ax_Died_33
+  - first:
+      213: 4117903717160880633
+    second: Player_Anim_Ax_Died_34
+  - first:
+      213: -3993619987268015271
+    second: Player_Anim_Ax_Died_35
+  - first:
+      213: 6251951708297406499
+    second: Player_Anim_Ax_Died_36
+  - first:
+      213: -4947748281929903085
+    second: Player_Anim_Ax_Died_37
+  - first:
+      213: -7197747359581152741
+    second: Player_Anim_Ax_Died_38
+  - first:
+      213: -5317434534885612343
+    second: Player_Anim_Ax_Died_39
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5182d9d140a7c1d0800000000000000
+      internalID: -3330517194729422498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_1
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e3a3c9a4633aa8f0800000000000000
+      internalID: -528553498824694812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_2
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08c42e44ff1a11470800000000000000
+      internalID: 8363644100748135552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_3
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 664994021b369afe0800000000000000
+      internalID: -1177300215178619802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_4
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83427511546aa3df0800000000000000
+      internalID: -199664417890687944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_5
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d90ac140a6db3ed30800000000000000
+      internalID: 4459616319060091037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_6
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aad4cab83903fc10800000000000000
+      internalID: 2086021191658953385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_7
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fed86d2f8653fd80800000000000000
+      internalID: -8218129722078863623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_8
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 587fee1f3b1fbb7d0800000000000000
+      internalID: -2901459779749742715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_9
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38614dee7d2f55050800000000000000
+      internalID: 5788799905293407875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_10
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f6d45d9df58d0030800000000000000
+      internalID: 3462571012830582513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_11
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c6b2154f351f5c30800000000000000
+      internalID: 4350219126549165765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_12
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24143fe19a4dedc80800000000000000
+      internalID: -8295959640736054974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_13
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2661ca696613ef70800000000000000
+      internalID: 9215233904548603437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_14
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df0b88fef22896a70800000000000000
+      internalID: 8820724487575613693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_15
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d76fff82a701c350800000000000000
+      internalID: 6035113370435151832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_16
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3a274afdf0e5b950800000000000000
+      internalID: 6464320221590530623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_17
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5235734dce5ff790800000000000000
+      internalID: -7494167019228155297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_18
+      rect:
+        serializedVersion: 2
+        x: 2484
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 108ad509e1a542390800000000000000
+      internalID: -7844045563654985727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_19
+      rect:
+        serializedVersion: 2
+        x: 2622
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 651220a37f51dfe60800000000000000
+      internalID: 7997572664854192470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_20
+      rect:
+        serializedVersion: 2
+        x: 2760
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd9b098b668ca130800000000000000
+      internalID: 3579383600271564243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_21
+      rect:
+        serializedVersion: 2
+        x: 2898
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4908f17d10a67ba0800000000000000
+      internalID: -6091505397645440691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_22
+      rect:
+        serializedVersion: 2
+        x: 3036
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb2dfb17742866490800000000000000
+      internalID: -7753366465109044549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_23
+      rect:
+        serializedVersion: 2
+        x: 3174
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f46b9d5e5610b3b90800000000000000
+      internalID: -7261208437045217713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_24
+      rect:
+        serializedVersion: 2
+        x: 3312
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 169b99fc756a85620800000000000000
+      internalID: 2763141267467123041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_25
+      rect:
+        serializedVersion: 2
+        x: 3450
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb2358e88da9b1740800000000000000
+      internalID: 5123859255958778556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_26
+      rect:
+        serializedVersion: 2
+        x: 3588
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31413679b7ea1a950800000000000000
+      internalID: 6458635186470065171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_27
+      rect:
+        serializedVersion: 2
+        x: 3726
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c46bd753a487ae220800000000000000
+      internalID: 2515955601960187468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_28
+      rect:
+        serializedVersion: 2
+        x: 3864
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b95a2225a7ce4b6a0800000000000000
+      internalID: -6434257957497428581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_29
+      rect:
+        serializedVersion: 2
+        x: 4002
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6f6bd7c4d15421d0800000000000000
+      internalID: -3376483846293065874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_30
+      rect:
+        serializedVersion: 2
+        x: 4140
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b24af342e130deea0800000000000000
+      internalID: -5842009713637612501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_31
+      rect:
+        serializedVersion: 2
+        x: 4278
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d75817f7529743d80800000000000000
+      internalID: -8271853413613861507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_32
+      rect:
+        serializedVersion: 2
+        x: 4416
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08e1054ff01937070800000000000000
+      internalID: 8102979652279082624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_33
+      rect:
+        serializedVersion: 2
+        x: 4554
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02f3870f09071a5d0800000000000000
+      internalID: -3053035304568471776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_34
+      rect:
+        serializedVersion: 2
+        x: 4692
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f982a8fc9bb52930800000000000000
+      internalID: 4117903717160880633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_35
+      rect:
+        serializedVersion: 2
+        x: 4830
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95b6dfad7cfc398c0800000000000000
+      internalID: -3993619987268015271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_36
+      rect:
+        serializedVersion: 2
+        x: 4968
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 328a6f554f463c650800000000000000
+      internalID: 6251951708297406499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_37
+      rect:
+        serializedVersion: 2
+        x: 5106
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 314d481e621165bb0800000000000000
+      internalID: -4947748281929903085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_38
+      rect:
+        serializedVersion: 2
+        x: 5244
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1ad82969e67c1c90800000000000000
+      internalID: -7197747359581152741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Anim_Ax_Died_39
+      rect:
+        serializedVersion: 2
+        x: 5382
+        y: 0
+        width: 138
+        height: 83
+      alignment: 9
+      pivot: {x: 0.82, y: 0.26}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c4afb7a67da436b0800000000000000
+      internalID: -5317434534885612343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
