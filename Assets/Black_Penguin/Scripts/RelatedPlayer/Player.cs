@@ -675,6 +675,7 @@ public class Player : Entity, ITypePlayer
         text.damageValue = atkDmg;
         text.isCrit = isCrit;
         text.dimensionType = target.dimensionType;
+        text.Init();
 
         if (stat.skillInfo.axeEarthQuake)
         {

@@ -194,8 +194,6 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     /// </summary>
     public override void Die()
     {
-
-
         onDie.Invoke();
     }
 
@@ -230,7 +228,7 @@ public class BaseEnemy : Entity, IObjectPoolingObj
         HealthBarObj.transform.GetChild(0).GetComponent<SpriteRenderer>().size = new Vector2(hp / _maxHp, 1);
     }
 
-    IEnumerator HitEffectCoroutine()
+    public IEnumerator HitEffectCoroutine()
     {
         _state = EnemyState.HIT;
         sprite.color = Color.red;

@@ -6,7 +6,7 @@ public enum ProjectileType
 {
     Basic,
     Target,
-    Homing
+    Homming
 }
 [RequireComponent(typeof(BoxCollider2D))]
 public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
@@ -20,6 +20,7 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
     public bool canPierce;
     public ProjectileType projectileType;
     public DimensionType dimensionType = DimensionType.NONE;
+    public GameObject onDestroyObj;
 
     private SpriteRenderer sprite;
     private Player player;
@@ -45,11 +46,11 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
             }
             transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
-        else if (projectileType == ProjectileType.Homing)
+        else if (projectileType == ProjectileType.Homming)
         {
             Vector2 len = target.transform.position - transform.position;
             float z = Mathf.Atan2(len.y, len.x) * Mathf.Rad2Deg;
-            transform.Rotate(new Vector3(0, 0, z) * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(0, 0, z);
             transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
         else if (projectileType == ProjectileType.Basic)
@@ -72,16 +73,22 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
         if (shootSelf.TryGetComponent(out BaseEnemy enemy) && collision.GetComponent<ITypePlayer>() != null)
         {
             shootSelf.Attack(player, damage);
+            if (onDestroyObj != null)
+                ObjectPool.Instance.CreateObj(onDestroyObj, transform.position, transform.rotation);
             ObjectPool.Instance.DeleteObj(gameObject);
         }
         else if (shootSelf.GetComponent<Player>() && collision.TryGetComponent(out BaseEnemy enemy1))
         {
             shootSelf.Attack(enemy1, damage);
             if (!canPierce)
+            {
+                if (onDestroyObj != null)
+                    ObjectPool.Instance.CreateObj(onDestroyObj, transform.position, transform.rotation);
                 ObjectPool.Instance.DeleteObj(gameObject);
+            }
         }
     }
-    public void Init(Entity shootSelf, float damage, float speed, float startWaitTime, ProjectileType projectileType, GameObject target = null)
+    public void Init(Entity shootSelf, float damage, float speed, float startWaitTime, ProjectileType projectileType, GameObject target = null, float duration = 3)
     {
         this.shootSelf = shootSelf;
         this.damage = damage;
@@ -89,6 +96,7 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
         this.startWaitTime = startWaitTime;
         this.target = target;
         this.projectileType = projectileType;
+        this.duration = duration;
     }
 
     public void OnObjCreate()

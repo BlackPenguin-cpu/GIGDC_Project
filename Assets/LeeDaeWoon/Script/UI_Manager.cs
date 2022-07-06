@@ -80,10 +80,9 @@ public class UI_Manager : MonoBehaviour
         HP_Bar = Bar.transform.localScale.y;
         HP = Player.Instance.stat._hp / Player.Instance.stat._maxHp;
 
-        Bar.transform.localScale = new Vector3(1, Mathf.Lerp(HP_Bar, HP, Time.deltaTime), 1);
 
         if (HP_Bar > HP)
-            Bar.transform.localScale = new Vector3(1, Mathf.Lerp(HP_Bar, HP - 0.00001f, Time.deltaTime), 1);
+            Bar.transform.localScale = new Vector3(1, Mathf.Lerp(HP_Bar, HP - 0.00001f, Time.deltaTime * 10), 1);
 
     }
     #endregion
