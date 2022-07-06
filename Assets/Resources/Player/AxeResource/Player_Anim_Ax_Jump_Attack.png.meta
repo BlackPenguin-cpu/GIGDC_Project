@@ -295,9 +295,9 @@ TextureImporter:
       name: Player_Anim_Ax_Jump_Attack_7
       rect:
         serializedVersion: 2
-        x: 1484
+        x: 1485
         y: 0
-        width: 212
+        width: 211
         height: 344
       alignment: 9
       pivot: {x: 0.4, y: 0.2}

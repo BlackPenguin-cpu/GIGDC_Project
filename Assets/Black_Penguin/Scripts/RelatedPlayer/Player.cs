@@ -709,7 +709,6 @@ public class Player : Entity, ITypePlayer
     {
         if (DarkPlayer.Instance != null)
             DarkPlayer.Instance.OnAttack(stat.weaponType, index);
-        Debug.Log("asd");
         //AttackSoundPlay();
         foreach (AttackCollision attackCollision in attackCollisions)
         {

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public Material OverMaterial;
     public Material UnderMaterial;
+    public GameObject DropGoods;
     private Player player;
 
     private int coin;
