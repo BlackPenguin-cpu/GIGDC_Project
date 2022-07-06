@@ -122,16 +122,17 @@ public class ObjectPool : MonoBehaviour
         builder.Replace("(Clone)", "");
         return builder.ToString();
     }
+    void CleanChildObj()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+    }
 
     private void OnLevelWasLoaded(int level)
     {
         CleanChildObj();
     }
-    void CleanChildObj()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            Destroy(transform.GetChild(i));
-        }
-    }
+
 }
