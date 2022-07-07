@@ -76,16 +76,12 @@ public class WaveManager : MonoBehaviour
             SummonedEnemies.Clear();
         }
         Card_Manager.Inst.AddCard();
-        if (waveNum == 3 || waveNum == 5)
-        {
-            StartCoroutine(Potal.Inst.Potal_Move());
-        }
+
     }
     IEnumerator WaveSpawn(List<EnemySpawnInfo> enemySpawnInfos)
     {
         foreach (EnemySpawnInfo enemySpawnInfo in enemySpawnInfos)
         {
-            Debug.Log(enemySpawnInfo.enemyObj);
             SummonedEnemies.Add(ObjectPool.Instance.CreateObj(enemySpawnInfo.enemyObj, enemySpawnPos.returnPos(enemySpawnInfo.posIndex), Quaternion.identity));
             yield return new WaitForSeconds(enemySpawnInfo.time);
         }
