@@ -76,8 +76,7 @@ public class ObjectPool : MonoBehaviour
                 returnObj = Instantiate(obj, ParentObj[obj.name].parentObj.transform);
             }
             ParentObj[obj.name].objActiveQueue.Enqueue(returnObj);
-            if (!isNotStartFunc)
-                OnObjCreate(returnObj);
+            //if (!isNotStartFunc) OnObjCreate(returnObj);
             return returnObj;
         }
     }

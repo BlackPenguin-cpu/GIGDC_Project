@@ -455,5 +455,5 @@ MonoBehaviour:
       - time: 1.5
         posIndex: 3
         enemyObj: {fileID: 4367862497914151025, guid: 9dee328ee4f934245acb4cb78008ee3f, type: 3}
-  m_WaveNum: 0
+  m_WaveNum: 1
   middleBoss: {fileID: 7889676720889529069, guid: e00fdf5a45dfd6e44b00a2056cbd8b64, type: 3}

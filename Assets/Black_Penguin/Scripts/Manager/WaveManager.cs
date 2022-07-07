@@ -65,9 +65,10 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator WaveProcessing(int waveNum)
     {
-        if (waveNum >= 6)
+        if (waveNum >= 5)
         {
             ObjectPool.Instance.CreateObj(middleBoss, new Vector3(0, 2, 0), Quaternion.identity);
+            yield break;
         }
         int[] waveOrder = new int[5] { 0, 1, 2, 3, 4 };
         System.Random random = new System.Random();

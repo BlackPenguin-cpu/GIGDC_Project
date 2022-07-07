@@ -46,6 +46,7 @@ public class ShadowMage : BaseEnemy
         rigid = GetComponent<Rigidbody2D>();
         attackCollisions = GetComponentsInChildren<AttackCollision>();
 
+        Debug.Log(gameObject.name);
         hp = _maxHp;
         sprite.color = Color.white;
 
