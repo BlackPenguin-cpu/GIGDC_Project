@@ -31,6 +31,12 @@ public class UI_Manager : MonoBehaviour
     public float HP;
     public GameObject Bar;
 
+    public Image FadeInOut_Die;
+    public Text Die_Text;
+    public Text Any_Text;
+
+    public bool Once_Check = false;
+
     [Header("마우스 포인터")]
     public Texture2D MousePointer;
     public bool Cursor_Fade;
@@ -40,26 +46,29 @@ public class UI_Manager : MonoBehaviour
 
     public bool King_Check = false;
 
+    public bool DarkPlayerGet_Check;
+
     void Start()
     {
+
         Cursor.SetCursor(MousePointer, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad5))
+        if (Input.GetKey(KeyCode.Q))
         {
-            SceneManager.LoadScene("test");
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad6))
-        {
-            SceneManager.LoadScene("Main");
+            SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.BGM);
         }
 
-        //if (Input.GetKeyDown(KeyCode.Keypad0))
-        //    SoundManager.instance.PlaySoundClip("BGM_Title (1)", SoundType.BGM);
+        Die_System();
 
-        //Cursor.visible = Cursor_Fade;
+        if (DarkPlayerGet_Check == true && SceneManager.GetActiveScene().name == "Main")
+        {
+            DarkPlayerGet_Check = false;
+            Destroy(GameObject.Find("DarkPlayer"));
+            Debug.Log("asdfasdf");
+        }
 
         Timer_System();
         Money_System();
@@ -78,6 +87,20 @@ public class UI_Manager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if (SceneManager.GetActiveScene().name == "Main")
+        {
+            DarkPlayerGet_Check = true;
+            Player.Instance._hp = Player.Instance._maxHp;
+            Player.Instance.state = PlayerState.Idle;
+            FadeInOut_Die.color = new Color(0, 0, 0, 0);
+            Die_Text.color = new Color(255,255,255, 0);
+            Any_Text.color = new Color(255, 255, 255, 0);
+            Debug.Log("!");
         }
     }
 
@@ -140,6 +163,23 @@ public class UI_Manager : MonoBehaviour
             Bar.transform.localScale = new Vector3(1, Mathf.Lerp(HP_Bar, HP - 0.00001f, Time.deltaTime * 20), 1);
         else
             Bar.transform.localScale = new Vector3(1, Mathf.Lerp(HP_Bar, HP, Time.deltaTime * 20), 1);
+    }
+
+    public void Die_System()
+    {
+        if (SceneManager.GetActiveScene().name == "test")
+        {
+            if (Input.anyKeyDown && Once_Check == true)
+                SceneManager.LoadScene("Main");
+
+            if (Once_Check == false && HP_Bar <= 0)
+            {
+                FadeInOut_Die.DOFade(0.5f, 1f);
+                Die_Text.DOFade(1f, 1f);
+                Any_Text.DOFade(1f, 1f);
+                Once_Check = true;
+            }
+        }
     }
     #endregion
 
