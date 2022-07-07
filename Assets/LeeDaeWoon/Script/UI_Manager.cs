@@ -98,7 +98,7 @@ public class UI_Manager : MonoBehaviour
             Min = 0;
 
             FadeInOut_Die.color = new Color(0, 0, 0, 0);
-            Die_Text.color = new Color(255,255,255, 0);
+            Die_Text.color = new Color(255, 255, 255, 0);
             Any_Text.color = new Color(255, 255, 255, 0);
         }
     }
@@ -120,16 +120,13 @@ public class UI_Manager : MonoBehaviour
     #region ¿Á»≠
     public void Money_System()
     {
-        GameManager.Instance._coin = Gold;
-        GameManager.Instance.crystal = Dimensional;
-
-        Gold_Text.text = "" + Gold;
-        Dimensional_Text.text = "" + Dimensional;
+        Gold_Text.text = GameManager.Instance._coin.ToString();
+        Dimensional_Text.text = GameManager.Instance.crystal.ToString();
 
         if (Input.GetKeyDown(KeyCode.G))
-            Gold += 1000;
+            GameManager.Instance._coin += 1000;
         if (Input.GetKeyDown(KeyCode.M))
-            Dimensional += 1000;
+            GameManager.Instance.crystal += 1000;
     }
 
     #endregion

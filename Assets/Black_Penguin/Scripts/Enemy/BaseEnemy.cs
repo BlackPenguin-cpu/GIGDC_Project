@@ -94,7 +94,6 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     }
     public virtual void OnDieActionAdd()
     {
-        onDie += () => MaterialDrop();
         onDie += () => ObjectPool.Instance.CreateObj(GameManager.Instance.DropGoods, transform.position, transform.rotation);
         onDie += () => Player.Instance.DaggerSkill2(); // HOLY SHIT
         onDie += () => CameraManager.Instance.CameraShake(0.1f, 0.4f, 0.05f);
@@ -216,6 +215,7 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     /// </summary>
     public override void Die()
     {
+        MaterialDrop();
         onDie.Invoke();
     }
 
@@ -225,6 +225,7 @@ public class BaseEnemy : Entity, IObjectPoolingObj
         int coinDropValue = crystalDropValueRange.randomRangeIntReturn();
         GameManager.Instance.crystal += crystalDropValue;
         GameManager.Instance._coin += coinDropValue;
+        Debug.Log(GameManager.Instance.crystal);
     }
     /// <summary>
     /// OnHit

@@ -3185,6 +3185,7 @@ MonoBehaviour:
   OverMaterial: {fileID: 2100000, guid: b702f3187879d3649bf20943c7c1fbae, type: 2}
   UnderMaterial: {fileID: 2100000, guid: 6f953eabab1814b4387c17ccac674cc9, type: 2}
   DropGoods: {fileID: 5694552530704781557, guid: fe6adac617191e64bb01862642d975df, type: 3}
+  coin: 0
   crystal: 0
 --- !u!4 &1143426505
 Transform:
@@ -5835,6 +5836,10 @@ PrefabInstance:
       propertyPath: m_WaveNum
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 770237838035848337, guid: 66006a8173ab5614f9e321c766d6925b, type: 3}
+      propertyPath: middleBoss
+      value: 
+      objectReference: {fileID: 7889676720889529069, guid: e00fdf5a45dfd6e44b00a2056cbd8b64, type: 3}
     - target: {fileID: 770237838035848337, guid: 66006a8173ab5614f9e321c766d6925b, type: 3}
       propertyPath: wavePatterns.Array.size
       value: 5

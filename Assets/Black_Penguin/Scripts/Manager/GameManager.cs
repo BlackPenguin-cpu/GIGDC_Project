@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject DropGoods;
     private Player player;
 
-    private int coin;
+    [SerializeField] private int coin;
     public int _coin
     {
         get { return coin; }
