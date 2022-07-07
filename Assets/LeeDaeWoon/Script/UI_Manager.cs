@@ -92,7 +92,7 @@ public class UI_Manager : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        if (SceneManager.GetActiveScene().name == "Main")
+        if (Once_Check == true && SceneManager.GetActiveScene().name == "Main")
         {
             DarkPlayerGet_Check = true;
             Player.Instance._hp = Player.Instance._maxHp;
