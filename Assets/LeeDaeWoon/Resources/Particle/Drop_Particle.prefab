@@ -9688,6 +9688,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ea70a0d03e6c64b9798aaa02d413bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Gold_Particle: {fileID: 2630811969839523219}
+  Dimension_Particle: {fileID: 2630811970439626715}
 --- !u!1 &5694552531482117632
 GameObject:
   m_ObjectHideFlags: 0

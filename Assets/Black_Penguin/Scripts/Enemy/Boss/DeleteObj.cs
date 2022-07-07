@@ -1,14 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DeleteObj : MonoBehaviour , IObjectPoolingObj
+public class DeleteObj : MonoBehaviour, IObjectPoolingObj
 {
-    public ParticleSystem Gold_Particle;
-    public ParticleSystem Dimension_Particle;
+    private ParticleSystem ps;
+    private ParticleSystem ps2;
 
     public void OnObjCreate()
     {
+    }
+
+    public void Start()
+    {
+        ps = transform.GetChild(0).GetComponent<ParticleSystem>();
+        ps2 = transform.GetChild(1).GetComponent<ParticleSystem>();
+    }
+
+    private void Update()
+    {
+        if (this.gameObject.transform.localPosition.y < 0)
+        {
+            var main = ps.main;
+            var main2 = ps2.main;
+            main.gravityModifierMultiplier = -1f;
+            main2.gravityModifierMultiplier = -1f;
+        }
     }
 
     void DeleteThis()
@@ -16,11 +31,4 @@ public class DeleteObj : MonoBehaviour , IObjectPoolingObj
         ObjectPool.Instance.DeleteObj(gameObject);
     }
 
-    //public void Particle_Gravity()
-    //{
-    //    if (this.gameObject.transform.localPosition.y >= -1)
-    //    {
-    //        Gold_Particle.gravityModifier = -1;
-    //    }
-    //}
 }

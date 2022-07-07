@@ -50,24 +50,18 @@ public class UI_Manager : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         Cursor.SetCursor(MousePointer, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q))
-        {
-            SoundManager.instance.PlaySoundClip("SFX_Window", SoundType.BGM);
-        }
-
         Die_System();
 
         if (DarkPlayerGet_Check == true && SceneManager.GetActiveScene().name == "Main")
         {
             DarkPlayerGet_Check = false;
             Destroy(GameObject.Find("DarkPlayer"));
-            Debug.Log("asdfasdf");
         }
 
         Timer_System();
@@ -94,13 +88,18 @@ public class UI_Manager : MonoBehaviour
     {
         if (Once_Check == true && SceneManager.GetActiveScene().name == "Main")
         {
+            Once_Check = false;
             DarkPlayerGet_Check = true;
+
             Player.Instance._hp = Player.Instance._maxHp;
             Player.Instance.state = PlayerState.Idle;
+            WaveManager.Instance.m_WaveNum = 1;
+            Sec = 0;
+            Min = 0;
+
             FadeInOut_Die.color = new Color(0, 0, 0, 0);
             Die_Text.color = new Color(255,255,255, 0);
             Any_Text.color = new Color(255, 255, 255, 0);
-            Debug.Log("!");
         }
     }
 
