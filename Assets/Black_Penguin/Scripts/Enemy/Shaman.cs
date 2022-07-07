@@ -8,7 +8,7 @@ public class Shaman : BaseEnemy
     protected override void Start()
     {
         //±âº» ½ºÅÝ
-        BaseStatSet(800, 15, 0, 6, 90, 100, 70, 80, 0.5f);
+        BaseStatSet(280, 15, 0, 6, 90, 100, 70, 80, 0.5f);
         base.Start();
     }
     protected override void Update()

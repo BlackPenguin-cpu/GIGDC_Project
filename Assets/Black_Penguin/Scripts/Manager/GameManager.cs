@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F1))
         {
             Player.Instance.stat._level[Player.Instance.stat.weaponType]++;
+            Player.Instance.stat.LevelStat();
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {

@@ -51,7 +51,7 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     public EnemyBuffList buffList = new EnemyBuffList();
     public int HealingOrbChance;
 
-    protected EnemyState state;
+    [SerializeField] protected EnemyState state;
     private GameObject HealingOrbObj;
     public virtual EnemyState _state
     {
@@ -121,6 +121,7 @@ public class BaseEnemy : Entity, IObjectPoolingObj
         rigid = GetComponent<Rigidbody2D>();
         attackCollisions = GetComponentsInChildren<AttackCollision>();
 
+        state = EnemyState.MOVE;
         hp = _maxHp;
         sprite.color = Color.white;
         if (transform.position.y < 0)
