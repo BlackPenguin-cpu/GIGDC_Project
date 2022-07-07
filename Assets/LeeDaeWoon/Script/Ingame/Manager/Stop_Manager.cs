@@ -117,6 +117,7 @@ public class Stop_Manager : MonoBehaviour
     {
         WI_Check = true;
         InPause = false;
+        Start_Sound();
     }
 
     void Update()
@@ -125,6 +126,7 @@ public class Stop_Manager : MonoBehaviour
         WeaponType();
         Resolution_Size();
         Sound_Control();
+
 
         // ESC 키를 누르면 일시정지 창이 열린다.
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -333,7 +335,7 @@ public class Stop_Manager : MonoBehaviour
 
     public void Sound_Control()
     {
-        BGM_Slider.value = SoundManager.instance.audioSourceClasses[SoundType.BGM].audioVolume;
+        SoundManager.instance.audioSourceClasses[SoundType.BGM].audioVolume = BGM_Slider.value;
     }
     #endregion
 
