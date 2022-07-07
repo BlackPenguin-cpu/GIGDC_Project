@@ -3361,6 +3361,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ManagerPackage
       objectReference: {fileID: 0}
+    - target: {fileID: 4992396103262175384, guid: 6dca2c64dbfa11b46bb696ac29a0488c, type: 3}
+      propertyPath: Skill_Up.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d0fefc4c4bfc7d84595508500426998e, type: 2}
+    - target: {fileID: 4992396103262175384, guid: 6dca2c64dbfa11b46bb696ac29a0488c, type: 3}
+      propertyPath: Skill_Down.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d9f100c8b1f93ba4ba4d3a7fd067e1d4, type: 2}
     - target: {fileID: 5025156722862097626, guid: 6dca2c64dbfa11b46bb696ac29a0488c, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -5834,7 +5842,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 770237838035848337, guid: 66006a8173ab5614f9e321c766d6925b, type: 3}
       propertyPath: m_WaveNum
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 770237838035848337, guid: 66006a8173ab5614f9e321c766d6925b, type: 3}
       propertyPath: middleBoss

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShadowMage : BaseEnemy
 {
@@ -9,6 +10,8 @@ public class ShadowMage : BaseEnemy
     [SerializeField] GameObject meteorObj;
     [SerializeField] GameObject SpaceBoomObj;
     [SerializeField] AttackProjectile HommingProjectile;
+
+    [SerializeField] RectTransform HealthFillImage;
     public override float _hp
     {
         get => base._hp;
@@ -16,6 +19,15 @@ public class ShadowMage : BaseEnemy
         {
             if (isShielding) return;
             base._hp = value;
+        }
+    }
+    public override EnemyState _state
+    {
+        get => base._state;
+        set
+        {
+            if (state == EnemyState.DIE) return;
+            base._state = value;
         }
     }
     protected override void Start()
@@ -33,6 +45,8 @@ public class ShadowMage : BaseEnemy
         }
         if (_state == EnemyState.HIT)
             curAttackDelay = 0;
+
+        HealthFillImage.localScale = new Vector2(1, hp / maxHp);
 
         curAttackDelay += Time.deltaTime;
         buffList.stun -= Time.deltaTime;
@@ -150,7 +164,7 @@ public class ShadowMage : BaseEnemy
         }
         dimensionType = (dimensionType == DimensionType.OVER ? DimensionType.UNDER : DimensionType.OVER);
         sprite.flipY = !sprite.flipY;
-        transform.position = new Vector3(transform.position.x, -transform.position.y);
+        transform.position = new Vector3(transform.position.x + Random.Range(-10, 10), -transform.position.y);
         rigid.gravityScale = -rigid.gravityScale;
         while (value < 1)
         {
@@ -164,5 +178,19 @@ public class ShadowMage : BaseEnemy
         if (isShielding) return;
         rigid.AddForce(new Vector3(transform.position.x > atkEntity.transform.position.x ? 40 : -40, 0, 0));
         StartCoroutine(HitEffectCoroutine());
+    }
+    public override void OnDieActionAdd()
+    {
+        onDie += () => ObjectPool.Instance.CreateObj(GameManager.Instance.DropGoods, transform.position, transform.rotation);
+        onDie += () => Player.Instance.DaggerSkill2(); // HOLY SHIT
+        onDie += () => CameraManager.Instance.CameraShake(1f, 0.6f, 0.05f);
+        onDie += () => player.BloodGauntletAction(this);
+        onDie += () => _state = EnemyState.DIE;
+        onDie += () => DropHealingOrbObj();
+    }
+    void OnDelete()
+    {
+        ObjectPool.Instance.DeleteObj(gameObject);
+        UI_Manager.Inst.Die_System();
     }
 }
