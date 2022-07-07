@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class BGM_Sound : MonoBehaviour
 {
     public static BGM_Sound Inst { get; private set; }
+    public bool Boss_BGM_Check = false;
+
     private void Awake()
     {
         if (Inst == null)
@@ -32,13 +34,14 @@ public class BGM_Sound : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "test")
             SoundManager.instance.PlaySoundClip("BGM_Ingame_01", SoundType.BGM, 5f);
-
-        if (SceneManager.GetActiveScene().name == "보스스테이지")
-            SoundManager.instance.PlaySoundClip("BGM_Boss_01", SoundType.BGM, 5f);
     }
 
     void Update()
     {
-
+        if (SceneManager.GetActiveScene().name == "test" && WaveManager.Instance.m_WaveNum == 6 && Boss_BGM_Check == false)
+        {
+            Boss_BGM_Check = true;
+            SoundManager.instance.PlaySoundClip("BGM_Boss_01", SoundType.BGM, 5f);
+        }
     }
 }
