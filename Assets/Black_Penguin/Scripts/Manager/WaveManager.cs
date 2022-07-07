@@ -56,6 +56,8 @@ public class WaveManager : MonoBehaviour
     readonly baseEnemySpawnPos enemySpawnPos = new baseEnemySpawnPos();
     private List<GameObject> SummonedEnemies = new List<GameObject>();
 
+    [SerializeField] GameObject middleBoss;
+
     private void Start()
     {
         StartCoroutine(WaveProcessing(m_WaveNum - 1));
@@ -63,6 +65,10 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator WaveProcessing(int waveNum)
     {
+        if (waveNum >= 6)
+        {
+            ObjectPool.Instance.CreateObj(middleBoss, new Vector3(0, 2, 0), Quaternion.identity);
+        }
         int[] waveOrder = new int[5] { 0, 1, 2, 3, 4 };
         System.Random random = new System.Random();
         waveOrder = waveOrder.OrderBy(x => random.Next()).ToArray();
@@ -76,7 +82,7 @@ public class WaveManager : MonoBehaviour
             SummonedEnemies.Clear();
         }
         Card_Manager.Inst.AddCard();
-
+        m_WaveNum++;
     }
     IEnumerator WaveSpawn(List<EnemySpawnInfo> enemySpawnInfos)
     {
