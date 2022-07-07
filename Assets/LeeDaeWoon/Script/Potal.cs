@@ -24,8 +24,12 @@ public class Potal : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Keypad4))
-            StartCoroutine(Potal_Move());
+            Potal_M();
     }
+
+    public void Potal_M() =>
+        StartCoroutine(Potal_Move());
+
     public IEnumerator Potal_Move()
     {
         if (Potal_Check == false && SceneManager.GetActiveScene().name == "test")
