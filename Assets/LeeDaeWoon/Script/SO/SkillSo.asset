@@ -29,19 +29,19 @@ MonoBehaviour:
     E_Name: DeathStrom
     Icon: {fileID: 21300000, guid: 1042f73155cb525448d54037b420e534, type: 3}
     Explanation: "\uAC70\uB300\uD55C \uD0DC\uD48D\uC774 \uBAA8\uB4E0\uAC78 \uD729\uC4F4\uB2E4."
-    CoolTime: 40
+    CoolTime: 20
     Percent_01: 20
     Gold_01: 1650
     Percent_02: 20
     Gold_02: 4360
-    Percent_03: 5
+    Percent_03: 10
     Gold_03: 6221
   - Name: "\uD0DC\uC591\uC2E0\uC758 \uBE5B"
     E_Name: SolarGodLight
     Icon: {fileID: 21300000, guid: 03395ee9d0149de409a35a35d188e787, type: 3}
     Explanation: "\uD0DC\uC591\uC2E0\uC758 \uC131\uC2A4\uB7EC\uC6B4 \uBE5B\uC774
       \uB208\uC744 \uBA40\uAC8C\uD55C\uB2E4."
-    CoolTime: 20
+    CoolTime: 10
     Percent_01: 20
     Gold_01: 1650
     Percent_02: 20
@@ -53,82 +53,82 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: 79aaa75c6e0216a4383dc1a6bb87eea5, type: 3}
     Explanation: "\uC0AC\uC6A9\uD558\uBA74 \uB370\uBBF8\uC9C0\uC640 \uACE8\uB4DC\uB97C
       \uC5BB\uB294\uB2E4."
-    CoolTime: 25
+    CoolTime: 15
     Percent_01: 20
     Gold_01: 1650
     Percent_02: 15
     Gold_02: 4360
-    Percent_03: 0
+    Percent_03: 5
     Gold_03: 0
   - Name: "\uC9C0\uB2C8\uC758 \uB9C8\uBC95"
     E_Name: Jeany
     Icon: {fileID: 21300000, guid: 89a3de6e46b2c8147a0e10fc843fba35, type: 3}
     Explanation: "\uB7A8\uD504\uC758 \uBD09\uC778\uB41C \uB9C8\uC2E0\uC774 \uC77C\uACA9\uC744
       \uB0A0\uB9B0\uB2E4."
-    CoolTime: 30
+    CoolTime: 15
     Percent_01: 10
     Gold_01: 1650
     Percent_02: 10
     Gold_02: 4360
-    Percent_03: 10
+    Percent_03: 20
     Gold_03: 6221
   - Name: "\uD639\uD55C\uAE30"
     E_Name: 
     Icon: {fileID: 21300000, guid: ddaeb33484a20c44b8b24916ee960bf9, type: 3}
     Explanation: "\uB208\uBCF4\uB77C\uAC00 \uC801\uB4E4\uC744 \uC5BC\uB9B0\uB2E4."
     CoolTime: 40
-    Percent_01: 7
-    Gold_01: 1650
-    Percent_02: 10
-    Gold_02: 4360
-    Percent_03: 20
-    Gold_03: 6221
+    Percent_01: 0
+    Gold_01: 0
+    Percent_02: 0
+    Gold_02: 0
+    Percent_03: 0
+    Gold_03: 0
   - Name: "\uBA85\uACC4\uC758 \uC190\uAE38"
     E_Name: AtemHands
     Icon: {fileID: 21300000, guid: 5b0b483e0b4e58b4292ebb791ffb67d3, type: 3}
     Explanation: "\uB9DD\uC790\uB4E4\uC758 \uC190\uC774 \uC801\uB4E4\uC744 \uACF5\uACA9\uD55C\uB2E4."
-    CoolTime: 40
-    Percent_01: 2
+    CoolTime: 24
+    Percent_01: 6
     Gold_01: 1650
-    Percent_02: 10
+    Percent_02: 15
     Gold_02: 4360
-    Percent_03: 10
+    Percent_03: 25
     Gold_03: 6221
   - Name: "\uC81C\uC6B0\uC2A4\uC758 \uCC9C\uBC8C"
     E_Name: ZeusFury
     Icon: {fileID: 21300000, guid: d6928cc2be2f2da44b6f3efefd6dbfc1, type: 3}
     Explanation: "\uC81C\uC6B0\uC2A4\uC758 \uBC88\uAC1C\uAC00 \uCE58\uACE0 \uC804\uAE30\uAC00
       \uBC14\uB2E5\uC744 \uB4A4\uC5CE\uB294\uB2E4."
-    CoolTime: 50
-    Percent_01: 1
+    CoolTime: 30
+    Percent_01: 3
     Gold_01: 1890
-    Percent_02: 5
+    Percent_02: 10
     Gold_02: 5000
-    Percent_03: 15
+    Percent_03: 20
     Gold_03: 6221
   - Name: "\uC601\uD63C \uAC70\uB450\uAE30"
     E_Name: 
     Icon: {fileID: 21300000, guid: 690f43f0fff20a94b9bfdf813d090d25, type: 3}
     Explanation: "\uC0AC\uC2E0\uC774 \uC801\uB4E4\uC758 \uC601\uD63C\uC744 \uAC70\uB46C\uAC04\uB2E4."
-    CoolTime: 65
+    CoolTime: 30
     Percent_01: 0
     Gold_01: 0
-    Percent_02: 5
+    Percent_02: 10
     Gold_02: 5000
-    Percent_03: 15
+    Percent_03: 20
     Gold_03: 6221
   - Name: "\uB300\uB9C8\uBC95\uC0AC\uC758  \uC720\uBB3C"
     E_Name: 
     Icon: {fileID: 21300000, guid: d21a1d09435773848a4601d6154d1b25, type: 3}
     Explanation: "\uB300\uB9C8\uBC95\uC0AC\uAC00 \uAE08\uC9C0\uB41C \uB9C8\uBC95\uC744
       \uC0AC\uC6A9\uD55C\uB2E4."
-    CoolTime: 70
+    CoolTime: 30
     Percent_01: 0
     Gold_01: 0
-    Percent_02: 5
-    Gold_02: 5000
-    Percent_03: 15
-    Gold_03: 6221
+    Percent_02: 0
+    Gold_02: 0
+    Percent_03: 0
+    Gold_03: 0
   - Name: "\uB871\uAE30\uB204\uC2A4\uC758 \uCC3D"
     E_Name: LonginusSpear
     Icon: {fileID: 21300000, guid: 495475bf74c8526438bad28ecf4cb411, type: 3}

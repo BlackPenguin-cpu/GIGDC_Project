@@ -158,13 +158,13 @@ public class Stop_Manager : MonoBehaviour
         }
     }
 
-    private void OnLevelWasLoaded(int level)
-    {
-        if (SceneManager.GetActiveScene().name == "Main")
-        {
+    //private void OnLevelWasLoaded(int level)
+    //{
+    //    if (SceneManager.GetActiveScene().name == "Main")
+    //    {
 
-        }
-    }
+    //    }
+    //}
 
     #region 일시정지 창
     public IEnumerator Pause_Window_Open()

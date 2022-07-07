@@ -15,13 +15,10 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 2fd05fd1e07da2f49a9991625f496120, type: 3}
   SkillName: "\uBA85\uACC4\uC758 \uC190\uAE38"
   Description: "\uB9DD\uC790\uB4E4\uC758 \uC190\uC774 \uC801\uB4E4\uC744 \uACF5\uACA9\uD55C\uB2E4."
-  price:
-  - 1650
-  - 4360
-  - 6221
+  price: 72060000081100004d180000
   damagePercent: 40
-  originalCooldown: 40
+  originalCooldown: 24
   appearChance:
-  - 2
-  - 10
-  - 20
+  - 6
+  - 15
+  - 25

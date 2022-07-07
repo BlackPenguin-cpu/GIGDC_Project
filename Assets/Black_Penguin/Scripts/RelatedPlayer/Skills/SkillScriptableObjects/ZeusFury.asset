@@ -16,13 +16,10 @@ MonoBehaviour:
   SkillName: "\uC81C\uC6B0\uC2A4\uC758 \uCC9C\uB465"
   Description: "\uC81C\uC6B0\uC2A4\uC758 \uBC88\uAC1C\uAC00 \uCE58\uACE0 \uC804\uAE30\uAC00
     \uBC14\uB2E5\uC744 \uB4A4\uC5CE\uB294\uB2E4."
-  price:
-  - 1890
-  - 5000
-  - 6221
+  price: 62070000881300004d180000
   damagePercent: 350
-  originalCooldown: 50
+  originalCooldown: 30
   appearChance:
-  - 1
-  - 5
-  - 15
+  - 3
+  - 10
+  - 20
