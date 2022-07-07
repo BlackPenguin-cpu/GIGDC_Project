@@ -4949,6 +4949,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 3547976952710852030, guid: 3da9c3f6417b4694cb997564d60f2bb6, type: 3}
+      propertyPath: King_Check
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7837968097333178697, guid: 3da9c3f6417b4694cb997564d60f2bb6, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -7552,7 +7556,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 30
+  m_SortingOrder: 112
   m_TargetDisplay: 0
 --- !u!1 &1951729265
 GameObject:
