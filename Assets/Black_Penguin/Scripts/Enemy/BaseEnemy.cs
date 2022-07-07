@@ -232,6 +232,7 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     /// </summary>
     public override void OnHit(Entity atkEntity, float Damage)
     {
+        SoundManager.instance.PlaySoundClip("SFX_Hit", SoundType.SFX);
         hpShowDuration = 3;
         rigid.AddForce(new Vector3(transform.position.x > atkEntity.transform.position.x ? 40 : -40, 0, 0));
         StartCoroutine(HitEffectCoroutine());
