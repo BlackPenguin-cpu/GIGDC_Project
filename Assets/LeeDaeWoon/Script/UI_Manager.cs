@@ -67,7 +67,6 @@ public class UI_Manager : MonoBehaviour
         {
             DarkPlayerGet_Check = false;
             Destroy(GameObject.Find("DarkPlayer"));
-            Debug.Log("asdfasdf");
         }
 
         Timer_System();

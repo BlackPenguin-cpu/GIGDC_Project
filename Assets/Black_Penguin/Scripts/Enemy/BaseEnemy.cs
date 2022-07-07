@@ -88,7 +88,6 @@ public class BaseEnemy : Entity, IObjectPoolingObj
     protected override void Start()
     {
         base.Start();
-        OnObjCreate();
 
         OnDieActionAdd();
     }
@@ -225,7 +224,6 @@ public class BaseEnemy : Entity, IObjectPoolingObj
         int coinDropValue = crystalDropValueRange.randomRangeIntReturn();
         GameManager.Instance.crystal += crystalDropValue;
         GameManager.Instance._coin += coinDropValue;
-        Debug.Log(GameManager.Instance.crystal);
     }
     /// <summary>
     /// OnHit
