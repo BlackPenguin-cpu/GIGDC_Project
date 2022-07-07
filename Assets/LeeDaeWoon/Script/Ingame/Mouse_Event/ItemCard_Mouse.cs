@@ -112,6 +112,7 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         // 왼쪽 카드를 선택 했을 때
         if (direction == Direction.Left)
         {
+            
             Card_Manager.Inst.Fade.DOFade(0f, 0.5f);
             UI_Manager.Inst.Cursor_Fade = false;
 
@@ -512,6 +513,7 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                 DOTween.PauseAll();
                 Destroy(GameObject.Find("Item_Window(Clone)"));
             }
+            Potal.Inst.Potal_M();
         }
 
         if (direction == Direction.Among)
@@ -537,6 +539,7 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                 DOTween.PauseAll();
                 Destroy(GameObject.Find("Item_Window(Clone)"));
             }
+            Potal.Inst.Potal_M();
         }
 
         if (direction == Direction.Right)
@@ -562,6 +565,7 @@ public class ItemCard_Mouse : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                 DOTween.PauseAll();
                 Destroy(GameObject.Find("Item_Window(Clone)"));
             }
+            Potal.Inst.Potal_M();
         }
     }
 }

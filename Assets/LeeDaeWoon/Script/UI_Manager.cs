@@ -50,7 +50,7 @@ public class UI_Manager : MonoBehaviour
 
     void Start()
     {
-
+        Cursor.visible = false;
         Cursor.SetCursor(MousePointer, Vector2.zero, CursorMode.ForceSoftware);
     }
 
