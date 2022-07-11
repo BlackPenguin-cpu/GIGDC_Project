@@ -48,6 +48,8 @@ public class Skill_List : MonoBehaviour
 
     public void Skill_Num(int i)
     {
+        //TODO: switch문을 써보도록 해요?
+        //2022-07-11 Black_Penguin
         if (i == 0)
         {
             Left_Name.text = this.Left_Skill.SkillName;
@@ -88,7 +90,7 @@ public class Skill_List : MonoBehaviour
                 //if (Wave가 5일 경우)
                 //{
                 Left_Gold = this.Left_Skill.price[0];
-                Left_Gold_01.text = "" + Left_Gold;
+                Left_Gold_01.text = Left_Gold.ToString();
                 //}
                 //if (Wave가 10일 경우)
                 //{
