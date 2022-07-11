@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Player_Vector : MonoBehaviour
 {
     public static Player_Vector Inst;
-    public GameObject Player;
+    public GameObject PlayerObj;
 
     public bool M_VectorCheck = false;
     public bool I_VectorCheck = false;
@@ -15,8 +15,8 @@ public class Player_Vector : MonoBehaviour
 
     void Start()
     {
-        
-        Player = GameObject.Find("Player");
+
+        PlayerObj = Player.Instance.gameObject;
     }
 
     void Update()
@@ -42,7 +42,7 @@ public class Player_Vector : MonoBehaviour
     {
         DOTween.PauseAll();
 
-        if (SceneManager.GetActiveScene().name == "title")
+        if (SceneManager.GetActiveScene().name.Equals("title"))
         {
             UI_Manager.Inst.FadeInOut.DOFade(0f, 0f);
         }
@@ -67,27 +67,27 @@ public class Player_Vector : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Main" && M_VectorCheck == false)
         {
             M_VectorCheck = true;
-            Player.transform.localPosition = new Vector3(-8.9f, -1.39f, 0f);
+            PlayerObj.transform.localPosition = new Vector3(-8.9f, -1.39f, 0f);
         }
-        else if(SceneManager.GetActiveScene().name != "Main")
+        else if (SceneManager.GetActiveScene().name != "Main")
             M_VectorCheck = false;
 
 
         if (SceneManager.GetActiveScene().name == "test" && I_VectorCheck == false)
         {
             I_VectorCheck = true;
-            Player.transform.localPosition = new Vector3(0f, 1f, 0f);
+            PlayerObj.transform.localPosition = new Vector3(0f, 1f, 0f);
         }
-        else if(SceneManager.GetActiveScene().name != "test")
+        else if (SceneManager.GetActiveScene().name != "test")
             I_VectorCheck = false;
 
 
         if (SceneManager.GetActiveScene().name == "Dimension" && D_VectorCheck == false)
         {
             D_VectorCheck = true;
-            Player.transform.localPosition = new Vector3(0f, 1f, 0f);
+            PlayerObj.transform.localPosition = new Vector3(0f, 1f, 0f);
         }
-        else if(SceneManager.GetActiveScene().name != "Dimension")
+        else if (SceneManager.GetActiveScene().name != "Dimension")
             D_VectorCheck = false;
     }
 }

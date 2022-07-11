@@ -5834,7 +5834,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 770237838035848337, guid: 66006a8173ab5614f9e321c766d6925b, type: 3}
       propertyPath: m_WaveNum
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 770237838035848337, guid: 66006a8173ab5614f9e321c766d6925b, type: 3}
       propertyPath: middleBoss
@@ -5852,6 +5852,10 @@ PrefabInstance:
       propertyPath: wavePatterns.Array.data[0].EnemySpawnPatterns.Array.data[0].EnemySpawnInfos.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 770237838035848337, guid: 66006a8173ab5614f9e321c766d6925b, type: 3}
+      propertyPath: wavePatterns.Array.data[1].EnemySpawnPatterns.Array.data[2].EnemySpawnInfos.Array.data[3].enemyObj
+      value: 
+      objectReference: {fileID: 9068815753638589938, guid: 86989ff48d0abbc4c9d51bf78a71823d, type: 3}
     - target: {fileID: 5029481849678436621, guid: 66006a8173ab5614f9e321c766d6925b, type: 3}
       propertyPath: m_Name
       value: WaveManager

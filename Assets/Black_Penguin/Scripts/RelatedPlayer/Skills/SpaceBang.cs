@@ -28,6 +28,7 @@ public class SpaceBang : BaseSkill
             yield return null;
         }
         ObjectPool.Instance.DeleteObj(gameObject);
+        
     }
     public override void OnObjCreate()
     {

@@ -21,6 +21,9 @@ public class Skill_Manager : MonoBehaviour
     public Image FillAmount_Skill_A;
     public Text A_Skill_Text;
     public GameObject A_Skill_Text_Object;
+    //TODO: 우리 디폴트값이란걸 공부할까요?
+
+    //우리 명시적으로 접근 제한자를 써보는 습관을 가져요 ^^
     bool isCoolDown_01 = false;
 
     [Header("S스킬 쿨타임")]
@@ -226,9 +229,10 @@ public class Skill_Manager : MonoBehaviour
 
     public IEnumerator A_CoolTimeCounter() // 남은 쿨타임을 계산할 코르틴을 만든다.
     {
+        WaitForSeconds waitSec = new WaitForSeconds(1);
         while (A_Current_CoolTime > 0)
         {
-            yield return new WaitForSeconds(1f);
+            yield return waitSec;
             A_Current_CoolTime -= 1f;
             A_Skill_Text.text = A_Current_CoolTime.ToString();
         }

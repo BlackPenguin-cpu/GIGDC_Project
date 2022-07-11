@@ -89,6 +89,7 @@ public class WaveManager : MonoBehaviour
     {
         foreach (EnemySpawnInfo enemySpawnInfo in enemySpawnInfos)
         {
+            if (enemySpawnInfo.enemyObj == null) continue;
             SummonedEnemies.Add(ObjectPool.Instance.CreateObj(enemySpawnInfo.enemyObj, enemySpawnPos.returnPos(enemySpawnInfo.posIndex), Quaternion.identity));
             yield return new WaitForSeconds(enemySpawnInfo.time);
         }
