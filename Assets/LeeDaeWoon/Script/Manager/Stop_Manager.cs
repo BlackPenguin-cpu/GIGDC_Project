@@ -730,7 +730,11 @@ public class Stop_Manager : MonoBehaviour
     #region 게임종료 버튼
     public void Exit_Btn() => StartCoroutine(Exit_Window_Coroutine01());
 
-    public void Exit_Yes_Btn() => Application.Quit();
+    public void Exit_Yes_Btn()
+    {
+        Debug.Log("앱이 졸료 됩니다.");
+        Application.Quit();
+    }
 
     public void Exit_No_Btn()
     {

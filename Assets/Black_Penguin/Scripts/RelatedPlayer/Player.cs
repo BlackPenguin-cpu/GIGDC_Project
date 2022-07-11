@@ -816,7 +816,6 @@ public class Player : Entity, ITypePlayer
         BaseEnemy target = null;
         float maxDistance = 0;
 
-        SoundManager.instance.PlaySoundClip("SFX_Item_Curse", SoundType.SFX);
 
         foreach (BaseEnemy enemy in enemies)
         {
