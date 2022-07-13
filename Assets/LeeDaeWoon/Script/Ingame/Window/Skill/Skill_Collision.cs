@@ -13,6 +13,7 @@ public class Skill_Collision : MonoBehaviour
 
     void Update()
     {
+
     }
 
 

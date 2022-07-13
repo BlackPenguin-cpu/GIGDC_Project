@@ -34,8 +34,8 @@ public class Skill_Window : MonoBehaviour
     [Header("스킬 좌표")]
     [SerializeField] GameObject Skill_Shop;
 
-    //public Image AfterPurchase_Top_Light;
-    //public Image AfterPurchase_Bottom_Light;
+    public Image AfterPurchase_Top_Light;
+    public Image AfterPurchase_Bottom_Light;
 
     public int SkillNum; // 현재 몇 번째 구매 스킬과 충돌했는지 숫자 확인
     public bool UpDown = true; // 현재 위 인지 아래 인지 확인

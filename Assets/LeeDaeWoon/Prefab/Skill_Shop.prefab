@@ -2429,6 +2429,8 @@ MonoBehaviour:
   AfterPurchase_Skill_Box: {fileID: 0}
   AfterPurchase_LeftDirection: {fileID: 0}
   Skill_Shop: {fileID: 2633791636960462780, guid: 383a5b3a80e82684c93fc07eb59e19fe, type: 3}
+  AfterPurchase_Top_Light: {fileID: 0}
+  AfterPurchase_Bottom_Light: {fileID: 0}
   SkillNum: 0
   UpDown: 1
   Purchase: 1

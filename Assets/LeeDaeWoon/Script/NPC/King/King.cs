@@ -20,6 +20,10 @@ public class King : MonoBehaviour
     public GameObject Camera_obj;
     public GameObject Credit_Bar01;
     public GameObject Credit_Bar02;
+    public Image F_Button;
+
+    public bool F_Button_Fade;
+    public bool Dialogue_Exit;
 
     [Header("¥Î»≠")]
     public List<string> Dialogue = new List<string>();

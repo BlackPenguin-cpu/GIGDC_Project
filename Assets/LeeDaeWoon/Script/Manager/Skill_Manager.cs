@@ -38,7 +38,7 @@ public class Skill_Manager : MonoBehaviour
     public bool AS_Limit = true;
     public bool AS_Limit_02 = true;
     public bool Limit = true;
-    public bool Chang_Check = false;
+    public bool Skill_PotalMove = false;
 
     [Header("스클 획득 체크")]
     public Dictionary<SkillScript, bool> haveSkillInfo = new Dictionary<SkillScript, bool>();
@@ -176,37 +176,41 @@ public class Skill_Manager : MonoBehaviour
     #region A_스킬 쿨타임
     public void Skill_CoolTime_A() // 스킬 A의 쿨타임
     {
-        if (Input.GetKeyDown(KeyCode.A) && isCoolDown_01 == false && AS_Limit == true)
+        // 현재 씬이 Main이 아닐 경우 스킬을 사용할 수 있다.
+        if (SceneManager.GetActiveScene().name != "Main")
         {
-            A_Skill_CoolTime = Skill_Up[0]._cooldown;
-            A_Skill_Text_Object.SetActive(true);
-            FillAmount_Skill_A.fillAmount = 1f;
-            A_Current_CoolTime = A_Skill_CoolTime;
-            StartCoroutine(A_CoolTime());
+            if (Input.GetKeyDown(KeyCode.A) && isCoolDown_01 == false && AS_Limit == true)
+            {
+                A_Skill_CoolTime = Skill_Up[0]._cooldown;
+                A_Skill_Text_Object.SetActive(true);
+                FillAmount_Skill_A.fillAmount = 1f;
+                A_Current_CoolTime = A_Skill_CoolTime;
+                StartCoroutine(A_CoolTime());
 
-            A_Skill_Text.text = "" + A_Current_CoolTime;
+                A_Skill_Text.text = "" + A_Current_CoolTime;
 
-            StartCoroutine(A_CoolTimeCounter());
+                StartCoroutine(A_CoolTimeCounter());
 
-            skillManager.UseSkill(Skill_Up[0].name, DimensionType.OVER);
+                skillManager.UseSkill(Skill_Up[0].name, DimensionType.OVER);
 
-            isCoolDown_01 = true;
-        }
+                isCoolDown_01 = true;
+            }
 
-        else if (Input.GetKeyDown(KeyCode.S) && isCoolDown_01 == false && AS_Limit == false)
-        {
-            A_Skill_CoolTime = Skill_Up[0]._cooldown;
-            A_Skill_Text_Object.SetActive(true);
-            FillAmount_Skill_A.fillAmount = 1f;
-            A_Current_CoolTime = S_Skill_CoolTime;
-            StartCoroutine(A_CoolTime());
+            else if (Input.GetKeyDown(KeyCode.S) && isCoolDown_01 == false && AS_Limit == false)
+            {
+                A_Skill_CoolTime = Skill_Up[0]._cooldown;
+                A_Skill_Text_Object.SetActive(true);
+                FillAmount_Skill_A.fillAmount = 1f;
+                A_Current_CoolTime = S_Skill_CoolTime;
+                StartCoroutine(A_CoolTime());
 
-            A_Skill_Text.text = "" + A_Current_CoolTime;
+                A_Skill_Text.text = "" + A_Current_CoolTime;
 
-            StartCoroutine(A_CoolTimeCounter());
+                StartCoroutine(A_CoolTimeCounter());
 
-            skillManager.UseSkill(Skill_Down[0].name, DimensionType.UNDER);
-            isCoolDown_01 = true;
+                skillManager.UseSkill(Skill_Down[0].name, DimensionType.UNDER);
+                isCoolDown_01 = true;
+            }
         }
     }
 
@@ -239,36 +243,40 @@ public class Skill_Manager : MonoBehaviour
     #region S_스킬 쿨타임
     public void Skill_CoolTime_S() // 스킬 S의 쿨타임
     {
-        if (Input.GetKeyDown(KeyCode.S) && isCoolDown_02 == false && AS_Limit_02 == true)
+        // 현재 씬이 Main이 아닐 경우 스킬을 사용할 수 있다.
+        if (SceneManager.GetActiveScene().name != "Main")
         {
-            S_Skill_CoolTime = Skill_Down[0]._cooldown;
-            S_Skill_Text_Object.SetActive(true);
-            FillAmount_Skill_S.fillAmount = 1f;
-            S_Current_CoolTime = S_Skill_CoolTime;
-            StartCoroutine(S_CoolTime());
+            if (Input.GetKeyDown(KeyCode.S) && isCoolDown_02 == false && AS_Limit_02 == true)
+            {
+                S_Skill_CoolTime = Skill_Down[0]._cooldown;
+                S_Skill_Text_Object.SetActive(true);
+                FillAmount_Skill_S.fillAmount = 1f;
+                S_Current_CoolTime = S_Skill_CoolTime;
+                StartCoroutine(S_CoolTime());
 
-            S_Skill_Text.text = "" + S_Current_CoolTime;
+                S_Skill_Text.text = "" + S_Current_CoolTime;
 
-            skillManager.UseSkill(Skill_Down[0].name, DimensionType.UNDER);
-            StartCoroutine(S_CoolTimeCounter());
+                skillManager.UseSkill(Skill_Down[0].name, DimensionType.UNDER);
+                StartCoroutine(S_CoolTimeCounter());
 
-            isCoolDown_02 = true;
-        }
+                isCoolDown_02 = true;
+            }
 
-        else if (Input.GetKeyDown(KeyCode.A) && isCoolDown_02 == false && AS_Limit_02 == false)
-        {
-            S_Skill_CoolTime = Skill_Down[0]._cooldown;
-            S_Skill_Text_Object.SetActive(true);
-            FillAmount_Skill_S.fillAmount = 1f;
-            S_Current_CoolTime = A_Skill_CoolTime;
-            StartCoroutine(S_CoolTime());
+            else if (Input.GetKeyDown(KeyCode.A) && isCoolDown_02 == false && AS_Limit_02 == false)
+            {
+                S_Skill_CoolTime = Skill_Down[0]._cooldown;
+                S_Skill_Text_Object.SetActive(true);
+                FillAmount_Skill_S.fillAmount = 1f;
+                S_Current_CoolTime = A_Skill_CoolTime;
+                StartCoroutine(S_CoolTime());
 
-            S_Skill_Text.text = "" + S_Current_CoolTime;
+                S_Skill_Text.text = "" + S_Current_CoolTime;
 
-            skillManager.UseSkill(Skill_Up[0].name, DimensionType.OVER);
-            StartCoroutine(S_CoolTimeCounter());
+                skillManager.UseSkill(Skill_Up[0].name, DimensionType.OVER);
+                StartCoroutine(S_CoolTimeCounter());
 
-            isCoolDown_02 = true;
+                isCoolDown_02 = true;
+            }
         }
 
 
@@ -301,7 +309,8 @@ public class Skill_Manager : MonoBehaviour
     #region 스킬 A, S키 위치 설정
     public void AS_Location()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && Chang_Check == false)
+        // 왼쪽 쉬프트를 누르고, Potal을 통하여 이동을 하지 않을 경우 이 함수를 실행할 수 있다.
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Skill_PotalMove == false)
             StartCoroutine(Skill_Change());
     }
 
@@ -311,7 +320,6 @@ public class Skill_Manager : MonoBehaviour
         Skill_Down.Add(Skill_Up[0]);
         Skill_Up.RemoveAt(0);
         Skill_Down.RemoveAt(0);
-
 
         if (AS_Limit == true && Limit == true)
         {
