@@ -23,10 +23,14 @@ public class AttackCollision : MonoBehaviour
 
     RaycastHit2D[] DetectEntity()
     {
-        if (transform.parent == null) return null;
+        if (transform.parent == null)
+        {
+            Debug.Log("부모 오브젝트 없음");
+            return null;
+        }
         return Physics2D.BoxCastAll(transform.parent.position +
-            new Vector3((parentSpriteRenderer.flipX ? -1 : 1) * collider2D.offset.x, collider2D.offset.y)
-            , collider2D.size, 0, Vector2.zero, 0);
+        new Vector3((parentSpriteRenderer.flipX ? -1 : 1) * collider2D.offset.x, collider2D.offset.y)
+        , collider2D.size, 0, Vector2.right, 0);
     }
     /// <summary>
     /// 몬스터 공격인지 플레이어 공격인지 구분하기위해 자기자신을 넣어야한다
@@ -61,7 +65,8 @@ public class AttackCollision : MonoBehaviour
         foreach (RaycastHit2D raycast in DetectEntity())
         {
             //공격범위에 플레이어가 있고 차원이 같을경우
-            if (raycast.collider.gameObject.GetComponent<ITypePlayer>() != null && raycast.collider.GetComponent<Entity>().dimensionType == entity.dimensionType)
+            if (raycast.collider.gameObject.GetComponent<ITypePlayer>() != null 
+                && raycast.collider.GetComponent<Entity>().dimensionType == entity.dimensionType)
             {
                 return true;
             }

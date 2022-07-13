@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BaseSkill : MonoBehaviour, IObjectPoolingObj
 {
-    public DimensionType dimensionType = DimensionType.NONE;
+    public DimensionType dimensionType = DimensionType.OVER;
     public SkillScript SkillInfo;
     public float StartPosY;
 

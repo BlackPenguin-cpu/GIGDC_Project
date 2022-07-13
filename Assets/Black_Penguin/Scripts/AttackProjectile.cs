@@ -19,7 +19,7 @@ public class AttackProjectile : MonoBehaviour, IObjectPoolingObj
     public float duration = 3;
     public bool canPierce;
     public ProjectileType projectileType;
-    public DimensionType dimensionType = DimensionType.NONE;
+    public DimensionType dimensionType;
     public GameObject onDestroyObj;
 
     private SpriteRenderer sprite;

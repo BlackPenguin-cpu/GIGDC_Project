@@ -5,8 +5,7 @@ using UnityEngine;
 public enum DimensionType
 {
     OVER = 1,
-    UNDER = -1,
-    NONE
+    UNDER = -1
 }
 
 [RequireComponent(typeof(BoxCollider2D))]
