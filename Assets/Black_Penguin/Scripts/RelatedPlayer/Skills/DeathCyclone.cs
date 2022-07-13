@@ -48,7 +48,7 @@ public class DeathCyclone : BaseSkill
             if (rays[i].collider.TryGetComponent(out BaseEnemy enemy) && !baseEnemies.Contains(enemy))
             {
                 baseEnemies.Add(enemy);
-                enemy.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+                enemy.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (dimensionType == DimensionType.OVER ? -10 : 10), ForceMode2D.Impulse);
                 player.Attack(enemy, DefaultReturnDamage());
             }
         }
