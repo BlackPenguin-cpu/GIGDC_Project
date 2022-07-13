@@ -4,8 +4,8 @@ using UnityEngine;
 
 public enum DimensionType
 {
-    OVER,
-    UNDER,
+    OVER = 1,
+    UNDER = -1,
     NONE
 }
 

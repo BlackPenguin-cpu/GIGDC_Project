@@ -41,7 +41,7 @@ public class DeathCyclone : BaseSkill
             baseEnemies = new List<BaseEnemy>();
         }
 
-        RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxCollider2D.offset, boxCollider2D.size, 0, Vector2.right, 0);
+        RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxCollider2D.offset * (int)dimensionType, boxCollider2D.size, 0, Vector2.right, 0);
 
         for (int i = 0; i < rays.Length; i++)
         {
