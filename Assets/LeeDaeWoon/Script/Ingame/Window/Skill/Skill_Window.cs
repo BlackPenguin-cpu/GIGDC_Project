@@ -110,18 +110,20 @@ public class Skill_Window : MonoBehaviour
                 SeletSkill = Skill_Manager.Inst.Skill[SkillNum];
                 AfterPurchase_Skill.GetComponent<Image>().sprite = SeletSkill.sprite;
 
-                //if (Wave啊 5老 版快)
-                //{
-                GameManager.Instance._coin -= SeletSkill.price[0];
-                //}
-                //else if (Wave啊 10老 版快)
-                //{
-                //  UI_Manager.Inst.Gold -= SeletSkill.Gold_02;
-                //}
-                //else if (Wave啊 15老 版快)
-                //{
-                //  UI_Manager.Inst.Gold -= SeletSkill.Gold_03;
-                //}
+                switch(WaveManager.Instance.m_WaveNum)
+                {
+                    case 5:
+                        GameManager.Instance._coin -= SeletSkill.price[0];
+                        break;
+
+                    case 10:
+                        GameManager.Instance._coin -= SeletSkill.price[1];
+                        break;
+
+                    case 15:
+                        GameManager.Instance._coin -= SeletSkill.price[2];
+                        break;
+                }
 
                 Skill_Manager.Inst.Skill_Have.Add(SeletSkill);
                 Skill_Manager.Inst.Skill_Shop.Add(SeletSkill);

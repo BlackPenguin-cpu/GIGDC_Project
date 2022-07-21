@@ -52,21 +52,26 @@ public class Healing : MonoBehaviour
 
     public void Healing_Price()
     {
-        //if (Wave啊 5老版快)
-        Healing_Gold = 560;
-        Heal = 50f;
-        //else if (Wave啊 10老版快)
-        //{
-        //  Healing_Gold = 1230f;
-        //  Heal = 80f;
-        //}
-        //else if (Wave啊 15老版快)
-        //{
-        //  Healing_Gold = 2116f;
-        //  Heal = 120f;
-        //}
-        Healing_Gold_Text.text = "" + Healing_Gold;
+        switch(WaveManager.Instance.m_WaveNum)
+        {
+            case 5:
+                Healing_Gold = 560;
+                Heal = 50f;
+                break;
+
+            case 10:
+                Healing_Gold = 1230;
+                Heal = 80f;
+                break;
+
+            case 15:
+                Healing_Gold = 2116;
+                Heal = 120f;
+                break;
+        }
+        Healing_Gold_Text.text = Healing_Gold.ToString();
     }
+
     IEnumerator Healing_Purchase()
     {
         if (Input.GetKeyDown(KeyCode.F) && Healing_Colider_Check == false && GameManager.Instance._coin >= Healing_Gold && Healing_Purchase_Check == true)

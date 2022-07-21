@@ -31,64 +31,33 @@ public class King_Collision : MonoBehaviour
     void Update()
     {
         NextDialogue_F();
+        StartCoroutine(DialogueBtn_FadeInOut());
 
         if (King.Inst.Magic_Creation == true)
             Foundation.Inst.MagicCircle_Rotation();
-
-        if (UI_Manager.Inst.King_Check == true)
-            King.Inst.King_NPC.DOFade(0f, 0f);
     }
 
     public void NextDialogue_F()
     {
         if (Input.GetKeyDown(KeyCode.F))
             StartCoroutine(NextDialogue());
-
-        if (King.Inst.F_Button_Fade == true)
-            StartCoroutine(F_Button_Practice());
-
     }
 
-    IEnumerator F_Button_Practice()
+    public IEnumerator DialogueBtn_FadeInOut()
     {
-        
-        if (King.Inst.Dialogue_Text.text == King.Inst.Dialogue[King.Inst.Sequence_Text])
+        if (King.Inst.Dialogue_Text.text == King.Inst.Dialogue[King.Inst.Sequence_Text] && King.Inst.FBtn_Check == false)
         {
             yield return new WaitForSeconds(2f);
-            King.Inst.F_Button_Fade = false;
-            StartCoroutine(F_Btn_DoFade01());
+            King.Inst.F_Button.DOFade(1f, 1f);
+            Debug.Log("asdfasdfas");
+            King.Inst.FBtn_Check = true;
         }
-        else
-        {
 
-        }
-    }
-
-    IEnumerator F_Btn_DoFade01()
-    {
-        if (King.Inst.F_Button_Fade == false || King.Inst.Dialogue_Exit == false)
+        else if(King.Inst.Dialogue_Text.text != King.Inst.Dialogue[King.Inst.Sequence_Text] && King.Inst.FBtn_Check == true)
         {
-            King.Inst.F_Button.DOFade(1f, 0.5f);
-            yield return new WaitForSeconds(1f);
-            StartCoroutine(F_Btn_DoFade02());
-        }
-        else
-            StopCoroutine(F_Btn_DoFade01());
-            StopCoroutine(F_Btn_DoFade02());
+            King.Inst.FBtn_Check = false;
             King.Inst.F_Button.DOFade(0f, 0f);
-    }
-
-    IEnumerator F_Btn_DoFade02()
-    {
-        if (King.Inst.F_Button_Fade == false || King.Inst.Dialogue_Exit == false)
-        {
-            King.Inst.F_Button.DOFade(0f, 0.5f);
-            yield return new WaitForSeconds(1f);
-            StartCoroutine(F_Btn_DoFade01());
         }
-        else
-            King.Inst.F_Button.DOFade(0f, 0f);
-
     }
 
     public IEnumerator NextDialogue()
@@ -102,7 +71,6 @@ public class King_Collision : MonoBehaviour
                         // 전문이 타이핑이 됬을 경우 && 대사가 7번 이하 나왔을 경우 && 대사가 아직 안 끝났을 경우
                         if (King.Inst.Dialogue_Text.text == King.Inst.Dialogue[King.Inst.Sequence_Text] && King.Inst.Sequence_Text <= 7 && Dialogue_End == false)
                         {
-                            King.Inst.F_Button_Fade = true;
 
                             if (King.Inst.Sequence_Text < 7)
                             {
@@ -136,7 +104,6 @@ public class King_Collision : MonoBehaviour
                             // 치고 있던 타이핑은 멈추고, 바로 전문이 완성되도록 한다.
                             King.Inst.Dialogue_Text.DOPause();
                             King.Inst.Dialogue_Text.DOText(King.Inst.Dialogue[King.Inst.Sequence_Text], 0, richTextEnabled = true, scrambleMode = ScrambleMode.None, scrambleChars_Tool = null);
-                            King.Inst.F_Button_Fade = true;
                         }
                     }
                 }
@@ -149,8 +116,6 @@ public class King_Collision : MonoBehaviour
                     // 전문이 타이핑이 됬을 경우 && 대사가 7번 이하 나왔을 경우 && 대사가 아직 안 끝났을 경우
                     if (King.Inst.Dialogue_Text.text == King.Inst.Dialogue[King.Inst.Sequence_Text] && King.Inst.Sequence_Text <= 12 && Dialogue_End == false)
                     {
-                        yield return new WaitForSeconds(2f);
-                        King.Inst.F_Button.DOFade(1f, 1f);
 
                         if (King.Inst.Sequence_Text < 12)
                         {
@@ -284,7 +249,6 @@ public class King_Collision : MonoBehaviour
             {
                 case Area.Area_01:
                     Range_Reach = true;
-                    King.Inst.F_Button_Fade = true;
                     King.Inst.Camera_obj.GetComponent<CameraManager>().enabled = false;
                     King.Inst.Camera_obj.transform.DOLocalMoveX(0, 0.5f).SetEase(Ease.Linear);
 
@@ -295,7 +259,6 @@ public class King_Collision : MonoBehaviour
 
                 case Area.Area_02:
                     Range_Reach = true;
-                    King.Inst.F_Button_Fade = true;
                     King.Inst.Camera_obj.GetComponent<CameraManager>().enabled = false;
                     King.Inst.Camera_obj.transform.DOLocalMoveX(9, 0.5f).SetEase(Ease.Linear);
 
@@ -306,7 +269,6 @@ public class King_Collision : MonoBehaviour
 
                 case Area.Area_03:
                     Range_Reach = true;
-                    King.Inst.F_Button_Fade = true;
                     King.Inst.Camera_obj.GetComponent<CameraManager>().enabled = false;
                     King.Inst.Camera_obj.transform.DOLocalMoveX(17.82f, 0.5f).SetEase(Ease.Linear);
 
@@ -317,7 +279,6 @@ public class King_Collision : MonoBehaviour
 
                 case Area.Area_04:
                     Range_Reach = true;
-                    King.Inst.F_Button_Fade = true;
                     King.Inst.Camera_obj.GetComponent<CameraManager>().enabled = false;
                     King.Inst.Camera_obj.transform.DOLocalMoveX(26.76f, 0.5f).SetEase(Ease.Linear);
 
