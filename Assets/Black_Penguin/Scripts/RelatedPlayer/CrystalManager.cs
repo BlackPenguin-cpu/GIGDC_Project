@@ -20,7 +20,7 @@ public class CrystalManager : MonoBehaviour
     private int[] crystals = new int[(int)CrystalsType.END];
     public int[] _crystals
     {
-        get { return crystals; }
+        get => crystals;
         set
         {
             Player.Instance.stat.Crystals = value;

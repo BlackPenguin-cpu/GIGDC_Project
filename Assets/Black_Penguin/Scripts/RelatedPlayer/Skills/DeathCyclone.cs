@@ -41,14 +41,14 @@ public class DeathCyclone : BaseSkill
             baseEnemies = new List<BaseEnemy>();
         }
 
-        RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxCollider2D.offset, boxCollider2D.size, 0, Vector2.right, 0);
+        RaycastHit2D[] rays = Physics2D.BoxCastAll((Vector2)transform.position + boxCollider2D.offset * (int)dimensionType, boxCollider2D.size, 0, Vector2.right, 0);
 
         for (int i = 0; i < rays.Length; i++)
         {
             if (rays[i].collider.TryGetComponent(out BaseEnemy enemy) && !baseEnemies.Contains(enemy))
             {
                 baseEnemies.Add(enemy);
-                enemy.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+                enemy.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (dimensionType == DimensionType.OVER ? -10 : 10), ForceMode2D.Impulse);
                 player.Attack(enemy, DefaultReturnDamage());
             }
         }

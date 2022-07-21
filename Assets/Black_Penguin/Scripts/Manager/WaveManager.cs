@@ -23,7 +23,7 @@ public class baseEnemySpawnPos
             case 4:
                 return UnderRight;
             default:
-                Debug.Log("인덱스 오류 (OutOfRange)");
+                Debug.Log($"인덱스 오류 (OutOfRange)");
                 return OverLeft;
         }
     }

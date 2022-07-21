@@ -143,6 +143,10 @@ public class BaseEnemy : Entity, IObjectPoolingObj
             HealthBarObj.transform.localScale = new Vector3(collider.size.x, 1, 1);
             HealthBarObj.transform.localPosition = new Vector3(0, dimensionType == DimensionType.OVER ? collider.size.y : -collider.size.y, 0);
         }
+        else
+        {
+            HealthBarObj.transform.localPosition = new Vector3(0, dimensionType == DimensionType.OVER ? collider.size.y : -collider.size.y, 0);
+        }
 
     }
     protected virtual void Update()
